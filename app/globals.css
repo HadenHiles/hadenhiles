@@ -16,6 +16,11 @@ html {
   background-color: #0B0B0E;
   color: #EDEDF2;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* prevent horizontal scroll bleed from wide TUI content */
+}
+
+body {
+  overflow-x: hidden;
 }
 
 /* System-wide purple focus ring — the only place accent is used for focus */

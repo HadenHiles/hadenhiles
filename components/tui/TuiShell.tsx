@@ -123,7 +123,8 @@ export function TuiShell() {
     <div ref={shellRef} className="p-4 flex flex-col h-screen">
       {/* Header */}
       <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center justify-between">
-        <span>hadensystem — ↑↓ navigate · [n] select · enter activate · type commands</span>
+        <span className="hidden sm:inline">hadensystem — ↑↓ navigate · [n] select · enter activate · type commands</span>
+        <span className="sm:hidden">hadensystem</span>
         <button
           onClick={() => activateMenuItem(4)}
           className="
