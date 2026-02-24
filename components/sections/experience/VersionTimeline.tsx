@@ -132,23 +132,49 @@ export function VersionTimeline({ entries }: { entries: ExperienceEntry[] }) {
 function VersionDetail({ entry }: { entry: ExperienceEntry }) {
   return (
     <>
+      {/* Cover image */}
+      {entry.coverImage && (
+        <div className="relative w-full h-36 rounded-lg overflow-hidden mb-4">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={entry.coverImage}
+            alt={entry.title}
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-bg/20 to-transparent" />
+        </div>
+      )}
+
       <div className="flex items-baseline gap-3 mb-1">
         <span className="font-mono text-sm text-accent">{entry.version}</span>
         <h3 className="text-lg font-semibold text-text">{entry.title}</h3>
       </div>
       <div className="text-sm text-muted mb-0.5">{entry.role}</div>
 
-      {/* Companies */}
+      {/* Companies with logos */}
       {entry.companies && entry.companies.length > 0 ? (
         <div className="flex flex-wrap gap-1.5 mb-2">
-          {entry.companies.map((c) => (
-            <span
-              key={c}
-              className="text-xs px-2 py-0.5 rounded-full border border-border text-muted font-mono"
-            >
-              {c}
-            </span>
-          ))}
+          {entry.companies.map((c, i) => {
+            const logo = entry.companyLogos?.[i];
+            return (
+              <span
+                key={c}
+                className="flex items-center gap-1.5 text-xs px-2 py-0.5 rounded-full border border-border text-muted font-mono"
+              >
+                {logo && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={logo}
+                    alt={c}
+                    width={14}
+                    height={14}
+                    className="w-3.5 h-3.5 object-contain rounded-sm"
+                  />
+                )}
+                {c}
+              </span>
+            );
+          })}
         </div>
       ) : entry.company ? (
         <div className="text-sm text-muted mb-2">{entry.company}</div>

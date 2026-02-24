@@ -2,13 +2,18 @@
   {
     "version": "v1.0",
     "title": "Foundations & Design",
-    "tui": "v1.0 · 2013–2016 · MediaSuite Co-op + BugsLife - web design, UX ownership, custom payment & scheduling systems.",
-    "dateRange": "2013 – 2016",
+    "tui": "v1.0 · 2013-2016 · MediaSuite Co-op + BugsLife - web design, UX ownership, custom payment & scheduling systems.",
+    "dateRange": "2013 - 2016",
     "role": "Web Developer & Designer",
     "companies": [
       "MediaSuite (Co-op)",
       "BugsLife Solutions"
     ],
+    "companyLogos": [
+      null,
+      "/images/bugslife-solutions-logo.png"
+    ],
+    "coverImage": "/images/bugslife-solutions-freelance-2015.jpg",
     "primarySkills": [
       "UX / UI Design",
       "PHP",
@@ -29,13 +34,18 @@
   {
     "version": "v2.0",
     "title": "Frontend & Integration",
-    "tui": "v2.0 · 2017 · Geek Power + LinkGreen - React, Angular, REST APIs, .NET, CI/CD pipelines.",
-    "dateRange": "Jan 2017 – Dec 2017",
-    "role": "Software Engineer → Integration Development Manager",
+    "tui": "v2.0 · 2017 · Geek Power + OrderEase - React, Angular, REST APIs, .NET, CI/CD pipelines.",
+    "dateRange": "Jan 2017 - Dec 2017",
+    "role": "Software Engineer / Integration Development Manager",
     "companies": [
       "Geek Power Web Design",
-      "LinkGreen"
+      "OrderEase"
     ],
+    "companyLogos": [
+      "/images/geek-power-logo.webp",
+      "/images/orderease-linkgreen-logo.svg"
+    ],
+    "coverImage": "/images/geek-power.webp",
     "primarySkills": [
       "React",
       "Angular",
@@ -45,25 +55,30 @@
       "CI/CD Pipeline Management",
       "Agile / KANBAN"
     ],
-    "summary": "Two roles back-to-back that pushed deeply into frontend frameworks and backend integration engineering. At Geek Power, led modernization of legacy systems using React and Angular. At LinkGreen, built REST API endpoints for large B2B clients and a .NET GUI tool enabling non-technical staff to sync local databases with cloud systems.",
+    "summary": "Two roles back-to-back that pushed deeply into frontend frameworks and backend integration engineering. At Geek Power, led modernization of legacy systems using React and Angular. At OrderEase, built REST API endpoints for large B2B clients and a .NET GUI tool enabling non-technical staff to sync local databases with cloud systems.",
     "highlights": [
       "Built custom UX solutions using Angular and React as lead developer on high-detail client projects",
       "Modernized legacy codebases for enterprise clients at Geek Power Web Design",
-      "Designed and tested REST API endpoints used by large B2B agricultural supply clients at LinkGreen",
+      "Designed and tested REST API endpoints used by large B2B agricultural supply clients at OrderEase",
       "Built a Windows .NET GUI tool allowing non-technical staff to sync local inventory databases with cloud APIs",
-      "Managed KANBAN boards, GitHub workflows, and CI pipelines at LinkGreen"
+      "Managed KANBAN boards, GitHub workflows, and CI pipelines at OrderEase"
     ]
   },
   {
     "version": "v3.0",
     "title": "Mobile & Systems",
-    "tui": "v3.0 · 2018–2019 · Georgian College + BugsLife mobile - Flutter, Firebase, Bluetooth beacons, native integrations.",
-    "dateRange": "Sep 2018 – Sep 2019",
+    "tui": "v3.0 · 2018-2019 · Georgian College + BugsLife mobile - Flutter, Firebase, Bluetooth beacons, native integrations.",
+    "dateRange": "Sep 2018 - Sep 2019",
     "role": "Web Specialist & Mobile Engineer",
     "companies": [
       "Georgian College (Marketing & IT)",
       "BugsLife Solutions"
     ],
+    "companyLogos": [
+      "/images/georgian-logo.webp",
+      "/images/bugslife-solutions-logo.png"
+    ],
+    "coverImage": "/images/georgian-web-specialist.jpg",
     "primarySkills": [
       "Flutter / Dart",
       "Firebase / Firestore",
@@ -85,13 +100,18 @@
   {
     "version": "v4.0",
     "title": "Full Stack & DevOps",
-    "tui": "v4.0 · 2019–Present · How To Hockey (Lead) + BugsLife - full stack ownership, production infra, CI/CD, Flutter mobile.",
-    "dateRange": "Oct 2019 – Present",
+    "tui": "v4.0 · 2019-Present · How To Hockey (Lead) + BugsLife - full stack ownership, production infra, CI/CD, Flutter mobile.",
+    "dateRange": "Oct 2019 - Present",
     "role": "Lead Software & DevOps Engineer",
     "companies": [
       "How To Hockey",
       "BugsLife Solutions"
     ],
+    "companyLogos": [
+      "/images/how-to-hockey-logo.png",
+      "/images/bugslife-solutions-logo.png"
+    ],
+    "coverImage": "/images/how-to-hockey.jpg",
     "primarySkills": [
       "Production Infrastructure & DevOps",
       "GitHub Actions CI/CD",

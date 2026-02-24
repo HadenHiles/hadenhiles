@@ -23,6 +23,8 @@ export interface ExperienceEntry {
   role: string;
   company?: string | null;
   companies?: string[];
+  companyLogos?: (string | null)[];
+  coverImage?: string | null;
   primarySkills?: string[];
   summary: string;
   highlights: string[];

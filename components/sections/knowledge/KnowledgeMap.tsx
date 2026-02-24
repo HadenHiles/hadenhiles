@@ -7,13 +7,13 @@ import type { Project } from "@/types/content";
 import { duration, ease } from "@/lib/motion";
 import projects from "@/content/projects.json";
 
-function SkillLogo({ slug, name }: { slug: string; name: string }) {
+function SkillLogo({ src, name }: { src: string; name: string }) {
   const [error, setError] = useState(false);
   if (error) return null;
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://cdn.simpleicons.org/${slug}/EDEDF2`}
+      src={src}
       alt={name}
       title={name}
       width={20}
@@ -51,7 +51,7 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
                   <div className="hidden sm:flex items-center gap-1.5 overflow-hidden">
                     {logoSkills.slice(0, 6).map((s) => (
                       <span key={s.name} className="opacity-50">
-                        <SkillLogo slug={s.logo!} name={s.name} />
+                        <SkillLogo src={s.logo!} name={s.name} />
                       </span>
                     ))}
                     {logoSkills.length > 6 && (
@@ -100,7 +100,7 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
                             className="flex items-center gap-1.5 px-2.5 py-1.5 rounded bg-surface2 border border-border/60"
                             title={s.name}
                           >
-                            <SkillLogo slug={s.logo!} name={s.name} />
+                            <SkillLogo src={s.logo!} name={s.name} />
                             <span className="text-xs font-mono text-muted">{s.name}</span>
                           </motion.div>
                         ))}
@@ -124,7 +124,7 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
                           <div className="flex items-center gap-2 w-40 shrink-0">
                             {skill.logo && (
                               <span className="opacity-70">
-                                <SkillLogo slug={skill.logo} name={skill.name} />
+                                <SkillLogo src={skill.logo} name={skill.name} />
                               </span>
                             )}
                             <span className="font-mono text-sm text-text">{skill.name}</span>

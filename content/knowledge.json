@@ -5,7 +5,7 @@
     "skills": [
       {
         "name": "Flutter / Dart",
-        "logo": "flutter",
+        "logo": "/images/logos/flutter.svg",
         "usedFor": "Cross-platform mobile apps with native performance - single codebase across iOS and Android without the usual trade-offs.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -16,7 +16,7 @@
       },
       {
         "name": "React",
-        "logo": "react",
+        "logo": "/images/logos/react.svg",
         "usedFor": "Web UIs where speed of development matters and the output needs to stay maintainable.",
         "proofProjectIds": [
           "timmies-helper",
@@ -25,13 +25,13 @@
       },
       {
         "name": "Angular",
-        "logo": "angular",
+        "logo": "/images/logos/angular.svg",
         "usedFor": "Enterprise-grade frontend applications where structure, scalability, and team conventions matter.",
         "proofProjectIds": []
       },
       {
         "name": "TypeScript",
-        "logo": "typescript",
+        "logo": "/images/logos/typescript.svg",
         "usedFor": "Type safety on the frontend and backend. Catches the class of bugs that waste the most time.",
         "proofProjectIds": [
           "video-scraper"
@@ -39,13 +39,13 @@
       },
       {
         "name": "JavaScript",
-        "logo": "javascript",
+        "logo": "/images/logos/javascript.svg",
         "usedFor": "The foundation of the web stack - scripting, browser APIs, and integration glue across every frontend layer.",
         "proofProjectIds": []
       },
       {
         "name": "WordPress",
-        "logo": "wordpress",
+        "logo": "/images/logos/wordpress.svg",
         "usedFor": "Content platforms that non-technical admins need to own and operate without ongoing developer involvement.",
         "proofProjectIds": [
           "the-pond"
@@ -53,7 +53,7 @@
       },
       {
         "name": "CSS / SASS",
-        "logo": "css3",
+        "logo": "/images/logos/sass.svg",
         "usedFor": "Interfaces that feel intentional. Design is applied from the user's perspective - not added at the end.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -69,7 +69,7 @@
     "skills": [
       {
         "name": "Firebase / Firestore",
-        "logo": "firebase",
+        "logo": "/images/logos/firebase.svg",
         "usedFor": "Real-time data sync, authentication, and scalable session-based data modeling for mobile and web apps.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -78,7 +78,7 @@
       },
       {
         "name": "Node.js / Express",
-        "logo": "nodedotjs",
+        "logo": "/images/logos/nodedotjs.svg",
         "usedFor": "Backend services and proxy layers - especially where CORS handling, request routing, or third-party integrations need clean separation from the frontend.",
         "proofProjectIds": [
           "video-scraper"
@@ -86,7 +86,7 @@
       },
       {
         "name": "PHP",
-        "logo": "php",
+        "logo": "/images/logos/php.svg",
         "usedFor": "Custom WordPress integrations, plugin extensions, and server-side membership logic.",
         "proofProjectIds": [
           "the-pond"
@@ -94,8 +94,8 @@
       },
       {
         "name": ".NET Core",
-        "logo": "dotnet",
-        "usedFor": "Windows desktop tools and enterprise backend services - used at LinkGreen to build database sync tooling for non-technical staff.",
+        "logo": "/images/logos/dotnet.svg",
+        "usedFor": "Windows desktop tools and enterprise backend services - used at OrderEase to build database sync tooling for non-technical staff.",
         "proofProjectIds": []
       },
       {
@@ -112,19 +112,19 @@
     "skills": [
       {
         "name": "MySQL",
-        "logo": "mysql",
+        "logo": "/images/logos/mysql.svg",
         "usedFor": "Relational data modeling for web platforms - schema design, query optimization, and production reliability.",
         "proofProjectIds": []
       },
       {
         "name": "MS SQL Server",
-        "logo": "microsoftsqlserver",
-        "usedFor": "Enterprise database work at LinkGreen - syncing local SQL databases with cloud APIs via custom GUI tooling.",
+        "logo": "/images/logos/microsoftsqlserver.svg",
+        "usedFor": "Enterprise database work at OrderEase - syncing local SQL databases with cloud APIs via custom GUI tooling.",
         "proofProjectIds": []
       },
       {
         "name": "Cloud Firestore",
-        "logo": "firebase",
+        "logo": "/images/logos/firebase.svg",
         "usedFor": "NoSQL document modeling for real-time mobile and web apps - optimized for low-latency reads and live sync.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -133,19 +133,19 @@
       },
       {
         "name": "MongoDB",
-        "logo": "mongodb",
+        "logo": "/images/logos/mongodb.svg",
         "usedFor": "Document-oriented storage for flexible, schema-light backend services.",
         "proofProjectIds": []
       },
       {
         "name": "GraphQL",
-        "logo": "graphql",
+        "logo": "/images/logos/graphql.svg",
         "usedFor": "Flexible query layer for APIs where clients need to shape their own data requirements.",
         "proofProjectIds": []
       },
       {
         "name": "SQLite",
-        "logo": "sqlite",
+        "logo": "/images/logos/sqlite.svg",
         "usedFor": "Embedded local storage in mobile apps - offline-first data persistence in Flutter applications.",
         "proofProjectIds": []
       }
@@ -153,23 +153,29 @@
   },
   {
     "category": "DevOps & Infrastructure",
-    "tui": "GitHub Actions · Docker · Linux · Backup & Recovery · CI/CD Pipelines",
+    "tui": "Git · GitHub Actions · Docker · Linux · Backup & Recovery · CI/CD Pipelines",
     "skills": [
       {
+        "name": "Git",
+        "logo": "/images/logos/git.svg",
+        "usedFor": "Version control backbone for every project - branching strategy, PR workflows, and release management.",
+        "proofProjectIds": []
+      },
+      {
         "name": "GitHub Actions",
-        "logo": "githubactions",
+        "logo": "/images/logos/githubactions.svg",
         "usedFor": "Building and maintaining CI/CD pipelines - release workflows that are stable, repeatable, and require minimal manual intervention.",
         "proofProjectIds": []
       },
       {
         "name": "Docker",
-        "logo": "docker",
+        "logo": "/images/logos/docker.svg",
         "usedFor": "Containerized service isolation and consistent environments across development and production.",
         "proofProjectIds": []
       },
       {
         "name": "Linux",
-        "logo": "linux",
+        "logo": "/images/logos/linux.svg",
         "usedFor": "Server administration, shell scripting, and production environment management - the OS underneath every deployment.",
         "proofProjectIds": []
       },
@@ -193,7 +199,7 @@
     "skills": [
       {
         "name": "Firebase / GCP",
-        "logo": "firebase",
+        "logo": "/images/logos/firebase.svg",
         "usedFor": "Primary cloud platform for mobile and web - hosting, Firestore, auth, functions, and real-time infrastructure.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -202,19 +208,19 @@
       },
       {
         "name": "AWS",
-        "logo": "amazonaws",
+        "logo": "/images/logos/amazonaws.svg",
         "usedFor": "Cloud infrastructure for scalable deployments, object storage, and serverless function integration.",
         "proofProjectIds": []
       },
       {
         "name": "Azure",
-        "logo": "microsoftazure",
+        "logo": "/images/logos/microsoftazure.svg",
         "usedFor": "Microsoft cloud services used alongside .NET-based enterprise tooling and CI integrations.",
         "proofProjectIds": []
       },
       {
         "name": "DigitalOcean",
-        "logo": "digitalocean",
+        "logo": "/images/logos/digitalocean.svg",
         "usedFor": "VPS hosting for production web deployments - simple, cost-effective, and fast to configure.",
         "proofProjectIds": []
       }
@@ -226,7 +232,7 @@
     "skills": [
       {
         "name": "C++",
-        "logo": "cplusplus",
+        "logo": "/images/logos/cplusplus.svg",
         "usedFor": "Performance-sensitive native layers in Flutter apps - Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
         "proofProjectIds": [
           "group-of-seven-trail-app",
