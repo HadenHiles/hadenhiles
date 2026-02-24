@@ -16,6 +16,7 @@ export function TuiShell() {
     runTuiCommand,
     activateMenuItem,
     appendHistory,
+    navigateToMode,
   } = useStore();
 
   // Track whether the terminal input has focus — controls which "cursor" blinks
@@ -147,6 +148,7 @@ export function TuiShell() {
           menuActive={!inputFocused}
           onMenuSelect={setMenuIndex}
           onMenuActivate={activateMenuItem}
+          onAction={navigateToMode}
         />
       </div>
 

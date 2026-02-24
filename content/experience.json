@@ -2,6 +2,7 @@
   {
     "version": "v1.0",
     "title": "Foundations",
+    "tui": "v1.0 · Software Developer @ How To Hockey — first hire, full-stack across web and mobile.",
     "dateRange": "Early Career",
     "role": "Software Developer",
     "company": "How To Hockey",
@@ -16,6 +17,7 @@
   {
     "version": "v2.0",
     "title": "Building Products",
+    "tui": "v2.0 · Software Engineer — shipped The Pond, TenThousandShotChallenge, Group of Seven Trail App.",
     "dateRange": "Mid Career",
     "role": "Software Engineer",
     "company": "How To Hockey",
@@ -30,6 +32,7 @@
   {
     "version": "v3.0",
     "title": "Owning the Stack",
+    "tui": "v3.0 · Principal Engineer — added DevOps ownership, shipped NextShift, codified the engineering approach.",
     "dateRange": "Later Career",
     "role": "Principal Software Engineer",
     "company": "How To Hockey",
@@ -44,6 +47,7 @@
   {
     "version": "v4.0",
     "title": "UX-First Engineering",
+    "tui": "v4.0 · Principal Software & DevOps — full stack + infra ownership, every decision starts from the user.",
     "dateRange": "Present",
     "role": "Principal Software and DevOps Engineer",
     "company": "How To Hockey",

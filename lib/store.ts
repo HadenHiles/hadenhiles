@@ -5,9 +5,10 @@ import type { AppMode } from "./routes";
 import { MENU_ITEMS } from "./routes";
 
 export interface HistoryEntry {
-  type: "log" | "cmd" | "out" | "err";
+  type: "log" | "cmd" | "out" | "err" | "action";
   level?: "info" | "ok" | "warn" | "banner" | "dim";
   text: string;
+  actionMode?: string; // for "action" type: AppMode to navigate to
 }
 
 interface AppState {
@@ -27,6 +28,8 @@ interface AppState {
   history: HistoryEntry[];
   hiddenOptionsUnlocked: boolean;
   currentPath: string;
+  sudoPending: boolean;
+  pendingSudoCommand: string | null;
 
   // ─── GUI actions ──────────────────────────────────────────────────────────
   setMode: (mode: AppMode) => void;
@@ -45,6 +48,7 @@ interface AppState {
   runTuiCommand: (cmd: string) => void;
   runBootScript: () => void;
   activateMenuItem: (index: number) => void;
+  navigateToMode: (mode: string) => void;
 }
 
 export const useStore = create<AppState>()(
@@ -65,6 +69,8 @@ export const useStore = create<AppState>()(
       history: [],
       hiddenOptionsUnlocked: false,
       currentPath: "~",
+      sudoPending: false,
+      pendingSudoCommand: null,
 
       // ── GUI actions ────────────────────────────────────────────────────────
       setMode: (mode) => {
@@ -112,22 +118,43 @@ export const useStore = create<AppState>()(
         const item = MENU_ITEMS[index];
         if (!item) return;
 
+        // Contact — open modal
         if ("isContact" in item && item.isContact) {
           get().appendHistory({ type: "out", text: "opening contact..." });
           set({ isContactOpen: true });
           return;
         }
 
+        // "Use GUI" handoff — navigate directly without showing section content
+        if ("isHandoff" in item && item.isHandoff) {
+          get().appendHistory({
+            type: "log",
+            level: "ok",
+            text: "handoff: guiRenderer engaged → site",
+          });
+          setTimeout(() => get().setMode(item.mode as AppMode), 340);
+          return;
+        }
+
+        // Content sections (0–3) — show condensed TUI content then offer navigation
+        import("@/components/tui/tuiSections").then(({ SECTION_CONTENT }) => {
+          const lines = SECTION_CONTENT[index];
+          if (lines) lines.forEach((line) => get().appendHistory(line));
+          get().appendHistory({
+            type: "action",
+            text: `→ open ${item.label.toLowerCase()} in site`,
+            actionMode: item.mode as string,
+          });
+        });
+      },
+
+      navigateToMode: (mode) => {
         get().appendHistory({
           type: "log",
           level: "ok",
-          text: `handoff: guiRenderer engaged → ${item.label.toLowerCase()}`,
+          text: `handoff: guiRenderer engaged → ${mode}`,
         });
-
-        // Small delay so the user sees the log line before the morph begins
-        setTimeout(() => {
-          get().setMode(item.mode as AppMode);
-        }, 340);
+        setTimeout(() => get().setMode(mode as AppMode), 340);
       },
 
       runBootScript: () => {
@@ -161,6 +188,30 @@ export const useStore = create<AppState>()(
 
         set({ commandBuffer: "" });
 
+        // ── Sudo password entry ───────────────────────────────────────────────
+        if (get().sudoPending) {
+          const masked = "•".repeat(Math.max(cmd.length, 6));
+          appendHistory({ type: "cmd", text: `[sudo] password: ${masked}` });
+          if (cmd === "DogsRule123") {
+            const savedCmd = get().pendingSudoCommand!;
+            set({ sudoPending: false, pendingSudoCommand: null });
+            appendHistory({ type: "out", text: "authentication successful" });
+            import("@/components/tui/tuiCommands").then(({ handleCommand }) => {
+              handleCommand(savedCmd, {
+                appendHistory,
+                unlockHiddenOptions,
+                activateMenuItem,
+                currentPath: get().currentPath,
+                setCurrentPath,
+              });
+            });
+          } else {
+            set({ sudoPending: false, pendingSudoCommand: null });
+            appendHistory({ type: "err", text: "sudo: sorry, try again" });
+          }
+          return;
+        }
+
         // Handle clear before delegating to command module
         if (cmd.toLowerCase() === "clear") {
           clearHistory();
@@ -168,6 +219,19 @@ export const useStore = create<AppState>()(
         }
 
         appendHistory({ type: "cmd", text: `$ ${rawCmd}` });
+
+        // ── Sudo prompt — intercept before tuiCommands so password is always required
+        const cmdLower = cmd.toLowerCase();
+        if (cmdLower.startsWith("sudo ") && cmd.trim().split(/\s+/).length > 1) {
+          appendHistory({ type: "out", text: "[sudo] password for visitor: " });
+          appendHistory({
+            type: "log",
+            level: "dim",
+            text: "hint: careful not to leak your password in any commits ;)",
+          });
+          set({ sudoPending: true, pendingSudoCommand: cmd });
+          return;
+        }
 
         // Lazy import to avoid circular deps
         import("@/components/tui/tuiCommands").then(({ handleCommand }) => {

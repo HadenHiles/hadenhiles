@@ -36,6 +36,7 @@ interface BootLogProps {
   menuActive: boolean;
   onMenuSelect: (i: number) => void;
   onMenuActivate: (i: number) => void;
+  onAction: (mode: string) => void;
 }
 
 export function BootLog({
@@ -46,6 +47,7 @@ export function BootLog({
   menuActive,
   onMenuSelect,
   onMenuActivate,
+  onAction,
 }: BootLogProps) {
   // Scroll to bottom when new entries appear or when menu first renders
   useEffect(() => {
@@ -62,26 +64,44 @@ export function BootLog({
     >
       {/* Boot log entries */}
       <AnimatePresence initial={false}>
-        {history.map((entry, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 2 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: duration.micro, ease: ease.standard }}
-            className={`leading-relaxed ${
-              entry.type === "log"
-                ? levelColor[entry.level ?? "info"]
-                : typeStyle[entry.type]
-            } ${entry.type === "log" && (entry.level === "banner" || entry.level === "dim") ? "whitespace-pre" : ""}`}
-          >
-            {entry.type === "log" && entry.level !== "banner" && entry.level !== "dim" && (
-              <span className="text-border mr-2 select-none w-3 inline-block">
-                {levelIcon[entry.level ?? "info"]}
-              </span>
-            )}
-            {entry.text}
-          </motion.div>
-        ))}
+        {history.map((entry, i) => {
+          // Action entries — styled as a clickable link/button
+          if (entry.type === "action") {
+            return (
+              <motion.button
+                key={i}
+                initial={{ opacity: 0, y: 2 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: duration.micro, ease: ease.standard }}
+                onClick={() => onAction(entry.actionMode!)}
+                className="block w-full text-left leading-relaxed mt-1 mb-1 text-accent font-mono hover:underline cursor-default select-none"
+              >
+                {entry.text}
+              </motion.button>
+            );
+          }
+
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 2 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: duration.micro, ease: ease.standard }}
+              className={`leading-relaxed ${
+                entry.type === "log"
+                  ? levelColor[entry.level ?? "info"]
+                  : typeStyle[entry.type as keyof typeof typeStyle] ?? ""
+              } ${entry.type === "log" && (entry.level === "banner" || entry.level === "dim") ? "whitespace-pre" : ""}`}
+            >
+              {entry.type === "log" && entry.level !== "banner" && entry.level !== "dim" && (
+                <span className="text-border mr-2 select-none w-3 inline-block">
+                  {levelIcon[entry.level ?? "info"]}
+                </span>
+              )}
+              {entry.text}
+            </motion.div>
+          );
+        })}
       </AnimatePresence>
 
       {/* Inline menu — appears after boot, baked into the terminal output */}

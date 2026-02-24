@@ -2,12 +2,18 @@
   {
     "id": "ten-thousand-shot-challenge",
     "title": "TenThousandShotChallenge",
+    "tui": "Shot-logging mobile app (Flutter/Firebase) — log a session in under 10s, see cumulative progress.",
     "tagline": "A simple way to track the 10,000 Shot Challenge.",
     "purpose": "Players needed a way to log real sessions and see tangible progress instead of guessing. The challenge is about discipline and repetition.",
     "constraints": "Cross-platform requirement with real-time sync, multiple auth providers, and structured logging that had to scale to thousands of cumulative entries per user.",
     "decisions": "Firebase and Firestore for real-time sync and structured session data. Flutter for a single codebase across iOS and Android without sacrificing native performance.",
     "impact": "Players can open the app, log shots in seconds, and see cumulative progress clearly — no guessing, no friction.",
-    "tech": ["Flutter", "Dart", "Firebase", "Firestore"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Firebase",
+      "Firestore"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -17,12 +23,20 @@
   {
     "id": "the-pond",
     "title": "The Pond",
+    "tui": "WordPress membership platform (LearnDash/MemberPress) — content hierarchy first, zero admin friction.",
     "tagline": "A structured membership platform for hockey training.",
     "purpose": "Online hockey advice is scattered and unstructured. The Pond created a learning path with gated content and clear progression for committed players.",
     "constraints": "Built on WordPress to stay maintainable for non-technical admins. Membership logic, course gating, and payment processing all had to integrate cleanly without custom infrastructure.",
     "decisions": "MemberPress for membership logic, LearnDash for course architecture. Designed the content hierarchy first so navigation was intuitive before writing a single line of integration code.",
     "impact": "Players always know what to do next. Admins manage the platform without technical gymnastics. Content governance reduced ongoing overhead significantly.",
-    "tech": ["WordPress", "LearnDash", "MemberPress", "PHP", "JavaScript", "CSS"],
+    "tech": [
+      "WordPress",
+      "LearnDash",
+      "MemberPress",
+      "PHP",
+      "JavaScript",
+      "CSS"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -32,12 +46,19 @@
   {
     "id": "group-of-seven-trail-app",
     "title": "Group of Seven Trail App",
+    "tui": "Trail companion app (Flutter/C++) — Bluetooth beacons surface context at exactly the right moment.",
     "tagline": "Interactive trail exploration built for real hikers.",
     "purpose": "A companion app for the Lake Superior Group of Seven Trail that connected location, history, and movement — making the trail itself interactive without being distracting.",
     "constraints": "Had to work reliably in remote conditions with inconsistent connectivity. Bluetooth beacon triggering needed to be performant without draining battery. UI designed for outdoor, active use.",
     "decisions": "Flutter for cross-platform with C++ native integrations for Bluetooth performance. Proximity-based content triggers over explicit navigation — the trail guides the experience, not menus.",
     "impact": "Relevant trail information surfaces automatically at the right moment. Hikers stay in the experience instead of digging through menus.",
-    "tech": ["Flutter", "Dart", "C++", "Bluetooth Beacons", "Native Integrations"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "C++",
+      "Bluetooth Beacons",
+      "Native Integrations"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -47,12 +68,17 @@
   {
     "id": "nextshift",
     "title": "NextShift",
+    "tui": "Real-time feature voting platform (Firebase) — idea to ranked result in under 20 seconds.",
     "tagline": "Community driven roadmap visibility.",
     "purpose": "Feature prioritization shouldn't be based on guesswork. Users should have a direct voice in what gets built next — and be able to see how their input stacks up.",
     "constraints": "Real-time voting had to be consistent across concurrent users. Categorization needed to stay clean without heavy admin overhead. Submit-to-visible flow needed to be under 20 seconds.",
     "decisions": "Firebase for real-time voting state. Clean separation between user-facing submission flow and admin moderation tooling. Efficient rendering for dynamic ranked lists that update live.",
     "impact": "Users can submit an idea in under 20 seconds and immediately see where it stands. Roadmap decisions became data-driven instead of gut-driven.",
-    "tech": ["Flutter", "Dart", "Firebase"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -62,12 +88,17 @@
   {
     "id": "skill-drills",
     "title": "Skill Drills",
+    "tui": "Customizable training tracker (Flutter/C++) — user-defined routines and metrics, no rigid structure.",
     "tagline": "Flexible skill tracking without rigidity.",
     "purpose": "Training isn't one-size-fits-all. I wanted to build something that lets users define their own metrics instead of forcing them into a predetermined structure.",
     "constraints": "Flexible data models that could handle varied skill categories without becoming chaotic. Performance-optimized rendering for users with large datasets. The freedom had to feel structured, not open-ended.",
     "decisions": "User-defined routines and metric definitions backed by dynamic data models. C++ for the computation layer to keep rendering fast even with large session histories.",
     "impact": "Users get the structure of a tracking app with the flexibility of a spreadsheet — without the spreadsheet overhead.",
-    "tech": ["Flutter", "Dart", "C++"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "C++"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -77,12 +108,16 @@
   {
     "id": "timmies-helper",
     "title": "timmies-helper",
+    "tui": "Fork + Value Over Replacement column for Tim's Hockey Challenge — best pick in each tier, at a glance.",
     "tagline": "A fork extended with Value Over Replacement to find the best pick in each tier.",
     "purpose": "The original timmies-helper tool helped with Tim Hortons Hockey Challenge picks. I forked it to add a missing piece: a Value Over Replacement (VOR) column that makes the best value pick in each tier immediately obvious.",
     "constraints": "Built on top of another developer's existing codebase, so the addition had to integrate cleanly without disrupting the existing logic or UI conventions.",
     "decisions": "Added a VOR column that computes each player's value relative to the baseline replacement-level pick in their tier — the same concept used in fantasy sports drafting. Surfaced as a dedicated column so users can sort and compare at a glance.",
     "impact": "VOR turns a list of picks into a ranked value decision. Users can immediately see which pick has the best return relative to who else is available in that tier.",
-    "tech": ["React", "JavaScript"],
+    "tech": [
+      "React",
+      "JavaScript"
+    ],
     "githubUrl": "https://github.com/HadenHiles",
     "demoUrl": null,
     "videoUrl": null,
@@ -92,12 +127,19 @@
   {
     "id": "video-scraper",
     "title": "VideoScraper",
+    "tui": "URL-in, file-out video download utility (React/Node.js) — strict frontend/backend separation, zero friction.",
     "tagline": "A utility with clean plumbing.",
     "purpose": "Sometimes you need a tool that does one thing well. Paste a link, click once, get the file.",
     "constraints": "CORS handling required a proxy backend. The frontend had to stay completely decoupled from the backend routing logic. No unnecessary surface area.",
     "decisions": "Node.js and Express for the proxy backend. React and Vite for the frontend. Strict separation of responsibilities — the frontend knows nothing about the download mechanics.",
     "impact": "One URL in. One file out. Zero friction between intention and result.",
-    "tech": ["React", "TypeScript", "Node.js", "Express", "Vite"],
+    "tech": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Vite"
+    ],
     "githubUrl": "https://github.com/HadenHiles",
     "demoUrl": null,
     "videoUrl": null,

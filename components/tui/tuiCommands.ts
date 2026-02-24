@@ -55,6 +55,18 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("  git log           — commit history"));
       break;
 
+    // ── number shortcuts — activate menu item directly ─────────────────────────
+    case trimmed === "1":
+    case trimmed === "2":
+    case trimmed === "3":
+    case trimmed === "4":
+    case trimmed === "5":
+    case trimmed === "6": {
+      const idx = parseInt(trimmed, 10) - 1;
+      activateMenuItem(idx);
+      break;
+    }
+
     // ── ls variants ───────────────────────────────────────────────────────────
     case lower === "ls": {
       if (currentPath === "~/projects") {
@@ -465,7 +477,8 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("commit a4f2e91 — ship portfolio v4.0"));
       appendHistory(out("commit 3c8b012 — add TUI boot sequence"));
       appendHistory(out("commit 7f1d443 — wire up animated handoff"));
-      appendHistory(out("commit 2a9c887 — redesign with minimilist inspiration"));
+      appendHistory(out("commit d3ad1f8 — update sudo pw: DogsRule123"));
+      appendHistory(out("commit 2a9c887 — redesign with minimalist inspiration"));
       appendHistory(out("commit f8e3c11 — initial commit"));
       break;
 
@@ -533,10 +546,14 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("If it needs a manual, it probably needs a redesign."));
       break;
 
-    // ── sudo (generic) ────────────────────────────────────────────────────────
+    // ── sudo (generic — reached only after successful auth for unrecognized commands) ──
     case base === "sudo":
-      appendHistory(err("sudo: command not found in this fictional shell"));
-      appendHistory(out("(you don't need root access to view a portfolio)"));
+      if (!args) {
+        appendHistory(err("sudo: usage: sudo <command>"));
+      } else {
+        appendHistory(err(`sudo: ${args}: command not found`));
+        appendHistory(out("(not everything is available, even as root)"));
+      }
       break;
 
     // ── man (specific) ────────────────────────────────────────────────────────
@@ -546,6 +563,146 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       } else {
         appendHistory(out(`No manual entry for ${args} in this environment.`));
         appendHistory(out("try: help"));
+      }
+      break;
+
+    // ── tree ──────────────────────────────────────────────────────────────────
+    case lower === "tree":
+      appendHistory(out("."));
+      appendHistory(out("├── projects/"));
+      appendHistory(out("│   ├── ten-thousand-shot-challenge/"));
+      appendHistory(out("│   ├── the-pond/"));
+      appendHistory(out("│   ├── group-of-seven-trail-app/"));
+      appendHistory(out("│   ├── nextshift/"));
+      appendHistory(out("│   ├── skill-drills/"));
+      appendHistory(out("│   ├── timmies-helper/"));
+      appendHistory(out("│   └── video-scraper/"));
+      appendHistory(out("├── experience/"));
+      appendHistory(out("│   ├── v1.0-foundations/"));
+      appendHistory(out("│   ├── v2.0-building-products/"));
+      appendHistory(out("│   ├── v3.0-owning-the-stack/"));
+      appendHistory(out("│   └── v4.0-ux-first/"));
+      appendHistory(out("├── knowledge/"));
+      appendHistory(out("│   ├── frontend/"));
+      appendHistory(out("│   ├── backend/"));
+      appendHistory(out("│   ├── devops-automation/"));
+      appendHistory(out("│   ├── systems-networking/"));
+      appendHistory(out("│   └── storytelling/"));
+      appendHistory(out("├── about/"));
+      appendHistory(out("│   ├── family.txt"));
+      appendHistory(out("│   ├── craft.txt"));
+      appendHistory(out("│   └── play.txt"));
+      appendHistory(out("└── contact/"));
+      appendHistory(out("7 directories, many commits, zero regrets."));
+      break;
+
+    // ── neofetch ──────────────────────────────────────────────────────────────
+    case lower === "neofetch":
+      appendHistory(out("               visitor@hadensystem"));
+      appendHistory(out("               ─────────────────────────────────"));
+      appendHistory(out("  █████████    OS:      HadenOS 4.0.0"));
+      appendHistory(out("  █░░░░░░░█    Host:    hadensystem"));
+      appendHistory(out("  █░░░░░░░█    Shell:   hadenshell 4.0"));
+      appendHistory(out("  █░░░░░░░█    Stack:   Next.js · Framer · Zustand"));
+      appendHistory(out("  █░░░░░░░█    Theme:   dark (obviously)"));
+      appendHistory(out("  █░░░░░░░█    Accent:  #8A5CFF"));
+      appendHistory(out("  █████████    Uptime:  since first commit"));
+      appendHistory(out("               Terminal: TUI v4.0"));
+      break;
+
+    // ── uptime ────────────────────────────────────────────────────────────────
+    case lower === "uptime":
+      appendHistory(out("up since first commit, load average: 0.00 0.00 0.00"));
+      appendHistory(out("no downtime. ever. (this is a static site)"));
+      break;
+
+    // ── df ────────────────────────────────────────────────────────────────────
+    case lower === "df" || lower === "df -h":
+      appendHistory(out("Filesystem       Size  Used  Avail  Use%  Mounted on"));
+      appendHistory(out("/dev/portfolio   100G   42G    58G   42%  /"));
+      appendHistory(out("tmpfs/brain       ∞    ∞      ∞     —    /ideas"));
+      appendHistory(out("(most space is taken up by opinions about UX)"));
+      break;
+
+    // ── ifconfig / ip addr ────────────────────────────────────────────────────
+    case lower === "ifconfig" || lower === "ip addr" || lower === "ip a":
+      appendHistory(out("eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>"));
+      appendHistory(out("      inet 127.0.0.1  netmask 255.255.255.0"));
+      appendHistory(out("      inet6 ::1  prefixlen 128  scopeid 0x10<host>"));
+      appendHistory(out("      (connected to the internet of good ideas)"));
+      break;
+
+    // ── reboot / shutdown ─────────────────────────────────────────────────────
+    case lower === "reboot" || lower === "shutdown" || lower === "shutdown -h now" || lower === "sudo reboot":
+      appendHistory(out("rebooting... just kidding. this is a static portfolio."));
+      appendHistory(out("nothing to reboot. you are safe."));
+      break;
+
+    // ── sl ────────────────────────────────────────────────────────────────────
+    case lower === "sl":
+      appendHistory(out("      ====        ________                ___________"));
+      appendHistory(out("  _D _|  |_______/        \\__I_I_____===__|_________|"));
+      appendHistory(out(" |(_)---  |   H\\________/ |   |        =|___ ___|   "));
+      appendHistory(out(" /     |  |   H  |  |     |   |         ||_| |_||   "));
+      appendHistory(out("|      |  |   H  |__--------------------| [___] |   "));
+      appendHistory(out("| ________|___H__/__|_____/[][]~\\_______|       |   "));
+      appendHistory(out("|/ |   |-----------I_____I [][] []  D   |=======|__/"));
+      appendHistory(out(" \\_/____/=======    )-/\\-\\-\\-|         |_/___/"));
+      appendHistory(out("  steam locomotive — you meant ls, didn't you?"));
+      break;
+
+    // ── fortune ───────────────────────────────────────────────────────────────
+    case lower === "fortune":
+      appendHistory(out("\"The best interface is no interface.\""));
+      appendHistory(out("  — Golden Krishna (but also just good engineering)"));
+      break;
+
+    // ── matrix ────────────────────────────────────────────────────────────────
+    case lower === "matrix":
+      appendHistory(out("follow the white rabbit."));
+      appendHistory(out("(there's no spoon, but there are hidden files — try ls -a in ~/about)"));
+      break;
+
+    // ── alias ─────────────────────────────────────────────────────────────────
+    case lower === "alias":
+      appendHistory(out("alias ll='ls -la'"));
+      appendHistory(out("alias gs='git status'"));
+      appendHistory(out("alias build='npm run build'"));
+      appendHistory(out("alias vibes='ps | grep vibes'"));
+      break;
+
+    // ── cat /etc/passwd ───────────────────────────────────────────────────────
+    case lower === "cat /etc/passwd":
+      appendHistory(out("root:x:0:0:root:/root:/bin/bash"));
+      appendHistory(out("visitor:x:1000:1000:Portfolio Visitor:/home/visitor:/bin/hadenshell"));
+      appendHistory(out("haden:x:1001:1001:Haden Hiles,Principal Engineer:/home/haden:/bin/zsh"));
+      break;
+
+    // ── cat /etc/hostname ─────────────────────────────────────────────────────
+    case lower === "cat /etc/hostname" || lower === "cat /proc/version":
+      appendHistory(out("hadensystem"));
+      break;
+
+    // ── bash / sh / zsh ───────────────────────────────────────────────────────
+    case lower === "bash" || lower === "sh" || lower === "zsh" || lower === "/bin/bash":
+      appendHistory(out("spawning new shell..."));
+      appendHistory(out("wait, you're already in one. this is it."));
+      appendHistory(out("there is no deeper terminal. this goes all the way down."));
+      break;
+
+    // ── sudo !! ───────────────────────────────────────────────────────────────
+    case lower === "sudo !!":
+      appendHistory(err("sudo: !!: command not found"));
+      appendHistory(out("(bash history expansion doesn't work here — type the full command)"));
+      break;
+
+    // ── less / more ───────────────────────────────────────────────────────────
+    case base === "less" || base === "more":
+      if (!args) {
+        appendHistory(err(`${base}: missing file operand`));
+      } else {
+        appendHistory(err(`${base}: ${args}: No such file or directory`));
+        appendHistory(out("try cat instead — this shell doesn't need a pager"));
       }
       break;
 

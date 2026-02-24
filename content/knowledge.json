@@ -1,61 +1,89 @@
 [
   {
     "category": "Frontend",
+    "tui": "Flutter/Dart · React · TypeScript · WordPress · CSS/UI Design",
     "skills": [
       {
         "name": "Flutter / Dart",
         "usedFor": "Cross-platform mobile apps with native performance — single codebase across iOS and Android without the usual trade-offs.",
-        "proofProjectIds": ["ten-thousand-shot-challenge", "group-of-seven-trail-app", "nextshift", "skill-drills"]
+        "proofProjectIds": [
+          "ten-thousand-shot-challenge",
+          "group-of-seven-trail-app",
+          "nextshift",
+          "skill-drills"
+        ]
       },
       {
         "name": "React",
         "usedFor": "Web UIs where speed of development matters and the output needs to stay maintainable.",
-        "proofProjectIds": ["timmies-helper", "video-scraper"]
+        "proofProjectIds": [
+          "timmies-helper",
+          "video-scraper"
+        ]
       },
       {
         "name": "TypeScript",
         "usedFor": "Type safety on the frontend and backend. Catches the class of bugs that waste the most time.",
-        "proofProjectIds": ["video-scraper"]
+        "proofProjectIds": [
+          "video-scraper"
+        ]
       },
       {
         "name": "WordPress",
         "usedFor": "Content platforms that non-technical admins need to own and operate without ongoing developer involvement.",
-        "proofProjectIds": ["the-pond"]
+        "proofProjectIds": [
+          "the-pond"
+        ]
       },
       {
         "name": "CSS / UI Design",
         "usedFor": "Interfaces that feel intentional. Design is applied from the user's perspective — not added at the end.",
-        "proofProjectIds": ["ten-thousand-shot-challenge", "the-pond", "nextshift"]
+        "proofProjectIds": [
+          "ten-thousand-shot-challenge",
+          "the-pond",
+          "nextshift"
+        ]
       }
     ]
   },
   {
     "category": "Backend",
+    "tui": "Firebase/Firestore · Node.js/Express · PHP · LearnDash/MemberPress",
     "skills": [
       {
         "name": "Firebase / Firestore",
         "usedFor": "Real-time data sync, authentication, and scalable session-based data modeling for mobile and web apps.",
-        "proofProjectIds": ["ten-thousand-shot-challenge", "nextshift"]
+        "proofProjectIds": [
+          "ten-thousand-shot-challenge",
+          "nextshift"
+        ]
       },
       {
         "name": "Node.js / Express",
         "usedFor": "Backend services and proxy layers — especially where CORS handling, request routing, or third-party integrations need clean separation from the frontend.",
-        "proofProjectIds": ["video-scraper"]
+        "proofProjectIds": [
+          "video-scraper"
+        ]
       },
       {
         "name": "PHP",
         "usedFor": "Custom WordPress integrations, plugin extensions, and server-side membership logic.",
-        "proofProjectIds": ["the-pond"]
+        "proofProjectIds": [
+          "the-pond"
+        ]
       },
       {
         "name": "LearnDash / MemberPress",
         "usedFor": "Course architecture and gated membership logic on WordPress — configured and extended rather than rebuilt from scratch.",
-        "proofProjectIds": ["the-pond"]
+        "proofProjectIds": [
+          "the-pond"
+        ]
       }
     ]
   },
   {
     "category": "DevOps / Automation",
+    "tui": "CI/CD Pipelines · Production Infrastructure · Docker · Vite",
     "skills": [
       {
         "name": "Deployment Pipelines",
@@ -75,47 +103,70 @@
       {
         "name": "Vite",
         "usedFor": "Fast, modern frontend build tooling for React projects where dev speed and bundle size both matter.",
-        "proofProjectIds": ["video-scraper"]
+        "proofProjectIds": [
+          "video-scraper"
+        ]
       }
     ]
   },
   {
     "category": "Systems / Networking",
+    "tui": "C++ · Bluetooth Beacons · Native iOS/Android Integrations",
     "skills": [
       {
         "name": "C++",
         "usedFor": "Performance-sensitive native layers in Flutter apps — Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
-        "proofProjectIds": ["group-of-seven-trail-app", "skill-drills"]
+        "proofProjectIds": [
+          "group-of-seven-trail-app",
+          "skill-drills"
+        ]
       },
       {
         "name": "Bluetooth Beacons",
         "usedFor": "Proximity-based content triggering for location-aware mobile applications.",
-        "proofProjectIds": ["group-of-seven-trail-app"]
+        "proofProjectIds": [
+          "group-of-seven-trail-app"
+        ]
       },
       {
         "name": "Native Integrations",
         "usedFor": "Bridging Dart and native iOS/Android APIs when the cross-platform layer isn't enough.",
-        "proofProjectIds": ["group-of-seven-trail-app", "skill-drills"]
+        "proofProjectIds": [
+          "group-of-seven-trail-app",
+          "skill-drills"
+        ]
       }
     ]
   },
   {
     "category": "Storytelling / Production",
+    "tui": "UX Architecture · Content Architecture · Product Thinking",
     "skills": [
       {
         "name": "UX Architecture",
         "usedFor": "Every project starts with 'as a user, what would I expect right here?' — this isn't a phase, it's the foundation every technical decision is built on.",
-        "proofProjectIds": ["ten-thousand-shot-challenge", "the-pond", "nextshift", "group-of-seven-trail-app"]
+        "proofProjectIds": [
+          "ten-thousand-shot-challenge",
+          "the-pond",
+          "nextshift",
+          "group-of-seven-trail-app"
+        ]
       },
       {
         "name": "Content Architecture",
         "usedFor": "Designing information hierarchies that feel intuitive — so users always know what to do next without reading instructions.",
-        "proofProjectIds": ["the-pond"]
+        "proofProjectIds": [
+          "the-pond"
+        ]
       },
       {
         "name": "Product Thinking",
         "usedFor": "Framing engineering decisions in terms of user outcomes and business impact, not just technical correctness.",
-        "proofProjectIds": ["nextshift", "ten-thousand-shot-challenge", "skill-drills"]
+        "proofProjectIds": [
+          "nextshift",
+          "ten-thousand-shot-challenge",
+          "skill-drills"
+        ]
       }
     ]
   }
