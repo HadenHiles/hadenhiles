@@ -29,7 +29,7 @@ export function TopNav() {
             <span className="font-mono text-xs font-bold text-accent select-none">HH</span>
           ) : (
             <Image
-              src="/logo/logo_white.png"
+              src="/images/logo/logo_white.png"
               alt="Haden Hiles"
               width={32}
               height={32}

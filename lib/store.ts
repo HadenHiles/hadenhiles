@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { useShallow } from "zustand/react/shallow";
 import { devtools } from "zustand/middleware";
 import type { AppMode } from "./routes";
 import { MENU_ITEMS } from "./routes";
@@ -165,18 +166,18 @@ export const useStore = create<AppState>()(
 export const useMode = () => useStore((s) => s.mode);
 
 export const useTuiState = () =>
-  useStore((s) => ({
+  useStore(useShallow((s) => ({
     bootComplete:         s.bootComplete,
     menuIndex:            s.menuIndex,
     commandBuffer:        s.commandBuffer,
     history:              s.history,
     hiddenOptionsUnlocked: s.hiddenOptionsUnlocked,
-  }));
+  })));
 
 export const useReducedMotion = () => useStore((s) => s.reducedMotion);
 
 export const useScrollIntent = () =>
-  useStore((s) => ({
+  useStore(useShallow((s) => ({
     scrollVelocity:    s.scrollVelocity,
     isExploringSlowly: s.isExploringSlowly,
-  }));
+  })));

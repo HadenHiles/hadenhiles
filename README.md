@@ -1,6 +1,6 @@
 # Design from the User Down. Build the System to Match
 
-[![Haden](./public/logo/logo_color.png)](https://www.hadenhiles.com)
+[![Haden](./public/images/logo/logo_color.png)](https://www.hadenhiles.com)
 
 I build software the way I want software to feel as a user: simple, fast, intuitive, and reliable.
 
