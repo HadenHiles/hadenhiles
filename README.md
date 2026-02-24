@@ -4,7 +4,7 @@
 
 I build software the way I want software to feel as a user: simple, fast, intuitive, and reliable.
 
-I’m a Principal Software and DevOps Engineer at How To Hockey. I work across the entire stack, from interface design to backend architecture to deployment pipelines. But my default lens is UX. Every feature starts with the same mental model:
+I’m a Software and DevOps Engineer at How To Hockey. I work across the entire stack, from interface design to backend architecture to deployment pipelines. But my default lens is UX. Every feature starts with the same mental model:
 
 > As a user, what would I expect right here?
 
