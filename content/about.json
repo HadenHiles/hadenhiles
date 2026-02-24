@@ -1,0 +1,26 @@
+{
+  "pillars": [
+    {
+      "name": "Family",
+      "story": "Replace with: 2–3 sentences about family and what it means to you. Be specific — a real moment lands better than a general sentiment.",
+      "image": null,
+      "shapeWork": "Replace with: one sentence on how this shapes how you work and why it makes your work better."
+    },
+    {
+      "name": "Craft",
+      "story": "Replace with: 2–3 sentences about your relationship with craft. Why does making things well matter to you?",
+      "image": null,
+      "shapeWork": "Replace with: one sentence on how this drives your standards and output."
+    },
+    {
+      "name": "Play",
+      "story": "Replace with: 2–3 sentences about what you do for play — homelab, gear, video projects, anything that isn't \"work\" but totally is.",
+      "image": null,
+      "shapeWork": "Replace with: one sentence on how play feeds back into your best work."
+    }
+  ],
+  "contact": {
+    "email": "your@email.com",
+    "linkedin": "https://linkedin.com/in/yourhandle"
+  }
+}

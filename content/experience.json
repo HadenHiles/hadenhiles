@@ -1,0 +1,50 @@
+[
+  {
+    "version": "v1.0",
+    "title": "Foundations",
+    "dateRange": "YEAR – YEAR",
+    "role": "Replace with your role",
+    "company": "Replace with company, or null if self-directed",
+    "summary": "Replace with: 1–2 sentences on what this chapter was about and what you were learning.",
+    "highlights": [
+      "Replace with first highlight",
+      "Replace with second highlight"
+    ]
+  },
+  {
+    "version": "v2.0",
+    "title": "Building Systems",
+    "dateRange": "YEAR – YEAR",
+    "role": "Replace with your role",
+    "company": null,
+    "summary": "Replace with: 1–2 sentences on what you were building and what changed.",
+    "highlights": [
+      "Replace with first highlight",
+      "Replace with second highlight"
+    ]
+  },
+  {
+    "version": "v3.0",
+    "title": "Owning Outcomes",
+    "dateRange": "YEAR – YEAR",
+    "role": "Replace with your role",
+    "company": null,
+    "summary": "Replace with: 1–2 sentences on scope of ownership, leadership, or delivery.",
+    "highlights": [
+      "Replace with first highlight",
+      "Replace with second highlight"
+    ]
+  },
+  {
+    "version": "v4.0",
+    "title": "Hybrid Engineer / Creator",
+    "dateRange": "YEAR – Present",
+    "role": "Replace with your role",
+    "company": null,
+    "summary": "Replace with: 1–2 sentences on what the engineer + creator combination looks like in practice.",
+    "highlights": [
+      "Replace with first highlight",
+      "Replace with second highlight"
+    ]
+  }
+]

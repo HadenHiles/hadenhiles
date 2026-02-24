@@ -1,0 +1,21 @@
+[
+  {
+    "id": "placeholder-project",
+    "title": "Replace with project title",
+    "tagline": "Replace with: one sentence explaining why this project exists.",
+    "purpose": "Replace with: the problem this solved.",
+    "constraints": "Replace with: what constrained the build (time, solo, no infra budget, etc.).",
+    "decisions": "Replace with: the key technical or product decision made.",
+    "impact": "Replace with: measurable or observable outcome.",
+    "tech": [
+      "Next.js",
+      "TypeScript",
+      "Docker"
+    ],
+    "githubUrl": null,
+    "demoUrl": null,
+    "videoUrl": null,
+    "diagramAsset": null,
+    "story": "Replace with: 2–3 sentences telling the story of this project — the why, the challenge, and what shipped."
+  }
+]

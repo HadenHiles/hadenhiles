@@ -1,0 +1,62 @@
+[
+  {
+    "category": "Frontend",
+    "skills": [
+      {
+        "name": "React / Next.js",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "TypeScript",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "Backend",
+    "skills": [
+      {
+        "name": "Node.js",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "DevOps / Automation",
+    "skills": [
+      {
+        "name": "Docker",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Cloudflare Tunnels",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "Systems / Networking",
+    "skills": [
+      {
+        "name": "Replace with skill name",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "Storytelling / Production",
+    "skills": [
+      {
+        "name": "Replace with skill name",
+        "usedFor": "Replace with what you actually use this for.",
+        "proofProjectIds": []
+      }
+    ]
+  }
+]
