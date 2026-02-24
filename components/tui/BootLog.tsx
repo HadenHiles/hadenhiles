@@ -33,6 +33,7 @@ interface BootLogProps {
   scrollRef: React.RefObject<HTMLDivElement>;
   bootComplete: boolean;
   menuIndex: number;
+  menuActive: boolean;
   onMenuSelect: (i: number) => void;
   onMenuActivate: (i: number) => void;
 }
@@ -42,6 +43,7 @@ export function BootLog({
   scrollRef,
   bootComplete,
   menuIndex,
+  menuActive,
   onMenuSelect,
   onMenuActivate,
 }: BootLogProps) {
@@ -113,9 +115,15 @@ export function BootLog({
                   ${isActive ? "text-text" : "text-muted hover:text-text/80"}
                 `}
               >
-                {/* Block cursor — blinks on active row */}
+                {/* Block cursor — blinks when menu is active, static+dim when input is focused */}
                 <span
-                  className={`w-4 shrink-0 text-accent select-none ${isActive ? "cursor-blink" : "opacity-0"}`}
+                  className={`w-4 shrink-0 text-accent select-none ${
+                    isActive
+                      ? menuActive
+                        ? "cursor-blink"
+                        : "opacity-20"
+                      : "opacity-0"
+                  }`}
                   aria-hidden="true"
                 >
                   ▌

@@ -7,7 +7,9 @@ interface CommandLineProps {
   onChange: (v: string) => void;
   onSubmit: (cmd: string) => void;
   onEnterEmpty?: () => void;
+  onFocusChange?: (focused: boolean) => void;
   bootComplete: boolean;
+  currentPath: string;
 }
 
 export function CommandLine({
@@ -15,7 +17,9 @@ export function CommandLine({
   onChange,
   onSubmit,
   onEnterEmpty,
+  onFocusChange,
   bootComplete,
+  currentPath,
 }: CommandLineProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -76,20 +80,24 @@ export function CommandLine({
   };
 
   return (
-    <div className="flex items-center gap-2 font-mono text-sm mt-4 border-t border-border pt-3">
-      <span className="text-accent select-none shrink-0">&gt;</span>
+    <div className="flex items-center font-mono text-sm mt-1 border-t border-border/30 pt-2">
+      <span className="text-muted/60 select-none shrink-0 mr-1">visitor@hadensystem:</span>
+      <span className="text-accent select-none shrink-0 mr-2">{currentPath}$</span>
       <input
         ref={inputRef}
+        data-terminal-input
         type="text"
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
+        onFocus={() => onFocusChange?.(true)}
+        onBlur={() => onFocusChange?.(false)}
         disabled={!bootComplete}
         aria-label="Terminal command input"
-        placeholder={bootComplete ? "type a command  (try: help)" : ""}
+        placeholder={bootComplete ? "" : ""}
         className="
-          flex-1 bg-transparent text-text placeholder-border
-          outline-none caret-accent
+          flex-1 bg-transparent text-text
+          outline-none focus-ring-managed caret-accent
           disabled:opacity-0
         "
         autoComplete="off"

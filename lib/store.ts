@@ -26,6 +26,7 @@ interface AppState {
   commandBuffer: string;
   history: HistoryEntry[];
   hiddenOptionsUnlocked: boolean;
+  currentPath: string;
 
   // ─── GUI actions ──────────────────────────────────────────────────────────
   setMode: (mode: AppMode) => void;
@@ -39,6 +40,7 @@ interface AppState {
   clearHistory: () => void;
   setMenuIndex: (i: number) => void;
   setCommandBuffer: (s: string) => void;
+  setCurrentPath: (path: string) => void;
   unlockHiddenOptions: () => void;
   runTuiCommand: (cmd: string) => void;
   runBootScript: () => void;
@@ -62,6 +64,7 @@ export const useStore = create<AppState>()(
       commandBuffer: "",
       history: [],
       hiddenOptionsUnlocked: false,
+      currentPath: "~",
 
       // ── GUI actions ────────────────────────────────────────────────────────
       setMode: (mode) => {
@@ -100,6 +103,8 @@ export const useStore = create<AppState>()(
       setMenuIndex: (i) => set({ menuIndex: i }),
 
       setCommandBuffer: (s) => set({ commandBuffer: s }),
+
+      setCurrentPath: (path) => set({ currentPath: path }),
 
       unlockHiddenOptions: () => set({ hiddenOptionsUnlocked: true }),
 
@@ -150,23 +155,29 @@ export const useStore = create<AppState>()(
       },
 
       runTuiCommand: (rawCmd) => {
-        const cmd = rawCmd.trim().toLowerCase();
-        const { appendHistory, clearHistory, unlockHiddenOptions, activateMenuItem } =
+        const cmd = rawCmd.trim();
+        const { appendHistory, clearHistory, unlockHiddenOptions, activateMenuItem, setCurrentPath } =
           get();
 
         set({ commandBuffer: "" });
 
         // Handle clear before delegating to command module
-        if (cmd === "clear") {
+        if (cmd.toLowerCase() === "clear") {
           clearHistory();
           return;
         }
 
-        appendHistory({ type: "cmd", text: `> ${rawCmd}` });
+        appendHistory({ type: "cmd", text: `$ ${rawCmd}` });
 
         // Lazy import to avoid circular deps
         import("@/components/tui/tuiCommands").then(({ handleCommand }) => {
-          handleCommand(cmd, { appendHistory, unlockHiddenOptions, activateMenuItem });
+          handleCommand(cmd, {
+            appendHistory,
+            unlockHiddenOptions,
+            activateMenuItem,
+            currentPath: get().currentPath,
+            setCurrentPath,
+          });
         });
       },
     }),
@@ -186,6 +197,7 @@ export const useTuiState = () =>
     commandBuffer:        s.commandBuffer,
     history:              s.history,
     hiddenOptionsUnlocked: s.hiddenOptionsUnlocked,
+    currentPath:          s.currentPath,
   })));
 
 export const useReducedMotion = () => useStore((s) => s.reducedMotion);

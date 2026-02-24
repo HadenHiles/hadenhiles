@@ -4,6 +4,8 @@ interface CommandContext {
   appendHistory: (e: HistoryEntry) => void;
   unlockHiddenOptions: () => void;
   activateMenuItem: (i: number) => void;
+  currentPath: string;
+  setCurrentPath: (path: string) => void;
 }
 
 function out(text: string): HistoryEntry {
@@ -15,7 +17,7 @@ function err(text: string): HistoryEntry {
 }
 
 export function handleCommand(cmd: string, ctx: CommandContext) {
-  const { appendHistory, unlockHiddenOptions, activateMenuItem } = ctx;
+  const { appendHistory, unlockHiddenOptions, activateMenuItem, currentPath, setCurrentPath } = ctx;
 
   // Normalise for matching
   const trimmed = cmd.trim();
@@ -23,6 +25,15 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
   const parts = trimmed.split(/\s+/);
   const base = parts[0].toLowerCase();
   const args = parts.slice(1).join(" ");
+  const argsLower = args.toLowerCase();
+
+  // Resolve full path string for pwd output
+  const fullPath = currentPath === "~"
+    ? "/home/visitor/hadensystem"
+    : `/home/visitor/hadensystem/${currentPath.replace("~/", "")}`;
+
+  // Valid section directories
+  const SECTIONS = ["projects", "experience", "knowledge", "about", "gui", "contact"];
 
   switch (true) {
     // ── help ──────────────────────────────────────────────────────────────────
@@ -30,65 +41,134 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("available commands:"));
       appendHistory(out("  help              — show this list"));
       appendHistory(out("  ls [flags]        — list contents"));
+      appendHistory(out("  cd <dir>          — change directory (cd .. to go back)"));
       appendHistory(out("  pwd               — print working directory"));
       appendHistory(out("  whoami            — about the operator"));
       appendHistory(out("  cat <file>        — read a file"));
       appendHistory(out("  echo <text>       — print text"));
+      appendHistory(out("  serve <section>   — navigate to a section"));
       appendHistory(out("  date              — current date/time"));
       appendHistory(out("  uname [-a]        — system info"));
       appendHistory(out("  ps                — running processes"));
       appendHistory(out("  clear             — clear history"));
       appendHistory(out("  exit              — switch to GUI"));
       appendHistory(out("  git log           — commit history"));
-      appendHistory(out("  curl              — fetch remote resources"));
       break;
 
     // ── ls variants ───────────────────────────────────────────────────────────
-    case lower === "ls":
-      appendHistory(out("projects  experience  knowledge  about  gui  contact"));
+    case lower === "ls": {
+      if (currentPath === "~/projects") {
+        appendHistory(out("ten-thousand-shot-challenge  the-pond  group-of-seven-trail-app"));
+        appendHistory(out("nextshift  skill-drills  timmies-helper  video-scraper"));
+      } else if (currentPath === "~/experience") {
+        appendHistory(out("v1.0-foundations  v2.0-building-products  v3.0-owning-the-stack  v4.0-ux-first"));
+      } else if (currentPath === "~/knowledge") {
+        appendHistory(out("frontend  backend  devops-automation  systems-networking  storytelling"));
+      } else if (currentPath === "~/about") {
+        appendHistory(out("family.txt  craft.txt  play.txt"));
+        appendHistory(out("hint: try ls -a to reveal hidden files"));
+      } else if (currentPath === "~/contact") {
+        appendHistory(out("email:    hi@hadenhiles.com"));
+        appendHistory(out("linkedin: linkedin.com/in/hadenhiles"));
+        appendHistory(out("github:   github.com/HadenHiles"));
+      } else {
+        appendHistory(out("projects  experience  knowledge  about  gui  contact"));
+      }
       break;
+    }
 
-    case lower === "ls -a" || lower === "ls -la" || lower === "ls -al":
-      unlockHiddenOptions();
-      appendHistory(out("drwxr-xr-x  projects/"));
-      appendHistory(out("drwxr-xr-x  experience/"));
-      appendHistory(out("drwxr-xr-x  knowledge/"));
-      appendHistory(out("drwxr-xr-x  about/"));
-      appendHistory(out("drwxr-xr-x  gui/"));
-      appendHistory(out("drwxr-xr-x  contact/"));
-      appendHistory(out("-rw-r--r--  .hobbies       [hidden]"));
-      appendHistory(out("-rw-r--r--  .homelab       [hidden]"));
-      appendHistory(out("-rw-r--r--  .gear          [hidden]"));
-      appendHistory(out("-rw-r--r--  .behind-scenes [hidden]"));
-      appendHistory(out("hint: explore the GUI — some of these have hidden entries."));
+    case lower === "ls -a" || lower === "ls -la" || lower === "ls -al": {
+      if (currentPath === "~/about") {
+        unlockHiddenOptions();
+        appendHistory(out("-rw-r--r--  family.txt"));
+        appendHistory(out("-rw-r--r--  craft.txt"));
+        appendHistory(out("-rw-r--r--  play.txt"));
+        appendHistory(out("-rw-------  .hobbies       [permission: 600]"));
+        appendHistory(out("-rw-------  .homelab       [permission: 600]"));
+        appendHistory(out("-rw-------  .gear          [permission: 600]"));
+        appendHistory(out("-rw-------  .behind-scenes [permission: 600]"));
+        appendHistory(out("hint: sudo cat <file> to read restricted files"));
+      } else if (currentPath === "~/projects") {
+        appendHistory(out("ten-thousand-shot-challenge  the-pond  group-of-seven-trail-app"));
+        appendHistory(out("nextshift  skill-drills  timmies-helper  video-scraper"));
+      } else if (currentPath === "~/experience") {
+        appendHistory(out("v1.0-foundations  v2.0-building-products  v3.0-owning-the-stack  v4.0-ux-first"));
+      } else if (currentPath === "~/knowledge") {
+        appendHistory(out("frontend  backend  devops-automation  systems-networking  storytelling"));
+      } else if (currentPath === "~/contact") {
+        appendHistory(out("email:    hi@hadenhiles.com"));
+        appendHistory(out("linkedin: linkedin.com/in/hadenhiles"));
+        appendHistory(out("github:   github.com/HadenHiles"));
+      } else {
+        unlockHiddenOptions();
+        appendHistory(out("drwxr-xr-x  projects/"));
+        appendHistory(out("drwxr-xr-x  experience/"));
+        appendHistory(out("drwxr-xr-x  knowledge/"));
+        appendHistory(out("drwxr-xr-x  about/"));
+        appendHistory(out("drwxr-xr-x  gui/"));
+        appendHistory(out("drwxr-xr-x  contact/"));
+        appendHistory(out("hint: cd about && ls -a to find the hidden files."));
+      }
       break;
+    }
 
-    case lower === "ls -l":
-      appendHistory(out("total 6"));
-      appendHistory(out("drwxr-xr-x  projects/"));
-      appendHistory(out("drwxr-xr-x  experience/"));
-      appendHistory(out("drwxr-xr-x  knowledge/"));
-      appendHistory(out("drwxr-xr-x  about/"));
-      appendHistory(out("drwxr-xr-x  gui/"));
-      appendHistory(out("drwxr-xr-x  contact/"));
+    case lower === "ls -l": {
+      if (currentPath === "~/projects") {
+        appendHistory(out("total 7"));
+        appendHistory(out("drwxr-xr-x  ten-thousand-shot-challenge/"));
+        appendHistory(out("drwxr-xr-x  the-pond/"));
+        appendHistory(out("drwxr-xr-x  group-of-seven-trail-app/"));
+        appendHistory(out("drwxr-xr-x  nextshift/"));
+        appendHistory(out("drwxr-xr-x  skill-drills/"));
+        appendHistory(out("drwxr-xr-x  timmies-helper/"));
+        appendHistory(out("drwxr-xr-x  video-scraper/"));
+      } else if (currentPath === "~/about") {
+        appendHistory(out("total 3"));
+        appendHistory(out("-rw-r--r--  family.txt"));
+        appendHistory(out("-rw-r--r--  craft.txt"));
+        appendHistory(out("-rw-r--r--  play.txt"));
+      } else {
+        appendHistory(out("total 6"));
+        appendHistory(out("drwxr-xr-x  projects/"));
+        appendHistory(out("drwxr-xr-x  experience/"));
+        appendHistory(out("drwxr-xr-x  knowledge/"));
+        appendHistory(out("drwxr-xr-x  about/"));
+        appendHistory(out("drwxr-xr-x  gui/"));
+        appendHistory(out("drwxr-xr-x  contact/"));
+      }
       break;
+    }
 
     // ── pwd ───────────────────────────────────────────────────────────────────
     case lower === "pwd":
-      appendHistory(out("/home/visitor/hadensystem"));
+      appendHistory(out(fullPath));
       break;
 
     // ── cd ────────────────────────────────────────────────────────────────────
-    case base === "cd":
-      if (!args || args === "~" || args === "/home/visitor") {
+    case base === "cd": {
+      const dest = argsLower;
+      if (!dest || dest === "~" || dest === "/home/visitor" || dest === "/home/visitor/hadensystem") {
+        setCurrentPath("~");
         appendHistory(out("~"));
-      } else if (["projects", "experience", "knowledge", "about", "gui", "contact"].includes(args.replace("/", ""))) {
-        appendHistory(out(`/home/visitor/hadensystem/${args.replace("/", "")}`));
-        appendHistory(out("hint: use the menu above or press Enter to navigate there."));
+      } else if (dest === ".." || dest === "../") {
+        if (currentPath === "~") {
+          appendHistory(out("~ (already at root)"));
+        } else {
+          setCurrentPath("~");
+          appendHistory(out("~"));
+        }
+      } else if (dest === "/" || dest === "./") {
+        setCurrentPath("~");
+        appendHistory(out("~"));
+      } else if (SECTIONS.includes(dest.replace(/^\.\//, "").replace(/\/$/, ""))) {
+        const section = dest.replace(/^\.\//, "").replace(/\/$/, "");
+        setCurrentPath(`~/${section}`);
+        appendHistory(out(`~/hadensystem/${section}`));
       } else {
         appendHistory(err(`cd: ${args}: No such file or directory`));
       }
       break;
+    }
 
     // ── whoami ────────────────────────────────────────────────────────────────
     case lower === "whoami":
@@ -98,6 +178,38 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     // ── cat ───────────────────────────────────────────────────────────────────
+    // Hidden file permission errors
+    case base === "cat" && (argsLower === ".hobbies" || argsLower === ".homelab" || argsLower === ".gear" || argsLower === ".behind-scenes"):
+      appendHistory(err(`cat: ${args}: Permission denied`));
+      appendHistory(out("hint: sudo cat <file> to read restricted files"));
+      break;
+
+    // About text files
+    case lower === "cat family.txt":
+      appendHistory(out("# family"));
+      appendHistory(out("My wife Shannon and I have been married since July 2025. We bought"));
+      appendHistory(out("our first house in Oct 2025 and have a spoiled golden retriever"));
+      appendHistory(out("named Harvey — our pride and joy. Best time of year is cottage"));
+      appendHistory(out("country, where Harvey launches off the dock and we air-dry on the boat."));
+      break;
+
+    case lower === "cat craft.txt":
+      appendHistory(out("# craft"));
+      appendHistory(out("I build software the way I want software to feel as a user:"));
+      appendHistory(out("simple, fast, and frictionless — but still nice to look at."));
+      appendHistory(out(""));
+      appendHistory(out("\"Simplicity beats cleverness."));
+      appendHistory(out(" If it needs a manual, it probably needs a redesign.\""));
+      break;
+
+    case lower === "cat play.txt":
+      appendHistory(out("# play"));
+      appendHistory(out("Sports:    Hockey · Golf · Squash — if it's competitive, I love it."));
+      appendHistory(out("Music:     Guitar"));
+      appendHistory(out("Watching:  LOTR · GOT · Mr. Robot (IYKYK)"));
+      appendHistory(out("Weekends:  house projects, home media server, cottage with family."));
+      break;
+
     case lower === "cat projects.yml":
       appendHistory(out("# engineering philosophy"));
       appendHistory(out("---"));
@@ -122,13 +234,59 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
         appendHistory(err("cat: missing file operand"));
       } else {
         appendHistory(err(`cat: ${args}: No such file or directory`));
-        appendHistory(out("available files: projects.yml, readme.md"));
+        if (currentPath === "~/about") {
+          appendHistory(out("available files: family.txt, craft.txt, play.txt"));
+          appendHistory(out("hint: ls -a to see hidden files"));
+        } else {
+          appendHistory(out("available files: projects.yml, readme.md"));
+        }
       }
       break;
 
     // ── echo ──────────────────────────────────────────────────────────────────
     case base === "echo":
-      appendHistory(out(args || ""));
+      appendHistory(out(args));
+      break;
+
+    // ── serve ─────────────────────────────────────────────────────────────────
+    case lower === "serve":
+      appendHistory(out("usage: serve <section>"));
+      appendHistory(out("  serve projects    — open projects section"));
+      appendHistory(out("  serve experience  — open experience section"));
+      appendHistory(out("  serve knowledge   — open knowledge section"));
+      appendHistory(out("  serve about       — open about section"));
+      appendHistory(out("  serve gui         — switch to GUI"));
+      appendHistory(out("  serve contact     — open contact modal"));
+      break;
+
+    case lower === "serve projects" || lower === "serve work":
+      appendHistory(out("serving projects..."));
+      setTimeout(() => activateMenuItem(0), 300);
+      break;
+
+    case lower === "serve experience":
+      appendHistory(out("serving experience..."));
+      setTimeout(() => activateMenuItem(1), 300);
+      break;
+
+    case lower === "serve knowledge":
+      appendHistory(out("serving knowledge..."));
+      setTimeout(() => activateMenuItem(2), 300);
+      break;
+
+    case lower === "serve about":
+      appendHistory(out("serving about..."));
+      setTimeout(() => activateMenuItem(3), 300);
+      break;
+
+    case lower === "serve gui":
+      appendHistory(out("switching to GUI..."));
+      setTimeout(() => activateMenuItem(4), 300);
+      break;
+
+    case lower === "serve contact":
+      appendHistory(out("opening contact..."));
+      setTimeout(() => activateMenuItem(5), 300);
       break;
 
     // ── date ──────────────────────────────────────────────────────────────────
@@ -307,7 +465,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("commit a4f2e91 — ship portfolio v4.0"));
       appendHistory(out("commit 3c8b012 — add TUI boot sequence"));
       appendHistory(out("commit 7f1d443 — wire up animated handoff"));
-      appendHistory(out("commit 2a9c887 — redesign with sawad inspiration"));
+      appendHistory(out("commit 2a9c887 — redesign with minimilist inspiration"));
       appendHistory(out("commit f8e3c11 — initial commit"));
       break;
 
@@ -336,6 +494,43 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     case base === "npm":
       appendHistory(err(`npm: '${args}' is not available in this environment`));
+      break;
+
+    // ── sudo cat hidden files ─────────────────────────────────────────────────
+    case lower === "sudo cat .hobbies":
+      appendHistory(out("# .hobbies — play pillar"));
+      appendHistory(out("sports:    Hockey · Golf · Squash"));
+      appendHistory(out("music:     Guitar"));
+      appendHistory(out("reading:   when the mood strikes"));
+      appendHistory(out("watching:  LOTR · GOT · Mr. Robot (IYKYK)"));
+      appendHistory(out("weekends:  house projects, home media server, cottage with family"));
+      break;
+
+    case lower === "sudo cat .homelab":
+      appendHistory(out("# .homelab — personal infrastructure"));
+      appendHistory(out("media server:  Plex running on Docker"));
+      appendHistory(out("stack:         self-hosted on dedicated hardware"));
+      appendHistory(out("hobbies:       home automation, network tweaks, ongoing projects"));
+      appendHistory(out("priority:      Harvey on the dock > everything else"));
+      break;
+
+    case lower === "sudo cat .gear":
+      appendHistory(out("# .gear — tech stack"));
+      appendHistory(out("mobile:    Flutter / Dart / C++"));
+      appendHistory(out("frontend:  React · TypeScript · Next.js · Tailwind"));
+      appendHistory(out("backend:   Node.js · Express · Firebase · PHP"));
+      appendHistory(out("devops:    Docker · CI/CD pipelines · production infra"));
+      appendHistory(out("editor:    VS Code"));
+      break;
+
+    case lower === "sudo cat .behind-scenes":
+      appendHistory(out("# .behind-scenes — craft pillar"));
+      appendHistory(out("\"Every flow, button, color, API, and deployment decision"));
+      appendHistory(out(" starts from the same place: as a user, what would I"));
+      appendHistory(out(" expect right here?\""));
+      appendHistory(out(""));
+      appendHistory(out("Simplicity beats cleverness."));
+      appendHistory(out("If it needs a manual, it probably needs a redesign."));
       break;
 
     // ── sudo (generic) ────────────────────────────────────────────────────────

@@ -39,7 +39,7 @@ export function Hero() {
         >
           {/* Eyebrow */}
           <p className="font-mono text-sm text-accent mb-6 tracking-wide">
-            principal engineer · how to hockey
+            full stack engineer · ux first
           </p>
 
           {/* Headline */}

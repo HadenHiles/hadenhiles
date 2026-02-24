@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useCallback } from "react";
+import { useEffect, useRef, useCallback, useState } from "react";
 import { useStore, useTuiState } from "@/lib/store";
 import { useTuiKeyboard } from "@/lib/keyboard";
 import { BootLog } from "./BootLog";
@@ -8,7 +8,7 @@ import { CommandLine } from "./CommandLine";
 import { MENU_ITEMS } from "@/lib/routes";
 
 export function TuiShell() {
-  const { bootComplete, menuIndex, commandBuffer, history } = useTuiState();
+  const { bootComplete, menuIndex, commandBuffer, history, currentPath } = useTuiState();
   const {
     runBootScript,
     setMenuIndex,
@@ -17,6 +17,19 @@ export function TuiShell() {
     activateMenuItem,
     appendHistory,
   } = useStore();
+
+  // Track whether the terminal input has focus — controls which "cursor" blinks
+  const [inputFocused, setInputFocused] = useState(false);
+
+  // Blur input and return focus to menu navigation
+  const blurToMenu = useCallback(() => {
+    (document.activeElement as HTMLElement)?.blur();
+  }, []);
+
+  // Focus the terminal input line
+  const focusTerminalInput = useCallback(() => {
+    (document.querySelector("[data-terminal-input]") as HTMLInputElement)?.focus();
+  }, []);
 
   // Ref to the log+menu scroll container — shared for unified wheel handling
   const logScrollRef = useRef<HTMLDivElement>(null);
@@ -32,11 +45,27 @@ export function TuiShell() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Keyboard navigation
+  // Keyboard navigation — arrow keys blur input so cursor moves to menu
   useTuiKeyboard({
     enabled: true,
-    onUp: () => setMenuIndex(Math.max(0, menuIndex - 1)),
-    onDown: () => setMenuIndex(Math.min(MENU_ITEMS.length - 1, menuIndex + 1)),
+    onUp: () => {
+      if (inputFocused) {
+        // ↑ from input returns cursor to the menu (no index change)
+        blurToMenu();
+      } else {
+        blurToMenu();
+        setMenuIndex(Math.max(0, menuIndex - 1));
+      }
+    },
+    onDown: () => {
+      if (!inputFocused && menuIndex === MENU_ITEMS.length - 1 && bootComplete) {
+        // ↓ past last item focuses the terminal input
+        focusTerminalInput();
+      } else if (!inputFocused) {
+        blurToMenu();
+        setMenuIndex(Math.min(MENU_ITEMS.length - 1, menuIndex + 1));
+      }
+    },
     onEnter: () => activateMenuItem(menuIndex),
     onNumber: (n) => {
       const idx = n - 1;
@@ -71,8 +100,9 @@ export function TuiShell() {
       }
     }
 
-    // At boundary — navigate menu
+    // At boundary — navigate menu (also blur input so cursor is on menu)
     if (!bootCompleteRef.current) return;
+    (document.activeElement as HTMLElement)?.blur();
     if (scrollingDown) {
       setMenuIndex(Math.min(MENU_ITEMS.length - 1, menuIndexRef.current + 1));
     } else {
@@ -91,8 +121,20 @@ export function TuiShell() {
   return (
     <div ref={shellRef} className="p-4 flex flex-col h-screen">
       {/* Header */}
-      <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0">
-        hadensystem — ↑↓ navigate · [n] select · enter activate · type commands
+      <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center justify-between">
+        <span>hadensystem — ↑↓ navigate · [n] select · enter activate · type commands</span>
+        <button
+          onClick={() => activateMenuItem(4)}
+          className="
+            ml-4 shrink-0 px-2.5 py-1 rounded
+            border border-border/50 text-muted/70
+            hover:border-accent/60 hover:text-accent
+            transition-colors duration-150 cursor-default
+          "
+          aria-label="Switch to GUI site"
+        >
+          view site →
+        </button>
       </div>
 
       {/* Log + menu — unified scrollable area */}
@@ -102,6 +144,7 @@ export function TuiShell() {
           scrollRef={logScrollRef}
           bootComplete={bootComplete}
           menuIndex={menuIndex}
+          menuActive={!inputFocused}
           onMenuSelect={setMenuIndex}
           onMenuActivate={activateMenuItem}
         />
@@ -114,7 +157,9 @@ export function TuiShell() {
           onChange={setCommandBuffer}
           onSubmit={runTuiCommand}
           onEnterEmpty={() => activateMenuItem(menuIndex)}
+          onFocusChange={setInputFocused}
           bootComplete={bootComplete}
+          currentPath={currentPath}
         />
       </div>
     </div>
