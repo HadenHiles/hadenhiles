@@ -67,6 +67,8 @@ Includes interactive maps, bluetooth beacon integration, and contextual trail in
 
 UX focus: relevant information should appear at the right time without digging through menus.
 
+I also redesigned their [website](https://groupofseventrail.com)
+
 ---
 
 ### 📊 [NextShift](https://github.com/HadenHiles/NextShift)  
