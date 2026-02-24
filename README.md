@@ -43,7 +43,7 @@ UX focus: open the app, log shots in seconds, see progress clearly, leave. No fr
 
 ---
 
-### 🎓 [The Pond](https://github.com/HadenHiles/ThePond)  
+### 🏒 [The Pond](https://github.com/HadenHiles/ThePond)  
 
 *PHP, WordPress, JavaScript, CSS*  
 434 commits
