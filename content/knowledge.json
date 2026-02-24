@@ -3,14 +3,29 @@
     "category": "Frontend",
     "skills": [
       {
-        "name": "React / Next.js",
-        "usedFor": "Replace with what you actually use this for.",
-        "proofProjectIds": []
+        "name": "Flutter / Dart",
+        "usedFor": "Cross-platform mobile apps with native performance — single codebase across iOS and Android without the usual trade-offs.",
+        "proofProjectIds": ["ten-thousand-shot-challenge", "group-of-seven-trail-app", "nextshift", "skill-drills"]
+      },
+      {
+        "name": "React",
+        "usedFor": "Web UIs where speed of development matters and the output needs to stay maintainable.",
+        "proofProjectIds": ["timmies-helper", "video-scraper"]
       },
       {
         "name": "TypeScript",
-        "usedFor": "Replace with what you actually use this for.",
-        "proofProjectIds": []
+        "usedFor": "Type safety on the frontend and backend. Catches the class of bugs that waste the most time.",
+        "proofProjectIds": ["video-scraper"]
+      },
+      {
+        "name": "WordPress",
+        "usedFor": "Content platforms that non-technical admins need to own and operate without ongoing developer involvement.",
+        "proofProjectIds": ["the-pond"]
+      },
+      {
+        "name": "CSS / UI Design",
+        "usedFor": "Interfaces that feel intentional. Design is applied from the user's perspective — not added at the end.",
+        "proofProjectIds": ["ten-thousand-shot-challenge", "the-pond", "nextshift"]
       }
     ]
   },
@@ -18,9 +33,24 @@
     "category": "Backend",
     "skills": [
       {
-        "name": "Node.js",
-        "usedFor": "Replace with what you actually use this for.",
-        "proofProjectIds": []
+        "name": "Firebase / Firestore",
+        "usedFor": "Real-time data sync, authentication, and scalable session-based data modeling for mobile and web apps.",
+        "proofProjectIds": ["ten-thousand-shot-challenge", "nextshift"]
+      },
+      {
+        "name": "Node.js / Express",
+        "usedFor": "Backend services and proxy layers — especially where CORS handling, request routing, or third-party integrations need clean separation from the frontend.",
+        "proofProjectIds": ["video-scraper"]
+      },
+      {
+        "name": "PHP",
+        "usedFor": "Custom WordPress integrations, plugin extensions, and server-side membership logic.",
+        "proofProjectIds": ["the-pond"]
+      },
+      {
+        "name": "LearnDash / MemberPress",
+        "usedFor": "Course architecture and gated membership logic on WordPress — configured and extended rather than rebuilt from scratch.",
+        "proofProjectIds": ["the-pond"]
       }
     ]
   },
@@ -28,14 +58,24 @@
     "category": "DevOps / Automation",
     "skills": [
       {
-        "name": "Docker",
-        "usedFor": "Replace with what you actually use this for.",
+        "name": "Deployment Pipelines",
+        "usedFor": "Building and maintaining the CI/CD infrastructure at How To Hockey — release workflows that are stable, repeatable, and require minimal manual intervention.",
         "proofProjectIds": []
       },
       {
-        "name": "Cloudflare Tunnels",
-        "usedFor": "Replace with what you actually use this for.",
+        "name": "Production Infrastructure",
+        "usedFor": "Owning the systems that stay up after launch. Reliability is part of user experience, not separate from it.",
         "proofProjectIds": []
+      },
+      {
+        "name": "Docker",
+        "usedFor": "Containerized service isolation and consistent environments across development and production.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Vite",
+        "usedFor": "Fast, modern frontend build tooling for React projects where dev speed and bundle size both matter.",
+        "proofProjectIds": ["video-scraper"]
       }
     ]
   },
@@ -43,9 +83,19 @@
     "category": "Systems / Networking",
     "skills": [
       {
-        "name": "Replace with skill name",
-        "usedFor": "Replace with what you actually use this for.",
-        "proofProjectIds": []
+        "name": "C++",
+        "usedFor": "Performance-sensitive native layers in Flutter apps — Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
+        "proofProjectIds": ["group-of-seven-trail-app", "skill-drills"]
+      },
+      {
+        "name": "Bluetooth Beacons",
+        "usedFor": "Proximity-based content triggering for location-aware mobile applications.",
+        "proofProjectIds": ["group-of-seven-trail-app"]
+      },
+      {
+        "name": "Native Integrations",
+        "usedFor": "Bridging Dart and native iOS/Android APIs when the cross-platform layer isn't enough.",
+        "proofProjectIds": ["group-of-seven-trail-app", "skill-drills"]
       }
     ]
   },
@@ -53,9 +103,19 @@
     "category": "Storytelling / Production",
     "skills": [
       {
-        "name": "Replace with skill name",
-        "usedFor": "Replace with what you actually use this for.",
-        "proofProjectIds": []
+        "name": "UX Architecture",
+        "usedFor": "Every project starts with 'as a user, what would I expect right here?' — this isn't a phase, it's the foundation every technical decision is built on.",
+        "proofProjectIds": ["ten-thousand-shot-challenge", "the-pond", "nextshift", "group-of-seven-trail-app"]
+      },
+      {
+        "name": "Content Architecture",
+        "usedFor": "Designing information hierarchies that feel intuitive — so users always know what to do next without reading instructions.",
+        "proofProjectIds": ["the-pond"]
+      },
+      {
+        "name": "Product Thinking",
+        "usedFor": "Framing engineering decisions in terms of user outcomes and business impact, not just technical correctness.",
+        "proofProjectIds": ["nextshift", "ten-thousand-shot-challenge", "skill-drills"]
       }
     ]
   }

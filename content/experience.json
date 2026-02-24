@@ -2,49 +2,57 @@
   {
     "version": "v1.0",
     "title": "Foundations",
-    "dateRange": "YEAR – YEAR",
-    "role": "Replace with your role",
-    "company": "Replace with company, or null if self-directed",
-    "summary": "Replace with: 1–2 sentences on what this chapter was about and what you were learning.",
+    "dateRange": "Early Career",
+    "role": "Software Developer",
+    "company": "How To Hockey",
+    "summary": "Joined How To Hockey as the first official employee. Started building across the stack — frontend, backend, and platform tooling — while learning what it means to own a production system end to end.",
     "highlights": [
-      "Replace with first highlight",
-      "Replace with second highlight"
+      "First official hire at How To Hockey, working directly alongside founder Jeremy Rupke",
+      "Shipped early platform features across web and mobile",
+      "Established initial deployment patterns and release workflows",
+      "Built the muscle of designing for users first and engineering second"
     ]
   },
   {
     "version": "v2.0",
-    "title": "Building Systems",
-    "dateRange": "YEAR – YEAR",
-    "role": "Replace with your role",
-    "company": null,
-    "summary": "Replace with: 1–2 sentences on what you were building and what changed.",
+    "title": "Building Products",
+    "dateRange": "Mid Career",
+    "role": "Software Engineer",
+    "company": "How To Hockey",
+    "summary": "Shifted from platform maintenance to product ownership. Designed and shipped multiple full-stack products — membership platforms, mobile apps, and community tools — with full accountability from UX to deployment.",
     "highlights": [
-      "Replace with first highlight",
-      "Replace with second highlight"
+      "Designed and launched The Pond, a gated membership and course platform on WordPress",
+      "Built TenThousandShotChallenge as a cross-platform mobile app with Firebase real-time sync",
+      "Delivered the Group of Seven Trail App with Bluetooth proximity triggers and C++ native integrations",
+      "Established a consistent design-from-the-user-down workflow across every project"
     ]
   },
   {
     "version": "v3.0",
-    "title": "Owning Outcomes",
-    "dateRange": "YEAR – YEAR",
-    "role": "Replace with your role",
-    "company": null,
-    "summary": "Replace with: 1–2 sentences on scope of ownership, leadership, or delivery.",
+    "title": "Owning the Stack",
+    "dateRange": "Later Career",
+    "role": "Principal Software Engineer",
+    "company": "How To Hockey",
+    "summary": "Became the principal engineer responsible for all web platforms, tools, and production infrastructure. Added DevOps ownership to the engineering role — deployment pipelines, stability, and system reliability became part of the mandate.",
     "highlights": [
-      "Replace with first highlight",
-      "Replace with second highlight"
+      "Promoted to Principal Software and DevOps Engineer",
+      "Took ownership of deployment pipelines and production infrastructure stability",
+      "Designed and shipped NextShift, a real-time community feedback and voting platform",
+      "Codified a consistent engineering approach: design it like a user, build it like an engineer, stabilize it like a DevOps lead"
     ]
   },
   {
     "version": "v4.0",
-    "title": "Hybrid Engineer / Creator",
-    "dateRange": "YEAR – Present",
-    "role": "Replace with your role",
-    "company": null,
-    "summary": "Replace with: 1–2 sentences on what the engineer + creator combination looks like in practice.",
+    "title": "UX-First Engineering",
+    "dateRange": "Present",
+    "role": "Principal Software and DevOps Engineer",
+    "company": "How To Hockey",
+    "summary": "The philosophy is fully operational: every flow, button, color, API, and deployment decision starts with the same question — as a user, what would I expect right here? Engineering and UX are not separate concerns.",
     "highlights": [
-      "Replace with first highlight",
-      "Replace with second highlight"
+      "Full ownership across frontend, backend, mobile, and infrastructure at How To Hockey",
+      "Every system decision anchored to a single mental model: what would the user expect here?",
+      "Builds tools that simplify complexity rather than expose it",
+      "Values reliability as part of user experience, not separate from it"
     ]
   }
 ]

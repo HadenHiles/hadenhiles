@@ -3,6 +3,6 @@
 
 export function getSubtext(isExploringSlowly: boolean): string {
   return isExploringSlowly
-    ? "Take your time. Each project has a story."
-    : "Scroll to explore, or jump to a section above.";
+    ? "Full stack engineer with a UX-first mindset. I care about intuitive interfaces, clean architecture, and production systems that stay stable after launch."
+    : "Frontend to infrastructure. Designed for clarity. Built for reliability.";
 }

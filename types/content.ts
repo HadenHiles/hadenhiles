@@ -47,5 +47,6 @@ export interface AboutContent {
   contact: {
     email: string;
     linkedin: string;
+    github?: string;
   };
 }

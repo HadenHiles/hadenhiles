@@ -10,7 +10,7 @@ export interface BootLine {
 export const BOOT_SCRIPT: BootLine[] = [
   { delayMs: 0,   level: "info", text: "hadensystem v4.0 — initializing runtime..." },
   { delayMs: 200, level: "info", text: "loading content manifests..." },
-  { delayMs: 240, level: "ok",   text: "content/projects.json         [indexed]" },
+  { delayMs: 240, level: "ok",   text: "content/projects.json         [7 projects indexed]" },
   { delayMs: 160, level: "ok",   text: "content/experience.json       [4 versions loaded]" },
   { delayMs: 140, level: "ok",   text: "content/knowledge.json        [5 categories mapped]" },
   { delayMs: 160, level: "ok",   text: "content/about.json            [pillars: 3]" },

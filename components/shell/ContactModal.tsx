@@ -103,10 +103,24 @@ export function ContactModal() {
               rel="noopener noreferrer"
               className="flex items-center justify-center w-full py-2.5 border border-border
                          rounded-lg text-sm text-muted hover:text-text hover:border-border/60
-                         transition-colors"
+                         transition-colors mb-2"
             >
               LinkedIn →
             </a>
+
+            {/* GitHub */}
+            {contact.github && (
+              <a
+                href={contact.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-full py-2.5 border border-border
+                           rounded-lg text-sm text-muted hover:text-text hover:border-border/60
+                           transition-colors"
+              >
+                GitHub →
+              </a>
+            )}
           </motion.div>
         </>
       )}

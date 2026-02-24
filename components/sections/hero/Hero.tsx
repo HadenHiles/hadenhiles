@@ -17,14 +17,14 @@ export function Hero() {
     >
       {/* Eyebrow */}
       <p className="font-mono text-sm text-accent mb-4">
-        engineer · creator · builder
+        principal engineer · how to hockey
       </p>
 
       {/* Headline */}
       <h1 className="text-4xl sm:text-5xl font-semibold text-text leading-tight mb-3">
-        I build systems that work
+        I design and build software
         <br />
-        <span className="text-muted">and content that lands.</span>
+        <span className="text-muted">from the user down.</span>
       </h1>
 
       {/* Adaptive subtext */}

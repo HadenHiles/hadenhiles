@@ -2,25 +2,26 @@
   "pillars": [
     {
       "name": "Family",
-      "story": "Replace with: 2–3 sentences about family and what it means to you. Be specific — a real moment lands better than a general sentiment.",
+      "story": "Add your personal family content here — a specific moment or detail lands better than a general statement about what family means to you.",
       "image": null,
-      "shapeWork": "Replace with: one sentence on how this shapes how you work and why it makes your work better."
+      "shapeWork": "Add one sentence on how your family shapes the way you work or what you're building toward."
     },
     {
       "name": "Craft",
-      "story": "Replace with: 2–3 sentences about your relationship with craft. Why does making things well matter to you?",
+      "story": "I build software the way I want software to feel as a user: simple, fast, and frictionless, but still nice to look at. Every flow, button, color, API, and deployment decision starts from the same place — as a user, what would I expect right here? That question isn't a step in the process. It's the foundation everything else is built on.",
       "image": null,
-      "shapeWork": "Replace with: one sentence on how this drives your standards and output."
+      "shapeWork": "Simplicity beats cleverness. If it needs a manual, it probably needs a redesign."
     },
     {
       "name": "Play",
-      "story": "Replace with: 2–3 sentences about what you do for play — homelab, gear, video projects, anything that isn't \"work\" but totally is.",
+      "story": "Add your personal play content here — the things you do outside of work that feed back into how you think and build. Hockey, hobbies, gear, anything that keeps the creative side running.",
       "image": null,
-      "shapeWork": "Replace with: one sentence on how play feeds back into your best work."
+      "shapeWork": "Add one sentence on how what you do for fun shapes your work."
     }
   ],
   "contact": {
     "email": "your@email.com",
-    "linkedin": "https://linkedin.com/in/yourhandle"
+    "linkedin": "https://www.linkedin.com/in/haden-hiles-67610882/",
+    "github": "https://github.com/HadenHiles"
   }
 }

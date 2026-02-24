@@ -41,16 +41,19 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     case cmd === "whoami":
-      appendHistory(out("haden hiles — engineer, creator, builder."));
-      appendHistory(out("writes systems that work. shoots content that lands."));
-      appendHistory(out("does both. on purpose."));
+      appendHistory(out("haden hiles — principal software and devops engineer."));
+      appendHistory(out("full stack engineer who designs from the user down"));
+      appendHistory(out("and builds the system to match."));
       break;
 
     case cmd === "cat projects.yml":
-      appendHistory(out("# projects manifest"));
+      appendHistory(out("# engineering philosophy"));
       appendHistory(out("---"));
-      appendHistory(out("  - Update projects.json with your real projects"));
-      appendHistory(out("  - Keep 'id' fields stable — they're used as keys"));
+      appendHistory(out("  - ux first"));
+      appendHistory(out("  - frictionless flows"));
+      appendHistory(out("  - full stack ownership"));
+      appendHistory(out("  - production stability"));
+      appendHistory(out("  - practical automation"));
       appendHistory(out("---"));
       appendHistory(out("use Projects from the menu for the full breakdown."));
       break;

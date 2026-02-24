@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import Image from "next/image";
 import { useStore, useMode } from "@/lib/store";
 import type { AppMode } from "@/lib/routes";
 
@@ -13,16 +15,28 @@ const NAV_TABS: { label: string; mode: AppMode }[] = [
 export function TopNav() {
   const mode = useMode();
   const { setMode, setContactOpen } = useStore();
+  const [logoError, setLogoError] = useState(false);
 
   return (
     <header className="flex items-center justify-between px-5 py-3 border-b border-border bg-surface/80 backdrop-blur-sm sticky top-0 z-10">
-      {/* Logo slot — replace with <Image src="/logo/logo.png" ... /> once asset is ready */}
+      {/* Logo */}
       <div className="flex items-center gap-3">
         <div
-          className="w-8 h-8 rounded-lg bg-surface2 border border-border flex items-center justify-center"
+          className="w-8 h-8 flex items-center justify-center"
           aria-label="Haden Hiles logo"
         >
-          <span className="font-mono text-xs font-bold text-accent select-none">HH</span>
+          {logoError ? (
+            <span className="font-mono text-xs font-bold text-accent select-none">HH</span>
+          ) : (
+            <Image
+              src="/logo/logo_white.png"
+              alt="Haden Hiles"
+              width={32}
+              height={32}
+              className="object-contain"
+              onError={() => setLogoError(true)}
+            />
+          )}
         </div>
         <span className="font-mono text-sm text-muted hidden sm:block select-none">
           haden hiles
