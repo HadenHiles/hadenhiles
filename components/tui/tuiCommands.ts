@@ -1,4 +1,21 @@
 import type { HistoryEntry } from "@/lib/store";
+import type { Project, ExperienceEntry, KnowledgeCategory } from "@/types/content";
+import projectsData from "@/content/projects.json";
+import experienceData from "@/content/experience.json";
+import knowledgeData from "@/content/knowledge.json";
+
+const projects = projectsData as Project[];
+const experience = experienceData as ExperienceEntry[];
+const knowledge = knowledgeData as KnowledgeCategory[];
+
+function slugify(str: string): string {
+  return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+// Slugs derived from JSON — these stay in sync with the data
+const experienceSlugs = experience.map((e) => `${slugify(e.version)}-${slugify(e.title)}`);
+const knowledgeSlugs = knowledge.map((k) => slugify(k.category));
+const projectSlugs = projects.map((p) => p.id);
 
 interface CommandContext {
   appendHistory: (e: HistoryEntry) => void;
@@ -70,12 +87,12 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     // ── ls variants ───────────────────────────────────────────────────────────
     case lower === "ls": {
       if (currentPath === "~/projects") {
-        appendHistory(out("ten-thousand-shot-challenge  the-pond  group-of-seven-trail-app"));
-        appendHistory(out("nextshift  skill-drills  timmies-helper  video-scraper"));
+        appendHistory(out(projectSlugs.slice(0, Math.ceil(projectSlugs.length / 2)).join("  ")));
+        appendHistory(out(projectSlugs.slice(Math.ceil(projectSlugs.length / 2)).join("  ")));
       } else if (currentPath === "~/experience") {
-        appendHistory(out("v1.0-foundations  v2.0-building-products  v3.0-owning-the-stack  v4.0-ux-first"));
+        appendHistory(out(experienceSlugs.join("  ")));
       } else if (currentPath === "~/knowledge") {
-        appendHistory(out("frontend  backend  devops-automation  systems-networking  storytelling"));
+        appendHistory(out(knowledgeSlugs.join("  ")));
       } else if (currentPath === "~/about") {
         appendHistory(out("family.txt  craft.txt  play.txt"));
         appendHistory(out("hint: try ls -a to reveal hidden files"));
@@ -101,12 +118,12 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
         appendHistory(out("-rw-------  .behind-scenes [permission: 600]"));
         appendHistory(out("hint: sudo cat <file> to read restricted files"));
       } else if (currentPath === "~/projects") {
-        appendHistory(out("ten-thousand-shot-challenge  the-pond  group-of-seven-trail-app"));
-        appendHistory(out("nextshift  skill-drills  timmies-helper  video-scraper"));
+        appendHistory(out(projectSlugs.slice(0, Math.ceil(projectSlugs.length / 2)).join("  ")));
+        appendHistory(out(projectSlugs.slice(Math.ceil(projectSlugs.length / 2)).join("  ")));
       } else if (currentPath === "~/experience") {
-        appendHistory(out("v1.0-foundations  v2.0-building-products  v3.0-owning-the-stack  v4.0-ux-first"));
+        appendHistory(out(experienceSlugs.join("  ")));
       } else if (currentPath === "~/knowledge") {
-        appendHistory(out("frontend  backend  devops-automation  systems-networking  storytelling"));
+        appendHistory(out(knowledgeSlugs.join("  ")));
       } else if (currentPath === "~/contact") {
         appendHistory(out("email:    hi@hadenhiles.com"));
         appendHistory(out("linkedin: linkedin.com/in/hadenhiles"));
@@ -126,14 +143,20 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     case lower === "ls -l": {
       if (currentPath === "~/projects") {
-        appendHistory(out("total 7"));
-        appendHistory(out("drwxr-xr-x  ten-thousand-shot-challenge/"));
-        appendHistory(out("drwxr-xr-x  the-pond/"));
-        appendHistory(out("drwxr-xr-x  group-of-seven-trail-app/"));
-        appendHistory(out("drwxr-xr-x  nextshift/"));
-        appendHistory(out("drwxr-xr-x  skill-drills/"));
-        appendHistory(out("drwxr-xr-x  timmies-helper/"));
-        appendHistory(out("drwxr-xr-x  video-scraper/"));
+        appendHistory(out(`total ${projectSlugs.length}`));
+        for (const slug of projectSlugs) {
+          appendHistory(out(`drwxr-xr-x  ${slug}/`));
+        }
+      } else if (currentPath === "~/experience") {
+        appendHistory(out(`total ${experienceSlugs.length}`));
+        for (const slug of experienceSlugs) {
+          appendHistory(out(`drwxr-xr-x  ${slug}/`));
+        }
+      } else if (currentPath === "~/knowledge") {
+        appendHistory(out(`total ${knowledgeSlugs.length}`));
+        for (const slug of knowledgeSlugs) {
+          appendHistory(out(`drwxr-xr-x  ${slug}/`));
+        }
       } else if (currentPath === "~/about") {
         appendHistory(out("total 3"));
         appendHistory(out("-rw-r--r--  family.txt"));
@@ -184,7 +207,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── whoami ────────────────────────────────────────────────────────────────
     case lower === "whoami":
-      appendHistory(out("haden hiles — principal software and devops engineer."));
+      appendHistory(out("haden hiles — software & devops engineer."));
       appendHistory(out("full stack engineer who designs from the user down"));
       appendHistory(out("and builds the system to match."));
       break;
@@ -567,34 +590,31 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     // ── tree ──────────────────────────────────────────────────────────────────
-    case lower === "tree":
+    case lower === "tree": {
       appendHistory(out("."));
       appendHistory(out("├── projects/"));
-      appendHistory(out("│   ├── ten-thousand-shot-challenge/"));
-      appendHistory(out("│   ├── the-pond/"));
-      appendHistory(out("│   ├── group-of-seven-trail-app/"));
-      appendHistory(out("│   ├── nextshift/"));
-      appendHistory(out("│   ├── skill-drills/"));
-      appendHistory(out("│   ├── timmies-helper/"));
-      appendHistory(out("│   └── video-scraper/"));
+      for (let i = 0; i < projectSlugs.length; i++) {
+        const connector = i < projectSlugs.length - 1 ? "│   ├──" : "│   └──";
+        appendHistory(out(`${connector} ${projectSlugs[i]}/`));
+      }
       appendHistory(out("├── experience/"));
-      appendHistory(out("│   ├── v1.0-foundations/"));
-      appendHistory(out("│   ├── v2.0-building-products/"));
-      appendHistory(out("│   ├── v3.0-owning-the-stack/"));
-      appendHistory(out("│   └── v4.0-ux-first/"));
+      for (let i = 0; i < experienceSlugs.length; i++) {
+        const connector = i < experienceSlugs.length - 1 ? "│   ├──" : "│   └──";
+        appendHistory(out(`${connector} ${experienceSlugs[i]}/`));
+      }
       appendHistory(out("├── knowledge/"));
-      appendHistory(out("│   ├── frontend/"));
-      appendHistory(out("│   ├── backend/"));
-      appendHistory(out("│   ├── devops-automation/"));
-      appendHistory(out("│   ├── systems-networking/"));
-      appendHistory(out("│   └── storytelling/"));
+      for (let i = 0; i < knowledgeSlugs.length; i++) {
+        const connector = i < knowledgeSlugs.length - 1 ? "│   ├──" : "│   └──";
+        appendHistory(out(`${connector} ${knowledgeSlugs[i]}/`));
+      }
       appendHistory(out("├── about/"));
       appendHistory(out("│   ├── family.txt"));
       appendHistory(out("│   ├── craft.txt"));
       appendHistory(out("│   └── play.txt"));
       appendHistory(out("└── contact/"));
-      appendHistory(out("7 directories, many commits, zero regrets."));
+      appendHistory(out(`${projectSlugs.length + experienceSlugs.length + knowledgeSlugs.length} directories, many commits, zero regrets.`));
       break;
+    }
 
     // ── neofetch ──────────────────────────────────────────────────────────────
     case lower === "neofetch":

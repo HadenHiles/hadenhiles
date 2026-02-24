@@ -1,4 +1,14 @@
 import type { HistoryEntry } from "@/lib/store";
+import type { Project, ExperienceEntry, KnowledgeCategory, AboutContent } from "@/types/content";
+import projectsData from "@/content/projects.json";
+import experienceData from "@/content/experience.json";
+import knowledgeData from "@/content/knowledge.json";
+import aboutData from "@/content/about.json";
+
+const projects = projectsData as Project[];
+const experience = experienceData as ExperienceEntry[];
+const knowledge = knowledgeData as KnowledgeCategory[];
+const about = aboutData as AboutContent;
 
 function out(text: string): HistoryEntry {
   return { type: "out", text };
@@ -8,96 +18,80 @@ function dim(text: string): HistoryEntry {
   return { type: "log", level: "dim", text };
 }
 
+function pad(str: string, len: number): string {
+  return str.padEnd(len, " ");
+}
+
 // ── Section 0: Projects ──────────────────────────────────────────────────────
-const PROJECTS: HistoryEntry[] = [
-  out(""),
-  out("projects/"),
-  dim("────────────────────────────────────────────────────────────────"),
-  out("TenThousandShotChallenge  — Shot-logging mobile app (Flutter/Firebase)."),
-  out("                            Log a session in under 10s, see cumulative progress."),
-  out(""),
-  out("The Pond                  — WordPress membership platform (LearnDash/MemberPress)."),
-  out("                            Content hierarchy first, zero admin friction."),
-  out(""),
-  out("Group of Seven Trail App  — Trail companion app (Flutter/C++)."),
-  out("                            Bluetooth beacons surface context at the right moment."),
-  out(""),
-  out("NextShift                 — Real-time feature voting platform (Firebase)."),
-  out("                            Idea to ranked result in under 20 seconds."),
-  out(""),
-  out("Skill Drills              — Customizable training tracker (Flutter/C++)."),
-  out("                            User-defined routines and metrics, no rigid structure."),
-  out(""),
-  out("timmies-helper            — Fork + Value Over Replacement for Tim's Hockey Challenge."),
-  out("                            Best pick in each tier, immediately visible."),
-  out(""),
-  out("VideoScraper              — URL-in, file-out download utility (React/Node.js)."),
-  out("                            Strict frontend/backend separation, zero friction."),
-  out(""),
-];
+function buildProjects(): HistoryEntry[] {
+  const titleWidth = Math.max(...projects.map((p) => p.title.length)) + 2;
+  const rows: HistoryEntry[] = [
+    out(""),
+    out("projects/"),
+    dim("────────────────────────────────────────────────────────────────"),
+  ];
+  for (const p of projects) {
+    rows.push(out(`${pad(p.title, titleWidth)}— ${p.tui ?? p.tagline}`));
+    rows.push(out(""));
+  }
+  return rows;
+}
 
 // ── Section 1: Experience ────────────────────────────────────────────────────
-const EXPERIENCE: HistoryEntry[] = [
-  out(""),
-  out("experience/"),
-  dim("────────────────────────────────────────────────────────────────"),
-  out("v1.0  Foundations       — Software Developer @ How To Hockey"),
-  out("                          First hire, shipped across web + mobile from day one."),
-  out(""),
-  out("v2.0  Building Products — Software Engineer"),
-  out("                          Full-stack product ownership: The Pond,"),
-  out("                          TenThousandShotChallenge, Group of Seven Trail App."),
-  out(""),
-  out("v3.0  Owning the Stack  — Principal Software Engineer"),
-  out("                          Added DevOps ownership. Shipped NextShift."),
-  out("                          Codified: design like a user, build like an engineer."),
-  out(""),
-  out("v4.0  UX-First          — Principal Software & DevOps Engineer  [present]"),
-  out("                          Full ownership: frontend, backend, mobile, infra."),
-  out("                          Every decision anchored to: what would the user expect?"),
-  out(""),
-];
+function buildExperience(): HistoryEntry[] {
+  const rows: HistoryEntry[] = [
+    out(""),
+    out("experience/"),
+    dim("────────────────────────────────────────────────────────────────"),
+  ];
+  for (const e of experience) {
+    rows.push(out(e.tui ?? `${e.version} · ${e.title} · ${e.role}`));
+    rows.push(out(""));
+  }
+  return rows;
+}
 
 // ── Section 2: Knowledge ─────────────────────────────────────────────────────
-const KNOWLEDGE: HistoryEntry[] = [
-  out(""),
-  out("knowledge/"),
-  dim("────────────────────────────────────────────────────────────────"),
-  out("Frontend      Flutter/Dart · React · TypeScript · WordPress · CSS/UI Design"),
-  out("Backend       Firebase/Firestore · Node.js/Express · PHP · LearnDash/MemberPress"),
-  out("DevOps        CI/CD Pipelines · Production Infrastructure · Docker · Vite"),
-  out("Systems       C++ · Bluetooth Beacons · Native iOS/Android Integrations"),
-  out("Craft         UX Architecture · Content Architecture · Product Thinking"),
-  out(""),
-  out("The common thread: every tool chosen to solve a specific problem."),
-  out("Nothing added for the sake of it."),
-  out(""),
-];
+function buildKnowledge(): HistoryEntry[] {
+  const catWidth = Math.max(...knowledge.map((k) => k.category.length)) + 2;
+  const rows: HistoryEntry[] = [
+    out(""),
+    out("knowledge/"),
+    dim("────────────────────────────────────────────────────────────────"),
+  ];
+  for (const k of knowledge) {
+    rows.push(out(`${pad(k.category, catWidth)}${k.tui ?? k.skills.map((s) => s.name).join(" · ")}`));
+  }
+  rows.push(out(""));
+  rows.push(out("The common thread: every tool chosen to solve a specific problem."));
+  rows.push(out("Nothing added for the sake of it."));
+  rows.push(out(""));
+  return rows;
+}
 
 // ── Section 3: About ─────────────────────────────────────────────────────────
-const ABOUT: HistoryEntry[] = [
-  out(""),
-  out("about/"),
-  dim("────────────────────────────────────────────────────────────────"),
-  out("Family  Shannon + Harvey (golden retriever)"),
-  out("        Married Jul '25 · first house Oct '25"),
-  out("        Best time of year: cottage country, Harvey off the dock."),
-  out(""),
-  out("Craft   \"Simplicity beats cleverness."),
-  out("         If it needs a manual, it probably needs a redesign.\""),
-  out(""),
-  out("        Every flow, button, color, API, and deployment decision"),
-  out("        starts from: as a user, what would I expect right here?"),
-  out(""),
-  out("Play    Hockey · Golf · Squash · Guitar"),
-  out("        LOTR · GOT · Mr. Robot (IYKYK)"),
-  out("        Weekends: house projects, Plex homelab, cottage with family."),
-  out(""),
-];
+function buildAbout(): HistoryEntry[] {
+  const tui = about.tui;
+  const familyLine = tui?.family ?? about.pillars.find((p) => p.name === "Family")?.story ?? "";
+  const craftLine = tui?.craft ?? about.pillars.find((p) => p.name === "Craft")?.shapeWork ?? "";
+  const playLine = tui?.play ?? about.pillars.find((p) => p.name === "Play")?.story ?? "";
+
+  return [
+    out(""),
+    out("about/"),
+    dim("────────────────────────────────────────────────────────────────"),
+    out(`Family  ${familyLine}`),
+    out(""),
+    out(`Craft   ${craftLine}`),
+    out(""),
+    out(`Play    ${playLine}`),
+    out(""),
+  ];
+}
 
 export const SECTION_CONTENT: Record<number, HistoryEntry[]> = {
-  0: PROJECTS,
-  1: EXPERIENCE,
-  2: KNOWLEDGE,
-  3: ABOUT,
+  0: buildProjects(),
+  1: buildExperience(),
+  2: buildKnowledge(),
+  3: buildAbout(),
 };

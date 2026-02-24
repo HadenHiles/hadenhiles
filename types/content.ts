@@ -1,6 +1,7 @@
 export interface Project {
   id: string;
   title: string;
+  tui?: string;
   tagline: string;
   purpose: string;
   constraints: string;
@@ -36,6 +37,7 @@ export interface KnowledgeSkill {
 
 export interface KnowledgeCategory {
   category: string;
+  tui?: string;
   skills: KnowledgeSkill[];
 }
 
@@ -47,6 +49,11 @@ export interface Pillar {
 }
 
 export interface AboutContent {
+  tui?: {
+    family: string;
+    craft: string;
+    play: string;
+  };
   pillars: Pillar[];
   contact: {
     email: string;
