@@ -7,8 +7,8 @@ import { duration, ease } from "@/lib/motion";
 
 const stats = [
   { value: "10+", label: "years building" },
-  { value: "7",   label: "products shipped" },
-  { value: "1",   label: "company, all-in" },
+  { value: "30+", label: "technologies mastered" },
+  { value: "6",   label: "products shipped" },
 ];
 
 export function Hero() {

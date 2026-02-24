@@ -1,12 +1,12 @@
 import type { HistoryEntry } from "@/lib/store";
-import type { Project, ExperienceEntry, KnowledgeCategory, AboutContent } from "@/types/content";
+import type { Project, Job, KnowledgeCategory, AboutContent } from "@/types/content";
 import projectsData from "@/content/projects.json";
-import experienceData from "@/content/experience.json";
+import jobsData from "@/content/jobs.json";
 import knowledgeData from "@/content/knowledge.json";
 import aboutData from "@/content/about.json";
 
 const projects = projectsData as Project[];
-const experience = experienceData as ExperienceEntry[];
+const jobs = jobsData as Job[];
 const knowledge = knowledgeData as KnowledgeCategory[];
 const about = aboutData as AboutContent;
 
@@ -37,17 +37,22 @@ function buildProjects(): HistoryEntry[] {
   return rows;
 }
 
-// ── Section 1: Experience ────────────────────────────────────────────────────
+// ── Section 1: Experience ─────────────────────────────────────────────────────
+// Shows individual company folders — use `cd experience/<slug>` to explore each one.
 function buildExperience(): HistoryEntry[] {
+  const companyWidth = Math.max(...jobs.map((j) => j.company.length)) + 2;
   const rows: HistoryEntry[] = [
     out(""),
     out("experience/"),
     dim("────────────────────────────────────────────────────────────────"),
   ];
-  for (const e of experience) {
-    rows.push(out(e.tui ?? `${e.version} · ${e.title} · ${e.role}`));
+  for (const j of jobs) {
+    const line = j.tui ?? `${j.company} · ${j.role} · ${j.dateRange}`;
+    rows.push(out(`${pad(j.company, companyWidth)}${line}`));
     rows.push(out(""));
   }
+  rows.push(out("tip: cd experience/<slug> then cat role.txt / highlights.txt / stack.txt"));
+  rows.push(out(""));
   return rows;
 }
 

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import type { KnowledgeCategory } from "@/types/content";
 import knowledge from "@/content/knowledge.json";
-import { KnowledgeMap } from "./KnowledgeMap";
+import { KnowledgeMindMap } from "./KnowledgeMindMap";
 import { duration, ease } from "@/lib/motion";
 
 export function Knowledge() {
@@ -19,8 +19,8 @@ export function Knowledge() {
         <h2 className="text-4xl sm:text-5xl font-bold text-text leading-tight mb-3">
           Knowledge Map
         </h2>
-        <p className="text-muted mb-10">
-          What I know, what I&apos;ve built with it, and where it shows up.
+        <p className="text-muted mb-5">
+          Select a category to focus — hover any node to explore connections.
         </p>
       </motion.div>
       <motion.div
@@ -29,7 +29,7 @@ export function Knowledge() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: duration.medium, ease: ease.standard, delay: 0.1 }}
       >
-        <KnowledgeMap categories={knowledge as KnowledgeCategory[]} />
+        <KnowledgeMindMap categories={knowledge as KnowledgeCategory[]} />
       </motion.div>
     </section>
   );

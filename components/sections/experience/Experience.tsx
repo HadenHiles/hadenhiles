@@ -1,9 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { ExperienceEntry } from "@/types/content";
-import experience from "@/content/experience.json";
-import { VersionTimeline } from "./VersionTimeline";
+import type { Job } from "@/types/content";
+import jobsData from "@/content/jobs.json";
+import { JobTimeline } from "./JobTimeline";
 import { duration, ease } from "@/lib/motion";
 
 export function Experience() {
@@ -17,10 +17,10 @@ export function Experience() {
       >
         <p className="font-mono text-sm text-accent mb-4">experience</p>
         <h2 className="text-4xl sm:text-5xl font-bold text-text leading-tight mb-3">
-          Version History
+          The Timeline
         </h2>
         <p className="text-muted mb-10">
-          Each chapter had a different constraint set.
+          10+ years. Six companies. One thread running through all of it.
         </p>
       </motion.div>
       <motion.div
@@ -29,7 +29,7 @@ export function Experience() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: duration.medium, ease: ease.standard, delay: 0.1 }}
       >
-        <VersionTimeline entries={experience as ExperienceEntry[]} />
+        <JobTimeline jobs={jobsData as Job[]} />
       </motion.div>
     </section>
   );

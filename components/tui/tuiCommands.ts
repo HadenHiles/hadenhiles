@@ -1,19 +1,19 @@
 import type { HistoryEntry } from "@/lib/store";
-import type { Project, ExperienceEntry, KnowledgeCategory } from "@/types/content";
+import type { Project, Job, KnowledgeCategory } from "@/types/content";
 import projectsData from "@/content/projects.json";
-import experienceData from "@/content/experience.json";
+import jobsData from "@/content/jobs.json";
 import knowledgeData from "@/content/knowledge.json";
 
 const projects = projectsData as Project[];
-const experience = experienceData as ExperienceEntry[];
+const jobs = jobsData as Job[];
 const knowledge = knowledgeData as KnowledgeCategory[];
 
 function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-// Slugs derived from JSON — these stay in sync with the data
-const experienceSlugs = experience.map((e) => `${slugify(e.version)}-${slugify(e.title)}`);
+// Slugs derived from JSON — stay in sync with data
+const jobSlugs = jobs.map((j) => j.slug);
 const knowledgeSlugs = knowledge.map((k) => slugify(k.category));
 const projectSlugs = projects.map((p) => p.id);
 
@@ -33,10 +33,14 @@ function err(text: string): HistoryEntry {
   return { type: "err", text };
 }
 
+// Parse path levels: "~/experience/how-to-hockey" → ["experience", "how-to-hockey"]
+function pathParts(path: string): string[] {
+  return path.replace("~/", "").split("/").filter(Boolean);
+}
+
 export function handleCommand(cmd: string, ctx: CommandContext) {
   const { appendHistory, unlockHiddenOptions, activateMenuItem, currentPath, setCurrentPath } = ctx;
 
-  // Normalise for matching
   const trimmed = cmd.trim();
   const lower = trimmed.toLowerCase();
   const parts = trimmed.split(/\s+/);
@@ -44,12 +48,14 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
   const args = parts.slice(1).join(" ");
   const argsLower = args.toLowerCase();
 
-  // Resolve full path string for pwd output
+  const levels = pathParts(currentPath);
+  const inSection = levels[0]; // "experience", "projects", etc.
+  const inJobSlug = levels[1]; // e.g. "how-to-hockey" (when inside a job dir)
+
   const fullPath = currentPath === "~"
     ? "/home/visitor/hadensystem"
     : `/home/visitor/hadensystem/${currentPath.replace("~/", "")}`;
 
-  // Valid section directories
   const SECTIONS = ["projects", "experience", "knowledge", "about", "gui", "contact"];
 
   switch (true) {
@@ -72,13 +78,9 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("  git log           — commit history"));
       break;
 
-    // ── number shortcuts — activate menu item directly ─────────────────────────
-    case trimmed === "1":
-    case trimmed === "2":
-    case trimmed === "3":
-    case trimmed === "4":
-    case trimmed === "5":
-    case trimmed === "6": {
+    // ── number shortcuts ───────────────────────────────────────────────────────
+    case trimmed === "1": case trimmed === "2": case trimmed === "3":
+    case trimmed === "4": case trimmed === "5": case trimmed === "6": {
       const idx = parseInt(trimmed, 10) - 1;
       activateMenuItem(idx);
       break;
@@ -86,17 +88,19 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── ls variants ───────────────────────────────────────────────────────────
     case lower === "ls": {
-      if (currentPath === "~/projects") {
+      if (inSection === "projects" && !inJobSlug) {
         appendHistory(out(projectSlugs.slice(0, Math.ceil(projectSlugs.length / 2)).join("  ")));
         appendHistory(out(projectSlugs.slice(Math.ceil(projectSlugs.length / 2)).join("  ")));
-      } else if (currentPath === "~/experience") {
-        appendHistory(out(experienceSlugs.join("  ")));
-      } else if (currentPath === "~/knowledge") {
+      } else if (inSection === "experience" && !inJobSlug) {
+        appendHistory(out(jobSlugs.join("  ")));
+      } else if (inSection === "experience" && inJobSlug) {
+        appendHistory(out("role.txt  highlights.txt  stack.txt"));
+      } else if (inSection === "knowledge") {
         appendHistory(out(knowledgeSlugs.join("  ")));
-      } else if (currentPath === "~/about") {
+      } else if (inSection === "about") {
         appendHistory(out("family.txt  craft.txt  play.txt"));
         appendHistory(out("hint: try ls -a to reveal hidden files"));
-      } else if (currentPath === "~/contact") {
+      } else if (inSection === "contact") {
         appendHistory(out("email:    hi@hadenhiles.com"));
         appendHistory(out("linkedin: linkedin.com/in/hadenhiles"));
         appendHistory(out("github:   github.com/HadenHiles"));
@@ -107,7 +111,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     }
 
     case lower === "ls -a" || lower === "ls -la" || lower === "ls -al": {
-      if (currentPath === "~/about") {
+      if (inSection === "about") {
         unlockHiddenOptions();
         appendHistory(out("-rw-r--r--  family.txt"));
         appendHistory(out("-rw-r--r--  craft.txt"));
@@ -117,14 +121,21 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
         appendHistory(out("-rw-------  .gear          [permission: 600]"));
         appendHistory(out("-rw-------  .behind-scenes [permission: 600]"));
         appendHistory(out("hint: sudo cat <file> to read restricted files"));
-      } else if (currentPath === "~/projects") {
+      } else if (inSection === "experience" && inJobSlug) {
+        appendHistory(out("-rw-r--r--  role.txt"));
+        appendHistory(out("-rw-r--r--  highlights.txt"));
+        appendHistory(out("-rw-r--r--  stack.txt"));
+      } else if (inSection === "experience") {
+        appendHistory(out(`total ${jobSlugs.length}`));
+        for (const slug of jobSlugs) {
+          appendHistory(out(`drwxr-xr-x  ${slug}/`));
+        }
+      } else if (inSection === "projects") {
         appendHistory(out(projectSlugs.slice(0, Math.ceil(projectSlugs.length / 2)).join("  ")));
         appendHistory(out(projectSlugs.slice(Math.ceil(projectSlugs.length / 2)).join("  ")));
-      } else if (currentPath === "~/experience") {
-        appendHistory(out(experienceSlugs.join("  ")));
-      } else if (currentPath === "~/knowledge") {
+      } else if (inSection === "knowledge") {
         appendHistory(out(knowledgeSlugs.join("  ")));
-      } else if (currentPath === "~/contact") {
+      } else if (inSection === "contact") {
         appendHistory(out("email:    hi@hadenhiles.com"));
         appendHistory(out("linkedin: linkedin.com/in/hadenhiles"));
         appendHistory(out("github:   github.com/HadenHiles"));
@@ -142,34 +153,30 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     }
 
     case lower === "ls -l": {
-      if (currentPath === "~/projects") {
+      if (inSection === "projects") {
         appendHistory(out(`total ${projectSlugs.length}`));
-        for (const slug of projectSlugs) {
-          appendHistory(out(`drwxr-xr-x  ${slug}/`));
+        for (const slug of projectSlugs) appendHistory(out(`drwxr-xr-x  ${slug}/`));
+      } else if (inSection === "experience" && !inJobSlug) {
+        appendHistory(out(`total ${jobSlugs.length}`));
+        for (const job of jobs) {
+          appendHistory(out(`drwxr-xr-x  ${job.slug}/    # ${job.role} · ${job.dateRange}`));
         }
-      } else if (currentPath === "~/experience") {
-        appendHistory(out(`total ${experienceSlugs.length}`));
-        for (const slug of experienceSlugs) {
-          appendHistory(out(`drwxr-xr-x  ${slug}/`));
-        }
-      } else if (currentPath === "~/knowledge") {
+      } else if (inSection === "experience" && inJobSlug) {
+        appendHistory(out("total 3"));
+        appendHistory(out("-rw-r--r--  role.txt"));
+        appendHistory(out("-rw-r--r--  highlights.txt"));
+        appendHistory(out("-rw-r--r--  stack.txt"));
+      } else if (inSection === "knowledge") {
         appendHistory(out(`total ${knowledgeSlugs.length}`));
-        for (const slug of knowledgeSlugs) {
-          appendHistory(out(`drwxr-xr-x  ${slug}/`));
-        }
-      } else if (currentPath === "~/about") {
+        for (const slug of knowledgeSlugs) appendHistory(out(`drwxr-xr-x  ${slug}/`));
+      } else if (inSection === "about") {
         appendHistory(out("total 3"));
         appendHistory(out("-rw-r--r--  family.txt"));
         appendHistory(out("-rw-r--r--  craft.txt"));
         appendHistory(out("-rw-r--r--  play.txt"));
       } else {
         appendHistory(out("total 6"));
-        appendHistory(out("drwxr-xr-x  projects/"));
-        appendHistory(out("drwxr-xr-x  experience/"));
-        appendHistory(out("drwxr-xr-x  knowledge/"));
-        appendHistory(out("drwxr-xr-x  about/"));
-        appendHistory(out("drwxr-xr-x  gui/"));
-        appendHistory(out("drwxr-xr-x  contact/"));
+        for (const sec of SECTIONS) appendHistory(out(`drwxr-xr-x  ${sec}/`));
       }
       break;
     }
@@ -181,13 +188,17 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── cd ────────────────────────────────────────────────────────────────────
     case base === "cd": {
-      const dest = argsLower;
+      const dest = argsLower.replace(/\/$/, "");
       if (!dest || dest === "~" || dest === "/home/visitor" || dest === "/home/visitor/hadensystem") {
         setCurrentPath("~");
         appendHistory(out("~"));
       } else if (dest === ".." || dest === "../") {
         if (currentPath === "~") {
           appendHistory(out("~ (already at root)"));
+        } else if (inJobSlug) {
+          // go up from job dir to experience/
+          setCurrentPath("~/experience");
+          appendHistory(out("~/experience"));
         } else {
           setCurrentPath("~");
           appendHistory(out("~"));
@@ -195,12 +206,31 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       } else if (dest === "/" || dest === "./") {
         setCurrentPath("~");
         appendHistory(out("~"));
-      } else if (SECTIONS.includes(dest.replace(/^\.\//, "").replace(/\/$/, ""))) {
-        const section = dest.replace(/^\.\//, "").replace(/\/$/, "");
+      } else if (SECTIONS.includes(dest.replace(/^\.\//, ""))) {
+        const section = dest.replace(/^\.\//, "");
         setCurrentPath(`~/${section}`);
         appendHistory(out(`~/hadensystem/${section}`));
+      } else if (inSection === "experience" && !inJobSlug && jobSlugs.includes(dest)) {
+        // cd into a specific job directory
+        setCurrentPath(`~/experience/${dest}`);
+        const job = jobs.find((j) => j.slug === dest);
+        appendHistory(out(`~/experience/${dest}  # ${job?.company ?? dest}`));
+        appendHistory(out("files: role.txt  highlights.txt  stack.txt"));
+      } else if (dest.startsWith("experience/")) {
+        const slug = dest.replace("experience/", "");
+        if (jobSlugs.includes(slug)) {
+          setCurrentPath(`~/experience/${slug}`);
+          const job = jobs.find((j) => j.slug === slug);
+          appendHistory(out(`~/experience/${slug}  # ${job?.company ?? slug}`));
+          appendHistory(out("files: role.txt  highlights.txt  stack.txt"));
+        } else {
+          appendHistory(err(`cd: ${args}: No such file or directory`));
+        }
       } else {
         appendHistory(err(`cd: ${args}: No such file or directory`));
+        if (inSection === "experience" && !inJobSlug) {
+          appendHistory(out(`available: ${jobSlugs.join(", ")}`));
+        }
       }
       break;
     }
@@ -212,14 +242,56 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("and builds the system to match."));
       break;
 
-    // ── cat ───────────────────────────────────────────────────────────────────
-    // Hidden file permission errors
+    // ── cat — hidden file permission errors ───────────────────────────────────
     case base === "cat" && (argsLower === ".hobbies" || argsLower === ".homelab" || argsLower === ".gear" || argsLower === ".behind-scenes"):
       appendHistory(err(`cat: ${args}: Permission denied`));
       appendHistory(out("hint: sudo cat <file> to read restricted files"));
       break;
 
-    // About text files
+    // ── cat role.txt (inside a job dir) ──────────────────────────────────────
+    case lower === "cat role.txt" && inSection === "experience" && !!inJobSlug: {
+      const job = jobs.find((j) => j.slug === inJobSlug);
+      if (job) {
+        appendHistory(out(`# ${job.company}`));
+        appendHistory(out(`role:  ${job.role}`));
+        appendHistory(out(`dates: ${job.dateRange}`));
+        appendHistory(out(""));
+        appendHistory(out(job.summary));
+      } else {
+        appendHistory(err("cat: role.txt: file not found"));
+      }
+      break;
+    }
+
+    // ── cat highlights.txt (inside a job dir) ─────────────────────────────────
+    case lower === "cat highlights.txt" && inSection === "experience" && !!inJobSlug: {
+      const job = jobs.find((j) => j.slug === inJobSlug);
+      if (job) {
+        appendHistory(out(`# ${job.company} — highlights`));
+        appendHistory(out(""));
+        for (const h of job.highlights) {
+          appendHistory(out(`  · ${h}`));
+        }
+      } else {
+        appendHistory(err("cat: highlights.txt: file not found"));
+      }
+      break;
+    }
+
+    // ── cat stack.txt (inside a job dir) ─────────────────────────────────────
+    case lower === "cat stack.txt" && inSection === "experience" && !!inJobSlug: {
+      const job = jobs.find((j) => j.slug === inJobSlug);
+      if (job) {
+        appendHistory(out(`# ${job.company} — primary skills`));
+        appendHistory(out(""));
+        appendHistory(out(job.primarySkills.join(" · ")));
+      } else {
+        appendHistory(err("cat: stack.txt: file not found"));
+      }
+      break;
+    }
+
+    // ── cat — about text files ─────────────────────────────────────────────────
     case lower === "cat family.txt":
       appendHistory(out("# family"));
       appendHistory(out("My wife Shannon and I have been married since July 2025. We bought"));
@@ -269,9 +341,11 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
         appendHistory(err("cat: missing file operand"));
       } else {
         appendHistory(err(`cat: ${args}: No such file or directory`));
-        if (currentPath === "~/about") {
+        if (inSection === "about") {
           appendHistory(out("available files: family.txt, craft.txt, play.txt"));
           appendHistory(out("hint: ls -a to see hidden files"));
+        } else if (inSection === "experience" && inJobSlug) {
+          appendHistory(out("available files: role.txt, highlights.txt, stack.txt"));
         } else {
           appendHistory(out("available files: projects.yml, readme.md"));
         }
@@ -333,11 +407,9 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     case lower === "uname" || lower === "uname -a":
       appendHistory(out("HadenOS 4.0.0 hadensystem #1 SMP Next.js/14 x86_64 JavaScript"));
       break;
-
     case lower === "uname -s":
       appendHistory(out("HadenOS"));
       break;
-
     case lower === "uname -r":
       appendHistory(out("4.0.0-hadensystem"));
       break;
@@ -357,13 +429,12 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("   99 tui      00:00:06 vibes"));
       break;
 
-    // ── top / htop ────────────────────────────────────────────────────────────
     case lower === "top" || lower === "htop":
       appendHistory(out("top - hadensystem load: 0.01 0.01 0.00"));
       appendHistory(out("Tasks: 5 total, 1 running, 4 sleeping"));
       appendHistory(out("CPU:  2.0% user  0.1% sys  97.9% idle"));
       appendHistory(out("Mem:  ████░░░░░░░░░░░░  (mostly portfolio data)"));
-      appendHistory(out(`press q to quit  (or just type another command)`));
+      appendHistory(out("press q to quit  (or just type another command)"));
       break;
 
     // ── ping ──────────────────────────────────────────────────────────────────
@@ -379,80 +450,57 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       }
       break;
 
-    // ── curl / wget ───────────────────────────────────────────────────────────
     case base === "curl" || base === "wget":
       appendHistory(out(`${base}: fetching... (this is a fictional shell)`));
       appendHistory(out("response: 200 OK — but there's nothing to fetch here."));
       appendHistory(out("try the GUI instead: type 'exit'"));
       break;
 
-    // ── ssh ───────────────────────────────────────────────────────────────────
     case base === "ssh":
       appendHistory(err("ssh: connect to host failed: this is a portfolio, not a server."));
       break;
 
-    // ── mkdir ─────────────────────────────────────────────────────────────────
     case base === "mkdir":
-      if (!args) {
-        appendHistory(err("mkdir: missing operand"));
-      } else {
-        appendHistory(out(`mkdir: cannot create directory '${args}': read-only filesystem`));
-        appendHistory(out("(this portfolio doesn't accept contributions — yet)"));
-      }
+      appendHistory(out(`mkdir: cannot create directory '${args || "?"}': read-only filesystem`));
       break;
 
-    // ── touch ─────────────────────────────────────────────────────────────────
     case base === "touch":
-      if (!args) {
-        appendHistory(err("touch: missing file operand"));
-      } else {
-        appendHistory(out(`touch: cannot touch '${args}': read-only filesystem`));
-      }
+      appendHistory(out(`touch: cannot touch '${args || "?"}': read-only filesystem`));
       break;
 
-    // ── rm variants ───────────────────────────────────────────────────────────
     case lower === "sudo rm -rf ." || lower === "sudo rm -rf /" || lower === "sudo rm -rf *"
       || lower === "rm -rf ." || lower === "rm -rf /" || lower === "rm -rf *"
       || lower === "sudo rm -rf ~" || lower === "rm -rf ~":
       appendHistory(out("nice try."));
       appendHistory(out("this shell is entirely fictional."));
-      appendHistory(out("the portfolio is safe. you are safe."));
       break;
 
     case base === "rm":
-      if (!args) {
-        appendHistory(err("rm: missing operand"));
-      } else {
-        appendHistory(err(`rm: cannot remove '${args}': read-only filesystem`));
-      }
+      appendHistory(err(`rm: cannot remove '${args || "?"}': read-only filesystem`));
       break;
 
-    // ── cp / mv ───────────────────────────────────────────────────────────────
     case base === "cp" || base === "mv":
       appendHistory(err(`${base}: cannot operate: read-only filesystem`));
       break;
 
-    // ── chmod / chown ─────────────────────────────────────────────────────────
     case base === "chmod" || base === "chown":
       appendHistory(err(`${base}: operation not permitted`));
       break;
 
-    // ── find ──────────────────────────────────────────────────────────────────
     case base === "find":
       appendHistory(out("./projects"));
       appendHistory(out("./experience"));
+      for (const slug of jobSlugs) appendHistory(out(`./experience/${slug}`));
       appendHistory(out("./knowledge"));
       appendHistory(out("./about"));
       appendHistory(out("./contact"));
       break;
 
-    // ── grep ──────────────────────────────────────────────────────────────────
     case base === "grep":
       appendHistory(out("grep: this filesystem contains only good code."));
       appendHistory(out("no matches found for bad practices."));
       break;
 
-    // ── which ─────────────────────────────────────────────────────────────────
     case base === "which":
       if (["node", "npm", "npx"].includes(args)) {
         appendHistory(out(`/usr/local/bin/${args}`));
@@ -461,7 +509,6 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       }
       break;
 
-    // ── env / printenv ────────────────────────────────────────────────────────
     case lower === "env" || lower === "printenv":
       appendHistory(out("SHELL=/bin/hadenshell"));
       appendHistory(out("USER=visitor"));
@@ -472,30 +519,24 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("NODE_ENV=production"));
       break;
 
-    // ── history ───────────────────────────────────────────────────────────────
     case lower === "history":
       appendHistory(out("use arrow keys to navigate the menu above."));
       appendHistory(out("command history is not persisted in this shell."));
       break;
 
-    // ── clear ─────────────────────────────────────────────────────────────────
     case lower === "clear":
-      // handled upstream in store.runTuiCommand — just break here as fallback
       break;
 
-    // ── exit ──────────────────────────────────────────────────────────────────
     case lower === "exit" || lower === "quit" || lower === "q":
       appendHistory(out("handoff: guiRenderer engaged → projects"));
       setTimeout(() => activateMenuItem(4), 400);
       break;
 
-    // ── editors ───────────────────────────────────────────────────────────────
     case lower === "vim" || lower === "vi" || lower === "nano" || lower === "emacs" || lower === "code":
       appendHistory(err(`${lower}: editor not available in this environment`));
-      appendHistory(out("(relax, there's nothing to edit here anyway)"));
+      appendHistory(out("(there's nothing to edit here anyway)"));
       break;
 
-    // ── git ───────────────────────────────────────────────────────────────────
     case lower === "git log" || lower === "git log --oneline":
       appendHistory(out("commit a4f2e91 — ship portfolio v4.0"));
       appendHistory(out("commit 3c8b012 — add TUI boot sequence"));
@@ -519,7 +560,6 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("try: git log, git status"));
       break;
 
-    // ── node / npm ────────────────────────────────────────────────────────────
     case lower === "node" || lower === "node -v" || lower === "node --version":
       appendHistory(out("v20.11.0"));
       break;
@@ -569,7 +609,6 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("If it needs a manual, it probably needs a redesign."));
       break;
 
-    // ── sudo (generic — reached only after successful auth for unrecognized commands) ──
     case base === "sudo":
       if (!args) {
         appendHistory(err("sudo: usage: sudo <command>"));
@@ -579,7 +618,6 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       }
       break;
 
-    // ── man (specific) ────────────────────────────────────────────────────────
     case base === "man":
       if (!args) {
         appendHistory(err("man: what manual page do you want?"));
@@ -594,25 +632,30 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("."));
       appendHistory(out("├── projects/"));
       for (let i = 0; i < projectSlugs.length; i++) {
-        const connector = i < projectSlugs.length - 1 ? "│   ├──" : "│   └──";
-        appendHistory(out(`${connector} ${projectSlugs[i]}/`));
+        const c = i < projectSlugs.length - 1 ? "│   ├──" : "│   └──";
+        appendHistory(out(`${c} ${projectSlugs[i]}/`));
       }
       appendHistory(out("├── experience/"));
-      for (let i = 0; i < experienceSlugs.length; i++) {
-        const connector = i < experienceSlugs.length - 1 ? "│   ├──" : "│   └──";
-        appendHistory(out(`${connector} ${experienceSlugs[i]}/`));
+      for (let i = 0; i < jobs.length; i++) {
+        const last = i === jobs.length - 1;
+        const c = last ? "│   └──" : "│   ├──";
+        const pipe = last ? "        " : "│       ";
+        appendHistory(out(`${c} ${jobs[i].slug}/`));
+        appendHistory(out(`${pipe}├── role.txt`));
+        appendHistory(out(`${pipe}├── highlights.txt`));
+        appendHistory(out(`${pipe}└── stack.txt`));
       }
       appendHistory(out("├── knowledge/"));
       for (let i = 0; i < knowledgeSlugs.length; i++) {
-        const connector = i < knowledgeSlugs.length - 1 ? "│   ├──" : "│   └──";
-        appendHistory(out(`${connector} ${knowledgeSlugs[i]}/`));
+        const c = i < knowledgeSlugs.length - 1 ? "│   ├──" : "│   └──";
+        appendHistory(out(`${c} ${knowledgeSlugs[i]}/`));
       }
       appendHistory(out("├── about/"));
       appendHistory(out("│   ├── family.txt"));
       appendHistory(out("│   ├── craft.txt"));
       appendHistory(out("│   └── play.txt"));
       appendHistory(out("└── contact/"));
-      appendHistory(out(`${projectSlugs.length + experienceSlugs.length + knowledgeSlugs.length} directories, many commits, zero regrets.`));
+      appendHistory(out(`${projectSlugs.length + jobs.length + knowledgeSlugs.length} directories, many commits, zero regrets.`));
       break;
     }
 
@@ -630,35 +673,28 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("               Terminal: TUI v4.0"));
       break;
 
-    // ── uptime ────────────────────────────────────────────────────────────────
     case lower === "uptime":
       appendHistory(out("up since first commit, load average: 0.00 0.00 0.00"));
       appendHistory(out("no downtime. ever. (this is a static site)"));
       break;
 
-    // ── df ────────────────────────────────────────────────────────────────────
     case lower === "df" || lower === "df -h":
       appendHistory(out("Filesystem       Size  Used  Avail  Use%  Mounted on"));
       appendHistory(out("/dev/portfolio   100G   42G    58G   42%  /"));
-      appendHistory(out("tmpfs/brain       ∞    ∞      ∞     —    /ideas"));
-      appendHistory(out("(most space is taken up by opinions about UX)"));
+      appendHistory(out("tmpfs/brain       inf   inf    inf    —   /ideas"));
+      appendHistory(out("(most space taken up by opinions about UX)"));
       break;
 
-    // ── ifconfig / ip addr ────────────────────────────────────────────────────
     case lower === "ifconfig" || lower === "ip addr" || lower === "ip a":
       appendHistory(out("eth0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>"));
       appendHistory(out("      inet 127.0.0.1  netmask 255.255.255.0"));
-      appendHistory(out("      inet6 ::1  prefixlen 128  scopeid 0x10<host>"));
       appendHistory(out("      (connected to the internet of good ideas)"));
       break;
 
-    // ── reboot / shutdown ─────────────────────────────────────────────────────
     case lower === "reboot" || lower === "shutdown" || lower === "shutdown -h now" || lower === "sudo reboot":
       appendHistory(out("rebooting... just kidding. this is a static portfolio."));
-      appendHistory(out("nothing to reboot. you are safe."));
       break;
 
-    // ── sl ────────────────────────────────────────────────────────────────────
     case lower === "sl":
       appendHistory(out("      ====        ________                ___________"));
       appendHistory(out("  _D _|  |_______/        \\__I_I_____===__|_________|"));
@@ -671,19 +707,16 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("  steam locomotive — you meant ls, didn't you?"));
       break;
 
-    // ── fortune ───────────────────────────────────────────────────────────────
     case lower === "fortune":
       appendHistory(out("\"The best interface is no interface.\""));
       appendHistory(out("  — Golden Krishna (but also just good engineering)"));
       break;
 
-    // ── matrix ────────────────────────────────────────────────────────────────
     case lower === "matrix":
       appendHistory(out("follow the white rabbit."));
       appendHistory(out("(there's no spoon, but there are hidden files — try ls -a in ~/about)"));
       break;
 
-    // ── alias ─────────────────────────────────────────────────────────────────
     case lower === "alias":
       appendHistory(out("alias ll='ls -la'"));
       appendHistory(out("alias gs='git status'"));
@@ -691,32 +724,27 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("alias vibes='ps | grep vibes'"));
       break;
 
-    // ── cat /etc/passwd ───────────────────────────────────────────────────────
     case lower === "cat /etc/passwd":
       appendHistory(out("root:x:0:0:root:/root:/bin/bash"));
       appendHistory(out("visitor:x:1000:1000:Portfolio Visitor:/home/visitor:/bin/hadenshell"));
       appendHistory(out("haden:x:1001:1001:Haden Hiles,Software Engineer:/home/haden:/bin/zsh"));
       break;
 
-    // ── cat /etc/hostname ─────────────────────────────────────────────────────
     case lower === "cat /etc/hostname" || lower === "cat /proc/version":
       appendHistory(out("hadensystem"));
       break;
 
-    // ── bash / sh / zsh ───────────────────────────────────────────────────────
     case lower === "bash" || lower === "sh" || lower === "zsh" || lower === "/bin/bash":
       appendHistory(out("spawning new shell..."));
       appendHistory(out("wait, you're already in one. this is it."));
       appendHistory(out("there is no deeper terminal. this goes all the way down."));
       break;
 
-    // ── sudo !! ───────────────────────────────────────────────────────────────
     case lower === "sudo !!":
       appendHistory(err("sudo: !!: command not found"));
       appendHistory(out("(bash history expansion doesn't work here — type the full command)"));
       break;
 
-    // ── less / more ───────────────────────────────────────────────────────────
     case base === "less" || base === "more":
       if (!args) {
         appendHistory(err(`${base}: missing file operand`));
@@ -726,7 +754,6 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       }
       break;
 
-    // ── default ───────────────────────────────────────────────────────────────
     default:
       appendHistory(err(`command not found: ${cmd}`));
       appendHistory(out("type 'help' for available commands."));

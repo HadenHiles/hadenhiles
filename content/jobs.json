@@ -1,0 +1,122 @@
+[
+  {
+    "slug": "mediasuite-co-op",
+    "company": "MediaSuite",
+    "companyLogo": null,
+    "coverImage": "/images/bugslife-solutions-freelance-2015.jpg",
+    "role": "Web Developer & Designer (Co-op)",
+    "dateRange": "2013 - 2015",
+    "startYear": 2013,
+    "endYear": 2015,
+    "current": false,
+    "primarySkills": ["UX / UI Design", "PHP", "WordPress", "CSS / SASS", "Client-Facing Architecture"],
+    "summary": "Started building real products as a co-op placement at MediaSuite, where I had full creative ownership over 50+ custom client websites. No senior developer above me. Just a design brief, a deadline, and a browser.",
+    "highlights": [
+      "Designed and built 50+ uniquely designed client websites with full UX ownership",
+      "Built a custom shopping cart and checkout solution for a client - no off-the-shelf compromise",
+      "Developed a swimming lesson registration platform with multi-child management, scheduling logic, digital waivers, and recurring payments",
+      "Owned every UX decision: layout, typography, visual hierarchy, and information architecture"
+    ],
+    "tui": "MediaSuite (Co-op) · 2013-2015 · Web Developer & Designer · 50+ client websites, custom checkout, scheduling systems"
+  },
+  {
+    "slug": "bugslife-solutions",
+    "company": "BugsLife Solutions",
+    "companyLogo": "/images/bugslife-solutions-logo.png",
+    "coverImage": "/images/bugslife-solutions-freelance-2015.jpg",
+    "role": "Founder & Developer (Freelance)",
+    "dateRange": "2015 - Present",
+    "startYear": 2015,
+    "endYear": null,
+    "current": true,
+    "primarySkills": ["Flutter / Dart", "Firebase / Firestore", "WordPress", "PHP", "UX / UI Design"],
+    "summary": "Founded BugsLife Solutions to deliver web and mobile projects for local businesses on my own terms. Grew from basic client websites into technically ambitious mobile applications - culminating in the Group of Seven Trail App and several other shipped products.",
+    "highlights": [
+      "Founded and operated as sole developer delivering web and mobile projects for local businesses",
+      "Built the Group of Seven Trail App - Flutter + Bluetooth beacon proximity triggers + C++ native layers",
+      "Built The Pond - a custom WordPress membership platform with LearnDash and MemberPress integration",
+      "10,000 Shots Challenge - a Flutter hockey training app with Firebase leaderboards and in-app purchases",
+      "Skill Drills - a real-time Flutter training platform for hockey players with live session tracking"
+    ],
+    "tui": "BugsLife Solutions (Freelance) · 2015-Present · Founder & Developer · Flutter mobile, WordPress, custom web & app products"
+  },
+  {
+    "slug": "geek-power",
+    "company": "Geek Power Web Design",
+    "companyLogo": "/images/geek-power-logo.webp",
+    "coverImage": "/images/geek-power.webp",
+    "role": "Lead Web Developer",
+    "dateRange": "Jan 2017 - Aug 2017",
+    "startYear": 2017,
+    "endYear": 2017,
+    "current": false,
+    "primarySkills": ["React", "Angular", "TypeScript", "Legacy Modernization", "UX / UI Design"],
+    "summary": "Led modernization of legacy client systems using React and Angular. Took full ownership of complex frontend projects for enterprise clients, designing and building custom UX solutions where existing tooling fell short.",
+    "highlights": [
+      "Built custom UX solutions using Angular and React as lead developer on high-detail client projects",
+      "Modernized legacy codebases for enterprise clients",
+      "Owned design-to-delivery on client-facing frontend systems"
+    ],
+    "tui": "Geek Power Web Design · Jan-Aug 2017 · Lead Web Developer · React, Angular, legacy modernization, enterprise clients"
+  },
+  {
+    "slug": "orderease",
+    "company": "OrderEase",
+    "companyLogo": "/images/orderease-linkgreen-logo.svg",
+    "coverImage": null,
+    "role": "Integration Development Manager",
+    "dateRange": "Sep 2017 - Dec 2017",
+    "startYear": 2017,
+    "endYear": 2017,
+    "current": false,
+    "primarySkills": [".NET / C#", "REST API Design", "Database Sync Tooling", "KANBAN / Agile", "CI/CD Pipeline Management"],
+    "summary": "Joined OrderEase to build REST API integrations for large B2B agricultural supply clients and internal tooling that simplified complex processes for non-technical staff. Managed KANBAN workflows and CI pipeline operations across the engineering team.",
+    "highlights": [
+      "Designed and tested REST API endpoints used by large B2B agricultural supply clients",
+      "Built a Windows .NET GUI tool allowing non-technical staff to sync local inventory databases with cloud APIs",
+      "Managed KANBAN boards, GitHub workflows, and CI pipelines"
+    ],
+    "tui": "OrderEase · Sep-Dec 2017 · Integration Dev Manager · REST APIs, .NET GUI tooling, B2B integrations, CI/CD"
+  },
+  {
+    "slug": "georgian-college",
+    "company": "Georgian College",
+    "companyLogo": "/images/georgian-logo.webp",
+    "coverImage": "/images/georgian-web-specialist.jpg",
+    "role": "Web Specialist (Marketing & IT)",
+    "dateRange": "Sep 2018 - Sep 2019",
+    "startYear": 2018,
+    "endYear": 2019,
+    "current": false,
+    "primarySkills": ["Data Integration & Validation", "WordPress", "Stakeholder Communication", "Web Systems Architecture"],
+    "summary": "Embedded in Georgian College's Marketing and IT departments to resolve complex data integrity issues between CRM systems and public-facing web platforms. Translated non-technical requirements from marketing stakeholders into functional, reliable integrations.",
+    "highlights": [
+      "Resolved complex term-data discrepancies between IT and marketing systems",
+      "Translated non-technical marketing requirements into functional web integrations",
+      "Ensured accurate real-time display of course and enrollment data for students across Georgian College platforms"
+    ],
+    "tui": "Georgian College · Sep 2018-Sep 2019 · Web Specialist · Data integration, CRM to web, stakeholder translation"
+  },
+  {
+    "slug": "how-to-hockey",
+    "company": "How To Hockey",
+    "companyLogo": "/images/how-to-hockey-logo.png",
+    "coverImage": "/images/how-to-hockey.jpg",
+    "role": "Lead Software & DevOps Engineer",
+    "dateRange": "Oct 2019 - Present",
+    "startYear": 2019,
+    "endYear": null,
+    "current": true,
+    "primarySkills": ["Production Infrastructure & DevOps", "GitHub Actions CI/CD", "Flutter / Dart", "Firebase / Firestore", "Docker"],
+    "summary": "Sole full stack and DevOps engineer for How To Hockey - a web and mobile platform serving hockey players worldwide. I own everything: Flutter mobile apps, Firebase architecture, production infrastructure, CI/CD pipelines, and real-time community tooling.",
+    "highlights": [
+      "Sole software and DevOps lead - full ownership across frontend, backend, mobile, and infrastructure",
+      "Built and shipped the 10,000 Shots Flutter mobile app with in-app purchases and real-time Firebase leaderboards",
+      "Designed real-time stat aggregation and team leaderboard systems with live Firebase data streaming",
+      "Implemented automated website backups, system snapshots, and recovery pipelines for production resilience",
+      "Built and maintained CI/CD pipelines using GitHub Actions - stable, repeatable, zero-manual-intervention releases",
+      "Shipped NextShift - a real-time community feedback and voting platform"
+    ],
+    "tui": "How To Hockey · Oct 2019-Present · Lead Software & DevOps Engineer · Full stack ownership, Flutter, Firebase, CI/CD, production infra"
+  }
+]

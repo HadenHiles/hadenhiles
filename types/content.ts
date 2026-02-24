@@ -1,3 +1,19 @@
+export interface Job {
+  slug: string;
+  company: string;
+  companyLogo?: string | null;
+  coverImage?: string | null;
+  role: string;
+  dateRange: string;
+  startYear: number;
+  endYear: number | null;
+  current: boolean;
+  primarySkills: string[];
+  summary: string;
+  highlights: string[];
+  tui?: string;
+}
+
 export interface Project {
   id: string;
   title: string;

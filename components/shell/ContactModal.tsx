@@ -54,74 +54,75 @@ export function ContactModal() {
             aria-hidden="true"
           />
 
-          {/* Modal */}
-          <motion.div
-            role="dialog"
-            aria-modal="true"
-            aria-label="Contact"
-            variants={scaleIn}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            transition={{ duration: duration.short }}
-            className="fixed z-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
-                       w-full max-w-sm p-6 bg-surface border border-border rounded-modal
-                       shadow-2xl"
-          >
-            {/* Header */}
-            <div className="flex items-center justify-between mb-5">
-              <h2 className="font-semibold text-lg">Get in touch</h2>
-              <button
-                ref={closeRef}
-                onClick={() => setContactOpen(false)}
-                aria-label="Close contact modal"
-                className="text-muted hover:text-text transition-colors text-lg leading-none"
-              >
-                ✕
-              </button>
-            </div>
-
-            {/* Email row */}
-            <div className="flex items-center gap-2 p-3 bg-surface2 border border-border rounded-lg mb-3">
-              <span className="text-sm text-text flex-1 font-mono truncate">
-                {contact.email}
-              </span>
-              <button
-                onClick={handleCopy}
-                className="text-xs font-medium shrink-0 transition-colors"
-                style={{ color: copied ? "#8A5CFF" : undefined }}
-                aria-label={copied ? "Email copied" : "Copy email address"}
-              >
-                {copied ? "Copied!" : "Copy"}
-              </button>
-            </div>
-
-            {/* LinkedIn */}
-            <a
-              href={contact.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-center w-full py-2.5 border border-border
-                         rounded-lg text-sm text-muted hover:text-text hover:border-border/60
-                         transition-colors mb-2"
+          {/* Centering shell — flex so the modal is always exactly centred */}
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-label="Contact"
+              variants={scaleIn}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ duration: duration.short }}
+              className="pointer-events-auto w-full max-w-sm p-6 bg-surface border border-border
+                         rounded-modal shadow-2xl"
             >
-              LinkedIn →
-            </a>
+              {/* Header */}
+              <div className="flex items-center justify-between mb-5">
+                <h2 className="font-semibold text-lg">Get in touch</h2>
+                <button
+                  ref={closeRef}
+                  onClick={() => setContactOpen(false)}
+                  aria-label="Close contact modal"
+                  className="text-muted hover:text-text transition-colors text-lg leading-none"
+                >
+                  ✕
+                </button>
+              </div>
 
-            {/* GitHub */}
-            {contact.github && (
+              {/* Email row */}
+              <div className="flex items-center gap-2 p-3 bg-surface2 border border-border rounded-lg mb-3">
+                <span className="text-sm text-text flex-1 font-mono truncate">
+                  {contact.email}
+                </span>
+                <button
+                  onClick={handleCopy}
+                  className="text-xs font-medium shrink-0 transition-colors"
+                  style={{ color: copied ? "#8A5CFF" : undefined }}
+                  aria-label={copied ? "Email copied" : "Copy email address"}
+                >
+                  {copied ? "Copied!" : "Copy"}
+                </button>
+              </div>
+
+              {/* LinkedIn */}
               <a
-                href={contact.github}
+                href={contact.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-full py-2.5 border border-border
                            rounded-lg text-sm text-muted hover:text-text hover:border-border/60
-                           transition-colors"
+                           transition-colors mb-2"
               >
-                GitHub →
+                LinkedIn →
               </a>
-            )}
-          </motion.div>
+
+              {/* GitHub */}
+              {contact.github && (
+                <a
+                  href={contact.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center w-full py-2.5 border border-border
+                             rounded-lg text-sm text-muted hover:text-text hover:border-border/60
+                             transition-colors"
+                >
+                  GitHub →
+                </a>
+              )}
+            </motion.div>
+          </div>
         </>
       )}
     </AnimatePresence>
