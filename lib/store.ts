@@ -6,7 +6,7 @@ import { MENU_ITEMS } from "./routes";
 
 export interface HistoryEntry {
   type: "log" | "cmd" | "out" | "err";
-  level?: "info" | "ok" | "warn";
+  level?: "info" | "ok" | "warn" | "banner" | "dim";
   text: string;
 }
 
@@ -21,6 +21,7 @@ interface AppState {
 
   // ─── TUI state ────────────────────────────────────────────────────────────
   bootComplete: boolean;
+  bootStarted: boolean;
   menuIndex: number;
   commandBuffer: string;
   history: HistoryEntry[];
@@ -56,6 +57,7 @@ export const useStore = create<AppState>()(
       isContactOpen: false,
 
       bootComplete: false,
+      bootStarted: false,
       menuIndex: 0,
       commandBuffer: "",
       history: [],
@@ -63,10 +65,18 @@ export const useStore = create<AppState>()(
 
       // ── GUI actions ────────────────────────────────────────────────────────
       setMode: (mode) => {
+        const prev = get().mode;
         set({ mode });
         if (typeof window !== "undefined") {
           const url = mode === "tui" ? "/" : `/site?mode=${mode}`;
-          window.history.pushState({}, "", url);
+          // pushState for TUI ↔ GUI transitions (meaningful nav),
+          // replaceState for section changes (scroll-driven, avoid spamming history)
+          const isModeSwitch = (prev === "tui") !== (mode === "tui");
+          if (isModeSwitch) {
+            window.history.pushState({}, "", url);
+          } else {
+            window.history.replaceState({}, "", url);
+          }
         }
       },
 
@@ -116,6 +126,10 @@ export const useStore = create<AppState>()(
       },
 
       runBootScript: () => {
+        // Guard against double-fire from React Strict Mode
+        if (get().bootStarted) return;
+        set({ bootStarted: true });
+
         // Lazy import to avoid circular deps — tuiScript has no store imports
         import("@/components/tui/tuiScript").then(({ BOOT_SCRIPT }) => {
           let cumulative = 0;

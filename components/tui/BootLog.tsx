@@ -1,14 +1,17 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import type { HistoryEntry } from "@/lib/store";
+import { MENU_ITEMS } from "@/lib/routes";
 import { duration, ease } from "@/lib/motion";
 
 const levelColor: Record<string, string> = {
-  info: "text-muted",
-  ok:   "text-text",
-  warn: "text-yellow-400",
+  info:   "text-muted",
+  ok:     "text-text",
+  warn:   "text-yellow-400",
+  banner: "text-accent",
+  dim:    "text-muted/40",
 };
 
 const typeStyle: Record<string, string> = {
@@ -22,35 +25,54 @@ const levelIcon: Record<string, string> = {
   info: "·",
   ok:   "✓",
   warn: "⚠",
+  // banner and dim have no icon prefix
 };
 
-export function BootLog({ history }: { history: HistoryEntry[] }) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+interface BootLogProps {
+  history: HistoryEntry[];
+  scrollRef: React.RefObject<HTMLDivElement>;
+  bootComplete: boolean;
+  menuIndex: number;
+  onMenuSelect: (i: number) => void;
+  onMenuActivate: (i: number) => void;
+}
 
+export function BootLog({
+  history,
+  scrollRef,
+  bootComplete,
+  menuIndex,
+  onMenuSelect,
+  onMenuActivate,
+}: BootLogProps) {
+  // Scroll to bottom when new entries appear or when menu first renders
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [history.length]);
+    const el = scrollRef.current;
+    if (el) el.scrollTop = el.scrollHeight;
+  }, [history.length, bootComplete, scrollRef]);
 
   return (
     <div
-      className="overflow-y-auto max-h-52 font-mono text-sm space-y-0.5 pr-1 scrollbar-thin"
+      ref={scrollRef}
+      className="h-full overflow-y-auto font-mono text-sm pr-1 scrollbar-thin"
       aria-live="polite"
-      aria-label="Boot log"
+      aria-label="Terminal output"
     >
+      {/* Boot log entries */}
       <AnimatePresence initial={false}>
         {history.map((entry, i) => (
           <motion.div
             key={i}
-            initial={{ opacity: 0, y: 3 }}
+            initial={{ opacity: 0, y: 2 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: duration.micro, ease: ease.standard }}
             className={`leading-relaxed ${
               entry.type === "log"
                 ? levelColor[entry.level ?? "info"]
                 : typeStyle[entry.type]
-            }`}
+            } ${entry.type === "log" && (entry.level === "banner" || entry.level === "dim") ? "whitespace-pre" : ""}`}
           >
-            {entry.type === "log" && (
+            {entry.type === "log" && entry.level !== "banner" && entry.level !== "dim" && (
               <span className="text-border mr-2 select-none w-3 inline-block">
                 {levelIcon[entry.level ?? "info"]}
               </span>
@@ -59,7 +81,64 @@ export function BootLog({ history }: { history: HistoryEntry[] }) {
           </motion.div>
         ))}
       </AnimatePresence>
-      <div ref={bottomRef} />
+
+      {/* Inline menu — appears after boot, baked into the terminal output */}
+      {bootComplete && (
+        <div className="mt-3 mb-1" role="menu" aria-label="Navigation">
+          {/* Visual separator */}
+          <div className="text-border/50 mb-2 select-none">────────────────</div>
+
+          {MENU_ITEMS.map((item, i) => {
+            const isActive = i === menuIndex;
+            return (
+              <motion.button
+                key={item.label}
+                role="menuitem"
+                aria-current={isActive ? "true" : undefined}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: duration.short,
+                  ease: ease.standard,
+                  delay: i * 0.04,
+                }}
+                onClick={() => {
+                  onMenuSelect(i);
+                  onMenuActivate(i);
+                }}
+                onMouseEnter={() => onMenuSelect(i)}
+                className={`
+                  w-full flex items-center text-left leading-7
+                  transition-colors cursor-default select-none
+                  ${isActive ? "text-text" : "text-muted hover:text-text/80"}
+                `}
+              >
+                {/* Block cursor — blinks on active row */}
+                <span
+                  className={`w-4 shrink-0 text-accent select-none ${isActive ? "cursor-blink" : "opacity-0"}`}
+                  aria-hidden="true"
+                >
+                  ▌
+                </span>
+
+                {/* Number hint */}
+                <span
+                  className={`w-5 shrink-0 text-xs select-none ${
+                    isActive ? "text-accent/60" : "text-muted/30"
+                  }`}
+                >
+                  {item.number}
+                </span>
+
+                {/* Label */}
+                <span className={isActive ? "font-medium" : ""}>
+                  {item.label}
+                </span>
+              </motion.button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

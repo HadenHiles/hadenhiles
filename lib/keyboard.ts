@@ -29,10 +29,9 @@ export function useTuiKeyboard(opts: TuiKeyboardOptions) {
         return;
       }
 
-      if (isTyping) return;
-
       switch (e.key) {
         case "ArrowUp":
+          // Arrow keys always navigate menu — even when typing in the command line
           e.preventDefault();
           onUp();
           break;
@@ -41,10 +40,12 @@ export function useTuiKeyboard(opts: TuiKeyboardOptions) {
           onDown();
           break;
         case "Enter":
+          if (isTyping) break;
           e.preventDefault();
           onEnter();
           break;
         default: {
+          if (isTyping) break;
           const n = parseInt(e.key, 10);
           if (!isNaN(n) && n >= 1 && n <= 9) {
             onNumber(n);

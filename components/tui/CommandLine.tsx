@@ -6,6 +6,7 @@ interface CommandLineProps {
   value: string;
   onChange: (v: string) => void;
   onSubmit: (cmd: string) => void;
+  onEnterEmpty?: () => void;
   bootComplete: boolean;
 }
 
@@ -13,6 +14,7 @@ export function CommandLine({
   value,
   onChange,
   onSubmit,
+  onEnterEmpty,
   bootComplete,
 }: CommandLineProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -22,10 +24,54 @@ export function CommandLine({
     if (bootComplete) inputRef.current?.focus();
   }, [bootComplete]);
 
+  // Global keypress capture — typing anywhere focuses the terminal input
+  useEffect(() => {
+    if (!bootComplete) return;
+
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      const input = inputRef.current;
+      if (!input) return;
+
+      // If the input already has focus, let its own handler manage everything
+      if (document.activeElement === input) return;
+
+      // Ignore modifier-only combos and special browser shortcuts
+      if (e.metaKey || e.ctrlKey || e.altKey) return;
+
+      // Printable characters — focus input and let the char land naturally
+      if (e.key.length === 1) {
+        input.focus();
+        // The keydown fires before input value updates, so the char will
+        // be appended by the browser normally once focus is set.
+        return;
+      }
+
+      // Backspace — focus and trim last char manually
+      if (e.key === "Backspace") {
+        e.preventDefault();
+        input.focus();
+        onChange(value.slice(0, -1));
+        return;
+      }
+
+      // Enter — focus input so its own onKeyDown fires
+      if (e.key === "Enter") {
+        input.focus();
+      }
+    };
+
+    window.addEventListener("keydown", handleGlobalKeyDown);
+    return () => window.removeEventListener("keydown", handleGlobalKeyDown);
+  }, [bootComplete, value, onChange]);
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       e.preventDefault();
-      if (value.trim()) onSubmit(value.trim());
+      if (value.trim()) {
+        onSubmit(value.trim());
+      } else {
+        onEnterEmpty?.();
+      }
     }
   };
 

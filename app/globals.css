@@ -44,6 +44,16 @@ html {
     text-wrap: balance;
   }
 
+  /* Terminal cursor blink — square wave, no fade */
+  .cursor-blink {
+    animation: cursor-blink 1s step-end infinite;
+  }
+
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0; }
+  }
+
   /* Scrollbar styling */
   .scrollbar-thin {
     scrollbar-width: thin;

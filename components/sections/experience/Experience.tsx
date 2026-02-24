@@ -6,9 +6,12 @@ import { VersionTimeline } from "./VersionTimeline";
 
 export function Experience() {
   return (
-    <section aria-label="Experience" className="max-w-5xl mx-auto">
-      <h2 className="text-2xl font-semibold mb-1">Version History</h2>
-      <p className="text-muted text-sm mb-6">
+    <section aria-label="Experience">
+      <p className="font-mono text-sm text-accent mb-4">experience</p>
+      <h2 className="text-4xl sm:text-5xl font-bold text-text leading-tight mb-3">
+        Version History
+      </h2>
+      <p className="text-muted mb-10">
         Each chapter had a different constraint set.
       </p>
       <VersionTimeline entries={experience as ExperienceEntry[]} />

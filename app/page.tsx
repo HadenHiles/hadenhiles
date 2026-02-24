@@ -20,15 +20,7 @@ export default function PortfolioRoot() {
     <LayoutGroup>
       {/* Sync prefers-reduced-motion to store on mount */}
       <MotionPreferenceSync />
-      <main
-        className={`
-          min-h-screen flex
-          ${isTUI
-            ? "items-center justify-center p-4 sm:p-8"
-            : "flex-col"
-          }
-        `}
-      >
+      <main className="min-h-screen flex flex-col">
         <TuiHandoff isTUI={isTUI}>
           <AnimatePresence mode="wait">
             {isTUI ? (

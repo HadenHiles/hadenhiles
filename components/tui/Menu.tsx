@@ -35,7 +35,7 @@ export function Menu({ activeIndex, bootComplete, onSelect, onActivate }: MenuPr
             className={`
               w-full flex items-center gap-2 px-3 py-2 rounded-lg text-left
               font-mono text-sm transition-colors
-              ${isActive ? "text-text" : "text-muted hover:text-text"}
+              ${isActive ? "text-text bg-surface2/60" : "text-muted hover:text-text"}
             `}
           >
             {/* Purple > — only visible when active */}
@@ -47,8 +47,12 @@ export function Menu({ activeIndex, bootComplete, onSelect, onActivate }: MenuPr
               &gt;
             </span>
 
-            {/* Number hint */}
-            <span className="text-border select-none w-4 text-xs shrink-0">
+            {/* Number hint — more prominent coloring */}
+            <span
+              className={`select-none w-4 text-xs shrink-0 transition-colors ${
+                isActive ? "text-accent/70" : "text-muted/50"
+              }`}
+            >
               {item.number}.
             </span>
 
