@@ -132,7 +132,7 @@ Reliability is part of user experience. If the system fails, the interface does 
 
 ---
 
-*If you'd like to work together, reach out at [business@hadenhiles.com](mailto:business@hadenhiles.com).*
+*If you'd like to work together, reach out at [hi@hadenhiles.com](mailto:hi@hadenhiles.com).*
 
 ---
 
