@@ -6,7 +6,7 @@
       {
         "name": "Flutter / Dart",
         "logo": "flutter",
-        "usedFor": "Cross-platform mobile apps with native performance — single codebase across iOS and Android without the usual trade-offs.",
+        "usedFor": "Cross-platform mobile apps with native performance - single codebase across iOS and Android without the usual trade-offs.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
           "group-of-seven-trail-app",
@@ -40,7 +40,7 @@
       {
         "name": "JavaScript",
         "logo": "javascript",
-        "usedFor": "The foundation of the web stack — scripting, browser APIs, and integration glue across every frontend layer.",
+        "usedFor": "The foundation of the web stack - scripting, browser APIs, and integration glue across every frontend layer.",
         "proofProjectIds": []
       },
       {
@@ -54,7 +54,7 @@
       {
         "name": "CSS / SASS",
         "logo": "css3",
-        "usedFor": "Interfaces that feel intentional. Design is applied from the user's perspective — not added at the end.",
+        "usedFor": "Interfaces that feel intentional. Design is applied from the user's perspective - not added at the end.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
           "the-pond",
@@ -79,7 +79,7 @@
       {
         "name": "Node.js / Express",
         "logo": "nodedotjs",
-        "usedFor": "Backend services and proxy layers — especially where CORS handling, request routing, or third-party integrations need clean separation from the frontend.",
+        "usedFor": "Backend services and proxy layers - especially where CORS handling, request routing, or third-party integrations need clean separation from the frontend.",
         "proofProjectIds": [
           "video-scraper"
         ]
@@ -95,7 +95,7 @@
       {
         "name": ".NET Core",
         "logo": "dotnet",
-        "usedFor": "Windows desktop tools and enterprise backend services — used at LinkGreen to build database sync tooling for non-technical staff.",
+        "usedFor": "Windows desktop tools and enterprise backend services - used at LinkGreen to build database sync tooling for non-technical staff.",
         "proofProjectIds": []
       },
       {
@@ -113,19 +113,19 @@
       {
         "name": "MySQL",
         "logo": "mysql",
-        "usedFor": "Relational data modeling for web platforms — schema design, query optimization, and production reliability.",
+        "usedFor": "Relational data modeling for web platforms - schema design, query optimization, and production reliability.",
         "proofProjectIds": []
       },
       {
         "name": "MS SQL Server",
         "logo": "microsoftsqlserver",
-        "usedFor": "Enterprise database work at LinkGreen — syncing local SQL databases with cloud APIs via custom GUI tooling.",
+        "usedFor": "Enterprise database work at LinkGreen - syncing local SQL databases with cloud APIs via custom GUI tooling.",
         "proofProjectIds": []
       },
       {
         "name": "Cloud Firestore",
         "logo": "firebase",
-        "usedFor": "NoSQL document modeling for real-time mobile and web apps — optimized for low-latency reads and live sync.",
+        "usedFor": "NoSQL document modeling for real-time mobile and web apps - optimized for low-latency reads and live sync.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
           "nextshift"
@@ -146,7 +146,7 @@
       {
         "name": "SQLite",
         "logo": "sqlite",
-        "usedFor": "Embedded local storage in mobile apps — offline-first data persistence in Flutter applications.",
+        "usedFor": "Embedded local storage in mobile apps - offline-first data persistence in Flutter applications.",
         "proofProjectIds": []
       }
     ]
@@ -158,7 +158,7 @@
       {
         "name": "GitHub Actions",
         "logo": "githubactions",
-        "usedFor": "Building and maintaining CI/CD pipelines — release workflows that are stable, repeatable, and require minimal manual intervention.",
+        "usedFor": "Building and maintaining CI/CD pipelines - release workflows that are stable, repeatable, and require minimal manual intervention.",
         "proofProjectIds": []
       },
       {
@@ -170,7 +170,7 @@
       {
         "name": "Linux",
         "logo": "linux",
-        "usedFor": "Server administration, shell scripting, and production environment management — the OS underneath every deployment.",
+        "usedFor": "Server administration, shell scripting, and production environment management - the OS underneath every deployment.",
         "proofProjectIds": []
       },
       {
@@ -194,7 +194,7 @@
       {
         "name": "Firebase / GCP",
         "logo": "firebase",
-        "usedFor": "Primary cloud platform for mobile and web — hosting, Firestore, auth, functions, and real-time infrastructure.",
+        "usedFor": "Primary cloud platform for mobile and web - hosting, Firestore, auth, functions, and real-time infrastructure.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
           "nextshift"
@@ -215,7 +215,7 @@
       {
         "name": "DigitalOcean",
         "logo": "digitalocean",
-        "usedFor": "VPS hosting for production web deployments — simple, cost-effective, and fast to configure.",
+        "usedFor": "VPS hosting for production web deployments - simple, cost-effective, and fast to configure.",
         "proofProjectIds": []
       }
     ]
@@ -227,7 +227,7 @@
       {
         "name": "C++",
         "logo": "cplusplus",
-        "usedFor": "Performance-sensitive native layers in Flutter apps — Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
+        "usedFor": "Performance-sensitive native layers in Flutter apps - Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
         "proofProjectIds": [
           "group-of-seven-trail-app",
           "skill-drills"
@@ -259,7 +259,7 @@
       {
         "name": "UX Architecture",
         "logo": null,
-        "usedFor": "Every project starts with 'as a user, what would I expect right here?' — this isn't a phase, it's the foundation every technical decision is built on.",
+        "usedFor": "Every project starts with 'as a user, what would I expect right here?' - this isn't a phase, it's the foundation every technical decision is built on.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
           "the-pond",
@@ -270,7 +270,7 @@
       {
         "name": "Content Architecture",
         "logo": null,
-        "usedFor": "Designing information hierarchies that feel intuitive — so users always know what to do next without reading instructions.",
+        "usedFor": "Designing information hierarchies that feel intuitive - so users always know what to do next without reading instructions.",
         "proofProjectIds": [
           "the-pond"
         ]

@@ -2,7 +2,7 @@
   {
     "version": "v1.0",
     "title": "Foundations & Design",
-    "tui": "v1.0 · 2013–2016 · MediaSuite Co-op + BugsLife — web design, UX ownership, custom payment & scheduling systems.",
+    "tui": "v1.0 · 2013–2016 · MediaSuite Co-op + BugsLife - web design, UX ownership, custom payment & scheduling systems.",
     "dateRange": "2013 – 2016",
     "role": "Web Developer & Designer",
     "companies": [
@@ -20,7 +20,7 @@
     "summary": "Started as a co-op at MediaSuite, independently designing and shipping 50+ custom client websites. Simultaneously launched BugsLife Solutions doing freelance web and mobile work for local businesses. Built real product instincts early by owning the full design-to-delivery loop without a senior layer above.",
     "highlights": [
       "Designed and built 50+ uniquely designed client websites at MediaSuite with full creative ownership",
-      "Built a custom shopping cart and checkout solution for a client — no off-the-shelf compromise",
+      "Built a custom shopping cart and checkout solution for a client - no off-the-shelf compromise",
       "Developed a swimming lesson registration platform with multi-child management, scheduling logic, digital waivers, and recurring payments",
       "Founded BugsLife Solutions and began delivering web and mobile projects for local businesses",
       "Owned every UX decision: layout, typography, visual hierarchy, and information architecture"
@@ -29,7 +29,7 @@
   {
     "version": "v2.0",
     "title": "Frontend & Integration",
-    "tui": "v2.0 · 2017 · Geek Power + LinkGreen — React, Angular, REST APIs, .NET, CI/CD pipelines.",
+    "tui": "v2.0 · 2017 · Geek Power + LinkGreen - React, Angular, REST APIs, .NET, CI/CD pipelines.",
     "dateRange": "Jan 2017 – Dec 2017",
     "role": "Software Engineer → Integration Development Manager",
     "companies": [
@@ -57,7 +57,7 @@
   {
     "version": "v3.0",
     "title": "Mobile & Systems",
-    "tui": "v3.0 · 2018–2019 · Georgian College + BugsLife mobile — Flutter, Firebase, Bluetooth beacons, native integrations.",
+    "tui": "v3.0 · 2018–2019 · Georgian College + BugsLife mobile - Flutter, Firebase, Bluetooth beacons, native integrations.",
     "dateRange": "Sep 2018 – Sep 2019",
     "role": "Web Specialist & Mobile Engineer",
     "companies": [
@@ -73,9 +73,9 @@
       "Data Integration & Validation",
       "Stakeholder Communication"
     ],
-    "summary": "Worked at Georgian College resolving complex data integration issues between marketing systems and public-facing web platforms. Concurrently, BugsLife delivered its most technically ambitious project: the Group of Seven Trail App — a Flutter mobile app with Bluetooth proximity triggers, C++ native layers, and offline trail plotting. This era solidified mobile-first, systems-level engineering skills.",
+    "summary": "Worked at Georgian College resolving complex data integration issues between marketing systems and public-facing web platforms. Concurrently, BugsLife delivered its most technically ambitious project: the Group of Seven Trail App - a Flutter mobile app with Bluetooth proximity triggers, C++ native layers, and offline trail plotting. This era solidified mobile-first, systems-level engineering skills.",
     "highlights": [
-      "Designed and built the Group of Seven Trail App — Flutter + Bluetooth beacon proximity triggers + C++ native layers",
+      "Designed and built the Group of Seven Trail App - Flutter + Bluetooth beacon proximity triggers + C++ native layers",
       "Built a custom CMS solution enabling hikers to access Group of Seven painting site content off-site",
       "Resolved complex term-data discrepancies between IT and marketing systems at Georgian College",
       "Translated non-technical marketing requirements into functional web integrations",
@@ -85,7 +85,7 @@
   {
     "version": "v4.0",
     "title": "Full Stack & DevOps",
-    "tui": "v4.0 · 2019–Present · How To Hockey (Lead) + BugsLife — full stack ownership, production infra, CI/CD, Flutter mobile.",
+    "tui": "v4.0 · 2019–Present · How To Hockey (Lead) + BugsLife - full stack ownership, production infra, CI/CD, Flutter mobile.",
     "dateRange": "Oct 2019 – Present",
     "role": "Lead Software & DevOps Engineer",
     "companies": [
@@ -101,14 +101,14 @@
       "System Backup & Recovery",
       "UX-Driven Full Stack Architecture"
     ],
-    "summary": "Joined How To Hockey as the primary full stack and DevOps lead for web and mobile platforms serving hockey players worldwide. Owned everything: Flutter mobile apps, Firebase architecture, CI/CD pipelines, production stability, and real-time community tools. Every technical decision starts with the same question — as a user, what would I expect right here?",
+    "summary": "Joined How To Hockey as the primary full stack and DevOps lead for web and mobile platforms serving hockey players worldwide. Owned everything: Flutter mobile apps, Firebase architecture, CI/CD pipelines, production stability, and real-time community tools. Every technical decision starts with the same question - as a user, what would I expect right here?",
     "highlights": [
-      "Sole software and DevOps lead for How To Hockey — full ownership across frontend, backend, mobile, and infrastructure",
+      "Sole software and DevOps lead for How To Hockey - full ownership across frontend, backend, mobile, and infrastructure",
       "Built and shipped the 10,000 Shots Flutter mobile app including in-app purchases and real-time Firebase leaderboards",
       "Designed real-time stat aggregation and team leaderboard systems with live Firebase data streaming",
       "Implemented automated website backups, system snapshots, and recovery pipelines for production resilience",
-      "Built and maintained CI/CD pipelines using GitHub Actions — stable, repeatable, zero-manual-intervention releases",
-      "Shipped NextShift — a real-time community feedback and voting platform built at How To Hockey"
+      "Built and maintained CI/CD pipelines using GitHub Actions - stable, repeatable, zero-manual-intervention releases",
+      "Shipped NextShift - a real-time community feedback and voting platform built at How To Hockey"
     ]
   }
 ]
