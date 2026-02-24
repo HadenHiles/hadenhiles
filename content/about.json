@@ -2,9 +2,9 @@
   "pillars": [
     {
       "name": "Family",
-      "story": "Add your personal family content here — a specific moment or detail lands better than a general statement about what family means to you.",
+      "story": "My wife Shannon and I have been married since July 2025, we bought our first house in Oct 2025 and we have a spoiled golden retriever named Harvey that is our pride and joy. The best time of year is up in cottage country where Harvey can sprint down the dock and launch into the water, quickly followed by a boat ride to air-dry!",
       "image": null,
-      "shapeWork": "Add one sentence on how your family shapes the way you work or what you're building toward."
+      "shapeWork": "I take pride in my family, and I always want what's best for those around me. I'm always on the lookout for how I can make things better or more enjoyable."
     },
     {
       "name": "Craft",
@@ -14,13 +14,13 @@
     },
     {
       "name": "Play",
-      "story": "Add your personal play content here — the things you do outside of work that feed back into how you think and build. Hockey, hobbies, gear, anything that keeps the creative side running.",
+      "story": "Some of my biggest passions in life involve sports like Hockey, Golf, Squash - if it's competitve, I love it. I also enjoy playing guitar, reading (when I'm in the mood), and diving in to a great movie series or show (LOTR, GOT, Mr. Robot - IYKYK). On the weekends you'll find me working on a project around the house, tweeking settings on my home media server, or enjoying time with my family.",
       "image": null,
-      "shapeWork": "Add one sentence on how what you do for fun shapes your work."
+      "shapeWork": "Everything I do for fun, whether it be sports, personal projects, or working on the boat at the cottage, all ties in to how I conduct my work. If I'm going to do anything, I'm going to do it right."
     }
   ],
   "contact": {
-    "email": "your@email.com",
+    "email": "hi@hadenhiles.com",
     "linkedin": "https://www.linkedin.com/in/haden-hiles-67610882/",
     "github": "https://github.com/HadenHiles"
   }
