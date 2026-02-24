@@ -135,7 +135,6 @@ Reliability is part of user experience. If the system fails, the interface does 
 *If you'd like to work together, reach out at [business@hadenhiles.com](mailto:business@hadenhiles.com).*
 
 ---
----
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
