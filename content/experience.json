@@ -1,62 +1,114 @@
 [
   {
     "version": "v1.0",
-    "title": "Foundations",
-    "tui": "v1.0 · Software Developer @ How To Hockey — first hire, full-stack across web and mobile.",
-    "dateRange": "Early Career",
-    "role": "Software Developer",
-    "company": "How To Hockey",
-    "summary": "Joined How To Hockey as the first official employee. Started building across the stack — frontend, backend, and platform tooling — while learning what it means to own a production system end to end.",
+    "title": "Foundations & Design",
+    "tui": "v1.0 · 2013–2016 · MediaSuite Co-op + BugsLife — web design, UX ownership, custom payment & scheduling systems.",
+    "dateRange": "2013 – 2016",
+    "role": "Web Developer & Designer",
+    "companies": [
+      "MediaSuite (Co-op)",
+      "BugsLife Solutions"
+    ],
+    "primarySkills": [
+      "UX / UI Design",
+      "PHP",
+      "WordPress",
+      "Custom Payment Logic",
+      "Scheduling Systems",
+      "Client-Facing Architecture"
+    ],
+    "summary": "Started as a co-op at MediaSuite, independently designing and shipping 50+ custom client websites. Simultaneously launched BugsLife Solutions doing freelance web and mobile work for local businesses. Built real product instincts early by owning the full design-to-delivery loop without a senior layer above.",
     "highlights": [
-      "First official hire at How To Hockey, working directly alongside founder Jeremy Rupke",
-      "Shipped early platform features across web and mobile",
-      "Established initial deployment patterns and release workflows",
-      "Built the muscle of designing for users first and engineering second"
+      "Designed and built 50+ uniquely designed client websites at MediaSuite with full creative ownership",
+      "Built a custom shopping cart and checkout solution for a client — no off-the-shelf compromise",
+      "Developed a swimming lesson registration platform with multi-child management, scheduling logic, digital waivers, and recurring payments",
+      "Founded BugsLife Solutions and began delivering web and mobile projects for local businesses",
+      "Owned every UX decision: layout, typography, visual hierarchy, and information architecture"
     ]
   },
   {
     "version": "v2.0",
-    "title": "Building Products",
-    "tui": "v2.0 · Software Engineer — shipped The Pond, TenThousandShotChallenge, Group of Seven Trail App.",
-    "dateRange": "Mid Career",
-    "role": "Software Engineer",
-    "company": "How To Hockey",
-    "summary": "Shifted from platform maintenance to product ownership. Designed and shipped multiple full-stack products — membership platforms, mobile apps, and community tools — with full accountability from UX to deployment.",
+    "title": "Frontend & Integration",
+    "tui": "v2.0 · 2017 · Geek Power + LinkGreen — React, Angular, REST APIs, .NET, CI/CD pipelines.",
+    "dateRange": "Jan 2017 – Dec 2017",
+    "role": "Software Engineer → Integration Development Manager",
+    "companies": [
+      "Geek Power Web Design",
+      "LinkGreen"
+    ],
+    "primarySkills": [
+      "React",
+      "Angular",
+      "REST API Design",
+      ".NET / C#",
+      "Database Sync Tooling",
+      "CI/CD Pipeline Management",
+      "Agile / KANBAN"
+    ],
+    "summary": "Two roles back-to-back that pushed deeply into frontend frameworks and backend integration engineering. At Geek Power, led modernization of legacy systems using React and Angular. At LinkGreen, built REST API endpoints for large B2B clients and a .NET GUI tool enabling non-technical staff to sync local databases with cloud systems.",
     "highlights": [
-      "Designed and launched The Pond, a gated membership and course platform on WordPress",
-      "Built TenThousandShotChallenge as a cross-platform mobile app with Firebase real-time sync",
-      "Delivered the Group of Seven Trail App with Bluetooth proximity triggers and C++ native integrations",
-      "Established a consistent design-from-the-user-down workflow across every project"
+      "Built custom UX solutions using Angular and React as lead developer on high-detail client projects",
+      "Modernized legacy codebases for enterprise clients at Geek Power Web Design",
+      "Designed and tested REST API endpoints used by large B2B agricultural supply clients at LinkGreen",
+      "Built a Windows .NET GUI tool allowing non-technical staff to sync local inventory databases with cloud APIs",
+      "Managed KANBAN boards, GitHub workflows, and CI pipelines at LinkGreen"
     ]
   },
   {
     "version": "v3.0",
-    "title": "Owning the Stack",
-    "tui": "v3.0 · Principal Engineer — added DevOps ownership, shipped NextShift, codified the engineering approach.",
-    "dateRange": "Later Career",
-    "role": "Principal Software Engineer",
-    "company": "How To Hockey",
-    "summary": "Became the principal engineer responsible for all web platforms, tools, and production infrastructure. Added DevOps ownership to the engineering role — deployment pipelines, stability, and system reliability became part of the mandate.",
+    "title": "Mobile & Systems",
+    "tui": "v3.0 · 2018–2019 · Georgian College + BugsLife mobile — Flutter, Firebase, Bluetooth beacons, native integrations.",
+    "dateRange": "Sep 2018 – Sep 2019",
+    "role": "Web Specialist & Mobile Engineer",
+    "companies": [
+      "Georgian College (Marketing & IT)",
+      "BugsLife Solutions"
+    ],
+    "primarySkills": [
+      "Flutter / Dart",
+      "Firebase / Firestore",
+      "Bluetooth Beacon Integration",
+      "Native iOS/Android Integrations",
+      "C++ (Native Layers)",
+      "Data Integration & Validation",
+      "Stakeholder Communication"
+    ],
+    "summary": "Worked at Georgian College resolving complex data integration issues between marketing systems and public-facing web platforms. Concurrently, BugsLife delivered its most technically ambitious project: the Group of Seven Trail App — a Flutter mobile app with Bluetooth proximity triggers, C++ native layers, and offline trail plotting. This era solidified mobile-first, systems-level engineering skills.",
     "highlights": [
-      "Promoted to Principal Software and DevOps Engineer",
-      "Took ownership of deployment pipelines and production infrastructure stability",
-      "Designed and shipped NextShift, a real-time community feedback and voting platform",
-      "Codified a consistent engineering approach: design it like a user, build it like an engineer, stabilize it like a DevOps lead"
+      "Designed and built the Group of Seven Trail App — Flutter + Bluetooth beacon proximity triggers + C++ native layers",
+      "Built a custom CMS solution enabling hikers to access Group of Seven painting site content off-site",
+      "Resolved complex term-data discrepancies between IT and marketing systems at Georgian College",
+      "Translated non-technical marketing requirements into functional web integrations",
+      "Ensured accurate real-time display of course and enrollment data for students across Georgian College platforms"
     ]
   },
   {
     "version": "v4.0",
-    "title": "UX-First Engineering",
-    "tui": "v4.0 · Principal Software & DevOps — full stack + infra ownership, every decision starts from the user.",
-    "dateRange": "Present",
-    "role": "Principal Software and DevOps Engineer",
-    "company": "How To Hockey",
-    "summary": "The philosophy is fully operational: every flow, button, color, API, and deployment decision starts with the same question — as a user, what would I expect right here? Engineering and UX are not separate concerns.",
+    "title": "Full Stack & DevOps",
+    "tui": "v4.0 · 2019–Present · How To Hockey (Lead) + BugsLife — full stack ownership, production infra, CI/CD, Flutter mobile.",
+    "dateRange": "Oct 2019 – Present",
+    "role": "Lead Software & DevOps Engineer",
+    "companies": [
+      "How To Hockey",
+      "BugsLife Solutions"
+    ],
+    "primarySkills": [
+      "Production Infrastructure & DevOps",
+      "GitHub Actions CI/CD",
+      "Flutter / Dart (Mobile)",
+      "Firebase / Firestore (Real-Time)",
+      "Docker",
+      "System Backup & Recovery",
+      "UX-Driven Full Stack Architecture"
+    ],
+    "summary": "Joined How To Hockey as the primary full stack and DevOps lead for web and mobile platforms serving hockey players worldwide. Owned everything: Flutter mobile apps, Firebase architecture, CI/CD pipelines, production stability, and real-time community tools. Every technical decision starts with the same question — as a user, what would I expect right here?",
     "highlights": [
-      "Full ownership across frontend, backend, mobile, and infrastructure at How To Hockey",
-      "Every system decision anchored to a single mental model: what would the user expect here?",
-      "Builds tools that simplify complexity rather than expose it",
-      "Values reliability as part of user experience, not separate from it"
+      "Sole software and DevOps lead for How To Hockey — full ownership across frontend, backend, mobile, and infrastructure",
+      "Built and shipped the 10,000 Shots Flutter mobile app including in-app purchases and real-time Firebase leaderboards",
+      "Designed real-time stat aggregation and team leaderboard systems with live Firebase data streaming",
+      "Implemented automated website backups, system snapshots, and recovery pipelines for production resilience",
+      "Built and maintained CI/CD pipelines using GitHub Actions — stable, repeatable, zero-manual-intervention releases",
+      "Shipped NextShift — a real-time community feedback and voting platform built at How To Hockey"
     ]
   }
 ]

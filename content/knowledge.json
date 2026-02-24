@@ -1,10 +1,11 @@
 [
   {
     "category": "Frontend",
-    "tui": "Flutter/Dart · React · TypeScript · WordPress · CSS/UI Design",
+    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · CSS/SASS",
     "skills": [
       {
         "name": "Flutter / Dart",
+        "logo": "flutter",
         "usedFor": "Cross-platform mobile apps with native performance — single codebase across iOS and Android without the usual trade-offs.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -15,6 +16,7 @@
       },
       {
         "name": "React",
+        "logo": "react",
         "usedFor": "Web UIs where speed of development matters and the output needs to stay maintainable.",
         "proofProjectIds": [
           "timmies-helper",
@@ -22,21 +24,36 @@
         ]
       },
       {
+        "name": "Angular",
+        "logo": "angular",
+        "usedFor": "Enterprise-grade frontend applications where structure, scalability, and team conventions matter.",
+        "proofProjectIds": []
+      },
+      {
         "name": "TypeScript",
+        "logo": "typescript",
         "usedFor": "Type safety on the frontend and backend. Catches the class of bugs that waste the most time.",
         "proofProjectIds": [
           "video-scraper"
         ]
       },
       {
+        "name": "JavaScript",
+        "logo": "javascript",
+        "usedFor": "The foundation of the web stack — scripting, browser APIs, and integration glue across every frontend layer.",
+        "proofProjectIds": []
+      },
+      {
         "name": "WordPress",
+        "logo": "wordpress",
         "usedFor": "Content platforms that non-technical admins need to own and operate without ongoing developer involvement.",
         "proofProjectIds": [
           "the-pond"
         ]
       },
       {
-        "name": "CSS / UI Design",
+        "name": "CSS / SASS",
+        "logo": "css3",
         "usedFor": "Interfaces that feel intentional. Design is applied from the user's perspective — not added at the end.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -48,10 +65,11 @@
   },
   {
     "category": "Backend",
-    "tui": "Firebase/Firestore · Node.js/Express · PHP · LearnDash/MemberPress",
+    "tui": "Firebase/Firestore · Node.js/Express · PHP · .NET Core · LearnDash/MemberPress",
     "skills": [
       {
         "name": "Firebase / Firestore",
+        "logo": "firebase",
         "usedFor": "Real-time data sync, authentication, and scalable session-based data modeling for mobile and web apps.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -60,6 +78,7 @@
       },
       {
         "name": "Node.js / Express",
+        "logo": "nodedotjs",
         "usedFor": "Backend services and proxy layers — especially where CORS handling, request routing, or third-party integrations need clean separation from the frontend.",
         "proofProjectIds": [
           "video-scraper"
@@ -67,54 +86,147 @@
       },
       {
         "name": "PHP",
+        "logo": "php",
         "usedFor": "Custom WordPress integrations, plugin extensions, and server-side membership logic.",
         "proofProjectIds": [
           "the-pond"
         ]
       },
       {
-        "name": "LearnDash / MemberPress",
-        "usedFor": "Course architecture and gated membership logic on WordPress — configured and extended rather than rebuilt from scratch.",
-        "proofProjectIds": [
-          "the-pond"
-        ]
+        "name": ".NET Core",
+        "logo": "dotnet",
+        "usedFor": "Windows desktop tools and enterprise backend services — used at LinkGreen to build database sync tooling for non-technical staff.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "REST API Design",
+        "logo": null,
+        "usedFor": "Designing clean, predictable endpoints consumed by both internal tools and large B2B clients.",
+        "proofProjectIds": []
       }
     ]
   },
   {
-    "category": "DevOps / Automation",
-    "tui": "CI/CD Pipelines · Production Infrastructure · Docker · Vite",
+    "category": "Databases",
+    "tui": "Firestore · MySQL · MS SQL Server · MongoDB · GraphQL · SQLite",
     "skills": [
       {
-        "name": "Deployment Pipelines",
-        "usedFor": "Building and maintaining the CI/CD infrastructure at How To Hockey — release workflows that are stable, repeatable, and require minimal manual intervention.",
+        "name": "MySQL",
+        "logo": "mysql",
+        "usedFor": "Relational data modeling for web platforms — schema design, query optimization, and production reliability.",
         "proofProjectIds": []
       },
       {
-        "name": "Production Infrastructure",
-        "usedFor": "Owning the systems that stay up after launch. Reliability is part of user experience, not separate from it.",
+        "name": "MS SQL Server",
+        "logo": "microsoftsqlserver",
+        "usedFor": "Enterprise database work at LinkGreen — syncing local SQL databases with cloud APIs via custom GUI tooling.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Cloud Firestore",
+        "logo": "firebase",
+        "usedFor": "NoSQL document modeling for real-time mobile and web apps — optimized for low-latency reads and live sync.",
+        "proofProjectIds": [
+          "ten-thousand-shot-challenge",
+          "nextshift"
+        ]
+      },
+      {
+        "name": "MongoDB",
+        "logo": "mongodb",
+        "usedFor": "Document-oriented storage for flexible, schema-light backend services.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "GraphQL",
+        "logo": "graphql",
+        "usedFor": "Flexible query layer for APIs where clients need to shape their own data requirements.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "SQLite",
+        "logo": "sqlite",
+        "usedFor": "Embedded local storage in mobile apps — offline-first data persistence in Flutter applications.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "DevOps & Infrastructure",
+    "tui": "GitHub Actions · Docker · Linux · Backup & Recovery · CI/CD Pipelines",
+    "skills": [
+      {
+        "name": "GitHub Actions",
+        "logo": "githubactions",
+        "usedFor": "Building and maintaining CI/CD pipelines — release workflows that are stable, repeatable, and require minimal manual intervention.",
         "proofProjectIds": []
       },
       {
         "name": "Docker",
+        "logo": "docker",
         "usedFor": "Containerized service isolation and consistent environments across development and production.",
         "proofProjectIds": []
       },
       {
-        "name": "Vite",
-        "usedFor": "Fast, modern frontend build tooling for React projects where dev speed and bundle size both matter.",
-        "proofProjectIds": [
-          "video-scraper"
-        ]
+        "name": "Linux",
+        "logo": "linux",
+        "usedFor": "Server administration, shell scripting, and production environment management — the OS underneath every deployment.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Production Infrastructure",
+        "logo": null,
+        "usedFor": "Owning the systems that stay up after launch. Reliability is part of user experience, not separate from it.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Backup & Recovery Systems",
+        "logo": null,
+        "usedFor": "Automated website backups, system snapshots, and structured recovery pipelines to guarantee rollback capability.",
+        "proofProjectIds": []
       }
     ]
   },
   {
-    "category": "Systems / Networking",
+    "category": "Cloud Platforms",
+    "tui": "Firebase · AWS · Azure · Digital Ocean",
+    "skills": [
+      {
+        "name": "Firebase / GCP",
+        "logo": "firebase",
+        "usedFor": "Primary cloud platform for mobile and web — hosting, Firestore, auth, functions, and real-time infrastructure.",
+        "proofProjectIds": [
+          "ten-thousand-shot-challenge",
+          "nextshift"
+        ]
+      },
+      {
+        "name": "AWS",
+        "logo": "amazonaws",
+        "usedFor": "Cloud infrastructure for scalable deployments, object storage, and serverless function integration.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Azure",
+        "logo": "microsoftazure",
+        "usedFor": "Microsoft cloud services used alongside .NET-based enterprise tooling and CI integrations.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "DigitalOcean",
+        "logo": "digitalocean",
+        "usedFor": "VPS hosting for production web deployments — simple, cost-effective, and fast to configure.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "Systems / Native",
     "tui": "C++ · Bluetooth Beacons · Native iOS/Android Integrations",
     "skills": [
       {
         "name": "C++",
+        "logo": "cplusplus",
         "usedFor": "Performance-sensitive native layers in Flutter apps — Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
         "proofProjectIds": [
           "group-of-seven-trail-app",
@@ -123,13 +235,15 @@
       },
       {
         "name": "Bluetooth Beacons",
+        "logo": null,
         "usedFor": "Proximity-based content triggering for location-aware mobile applications.",
         "proofProjectIds": [
           "group-of-seven-trail-app"
         ]
       },
       {
-        "name": "Native Integrations",
+        "name": "Native iOS/Android",
+        "logo": null,
         "usedFor": "Bridging Dart and native iOS/Android APIs when the cross-platform layer isn't enough.",
         "proofProjectIds": [
           "group-of-seven-trail-app",
@@ -139,11 +253,12 @@
     ]
   },
   {
-    "category": "Storytelling / Production",
+    "category": "Product & UX",
     "tui": "UX Architecture · Content Architecture · Product Thinking",
     "skills": [
       {
         "name": "UX Architecture",
+        "logo": null,
         "usedFor": "Every project starts with 'as a user, what would I expect right here?' — this isn't a phase, it's the foundation every technical decision is built on.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -154,6 +269,7 @@
       },
       {
         "name": "Content Architecture",
+        "logo": null,
         "usedFor": "Designing information hierarchies that feel intuitive — so users always know what to do next without reading instructions.",
         "proofProjectIds": [
           "the-pond"
@@ -161,6 +277,7 @@
       },
       {
         "name": "Product Thinking",
+        "logo": null,
         "usedFor": "Framing engineering decisions in terms of user outcomes and business impact, not just technical correctness.",
         "proofProjectIds": [
           "nextshift",

@@ -675,7 +675,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     case lower === "cat /etc/passwd":
       appendHistory(out("root:x:0:0:root:/root:/bin/bash"));
       appendHistory(out("visitor:x:1000:1000:Portfolio Visitor:/home/visitor:/bin/hadenshell"));
-      appendHistory(out("haden:x:1001:1001:Haden Hiles,Principal Engineer:/home/haden:/bin/zsh"));
+      appendHistory(out("haden:x:1001:1001:Haden Hiles,Software Engineer:/home/haden:/bin/zsh"));
       break;
 
     // ── cat /etc/hostname ─────────────────────────────────────────────────────

@@ -157,74 +157,126 @@ export function TopNav() {
         </motion.button>
       </div>
 
-      {/* Mobile dropdown — TUI-themed with staggered entrance */}
+      {/* Mobile full-screen menu overlay */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: duration.short, ease: ease.standard }}
-            className="sm:hidden absolute top-full left-0 right-0 overflow-hidden border-b border-border bg-bg/98 backdrop-blur-md"
+            className="sm:hidden fixed inset-0 z-50 bg-bg flex flex-col"
           >
-            {/* Terminal-style top rule */}
-            <div className="mx-5 pt-3 pb-1 font-mono text-xs text-border/50 select-none">
-              navigation/
+            {/* Top bar with logo + close */}
+            <div className="flex items-center justify-between px-5 py-4 border-b border-border/40">
+              <button
+                onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileOpen(false); }}
+                className="flex items-center gap-3 shrink-0"
+                aria-label="Back to top"
+              >
+                <div className="h-7 w-auto flex items-center">
+                  {logoError ? (
+                    <span className="font-mono text-sm font-bold text-accent select-none">HH</span>
+                  ) : (
+                    <Image
+                      src="/images/logo/logo_color.png"
+                      alt="Haden Hiles"
+                      width={90}
+                      height={28}
+                      className="object-contain h-7 w-auto"
+                      onError={() => setLogoError(true)}
+                    />
+                  )}
+                </div>
+              </button>
+
+              {/* Close button */}
+              <motion.button
+                onClick={() => setMobileOpen(false)}
+                className="p-1.5 text-muted hover:text-accent transition-colors"
+                aria-label="Close menu"
+                animate="open"
+              >
+                <div className="w-5 h-3.5 flex flex-col justify-between">
+                  <motion.span
+                    className="block h-px bg-current origin-center"
+                    variants={topVariant}
+                    transition={lineTransition}
+                  />
+                  <motion.span
+                    className="block h-px bg-current origin-center"
+                    variants={midVariant}
+                    transition={lineTransition}
+                  />
+                  <motion.span
+                    className="block h-px bg-current origin-center"
+                    variants={bottomVariant}
+                    transition={lineTransition}
+                  />
+                </div>
+              </motion.button>
             </div>
 
-            {NAV_TABS.map((tab, i) => {
-              const isActive = mode === tab.mode;
-              return (
-                <motion.button
-                  key={tab.mode}
-                  initial={{ opacity: 0, x: -8 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{
-                    delay: i * 0.045,
-                    duration: duration.micro,
-                    ease: ease.standard,
-                  }}
-                  onClick={() => handleTab(tab)}
-                  aria-current={isActive ? "page" : undefined}
-                  className={`
-                    w-full flex items-center gap-3 px-5 py-3 font-mono text-sm text-left
-                    transition-colors select-none
-                    ${isActive ? "text-text" : "text-muted hover:text-text/80"}
-                  `}
-                >
-                  {/* Block cursor — matches TUI menu */}
-                  <motion.span
-                    animate={{ opacity: isActive ? 1 : 0 }}
-                    transition={{ duration: duration.micro }}
-                    className="text-accent text-base leading-none select-none shrink-0 cursor-blink"
-                    aria-hidden="true"
+            {/* Centered nav items */}
+            <nav className="flex-1 flex flex-col items-center justify-center gap-2" aria-label="Site sections">
+              {NAV_TABS.map((tab, i) => {
+                const isActive = mode === tab.mode;
+                return (
+                  <motion.button
+                    key={tab.mode}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{
+                      delay: i * 0.06,
+                      duration: duration.short,
+                      ease: ease.standard,
+                    }}
+                    onClick={() => handleTab(tab)}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`
+                      w-full max-w-xs flex items-center justify-center gap-3
+                      px-6 py-4 rounded-card text-xl font-medium
+                      transition-colors select-none
+                      ${isActive
+                        ? "text-accent bg-accent/10 border border-accent/20"
+                        : "text-text hover:text-accent hover:bg-surface2/60"
+                      }
+                    `}
                   >
-                    ▌
-                  </motion.span>
-                  <span className={`${isActive ? "font-medium" : ""} -ml-1`}>
                     {tab.label}
-                  </span>
-                </motion.button>
-              );
-            })}
+                    {isActive && (
+                      <span className="w-2 h-2 rounded-full bg-accent inline-block" />
+                    )}
+                  </motion.button>
+                );
+              })}
 
-            {/* Divider + Terminal option */}
+              {/* Divider */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: NAV_TABS.length * 0.06 + 0.05, duration: duration.micro }}
+                className="w-full max-w-xs"
+              >
+                <div className="my-3 border-t border-border/30" />
+                <button
+                  onClick={() => { setMode("tui"); setMobileOpen(false); }}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-card text-base text-muted hover:text-accent hover:bg-surface2/60 transition-colors font-mono"
+                >
+                  &gt;_ Terminal
+                </button>
+              </motion.div>
+            </nav>
+
+            {/* Bottom label */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: NAV_TABS.length * 0.045, duration: duration.micro }}
+              transition={{ delay: 0.35, duration: duration.micro }}
+              className="pb-8 text-center font-mono text-xs text-border/50 select-none"
             >
-              <div className="mx-5 my-1 border-t border-border/30" />
-              <button
-                onClick={() => { setMode("tui"); setMobileOpen(false); }}
-                className="w-full flex items-center gap-3 px-5 py-3 font-mono text-sm text-left text-muted hover:text-accent transition-colors"
-              >
-                <span className="text-base leading-none select-none shrink-0 opacity-0 pointer-events-none" aria-hidden="true">▌</span>
-                <span className="-ml-1">&gt;_ Terminal</span>
-              </button>
+              hadenhiles.com
             </motion.div>
-
-            <div className="pb-2" />
           </motion.div>
         )}
       </AnimatePresence>

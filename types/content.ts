@@ -17,15 +17,19 @@ export interface Project {
 export interface ExperienceEntry {
   version: string;
   title: string;
+  tui?: string;
   dateRange: string;
   role: string;
   company?: string | null;
+  companies?: string[];
+  primarySkills?: string[];
   summary: string;
   highlights: string[];
 }
 
 export interface KnowledgeSkill {
   name: string;
+  logo?: string | null;
   usedFor: string;
   proofProjectIds: string[];
 }

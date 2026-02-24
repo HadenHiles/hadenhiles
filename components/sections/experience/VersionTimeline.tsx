@@ -136,11 +136,45 @@ function VersionDetail({ entry }: { entry: ExperienceEntry }) {
         <span className="font-mono text-sm text-accent">{entry.version}</span>
         <h3 className="text-lg font-semibold text-text">{entry.title}</h3>
       </div>
-      <div className="text-sm text-muted mb-0.5">
-        {entry.role}
-        {entry.company && <span> — {entry.company}</span>}
-      </div>
+      <div className="text-sm text-muted mb-0.5">{entry.role}</div>
+
+      {/* Companies */}
+      {entry.companies && entry.companies.length > 0 ? (
+        <div className="flex flex-wrap gap-1.5 mb-2">
+          {entry.companies.map((c) => (
+            <span
+              key={c}
+              className="text-xs px-2 py-0.5 rounded-full border border-border text-muted font-mono"
+            >
+              {c}
+            </span>
+          ))}
+        </div>
+      ) : entry.company ? (
+        <div className="text-sm text-muted mb-2">{entry.company}</div>
+      ) : null}
+
       <div className="text-xs text-border mb-4">{entry.dateRange}</div>
+
+      {/* Primary skills — most prominent element */}
+      {entry.primarySkills && entry.primarySkills.length > 0 && (
+        <div className="mb-4">
+          <div className="text-xs font-mono text-accent/70 uppercase tracking-wider mb-2">
+            Primary Skills
+          </div>
+          <div className="flex flex-wrap gap-1.5">
+            {entry.primarySkills.map((skill) => (
+              <span
+                key={skill}
+                className="text-xs px-2.5 py-1 rounded bg-accent/10 text-accent border border-accent/25 font-mono"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
       <p className="text-text text-sm leading-relaxed mb-4">{entry.summary}</p>
       <ul className="space-y-1.5">
         {entry.highlights.map((h, i) => (
