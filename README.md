@@ -1,11 +1,6 @@
-<p align="center">
-  <a href="https://www.hadenhiles.com">
-    <img alt="Haden" src="./public/logo/logo_color.png" width="500" />
-  </a>
-</p>
+# Design from the User Down. Build the System to Match
 
-<h1 align="center">Design from the User Down. Build the System to Match.</h1>
-<br />
+[![Haden](./public/logo/logo_color.png)](https://www.hadenhiles.com)
 
 I build software the way I want software to feel as a user: simple, fast, intuitive, and reliable.
 
@@ -36,8 +31,9 @@ Below are projects where I owned both the user experience and the system behind 
 ---
 
 ### 🥅 [TenThousandShotChallenge](https://github.com/HadenHiles/TenThousandShotChallenge)  
-<sub>Flutter, Dart, Firebase</sub>  
-<sup>620 commits</sup>
+
+*Flutter, Dart, Firebase*  
+620 commits
 
 A cross-platform mobile app built to support the 10,000 Shot Challenge community.
 
@@ -48,8 +44,9 @@ UX focus: open the app, log shots in seconds, see progress clearly, leave. No fr
 ---
 
 ### 🎓 [The Pond](https://github.com/HadenHiles/ThePond)  
-<sub>PHP, WordPress, JavaScript, CSS</sub>  
-<sup>434 commits</sup>
+
+*PHP, WordPress, JavaScript, CSS*  
+434 commits
 
 A structured subscription platform for hockey training.
 
@@ -60,8 +57,9 @@ UX focus: players should always know what to do next. Admin workflows should not
 ---
 
 ### 🗺️ [The Group of Seven Trail App](https://github.com/HadenHiles/G7TrailApp)  
-<sub>Flutter, Dart, C++</sub>  
-<sup>362 commits</sup>
+
+*Flutter, Dart, C++*  
+362 commits
 
 An interactive hiking companion app for the Lake Superior Group of Seven Trail.
 
@@ -72,8 +70,9 @@ UX focus: relevant information should appear at the right time without digging t
 ---
 
 ### 📊 [NextShift](https://github.com/HadenHiles/NextShift)  
-<sub>Flutter, Dart, Firebase</sub>  
-<sup>53 commits</sup>
+
+*Flutter, Dart, Firebase*  
+53 commits
 
 A community-driven feedback and voting platform for the How To Hockey ecosystem.
 
@@ -84,8 +83,9 @@ UX focus: submitting an idea should take under 20 seconds. Feedback should feel 
 ---
 
 ### 🧠 [Skill Drills](https://github.com/HadenHiles/skill-drills)  
-<sub>Flutter, Dart, C++</sub>  
-<sup>37 commits</sup>
+
+*Flutter, Dart, C++*  
+37 commits
 
 A customizable skill tracking application.
 
@@ -96,8 +96,9 @@ UX focus: flexible without becoming confusing.
 ---
 
 ### 🎬 [VideoScraper](https://github.com/HadenHiles/VideoScraper)  
-<sub>React, TypeScript, Node.js, Express</sub>  
-<sup>19 commits</sup>
+
+*React, TypeScript, Node.js, Express*  
+19 commits
 
 A modern web application that processes video URLs through a Node.js proxy backend.
 
@@ -131,9 +132,10 @@ Reliability is part of user experience. If the system fails, the interface does 
 
 ---
 
-<sub>If you'd like to work together, reach out at <a href="mailto:business@hadenhiles.com">business@hadenhiles.com</a>.</sub>
+*If you'd like to work together, reach out at [business@hadenhiles.com](mailto:business@hadenhiles.com).*
 
-----------------------------------------------------------------------------------------------------------
+---
+---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -149,25 +151,3 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
