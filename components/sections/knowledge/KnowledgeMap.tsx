@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useSpring, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, useSpring, useTransform, useInView } from "framer-motion";
 import type { KnowledgeCategory } from "@/types/content";
 import { duration, ease } from "@/lib/motion";
 
@@ -19,9 +19,10 @@ interface SkillTileProps {
   logo: string;
   yearsExperience: number;
   tileIndex: number;
+  isInView: boolean;
 }
 
-function SkillTile({ name, logo, yearsExperience, tileIndex }: SkillTileProps) {
+function SkillTile({ name, logo, yearsExperience, tileIndex, isInView }: SkillTileProps) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
 
@@ -40,22 +41,42 @@ function SkillTile({ name, logo, yearsExperience, tileIndex }: SkillTileProps) {
 
   if (imgError) return null;
 
-  // Deterministic scatter transform per tile
-  const rotation = (seededRand(tileIndex, 1) * 20) - 10; // -10 to +10 deg
-  const marginTop = seededRand(tileIndex, 2) * 28;        // 0 to 28px
-  const marginLeft = seededRand(tileIndex, 3) * 12;       // 0 to 12px
+  // Deterministic settled transform (final resting state — the "organized" part)
+  const settledRotation = (seededRand(tileIndex, 1) * 20) - 10;   // -10 to +10 deg
+  const marginTop = seededRand(tileIndex, 2) * 28;                 // 0 to 28px
+  const marginLeft = seededRand(tileIndex, 3) * 12;                // 0 to 12px
+
+  // Deterministic launch transform (off-screen starting state — the "chaotic" part)
+  const launchRotation = (seededRand(tileIndex, 6) * 60) - 30;    // -30 to +30 deg
+  const launchY = -(60 + seededRand(tileIndex, 7) * 60);          // -60 to -120px
+
+  // Stagger capped at 25 tiles so the back of the deck doesn't feel abandoned
+  const enterDelay = Math.min(tileIndex, 24) * 0.022;
 
   return (
     // Outer wrapper handles entrance reveal
     <motion.div
-      initial={{ opacity: 0, scale: 0.88, rotate: rotation * 0.5 }}
-      whileInView={{ opacity: 1, scale: 1, rotate: rotation }}
-      viewport={{ once: true, margin: "-30px" }}
-      transition={{
-        delay: tileIndex * 0.03,
-        duration: duration.short,
-        ease: ease.standard,
-      }}
+      initial={{ opacity: 0, y: launchY, rotate: launchRotation, scale: 0.85 }}
+      animate={
+        isInView
+          ? { opacity: 1, y: 0, rotate: settledRotation, scale: 1 }
+          : { opacity: 0, y: launchY, rotate: launchRotation, scale: 0.85 }
+      }
+      transition={
+        isInView
+          ? {
+              type: "spring",
+              stiffness: 300,
+              damping: 22,
+              delay: enterDelay,
+            }
+          : {
+              type: "spring",
+              stiffness: 420,
+              damping: 32,
+              delay: 0,
+            }
+      }
       style={{
         marginTop,
         marginLeft,
@@ -139,8 +160,13 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
     cat.skills.filter((s) => s.logo && s.yearsExperience != null)
   ) as Array<{ name: string; logo: string; yearsExperience: number }>;
 
+  const containerRef = useRef<HTMLDivElement>(null);
+  // Fires as a batch when the container is 220px into the viewport — not gradual per-tile
+  const isInView = useInView(containerRef, { once: false, margin: "0px 0px -220px 0px" });
+
   return (
     <div
+      ref={containerRef}
       className="flex flex-wrap gap-2.5"
       style={{ alignItems: "flex-start" }}
     >
@@ -151,6 +177,7 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
           logo={skill.logo}
           yearsExperience={skill.yearsExperience}
           tileIndex={i}
+          isInView={isInView}
         />
       ))}
     </div>

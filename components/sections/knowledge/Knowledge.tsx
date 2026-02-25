@@ -23,14 +23,7 @@ export function Knowledge() {
           Hover any logo to see years of experience.
         </p>
       </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: duration.medium, ease: ease.standard, delay: 0.1 }}
-      >
-        <KnowledgeMap categories={knowledge as KnowledgeCategory[]} />
-      </motion.div>
+      <KnowledgeMap categories={knowledge as KnowledgeCategory[]} />
     </section>
   );
 }
