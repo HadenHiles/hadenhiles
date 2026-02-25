@@ -5,17 +5,27 @@ import { motion, useSpring, useTransform } from "framer-motion";
 import type { KnowledgeCategory } from "@/types/content";
 import { duration, ease } from "@/lib/motion";
 
+// ─── Seeded pseudo-random (deterministic per-index) ──────────────────────────
+
+function seededRand(index: number, salt: number): number {
+  const x = Math.sin(index * 127.1 + salt * 311.7) * 43758.5453;
+  return x - Math.floor(x);
+}
+
+// ─── Skill Tile ───────────────────────────────────────────────────────────────
+
 interface SkillTileProps {
   name: string;
   logo: string;
   yearsExperience: number;
+  tileIndex: number;
 }
 
-function SkillTile({ name, logo, yearsExperience }: SkillTileProps) {
+function SkillTile({ name, logo, yearsExperience, tileIndex }: SkillTileProps) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
 
-  // Animate the displayed number from 0 → yearsExperience on hover
+  // Animate years counter on hover
   const spring = useSpring(0, { stiffness: 80, damping: 18 });
   const displayed = useTransform(spring, (v) => Math.round(v));
 
@@ -30,7 +40,30 @@ function SkillTile({ name, logo, yearsExperience }: SkillTileProps) {
 
   if (imgError) return null;
 
+  // Deterministic scatter transform per tile
+  const rotation = (seededRand(tileIndex, 1) * 20) - 10; // -10 to +10 deg
+  const marginTop = seededRand(tileIndex, 2) * 28;        // 0 to 28px
+  const marginLeft = seededRand(tileIndex, 3) * 12;       // 0 to 12px
+
   return (
+    // Outer wrapper handles entrance reveal
+    <motion.div
+      initial={{ opacity: 0, scale: 0.88, rotate: rotation * 0.5 }}
+      whileInView={{ opacity: 1, scale: 1, rotate: rotation }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{
+        delay: tileIndex * 0.03,
+        duration: duration.short,
+        ease: ease.standard,
+      }}
+      style={{
+        marginTop,
+        marginLeft,
+        width: "fit-content",
+        transformOrigin: "center",
+      }}
+    >
+    {/* Inner wrapper handles hover states */}
     <motion.div
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
@@ -38,90 +71,88 @@ function SkillTile({ name, logo, yearsExperience }: SkillTileProps) {
       onBlur={handleLeave}
       tabIndex={0}
       aria-label={`${name} — ${yearsExperience} years`}
-      className="relative flex flex-col items-center justify-center gap-2 p-4 rounded-card border border-border bg-surface cursor-default outline-none focus-visible:ring-1 focus-visible:ring-accent/60"
       animate={{
-        borderColor: hovered ? "rgba(138,92,255,0.45)" : "rgba(237,237,242,0.12)",
-        backgroundColor: hovered ? "rgba(138,92,255,0.06)" : "rgba(30,30,38,1)",
+        borderColor: hovered ? "rgba(138,92,255,0.5)" : "rgba(237,237,242,0.1)",
+        backgroundColor: hovered ? "rgba(138,92,255,0.08)" : "rgba(21,21,32,1)",
+        boxShadow: hovered
+          ? "0 4px 24px rgba(138,92,255,0.18), 0 1px 0 rgba(255,255,255,0.05) inset"
+          : "0 2px 12px rgba(0,0,0,0.35), 0 1px 0 rgba(255,255,255,0.04) inset",
+        scale: hovered ? 1.06 : 1,
       }}
       transition={{ duration: duration.micro, ease: ease.standard }}
+      className="relative flex items-center gap-2.5 px-3 py-2.5 rounded-xl border cursor-default outline-none focus-visible:ring-1 focus-visible:ring-accent/60 select-none"
+      style={{
+        minWidth: 110,
+        transformOrigin: "center",
+      }}
     >
       {/* Logo */}
       <motion.div
-        animate={{ scale: hovered ? 0.82 : 1 }}
-        transition={{ duration: duration.micro, ease: ease.standard }}
-        className="w-8 h-8 flex items-center justify-center shrink-0"
+        animate={{ scale: hovered ? 0.88 : 1 }}
+        transition={{ duration: duration.micro }}
+        className="flex items-center justify-center shrink-0"
+        style={{ width: 22, height: 22 }}
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={logo}
           alt={name}
-          width={32}
-          height={32}
-          className="w-8 h-8 object-contain"
+          width={22}
+          height={22}
+          className="object-contain"
+          style={{ width: 22, height: 22 }}
           onError={() => setImgError(true)}
         />
       </motion.div>
 
-      {/* Overlay: years counter */}
-      <motion.div
-        initial={false}
-        animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 6 }}
-        transition={{ duration: duration.micro, ease: ease.standard }}
-        className="flex flex-col items-center gap-0.5 pointer-events-none"
-        aria-hidden="true"
-      >
-        <div className="flex items-baseline gap-0.5">
-          <motion.span className="font-mono text-lg font-bold text-accent leading-none">
-            {displayed}
-          </motion.span>
-          <span className="font-mono text-[10px] text-accent/70 leading-none">yr</span>
-        </div>
-      </motion.div>
-
-      {/* Name — fades out on hover */}
+      {/* Name */}
       <motion.span
-        animate={{ opacity: hovered ? 0 : 0.55 }}
+        animate={{ opacity: hovered ? 0 : 1 }}
         transition={{ duration: duration.micro }}
-        className="font-mono text-[10px] text-muted text-center leading-tight pointer-events-none absolute bottom-2 left-1 right-1 truncate px-1"
+        className="font-bold text-[11px] tracking-widest uppercase leading-none text-white/70 whitespace-nowrap"
       >
         {name}
       </motion.span>
+
+      {/* Years overlay */}
+      <motion.div
+        initial={false}
+        animate={{ opacity: hovered ? 1 : 0, scale: hovered ? 1 : 0.85 }}
+        transition={{ duration: duration.micro, ease: ease.standard }}
+        className="absolute inset-0 flex items-center justify-center gap-1 pointer-events-none rounded-xl"
+        aria-hidden="true"
+      >
+        <motion.span className="font-mono text-base font-bold text-accent leading-none">
+          {displayed}
+        </motion.span>
+        <span className="font-mono text-[10px] text-accent/70 leading-none">yr</span>
+      </motion.div>
+    </motion.div>
     </motion.div>
   );
 }
 
+// ─── Knowledge Map ────────────────────────────────────────────────────────────
+
 export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }) {
-  // Collect only logo skills with a yearsExperience value across all categories
   const logoSkills = categories.flatMap((cat) =>
     cat.skills.filter((s) => s.logo && s.yearsExperience != null)
   ) as Array<{ name: string; logo: string; yearsExperience: number }>;
 
   return (
-    <motion.div
-      className="grid gap-3"
-      style={{
-        gridTemplateColumns: "repeat(auto-fill, minmax(88px, 1fr))",
-      }}
+    <div
+      className="flex flex-wrap gap-2.5"
+      style={{ alignItems: "flex-start" }}
     >
       {logoSkills.map((skill, i) => (
-        <motion.div
+        <SkillTile
           key={skill.name}
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, margin: "-40px" }}
-          transition={{
-            delay: i * 0.025,
-            duration: duration.short,
-            ease: ease.standard,
-          }}
-        >
-          <SkillTile
-            name={skill.name}
-            logo={skill.logo}
-            yearsExperience={skill.yearsExperience}
-          />
-        </motion.div>
+          name={skill.name}
+          logo={skill.logo}
+          yearsExperience={skill.yearsExperience}
+          tileIndex={i}
+        />
       ))}
-    </motion.div>
+    </div>
   );
 }
