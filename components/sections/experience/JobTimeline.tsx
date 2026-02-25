@@ -418,9 +418,11 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
   const LAST_CARD_CENTER = 60 + (count - 1) * WRAPPER_W + GAP + GAP + CARD_W / 2;
 
   // Start: card 0 centered in viewport. End: last card centered.
+  // Map xEnd to progress=0.88 (not 1.0) so the last card reaches center before the
+  // budget is exhausted, leaving a comfortable dwell period before the section unpins.
   const xStart = `calc(50vw - ${CARD0_CENTER}px)`;
   const xEnd   = `calc(50vw - ${LAST_CARD_CENTER}px)`;
-  const translateX = useTransform(scrollYProgress, [0, 1], [xStart, xEnd]);
+  const translateX = useTransform(scrollYProgress, [0, 0.88], [xStart, xEnd]);
 
   const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
@@ -431,8 +433,8 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
   const timelineShiftY = useTransform(scrollYProgress, [0, 0.08], [HEADER_H / 2, 0]);
 
   // Budget: each card gets 700px of vertical scroll to enter, settle, and be readable.
-  // Extra 300px added so the last card is fully visible before the section unpins.
-  const scrollBudgetH = count * 700 + 300;
+  // 1400px tail buffer gives dwell time with the last card centered before unpinning.
+  const scrollBudgetH = count * 700 + 1400;
 
   return (
     // No overflow on this div — overflow: clip/hidden on a sticky's parent
