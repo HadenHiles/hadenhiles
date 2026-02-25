@@ -17,7 +17,7 @@ for (const category of knowledgeData as { skills: { name: string; logo?: string 
 // ─── Dimensions ───────────────────────────────────────────────────────────────
 const CARD_W = 320;
 const CARD_H = 300;
-const DETAIL_H = 175;
+const DETAIL_H = 64;
 const DETAIL_OFFSET = 120;
 const NODE_W = 72;
 const GAP = 32;
@@ -243,14 +243,12 @@ function JobCard({
   opacity,
   above,
   cardOffset,
-  onExpand,
 }: {
   job: Job;
   y: MotionValue<number>;
   opacity: MotionValue<number>;
   above: boolean;
   cardOffset: number;
-  onExpand: () => void;
 }) {
   const [flipped, setFlipped] = useState(false);
   const pointerDownRef = useRef<{ x: number; y: number } | null>(null);
@@ -293,7 +291,7 @@ function JobCard({
           }}
           style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d", cursor: "pointer" }}
         >
-          <CardFront job={job} onExpand={onExpand} />
+          <CardFront job={job} />
           <CardBack job={job} />
         </motion.div>
       </div>
@@ -303,7 +301,7 @@ function JobCard({
 
 // ─── Card Front ───────────────────────────────────────────────────────────────
 
-function CardFront({ job, onExpand }: { job: Job; onExpand: () => void }) {
+function CardFront({ job }: { job: Job }) {
   return (
     <div
       className="absolute inset-0 rounded-2xl border overflow-hidden flex flex-col"
@@ -386,25 +384,10 @@ function CardFront({ job, onExpand }: { job: Job; onExpand: () => void }) {
           )}
         </div>
 
-        {/* Bottom row: expand button + flip hint */}
-        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between pointer-events-none">
-          <button
-            className="pointer-events-auto flex items-center gap-1.5 rounded-md px-2 py-1 transition-colors"
-            style={{
-              background: "rgba(138,92,255,0.10)",
-              border: "1px solid rgba(138,92,255,0.22)",
-              color: "rgba(190,165,255,0.75)",
-              fontSize: 9,
-              fontFamily: "var(--font-geist-mono)",
-              letterSpacing: "0.08em",
-              cursor: "pointer",
-            }}
-            onClick={(e) => { e.stopPropagation(); onExpand(); }}
-          >
-            ⊕ expand
-          </button>
+        {/* Bottom row: flip hint */}
+        <div className="absolute bottom-3 left-4 right-4 flex items-center justify-end pointer-events-none">
           <span className="font-mono text-[9px] select-none" style={{ color: "rgba(255,255,255,0.18)" }}>
-            {job.coverImage ? "flip for photo" : "hover details →"}
+            {job.coverImage ? "flip for photo" : "hover for details →"}
           </span>
         </div>
       </div>
@@ -520,33 +503,31 @@ function JobDetailPanel({
         aria-hidden="true"
       />
 
-      {/* Panel surface — clickable to open expanded view */}
-      <div
-        className="absolute inset-0 rounded-xl border overflow-hidden flex flex-col p-4 gap-2 cursor-pointer"
+      {/* CTA Button */}
+      <button
+        className="absolute inset-0 w-full h-full rounded-xl flex items-center justify-center gap-3 cursor-pointer transition-all"
         style={{
           background: job.current
-            ? "linear-gradient(145deg, rgba(138,92,255,0.07) 0%, rgba(24,24,31,0.96) 60%)"
-            : "rgba(24,24,31,0.95)",
-          borderColor: job.current ? "rgba(138,92,255,0.20)" : "rgba(255,255,255,0.07)",
-          boxShadow: "0 4px 24px rgba(0,0,0,0.45)",
+            ? "linear-gradient(135deg, rgba(138,92,255,0.22) 0%, rgba(138,92,255,0.10) 100%)"
+            : "linear-gradient(135deg, rgba(138,92,255,0.14) 0%, rgba(138,92,255,0.06) 100%)",
+          border: job.current
+            ? "1px solid rgba(138,92,255,0.45)"
+            : "1px solid rgba(138,92,255,0.28)",
+          boxShadow: job.current
+            ? "0 0 24px rgba(138,92,255,0.18), 0 4px 24px rgba(0,0,0,0.45)"
+            : "0 4px 24px rgba(0,0,0,0.35)",
         }}
         onClick={onExpand}
-        role="button"
-        aria-label={`Expand ${job.company} details`}
+        aria-label={`View full details for ${job.company}`}
       >
-        <p className="font-mono text-[10px] text-accent/65 tracking-widest uppercase shrink-0">
-          {job.company} · highlights
-        </p>
-        <ul className="flex flex-col gap-1.5 flex-1 overflow-hidden">
-          {job.highlights.slice(0, 3).map((h, i) => (
-            <li key={i} className="flex items-start gap-2">
-              <span className="text-accent/45 shrink-0 mt-[3px] text-[9px]">▸</span>
-              <span className="text-[12px] text-white/65 leading-relaxed line-clamp-2">{h}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="font-mono text-[9px] text-accent/30 shrink-0">tap to expand →</p>
-      </div>
+        <span
+          className="font-mono tracking-widest uppercase"
+          style={{ fontSize: 11, color: "rgba(190,165,255,0.90)", letterSpacing: "0.12em" }}
+        >
+          View Full Details
+        </span>
+        <span style={{ color: "rgba(190,165,255,0.60)", fontSize: 14 }}>→</span>
+      </button>
     </motion.div>
   );
 }
@@ -609,7 +590,7 @@ function AnimatedCard({
   onExpand: () => void;
 }) {
   const above = index % 2 === 0;
-  const centerProgress = count > 1 ? (index / (count - 1)) * 0.88 : 0;
+  const centerProgress = count > 1 ? (index / (count - 1)) * 0.82 : 0;
 
   const enterEnd   = index === 0 ? 0    : Math.min(centerProgress, 0.95);
   const enterStart = index === 0 ? -0.1 : Math.max(0, enterEnd - 0.12);
@@ -620,7 +601,7 @@ function AnimatedCard({
   const baseCardY = above ? -(cardOffset + CARD_H / 2) : (cardOffset - CARD_H / 2);
   const cardY = useTransform(cardSlide, (s) => baseCardY + s);
 
-  const detailStart = index === 0 ? -0.05 : Math.max(0, centerProgress - 0.02);
+  const detailStart = index === 0 ? -0.05 : Math.max(0, centerProgress - 0.04);
   const detailEnd   = index === 0 ?  0    : Math.min(1,  centerProgress + 0.06);
 
   const detailOpacity = useTransform(progress, [detailStart, detailEnd], [0, 1]);
@@ -643,7 +624,6 @@ function AnimatedCard({
         opacity={cardOpacity}
         above={above}
         cardOffset={cardOffset}
-        onExpand={onExpand}
       />
       <JobDetailPanel
         job={job}
@@ -693,7 +673,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const xStart = `calc(50vw - ${CARD0_CENTER}px)`;
   const xEnd   = `calc(50vw - ${LAST_CARD_CENTER}px)`;
-  const translateX = useTransform(scrollYProgress, [0, 0.88], [xStart, xEnd]);
+  const translateX = useTransform(scrollYProgress, [0, 0.82], [xStart, xEnd]);
 
   const hintOpacity    = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
   const headerOpacity  = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
@@ -704,8 +684,8 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
   const activeIdxRef = useRef(0);
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     const vw = window.innerWidth;
-    const p = Math.min(latest, 0.88);
-    const tX = (vw / 2 - CARD0_CENTER) + (p / 0.88) * (CARD0_CENTER - LAST_CARD_CENTER);
+    const p = Math.min(latest, 0.82);
+    const tX = (vw / 2 - CARD0_CENTER) + (p / 0.82) * (CARD0_CENTER - LAST_CARD_CENTER);
     let orbIdx = 0;
     for (let i = 0; i < count; i++) {
       const nodeVPx = (576 + i * WRAPPER_W) + tX;
@@ -718,8 +698,8 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
   });
 
   // Each card gets 700px of scroll budget to enter and settle.
-  // 2800px tail gives the last card generous dwell time before the section unpins.
-  const scrollBudgetH = count * 700 + 2800;
+  // 4200px tail gives the last card extended dwell time before the section unpins.
+  const scrollBudgetH = count * 700 + 4800;
 
   return (
     <>

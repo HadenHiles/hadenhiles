@@ -6,7 +6,7 @@
       {
         "name": "Flutter / Dart",
         "logo": "/images/logos/flutter.svg",
-        "yearsExperience": 6,
+        "yearsExperience": 9,
         "usedFor": "Cross-platform mobile apps with native performance - single codebase across iOS and Android without the usual trade-offs.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -18,7 +18,7 @@
       {
         "name": "React",
         "logo": "/images/logos/react.svg",
-        "yearsExperience": 5,
+        "yearsExperience": 6,
         "usedFor": "Web UIs where speed of development matters and the output needs to stay maintainable.",
         "proofProjectIds": [
           "timmies-helper",
@@ -51,7 +51,7 @@
       {
         "name": "WordPress",
         "logo": "/images/logos/wordpress.svg",
-        "yearsExperience": 10,
+        "yearsExperience": 12,
         "usedFor": "Content platforms that non-technical admins need to own and operate without ongoing developer involvement.",
         "proofProjectIds": [
           "the-pond"
@@ -84,7 +84,7 @@
       {
         "name": "Firebase / Firestore",
         "logo": "/images/logos/firebase.svg",
-        "yearsExperience": 6,
+        "yearsExperience": 9,
         "usedFor": "Real-time data sync, authentication, and scalable session-based data modeling for mobile and web apps.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -103,7 +103,7 @@
       {
         "name": "PHP",
         "logo": "/images/logos/php.svg",
-        "yearsExperience": 10,
+        "yearsExperience": 12,
         "usedFor": "Custom WordPress integrations, plugin extensions, and server-side membership logic.",
         "proofProjectIds": [
           "the-pond"
@@ -112,7 +112,7 @@
       {
         "name": ".NET Core",
         "logo": "/images/logos/dotnet.svg",
-        "yearsExperience": 4,
+        "yearsExperience": 6,
         "usedFor": "Windows desktop tools and enterprise backend services - used at OrderEase to build database sync tooling for non-technical staff.",
         "proofProjectIds": []
       },
@@ -132,21 +132,21 @@
       {
         "name": "MySQL",
         "logo": "/images/logos/mysql.svg",
-        "yearsExperience": 10,
+        "yearsExperience": 12,
         "usedFor": "Relational data modeling for web platforms - schema design, query optimization, and production reliability.",
         "proofProjectIds": []
       },
       {
         "name": "MS SQL Server",
         "logo": "/images/logos/microsoftsqlserver.svg",
-        "yearsExperience": 4,
+        "yearsExperience": 6,
         "usedFor": "Enterprise database work at OrderEase - syncing local SQL databases with cloud APIs via custom GUI tooling.",
         "proofProjectIds": []
       },
       {
         "name": "Cloud Firestore",
         "logo": "/images/logos/firebase.svg",
-        "yearsExperience": 6,
+        "yearsExperience": 9,
         "usedFor": "NoSQL document modeling for real-time mobile and web apps - optimized for low-latency reads and live sync.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -170,7 +170,7 @@
       {
         "name": "SQLite",
         "logo": "/images/logos/sqlite.svg",
-        "yearsExperience": 5,
+        "yearsExperience": 10,
         "usedFor": "Embedded local storage in mobile apps - offline-first data persistence in Flutter applications.",
         "proofProjectIds": []
       }
@@ -197,7 +197,7 @@
       {
         "name": "Docker",
         "logo": "/images/logos/docker.svg",
-        "yearsExperience": 5,
+        "yearsExperience": 8,
         "usedFor": "Containerized service isolation and consistent environments across development and production.",
         "proofProjectIds": []
       },
@@ -229,9 +229,9 @@
     "tui": "Firebase · AWS · Azure · Digital Ocean",
     "skills": [
       {
-        "name": "Firebase / GCP",
+        "name": "Firebase",
         "logo": "/images/logos/firebase.svg",
-        "yearsExperience": 6,
+        "yearsExperience": 9,
         "usedFor": "Primary cloud platform for mobile and web - hosting, Firestore, auth, functions, and real-time infrastructure.",
         "proofProjectIds": [
           "ten-thousand-shot-challenge",
@@ -255,44 +255,9 @@
       {
         "name": "DigitalOcean",
         "logo": "/images/logos/digitalocean.svg",
-        "yearsExperience": 7,
+        "yearsExperience": 10,
         "usedFor": "VPS hosting for production web deployments - simple, cost-effective, and fast to configure.",
         "proofProjectIds": []
-      }
-    ]
-  },
-  {
-    "category": "Systems / Native",
-    "tui": "C++ · Bluetooth Beacons · Native iOS/Android Integrations",
-    "skills": [
-      {
-        "name": "C++",
-        "logo": "/images/logos/cplusplus.svg",
-        "yearsExperience": 5,
-        "usedFor": "Performance-sensitive native layers in Flutter apps - Bluetooth scanning, computation-heavy processing, and anything that can't afford the overhead of the Dart layer alone.",
-        "proofProjectIds": [
-          "group-of-seven-trail-app",
-          "skill-drills"
-        ]
-      },
-      {
-        "name": "Bluetooth Beacons",
-        "logo": null,
-        "yearsExperience": null,
-        "usedFor": "Proximity-based content triggering for location-aware mobile applications.",
-        "proofProjectIds": [
-          "group-of-seven-trail-app"
-        ]
-      },
-      {
-        "name": "Native iOS/Android",
-        "logo": null,
-        "yearsExperience": null,
-        "usedFor": "Bridging Dart and native iOS/Android APIs when the cross-platform layer isn't enough.",
-        "proofProjectIds": [
-          "group-of-seven-trail-app",
-          "skill-drills"
-        ]
       }
     ]
   },
