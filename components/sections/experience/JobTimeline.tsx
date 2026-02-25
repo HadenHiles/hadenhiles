@@ -13,7 +13,11 @@ const GAP = 32;
 
 // Default card offset (desktop). Clamped responsively to viewport height in JobTimeline.
 // Card center sits ±cardOffset from spine; minimum gap between spine and card edge = cardOffset - CARD_H/2
-const DEFAULT_CARD_OFFSET = 188;
+const DEFAULT_CARD_OFFSET = 200;
+
+// Approximate height of the section header (pt-10 + text rows + pb-8 ≈ 160px).
+// Used to push the spine center below the header while it's visible.
+const HEADER_H = 160;
 
 // ─── Job Card (flip card) ─────────────────────────────────────────────────────
 
@@ -380,13 +384,16 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const stickyRef = useRef<HTMLDivElement>(null);
 
-  // Responsive card offset: clamp so top/bottom cards always fit within the viewport.
-  // Min gap of 12px between card edge and viewport edge (accounting for spine at center).
+  // Responsive card offset: clamp so top/bottom cards clear both the header (when visible)
+  // and the bottom edge of the viewport, with a 12px minimum gap.
+  // The header takes HEADER_H px from the top while visible, so the spine sits at
+  // (vh - HEADER_H)/2 + HEADER_H from the top — the card must clear HEADER_H from above.
   const [cardOffset, setCardOffset] = useState(DEFAULT_CARD_OFFSET);
   useEffect(() => {
     function update() {
-      const maxOffset = Math.floor(window.innerHeight / 2 - CARD_H / 2 - 12);
-      setCardOffset(Math.min(DEFAULT_CARD_OFFSET, Math.max(150, maxOffset)));
+      const availH = window.innerHeight - HEADER_H;
+      const maxOffset = Math.floor(availH / 2 - CARD_H / 2 - 12);
+      setCardOffset(Math.min(DEFAULT_CARD_OFFSET, Math.max(80, maxOffset)));
     }
     update();
     window.addEventListener("resize", update);
@@ -417,6 +424,11 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
+  // Mirror the header fade: shift the whole timeline area down by HEADER_H/2 while
+  // the header is visible, then slide back to true vertical center as it fades out.
+  // Using translateY (not paddingTop) so absolutely-positioned children (spine, NOW)
+  // stay aligned with the flex track — they all shift together.
+  const timelineShiftY = useTransform(scrollYProgress, [0, 0.08], [HEADER_H / 2, 0]);
 
   // Budget: each card gets 700px of vertical scroll to enter, settle, and be readable.
   // Extra 300px added so the last card is fully visible before the section unpins.
@@ -451,8 +463,11 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
             </p>
           </motion.div>
 
-          {/* ── Timeline area — full height, spine always centered ────────────── */}
-          <div className="absolute inset-0 flex items-center">
+          {/* ── Timeline area — full height, spine shifts down while header visible ── */}
+          <motion.div
+            className="absolute inset-0 flex items-center"
+            style={{ y: timelineShiftY }}
+          >
 
             {/* Spine line — full width */}
             <div
@@ -551,7 +566,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
               <span style={{ color: "rgba(255,255,255,0.2)" }}>→</span>
             </motion.div>
 
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
