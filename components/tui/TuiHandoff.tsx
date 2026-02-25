@@ -10,12 +10,15 @@ export function TuiHandoff({ children, isTUI }: TuiHandoffProps) {
   return (
     <div
       className={`
-        bg-surface overflow-hidden w-full
+        bg-surface w-full
         ${isTUI
           ? "min-h-screen"
           : "min-h-screen rounded-card border border-border"
         }
       `}
+      // overflow:hidden creates a scroll container, which breaks position:sticky inside it.
+      // overflow:clip clips paint overflow (for rounded corners) WITHOUT creating a scroll container.
+      style={{ overflow: "clip" }}
     >
       {children}
     </div>
