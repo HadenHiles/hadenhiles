@@ -324,9 +324,10 @@ function AnimatedCard({
 }) {
   const above = index % 2 === 0;
 
-  // Each card enters the view at a roughly evenly distributed portion of the scroll
-  const enterStart = Math.max(0, (index / count) * 0.88 - 0.05);
-  const enterEnd = Math.min(1, enterStart + 0.22);
+  // Card 0 starts partially visible the moment the section pins (enterStart < 0).
+  // Later cards fade in progressively as the track scrolls.
+  const enterStart = index === 0 ? -0.08 : Math.max(0, (index / count) * 0.88 - 0.05);
+  const enterEnd = Math.min(1, enterStart + 0.2);
 
   const opacity = useTransform(smoothProgress, [enterStart, enterEnd], [0, 1]);
   const slideY = useTransform(
@@ -394,15 +395,14 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
   const scrollBudgetH = count * 560;
 
   return (
-    <div
-      ref={stickyRef}
-      style={{ height: `${scrollBudgetH}px`, overflow: "clip" }}
-      className="relative"
-    >
-      <div
-        className="sticky top-0 h-screen flex flex-col justify-center"
-        style={{ overflow: "hidden" }}
-      >
+    // No overflow on this div — overflow: clip/hidden on a sticky's parent
+    // creates a containing-block boundary that breaks position:sticky in Chromium.
+    <div ref={stickyRef} style={{ height: `${scrollBudgetH}px` }}>
+      <div className="sticky top-0 h-screen">
+        {/* Clipping wrapper lives INSIDE the sticky element so it doesn't
+            affect the sticky's scroll-container chain */}
+        <div className="absolute inset-0 overflow-hidden flex flex-col justify-center">
+
         {/* Spine line — full width */}
         <div
           className="absolute pointer-events-none"
@@ -482,6 +482,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
           </span>
           <span style={{ color: "rgba(255,255,255,0.2)" }}>→</span>
         </motion.div>
+      </div>
       </div>
     </div>
   );
