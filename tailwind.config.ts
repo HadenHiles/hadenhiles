@@ -13,7 +13,7 @@ const config: Config = {
         surface:  "#101018",
         surface2: "#151520",
         text:     "#EDEDF2",
-        muted:    "#B7B7C2",
+        muted:    "#CBCBD6",
         border:   "#262634",
         accent:   "#8A5CFF",
       },
