@@ -29,6 +29,10 @@ export interface Project {
   videoUrl?: string | null;
   diagramAsset?: string | null;
   story: string;
+  /** "mobile" renders a phone frame, "desktop" renders a monitor frame */
+  demoType: "mobile" | "desktop";
+  /** Path or URL to a gif/image/video for the demo preview */
+  demoAsset: string | null;
 }
 
 export interface ExperienceEntry {

@@ -225,7 +225,7 @@ function CardBack({ job }: { job: Job }) {
         boxShadow: "0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
       }}
     >
-      <div className="flex flex-col gap-3 p-6 h-full overflow-hidden">
+      <div className="flex flex-col gap-3 p-6 h-full" style={{ overflowY: "auto", scrollbarWidth: "thin", scrollbarColor: "rgba(138,92,255,0.3) transparent" }}>
         {/* Company name header */}
         <div className="flex items-center justify-between gap-2 shrink-0">
           <span className="font-mono text-[11px] text-accent/80 tracking-widest uppercase">
@@ -368,7 +368,10 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const { scrollYProgress } = useScroll({
     target: stickyRef,
-    offset: ["start start", "end end"],
+    // "end start" = bottom of container reaches top of viewport.
+    // This uses the full element height as the scroll range instead of
+    // (elementHeight - viewportHeight), giving ~30% more room to animate.
+    offset: ["start start", "end start"],
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
@@ -391,8 +394,8 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const hintOpacity = useTransform(smoothProgress, [0, 0.06], [1, 0]);
 
-  // Increase scroll budget to give alternating layout room and smooth travel
-  const scrollBudgetH = count * 560;
+  // Budget: each card gets 700px of vertical scroll to enter, settle, and be readable.
+  const scrollBudgetH = count * 700;
 
   return (
     // No overflow on this div — overflow: clip/hidden on a sticky's parent

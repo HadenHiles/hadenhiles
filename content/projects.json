@@ -8,17 +8,14 @@
     "constraints": "Cross-platform requirement with real-time sync, multiple auth providers, and structured logging that had to scale to thousands of cumulative entries per user.",
     "decisions": "Firebase and Firestore for real-time sync and structured session data. Flutter for a single codebase across iOS and Android without sacrificing native performance.",
     "impact": "Players can open the app, log shots in seconds, and see cumulative progress clearly - no guessing, no friction.",
-    "tech": [
-      "Flutter",
-      "Dart",
-      "Firebase",
-      "Firestore"
-    ],
+    "tech": ["Flutter", "Dart", "Firebase", "Firestore"],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "The 10,000 Shot Challenge is a proven training method, but most players track it in notes apps or lose count. I built a mobile app that makes session logging take under ten seconds and surfaces cumulative progress in a way that actually motivates. Google and Apple auth, Firestore data modeling for per-session tracking, and real-time sync across devices - all wrapped in a UI designed for athletes who want to log and move on."
+    "story": "The 10,000 Shot Challenge is a proven training method, but most players track it in notes apps or lose count. I built a mobile app that makes session logging take under ten seconds and surfaces cumulative progress in a way that actually motivates. Google and Apple auth, Firestore data modeling for per-session tracking, and real-time sync across devices - all wrapped in a UI designed for athletes who want to log and move on.",
+    "demoType": "mobile",
+    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   },
   {
     "id": "the-pond",
@@ -29,19 +26,14 @@
     "constraints": "Built on WordPress to stay maintainable for non-technical admins. Membership logic, course gating, and payment processing all had to integrate cleanly without custom infrastructure.",
     "decisions": "MemberPress for membership logic, LearnDash for course architecture. Designed the content hierarchy first so navigation was intuitive before writing a single line of integration code.",
     "impact": "Players always know what to do next. Admins manage the platform without technical gymnastics. Content governance reduced ongoing overhead significantly.",
-    "tech": [
-      "WordPress",
-      "LearnDash",
-      "MemberPress",
-      "PHP",
-      "JavaScript",
-      "CSS"
-    ],
+    "tech": ["WordPress", "LearnDash", "MemberPress", "PHP", "JavaScript", "CSS"],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "The Pond is How To Hockey's structured membership platform. The challenge wasn't just the tech - it was designing a content hierarchy that felt intuitive to players at every level. I architected the course and gating logic in LearnDash and MemberPress, with custom integrations for onboarding and admin workflows optimized to require zero technical intervention for ongoing content management."
+    "story": "The Pond is How To Hockey's structured membership platform. The challenge wasn't just the tech - it was designing a content hierarchy that felt intuitive to players at every level. I architected the course and gating logic in LearnDash and MemberPress, with custom integrations for onboarding and admin workflows optimized to require zero technical intervention for ongoing content management.",
+    "demoType": "desktop",
+    "demoAsset": "https://placehold.co/1280x800/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   },
   {
     "id": "group-of-seven-trail-app",
@@ -52,18 +44,14 @@
     "constraints": "Had to work reliably in remote conditions with inconsistent connectivity. Bluetooth beacon triggering needed to be performant without draining battery. UI designed for outdoor, active use.",
     "decisions": "Flutter for cross-platform with C++ native integrations for Bluetooth performance. Proximity-based content triggers over explicit navigation - the trail guides the experience, not menus.",
     "impact": "Relevant trail information surfaces automatically at the right moment. Hikers stay in the experience instead of digging through menus.",
-    "tech": [
-      "Flutter",
-      "Dart",
-      "C++",
-      "Bluetooth Beacons",
-      "Native Integrations"
-    ],
+    "tech": ["Flutter", "Dart", "C++", "Bluetooth Beacons", "Native Integrations"],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "This project combined software engineering with physical exploration. I built a mobile app for the Lake Superior Group of Seven Trail that used Bluetooth beacon scanning to trigger contextual content based on a hiker's exact location. The UX constraint was strict: information should appear when it's relevant, not when the user goes looking for it. C++ native integrations handled the Bluetooth layer for performance, while Flutter handled the UI and map layers."
+    "story": "This project combined software engineering with physical exploration. I built a mobile app for the Lake Superior Group of Seven Trail that used Bluetooth beacon scanning to trigger contextual content based on a hiker's exact location. The UX constraint was strict: information should appear when it's relevant, not when the user goes looking for it. C++ native integrations handled the Bluetooth layer for performance, while Flutter handled the UI and map layers.",
+    "demoType": "mobile",
+    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   },
   {
     "id": "nextshift",
@@ -74,16 +62,14 @@
     "constraints": "Real-time voting had to be consistent across concurrent users. Categorization needed to stay clean without heavy admin overhead. Submit-to-visible flow needed to be under 20 seconds.",
     "decisions": "Firebase for real-time voting state. Clean separation between user-facing submission flow and admin moderation tooling. Efficient rendering for dynamic ranked lists that update live.",
     "impact": "Users can submit an idea in under 20 seconds and immediately see where it stands. Roadmap decisions became data-driven instead of gut-driven.",
-    "tech": [
-      "Flutter",
-      "Dart",
-      "Firebase"
-    ],
+    "tech": ["Flutter", "Dart", "Firebase"],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "NextShift is a feedback and feature voting platform. The core problem: anyone can collect feedback, but most teams don't structure it in a way that's useful for prioritization. I built the data model around structured categorization and real-time voting, with a submission flow designed to take under 20 seconds from idea to visible. Firebase handles real-time consistency; the UI handles making complex ranking feel simple."
+    "story": "NextShift is a feedback and feature voting platform. The core problem: anyone can collect feedback, but most teams don't structure it in a way that's useful for prioritization. I built the data model around structured categorization and real-time voting, with a submission flow designed to take under 20 seconds from idea to visible. Firebase handles real-time consistency; the UI handles making complex ranking feel simple.",
+    "demoType": "mobile",
+    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   },
   {
     "id": "skill-drills",
@@ -94,16 +80,14 @@
     "constraints": "Flexible data models that could handle varied skill categories without becoming chaotic. Performance-optimized rendering for users with large datasets. The freedom had to feel structured, not open-ended.",
     "decisions": "User-defined routines and metric definitions backed by dynamic data models. C++ for the computation layer to keep rendering fast even with large session histories.",
     "impact": "Users get the structure of a tracking app with the flexibility of a spreadsheet - without the spreadsheet overhead.",
-    "tech": [
-      "Flutter",
-      "Dart",
-      "C++"
-    ],
+    "tech": ["Flutter", "Dart", "C++"],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "Skill Drills came from a simple frustration: most tracking apps either do too much or lock you into their definition of progress. I built a customizable app where users define their own routines and metrics. The data model supports arbitrary skill categories while keeping the UI clean. C++ handles the performance-sensitive computation layer so rendering stays fast even with hundreds of logged sessions."
+    "story": "Skill Drills came from a simple frustration: most tracking apps either do too much or lock you into their definition of progress. I built a customizable app where users define their own routines and metrics. The data model supports arbitrary skill categories while keeping the UI clean. C++ handles the performance-sensitive computation layer so rendering stays fast even with hundreds of logged sessions.",
+    "demoType": "mobile",
+    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   },
   {
     "id": "timmies-helper",
@@ -114,15 +98,14 @@
     "constraints": "Built on top of another developer's existing codebase, so the addition had to integrate cleanly without disrupting the existing logic or UI conventions.",
     "decisions": "Added a VOR column that computes each player's value relative to the baseline replacement-level pick in their tier - the same concept used in fantasy sports drafting. Surfaced as a dedicated column so users can sort and compare at a glance.",
     "impact": "VOR turns a list of picks into a ranked value decision. Users can immediately see which pick has the best return relative to who else is available in that tier.",
-    "tech": [
-      "React",
-      "JavaScript"
-    ],
+    "tech": ["React", "JavaScript"],
     "githubUrl": "https://github.com/HadenHiles",
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "timmies-helper was built by another developer to assist with Tim Hortons Hockey Challenge picks. I forked it to add Value Over Replacement - a metric borrowed from fantasy sports drafting that scores each player relative to the baseline replacement-level pick in their tier. The fork adds a single column, but it changes the decision from 'who's good' to 'who's the best value right now.' Built to integrate cleanly into the existing codebase without refactoring what was already working."
+    "story": "timmies-helper was built by another developer to assist with Tim Hortons Hockey Challenge picks. I forked it to add Value Over Replacement - a metric borrowed from fantasy sports drafting that scores each player relative to the baseline replacement-level pick in their tier. The fork adds a single column, but it changes the decision from 'who's good' to 'who's the best value right now.' Built to integrate cleanly into the existing codebase without refactoring what was already working.",
+    "demoType": "desktop",
+    "demoAsset": "https://placehold.co/1280x800/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   },
   {
     "id": "video-scraper",
@@ -133,17 +116,13 @@
     "constraints": "CORS handling required a proxy backend. The frontend had to stay completely decoupled from the backend routing logic. No unnecessary surface area.",
     "decisions": "Node.js and Express for the proxy backend. React and Vite for the frontend. Strict separation of responsibilities - the frontend knows nothing about the download mechanics.",
     "impact": "One URL in. One file out. Zero friction between intention and result.",
-    "tech": [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "Express",
-      "Vite"
-    ],
+    "tech": ["React", "TypeScript", "Node.js", "Express", "Vite"],
     "githubUrl": "https://github.com/HadenHiles",
     "demoUrl": null,
     "videoUrl": null,
     "diagramAsset": null,
-    "story": "VideoScraper is a focused utility - a React/Vite frontend backed by a Node.js/Express proxy that handles CORS and request routing. The design principle was strict single-responsibility: the frontend does not know how the backend works, and the backend does not care about the UI. Users paste a video URL and get a file. The system does the rest."
+    "story": "VideoScraper is a focused utility - a React/Vite frontend backed by a Node.js/Express proxy that handles CORS and request routing. The design principle was strict single-responsibility: the frontend does not know how the backend works, and the backend does not care about the UI. Users paste a video URL and get a file. The system does the rest.",
+    "demoType": "desktop",
+    "demoAsset": "https://placehold.co/1280x800/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
   }
 ]

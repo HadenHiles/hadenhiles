@@ -11,7 +11,7 @@ const META_FIELDS: { key: keyof Project; label: string }[] = [
   { key: "impact",      label: "impact" },
 ];
 
-export function ProjectDetailPanel({ project }: { project: Project }) {
+export function ProjectDetailPanel({ project, onClose }: { project: Project; onClose?: () => void }) {
   return (
     <motion.aside
       variants={fadeSlideUp}
@@ -92,7 +92,10 @@ export function ProjectDetailPanel({ project }: { project: Project }) {
 
       {/* Mobile back button */}
       <div className="mt-4 lg:hidden">
-        <button className="text-sm text-muted hover:text-text transition-colors">
+        <button
+          onClick={onClose}
+          className="text-sm text-muted hover:text-text transition-colors"
+        >
           ← Back to projects
         </button>
       </div>
