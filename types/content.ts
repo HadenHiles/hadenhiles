@@ -11,6 +11,7 @@ export interface Job {
   primarySkills: string[];
   summary: string;
   highlights: string[];
+  projects?: string[];
   tui?: string;
 }
 

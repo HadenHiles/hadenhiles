@@ -1,7 +1,7 @@
 [
   {
     "category": "Frontend",
-    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · CSS/SASS",
+    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · CSS/SASS · Grunt.js",
     "skills": [
       {
         "name": "Flutter / Dart",
@@ -67,6 +67,13 @@
           "the-pond",
           "nextshift"
         ]
+      },
+      {
+        "name": "Grunt.js",
+        "logo": "/images/logos/grunt.svg",
+        "yearsExperience": 3,
+        "usedFor": "Build automation for JavaScript and CSS pipelines - used to standardize animation workflows and asset processing across all client projects at a web design firm.",
+        "proofProjectIds": []
       }
     ]
   },
