@@ -323,12 +323,10 @@ function AnimatedCard({
 }) {
   const above = index % 2 === 0;
 
-  // All cards start invisible and fade in as the user scrolls.
-  // Card 0 uses a short fade window so it's fully opaque before translateX moves it off screen.
-  // Later cards fade in progressively as the track scrolls right-to-left.
-  const enterStart = Math.max(0, (index / count) * 0.88 - 0.05);
-  const fadeWindow = index === 0 ? 0.07 : 0.18;
-  const enterEnd = Math.min(1, enterStart + fadeWindow);
+  // Card 0 (current job) is always fully visible — no entrance animation.
+  // Other cards fade/slide in as the track scrolls them into the viewport.
+  const enterStart = index === 0 ? -0.1 : Math.max(0, (index / count) * 0.88 - 0.05);
+  const enterEnd   = index === 0 ?    0 : Math.min(1, enterStart + 0.18);
 
   const opacity = useTransform(progress, [enterStart, enterEnd], [0, 1]);
   const slideY = useTransform(
@@ -379,14 +377,19 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const count = sorted.length;
 
-  // Track width calculation
-  const totalTrack =
-    NODE_W +
-    count * (GAP + CARD_W + GAP + NODE_W) +
-    NODE_W;
+  // Each job entry in the flex track occupies:
+  //   spacer(GAP) · gap · card(CARD_W) · gap · spacer(GAP) · gap · node(NODE_W) = 5·GAP + CARD_W + NODE_W
+  const WRAPPER_W = 5 * GAP + CARD_W + NODE_W; // 552px
 
-  const xEnd = `calc(-${totalTrack}px + 100vw - 80px)`;
-  const translateX = useTransform(scrollYProgress, [0, 1], ["0px", xEnd]);
+  // Card 0 center from the track's motion origin:
+  //   paddingLeft(60) + spacer(GAP) + gap(GAP) + halfCard(CARD_W/2)
+  const CARD0_CENTER   = 60 + GAP + GAP + CARD_W / 2;                          // 284
+  const LAST_CARD_CENTER = 60 + (count - 1) * WRAPPER_W + GAP + GAP + CARD_W / 2; // 3044 for 6 jobs
+
+  // Start: card 0 centered in viewport. End: last card centered.
+  const xStart = `calc(50vw - ${CARD0_CENTER}px)`;
+  const xEnd   = `calc(50vw - ${LAST_CARD_CENTER}px)`;
+  const translateX = useTransform(scrollYProgress, [0, 1], [xStart, xEnd]);
 
   const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
@@ -436,13 +439,29 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
               aria-hidden="true"
             />
 
-            {/* Scrolling track — items-center keeps nodes on the spine */}
+            {/* "NOW" — pinned at left, always visible regardless of scroll position */}
+            <div
+              className="absolute z-10 pointer-events-none select-none flex flex-col items-center gap-2"
+              style={{ left: 28, top: "50%", transform: "translateY(-50%)" }}
+            >
+              <div
+                style={{
+                  width: 14,
+                  height: 14,
+                  borderRadius: "50%",
+                  background: "rgb(138,92,255)",
+                  border: "2px solid rgb(138,92,255)",
+                  boxShadow: "0 0 14px rgba(138,92,255,0.6), 0 0 4px rgba(138,92,255,0.8)",
+                }}
+              />
+              <span className="font-mono text-[10px] tracking-widest text-accent">NOW</span>
+            </div>
+
+            {/* Scrolling track */}
             <motion.div
               style={{ x: translateX, paddingLeft: 60, paddingRight: 60 }}
               className="flex items-center will-change-transform"
             >
-              {/* "Now" node — leftmost since newest-first */}
-              <TimelineNode label="NOW" accent cap />
 
               {sorted.map((job, i) => (
                 <div
