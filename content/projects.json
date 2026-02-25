@@ -8,7 +8,12 @@
     "constraints": "Cross-platform requirement with real-time sync, multiple auth providers, and structured logging that had to scale to thousands of cumulative entries per user.",
     "decisions": "Firebase and Firestore for real-time sync and structured session data. Flutter for a single codebase across iOS and Android without sacrificing native performance.",
     "impact": "Players can open the app, log shots in seconds, and see cumulative progress clearly - no guessing, no friction.",
-    "tech": ["Flutter", "Dart", "Firebase", "Firestore"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Firebase",
+      "Firestore"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -26,7 +31,14 @@
     "constraints": "Built on WordPress to stay maintainable for non-technical admins. Membership logic, course gating, and payment processing all had to integrate cleanly without custom infrastructure.",
     "decisions": "MemberPress for membership logic, LearnDash for course architecture. Designed the content hierarchy first so navigation was intuitive before writing a single line of integration code.",
     "impact": "Players always know what to do next. Admins manage the platform without technical gymnastics. Content governance reduced ongoing overhead significantly.",
-    "tech": ["WordPress", "LearnDash", "MemberPress", "PHP", "JavaScript", "CSS"],
+    "tech": [
+      "WordPress",
+      "LearnDash",
+      "MemberPress",
+      "PHP",
+      "JavaScript",
+      "CSS"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -44,7 +56,13 @@
     "constraints": "Had to work reliably in remote conditions with inconsistent connectivity. Bluetooth beacon triggering needed to be performant without draining battery. UI designed for outdoor, active use.",
     "decisions": "Flutter for cross-platform with C++ native integrations for Bluetooth performance. Proximity-based content triggers over explicit navigation - the trail guides the experience, not menus.",
     "impact": "Relevant trail information surfaces automatically at the right moment. Hikers stay in the experience instead of digging through menus.",
-    "tech": ["Flutter", "Dart", "C++", "Bluetooth Beacons", "Native Integrations"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "C++",
+      "Bluetooth Beacons",
+      "Native Integrations"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -62,7 +80,11 @@
     "constraints": "Real-time voting had to be consistent across concurrent users. Categorization needed to stay clean without heavy admin overhead. Submit-to-visible flow needed to be under 20 seconds.",
     "decisions": "Firebase for real-time voting state. Clean separation between user-facing submission flow and admin moderation tooling. Efficient rendering for dynamic ranked lists that update live.",
     "impact": "Users can submit an idea in under 20 seconds and immediately see where it stands. Roadmap decisions became data-driven instead of gut-driven.",
-    "tech": ["Flutter", "Dart", "Firebase"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "Firebase"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -80,7 +102,11 @@
     "constraints": "Flexible data models that could handle varied skill categories without becoming chaotic. Performance-optimized rendering for users with large datasets. The freedom had to feel structured, not open-ended.",
     "decisions": "User-defined routines and metric definitions backed by dynamic data models. C++ for the computation layer to keep rendering fast even with large session histories.",
     "impact": "Users get the structure of a tracking app with the flexibility of a spreadsheet - without the spreadsheet overhead.",
-    "tech": ["Flutter", "Dart", "C++"],
+    "tech": [
+      "Flutter",
+      "Dart",
+      "C++"
+    ],
     "githubUrl": null,
     "demoUrl": null,
     "videoUrl": null,
@@ -98,7 +124,10 @@
     "constraints": "Built on top of another developer's existing codebase, so the addition had to integrate cleanly without disrupting the existing logic or UI conventions.",
     "decisions": "Added a VOR column that computes each player's value relative to the baseline replacement-level pick in their tier - the same concept used in fantasy sports drafting. Surfaced as a dedicated column so users can sort and compare at a glance.",
     "impact": "VOR turns a list of picks into a ranked value decision. Users can immediately see which pick has the best return relative to who else is available in that tier.",
-    "tech": ["React", "JavaScript"],
+    "tech": [
+      "React",
+      "JavaScript"
+    ],
     "githubUrl": "https://github.com/HadenHiles",
     "demoUrl": null,
     "videoUrl": null,
@@ -116,7 +145,13 @@
     "constraints": "CORS handling required a proxy backend. The frontend had to stay completely decoupled from the backend routing logic. No unnecessary surface area.",
     "decisions": "Node.js and Express for the proxy backend. React and Vite for the frontend. Strict separation of responsibilities - the frontend knows nothing about the download mechanics.",
     "impact": "One URL in. One file out. Zero friction between intention and result.",
-    "tech": ["React", "TypeScript", "Node.js", "Express", "Vite"],
+    "tech": [
+      "React",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "Vite"
+    ],
     "githubUrl": "https://github.com/HadenHiles",
     "demoUrl": null,
     "videoUrl": null,
