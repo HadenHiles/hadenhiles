@@ -88,11 +88,9 @@ export function SiteShell() {
           <Work />
         </div>
 
-        {/* Experience */}
+        {/* Experience — header inside container, timeline full-bleed */}
         <div id="section-experience" className="scroll-mt-16 border-t border-border/40">
-          <div className="px-6 sm:px-10 py-20 max-w-7xl mx-auto">
-            <Experience />
-          </div>
+          <Experience />
         </div>
 
         {/* Knowledge */}
