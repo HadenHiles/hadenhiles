@@ -5,123 +5,145 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import type { Job } from "@/types/content";
 import { duration, ease } from "@/lib/motion";
 
-// ─── Single card ─────────────────────────────────────────────────────────────
+// ─── Card ─────────────────────────────────────────────────────────────────────
 
-function JobCard({ job, index }: { job: Job; index: number }) {
+function JobCard({ job }: { job: Job }) {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{
-        duration: duration.medium,
-        ease: ease.standard,
-        delay: index * 0.07,
+    <div
+      className={`
+        relative w-80 flex-none rounded-2xl border overflow-hidden flex flex-col
+        bg-[#0d0d12]
+        ${job.current ? "border-accent/40" : "border-white/[0.07]"}
+      `}
+      style={{
+        boxShadow: job.current
+          ? "0 0 0 1px rgba(138,92,255,0.15), 0 8px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04)"
+          : "0 8px 40px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.04)",
       }}
-      className="relative flex-none w-64 sm:w-72"
     >
-      <div
-        className={`
-          relative h-full rounded-card border overflow-hidden flex flex-col
-          bg-surface transition-colors duration-200
-          ${job.current ? "border-accent/40" : "border-border"}
-        `}
-      >
-        {/* Cover photo — blurred accent, not a focus */}
-        {job.coverImage && (
-          <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
+      {/* Cover photo — very faint atmospheric texture */}
+      {job.coverImage && (
+        <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={job.coverImage}
+            alt=""
+            className="w-full h-full object-cover opacity-[0.06] scale-110"
+            style={{ filter: "blur(2px) saturate(0.4)" }}
+          />
+          <div className="absolute inset-0" style={{
+            background: "linear-gradient(160deg, rgba(13,13,18,0.5) 0%, rgba(13,13,18,0.92) 60%, rgba(13,13,18,1) 100%)"
+          }} />
+        </div>
+      )}
+
+      <div className="relative flex flex-col gap-5 p-7 h-full">
+        {/* Logo row */}
+        <div className="flex items-start justify-between gap-3 min-h-[40px]">
+          {job.companyLogo ? (
+            // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={job.coverImage}
-              alt=""
-              className="w-full h-full object-cover opacity-[0.07] blur-sm scale-110"
+              src={job.companyLogo}
+              alt={job.company}
+              className="h-8 w-auto max-w-[140px] object-contain"
+              style={{ filter: "brightness(0) invert(1) opacity(0.85)" }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface via-surface/80 to-surface/40" />
-          </div>
-        )}
-
-        <div className="relative flex flex-col gap-4 p-5 h-full">
-          {/* Company logo — primary visual */}
-          <div className="flex items-center justify-between gap-2">
-            <div className="h-9 flex items-center">
-              {job.companyLogo ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={job.companyLogo}
-                  alt={job.company}
-                  height={36}
-                  className="h-7 w-auto max-w-[120px] object-contain"
-                />
-              ) : (
-                <span className="font-semibold text-text text-sm leading-tight">
-                  {job.company}
-                </span>
-              )}
-            </div>
-            {job.current && (
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-accent/15 text-accent border border-accent/25 font-mono shrink-0">
-                current
-              </span>
-            )}
-          </div>
-
-          {/* Role + date */}
-          <div>
-            <div className="text-sm font-medium text-text leading-snug">{job.role}</div>
-            <div className="text-xs text-border font-mono mt-0.5">{job.dateRange}</div>
-          </div>
-
-          {/* Skills */}
-          {job.primarySkills.length > 0 && (
-            <div className="flex flex-wrap gap-1 mt-auto">
-              {job.primarySkills.map((skill) => (
-                <span
-                  key={skill}
-                  className="text-[10px] px-2 py-0.5 rounded bg-accent/10 text-accent/80 border border-accent/15 font-mono"
-                >
-                  {skill}
-                </span>
-              ))}
-            </div>
+          ) : (
+            <span className="font-semibold text-text/90 text-base leading-tight">
+              {job.company}
+            </span>
+          )}
+          {job.current && (
+            <span className="text-[10px] px-2.5 py-1 rounded-full bg-accent/15 text-accent border border-accent/30 font-mono shrink-0 tracking-wide">
+              current
+            </span>
           )}
         </div>
+
+        {/* Date */}
+        <div className="font-mono text-xs text-white/30 tracking-widest uppercase">
+          {job.dateRange}
+        </div>
+
+        {/* Role */}
+        <div className="text-base font-medium text-white/80 leading-snug">
+          {job.role}
+        </div>
+
+        {/* Divider */}
+        <div className="h-px bg-white/[0.06]" />
+
+        {/* Skills */}
+        {job.primarySkills.length > 0 && (
+          <div className="flex flex-wrap gap-1.5 mt-auto">
+            {job.primarySkills.map((skill) => (
+              <span
+                key={skill}
+                className="text-[10px] px-2.5 py-1 rounded-md font-mono tracking-wide"
+                style={{
+                  background: "rgba(138,92,255,0.08)",
+                  color: "rgba(180,150,255,0.75)",
+                  border: "1px solid rgba(138,92,255,0.18)",
+                }}
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
-    </motion.div>
-  );
-}
-
-// ─── Timeline dot + year label ────────────────────────────────────────────────
-
-function TimelineMark({ year, current }: { year: string; current?: boolean }) {
-  return (
-    <div className="flex-none flex flex-col items-center gap-1.5 w-64 sm:w-72">
-      <div
-        className={`
-          w-2.5 h-2.5 rounded-full border-2 shrink-0
-          ${current
-            ? "bg-accent border-accent shadow-[0_0_8px_rgba(138,92,255,0.55)]"
-            : "bg-surface border-border"
-          }
-        `}
-      />
-      <span
-        className={`font-mono text-xs tracking-wider ${current ? "text-accent" : "text-muted"}`}
-      >
-        {year}
-      </span>
     </div>
   );
 }
 
-// ─── Main component ───────────────────────────────────────────────────────────
+// ─── Timeline node ────────────────────────────────────────────────────────────
+
+function TimelineNode({
+  label,
+  sublabel,
+  accent,
+  cap,
+}: {
+  label: string;
+  sublabel?: string;
+  accent?: boolean;
+  cap?: boolean;
+}) {
+  return (
+    <div className="flex-none flex flex-col items-center gap-2 select-none" style={{ width: 72 }}>
+      {/* Dot */}
+      <div
+        className="relative z-10 shrink-0"
+        style={{
+          width: cap ? 14 : 10,
+          height: cap ? 14 : 10,
+          borderRadius: "50%",
+          background: accent ? "rgb(138,92,255)" : "rgb(30,30,42)",
+          border: accent ? "2px solid rgb(138,92,255)" : "2px solid rgba(255,255,255,0.15)",
+          boxShadow: accent ? "0 0 14px rgba(138,92,255,0.6), 0 0 4px rgba(138,92,255,0.8)" : undefined,
+        }}
+      />
+      <span className={`font-mono text-[10px] tracking-widest text-center leading-tight ${accent ? "text-accent" : "text-white/30"}`}>
+        {label}
+      </span>
+      {sublabel && (
+        <span className="font-mono text-[9px] text-white/20 text-center leading-tight -mt-1">
+          {sublabel}
+        </span>
+      )}
+    </div>
+  );
+}
+
+// ─── Main ─────────────────────────────────────────────────────────────────────
 
 export function JobTimeline({ jobs }: { jobs: Job[] }) {
+  // Newest first
   const sorted = [...jobs].sort((a, b) => {
-    if (a.startYear !== b.startYear) return a.startYear - b.startYear;
-    return (a.current ? 1 : 0) - (b.current ? 1 : 0);
+    if (a.startYear !== b.startYear) return b.startYear - a.startYear;
+    return (b.current ? 1 : 0) - (a.current ? 1 : 0);
   });
 
-  // The sticky scroll container — pins while the inner track scrolls horizontally
   const stickyRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -129,81 +151,95 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
     offset: ["start start", "end end"],
   });
 
-  // Smooth out the scroll progress with a spring
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 60,
-    damping: 20,
+    stiffness: 55,
+    damping: 22,
     restDelta: 0.001,
   });
 
-  // Calculate total translateX travel: (cards + gaps) minus viewport
-  // Each card is ~288px wide (w-72) + 20px gap; plus marks between each pair
-  // We drive this purely via percentage of the scroll range → CSS translateX
-  const CARD_W = 288; // w-72 = 18rem ≈ 288px
-  const GAP = 20;
-  const COUNT = sorted.length;
-  // Extra space: marks before each card + "present" mark at end
-  const MARK_W = 288; // same flex-none width as cards
-  const totalWidth = (COUNT * CARD_W) + ((COUNT + 1) * MARK_W) + ((COUNT * 2) * GAP);
-  // We subtract roughly one viewport width (approximated in the transform below)
-  const translateX = useTransform(
-    smoothProgress,
-    [0, 1],
-    ["0px", `-${totalWidth - CARD_W}px`]
-  );
+  // Card = w-80 = 320px, node = 72px, gap = 32px
+  // Track: [node-start] [node] [gap] [card] [gap] [node] [gap] [card] ... [node-end]
+  const CARD_W = 320;
+  const NODE_W = 72;
+  const GAP = 32;
+  const count = sorted.length;
+  // Total: leading node + (card + trailing node + gap)*count  – but we interleave:
+  // start-node  (gap card gap node) * count  end-node
+  const totalTrack =
+    NODE_W +
+    count * (GAP + CARD_W + GAP + NODE_W) +
+    NODE_W; // oldest cap
+
+  // How far we travel = totalTrack minus one full viewport width (100vw)
+  // We use a CSS calc() string so it's responsive
+  const xEnd = `calc(-${totalTrack}px + 100vw - 80px)`;
+
+  const translateX = useTransform(smoothProgress, [0, 1], ["0px", xEnd]);
+
+  // Fade hint out quickly
+  const hintOpacity = useTransform(smoothProgress, [0, 0.06], [1, 0]);
 
   return (
-    /*
-     * Outer sticky wrapper — its height controls how much vertical scroll
-     * maps to horizontal motion. More height = slower, more deliberate travel.
-     */
     <div
       ref={stickyRef}
-      // Height = enough room to scroll through all entries comfortably
-      style={{ height: `${COUNT * 420}px` }}
+      // Scroll budget: generous per entry so motion feels relaxed
+      style={{ height: `${count * 480}px` }}
       className="relative"
     >
-      {/* Sticky inner — stays in view while outer scrolls */}
-      <div className="sticky top-0 h-screen flex flex-col justify-center overflow-hidden">
-        {/* Horizontal rule + scroll track */}
-        <div className="relative">
-          {/* The spine line — full width of the track */}
-          <div
-            className="absolute left-0 right-0 top-[18px] h-px bg-border/50"
-            aria-hidden="true"
-          />
+      <div className="sticky top-0 h-screen flex flex-col justify-center" style={{ overflow: "hidden" }}>
 
-          {/* Scrolling track */}
-          <motion.div
-            style={{ x: translateX }}
-            className="flex items-start gap-5 pl-6 pr-24 will-change-transform"
-          >
-            {sorted.map((job, i) => (
-              <div key={job.slug} className="flex items-start gap-5">
-                {/* Year mark before each card */}
-                <TimelineMark
-                  year={String(job.startYear)}
-                  current={false}
-                />
-                <JobCard job={job} index={i} />
-              </div>
-            ))}
+        {/* Spine line — full width */}
+        <div
+          className="absolute pointer-events-none"
+          style={{
+            top: "50%",
+            left: 0,
+            right: 0,
+            height: 1,
+            background: "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 5%, rgba(255,255,255,0.07) 95%, transparent 100%)",
+          }}
+          aria-hidden="true"
+        />
 
-            {/* "Present" cap */}
-            <TimelineMark year="present" current />
-          </motion.div>
-        </div>
-
-        {/* Scroll hint — fades out once user starts scrolling */}
+        {/* Scrolling track */}
         <motion.div
-          style={{ opacity: useTransform(smoothProgress, [0, 0.08], [1, 0]) }}
-          className="absolute bottom-10 left-6 flex items-center gap-2 pointer-events-none select-none"
+          style={{ x: translateX }}
+          className="flex items-center will-change-transform"
+          // Extra left padding so the first node has breathing room from the edge
+          // Extra right padding handled by xEnd calc
+          style2={{ paddingLeft: 60, paddingRight: 60 }}
         >
-          <span className="font-mono text-xs text-muted/50">scroll to explore</span>
-          <span className="text-muted/40 text-sm">→</span>
+          {/* "Now" cap — leftmost since newest-first */}
+          <TimelineNode label="NOW" accent cap />
+
+          {sorted.map((job) => (
+            <div key={job.slug} className="flex items-center" style={{ gap: GAP }}>
+              {/* Spine spacer */}
+              <div style={{ width: GAP, height: 1, background: "rgba(255,255,255,0.07)", flexShrink: 0 }} />
+              <JobCard job={job} />
+              <div style={{ width: GAP, height: 1, background: "rgba(255,255,255,0.07)", flexShrink: 0 }} />
+              <TimelineNode
+                label={String(job.startYear)}
+                sublabel={job.endYear ? String(job.endYear) : undefined}
+              />
+            </div>
+          ))}
+
+          {/* Trailing spacer */}
+          <div style={{ width: 80, flexShrink: 0 }} />
+        </motion.div>
+
+        {/* Scroll hint */}
+        <motion.div
+          style={{ opacity: hintOpacity }}
+          className="absolute bottom-10 right-10 flex items-center gap-2 pointer-events-none select-none"
+        >
+          <span className="font-mono text-xs" style={{ color: "rgba(255,255,255,0.25)" }}>
+            scroll to travel back
+          </span>
+          <span style={{ color: "rgba(255,255,255,0.2)" }}>→</span>
         </motion.div>
       </div>
     </div>
   );
 }
-
