@@ -323,10 +323,12 @@ function AnimatedCard({
 }) {
   const above = index % 2 === 0;
 
-  // Card 0 starts partially visible the moment the section pins (enterStart < 0).
-  // Later cards fade in progressively as the track scrolls.
-  const enterStart = index === 0 ? -0.08 : Math.max(0, (index / count) * 0.88 - 0.05);
-  const enterEnd = Math.min(1, enterStart + 0.2);
+  // All cards start invisible and fade in as the user scrolls.
+  // Card 0 uses a short fade window so it's fully opaque before translateX moves it off screen.
+  // Later cards fade in progressively as the track scrolls right-to-left.
+  const enterStart = Math.max(0, (index / count) * 0.88 - 0.05);
+  const fadeWindow = index === 0 ? 0.07 : 0.18;
+  const enterEnd = Math.min(1, enterStart + fadeWindow);
 
   const opacity = useTransform(progress, [enterStart, enterEnd], [0, 1]);
   const slideY = useTransform(
