@@ -40,6 +40,13 @@ export function TuiShell() {
   const bootCompleteRef = useRef(bootComplete);
   bootCompleteRef.current = bootComplete;
 
+  // Scroll sensitivity management
+  const scrollAccumulator = useRef(0);
+  const lastMenuNavigationTime = useRef(0);
+  const MENU_NAVIGATION_THRESHOLD = 100; // Accumulated delta needed to navigate
+  const MENU_NAVIGATION_COOLDOWN = 150; // Min ms between menu navigations
+  const SCROLL_DAMPING = 0.75; // Reduce scroll speed for content (50% of original)
+
   // Run boot sequence once on mount
   useEffect(() => {
     runBootScript();
@@ -92,22 +99,42 @@ export function TuiShell() {
       const atTop = log.scrollTop <= 2;
 
       if (scrollingDown && !atBottom) {
-        log.scrollTop += Math.abs(e.deltaY);
+        // Apply damping to reduce scroll speed
+        log.scrollTop += Math.abs(e.deltaY) * SCROLL_DAMPING;
         return;
       }
       if (!scrollingDown && !atTop) {
-        log.scrollTop -= Math.abs(e.deltaY);
+        // Apply damping to reduce scroll speed
+        log.scrollTop -= Math.abs(e.deltaY) * SCROLL_DAMPING;
         return;
       }
     }
 
-    // At boundary — navigate menu (also blur input so cursor is on menu)
+    // At boundary — navigate menu with threshold and cooldown
     if (!bootCompleteRef.current) return;
-    (document.activeElement as HTMLElement)?.blur();
-    if (scrollingDown) {
-      setMenuIndex(Math.min(MENU_ITEMS.length - 1, menuIndexRef.current + 1));
-    } else {
-      setMenuIndex(Math.max(0, menuIndexRef.current - 1));
+    
+    const now = Date.now();
+    const timeSinceLastNav = now - lastMenuNavigationTime.current;
+    
+    // Accumulate scroll delta
+    scrollAccumulator.current += e.deltaY;
+    
+    // Check if we've accumulated enough delta and passed cooldown period
+    const absAccumulated = Math.abs(scrollAccumulator.current);
+    if (absAccumulated >= MENU_NAVIGATION_THRESHOLD && timeSinceLastNav >= MENU_NAVIGATION_COOLDOWN) {
+      (document.activeElement as HTMLElement)?.blur();
+      
+      if (scrollAccumulator.current > 0) {
+        // Scrolling down
+        setMenuIndex(Math.min(MENU_ITEMS.length - 1, menuIndexRef.current + 1));
+      } else {
+        // Scrolling up
+        setMenuIndex(Math.max(0, menuIndexRef.current - 1));
+      }
+      
+      // Reset accumulator and update timestamp
+      scrollAccumulator.current = 0;
+      lastMenuNavigationTime.current = now;
     }
   }, [setMenuIndex]);
 
