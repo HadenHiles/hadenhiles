@@ -47,8 +47,11 @@ function buildExperience(): HistoryEntry[] {
     dim("────────────────────────────────────────────────────────────────"),
   ];
   for (const j of jobs) {
-    const line = j.tui ?? `${j.company} · ${j.role} · ${j.dateRange}`;
-    rows.push(out(`${pad(j.company, companyWidth)}${line}`));
+    if (j.tui) {
+      rows.push(out(j.tui));
+    } else {
+      rows.push(out(`${pad(j.company, companyWidth)}${j.company} · ${j.role} · ${j.dateRange}`));
+    }
     rows.push(out(""));
   }
   rows.push(out("tip: cd experience/<slug> then cat role.txt / highlights.txt / stack.txt"));
