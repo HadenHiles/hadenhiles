@@ -23,7 +23,7 @@ export const MENU_ITEMS = [
   { label: "Experience", mode: "experience" as AppMode, number: 2 },
   { label: "Knowledge",  mode: "knowledge"  as AppMode, number: 3 },
   { label: "About",      mode: "about"      as AppMode, number: 4 },
-  { label: "Use GUI",    mode: "work"       as AppMode, number: 5, isHandoff: true },
+  { label: "Use GUI (view site)",    mode: "work"       as AppMode, number: 5, isHandoff: true },
   { label: "Contact",    mode: null,                    number: 6, isContact: true },
 ] as const;
 
