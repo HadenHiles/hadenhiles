@@ -48,12 +48,6 @@ function DemoView({ project, onBack }: { project: Project; onBack: () => void })
           </div>
         )}
       </div>
-
-      {/* Asset hint */}
-      <p className="text-center font-mono text-[10px] text-white/15">
-        swap demo in{" "}
-        <span className="text-accent/35">content/projects.json</span>
-      </p>
     </div>
   );
 }

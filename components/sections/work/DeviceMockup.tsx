@@ -72,31 +72,45 @@ export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
             aspectRatio: "9/19.5",
           }}
         >
-          {/* Dynamic Island */}
+          {/* Camera hole-punch */}
           <div
             className="absolute z-20"
             style={{
-              top: 12,
+              top: 10,
               left: "50%",
               transform: "translateX(-50%)",
-              width: "38%",
-              height: 28,
-              borderRadius: 20,
+              width: 10,
+              height: 10,
+              borderRadius: "50%",
               background: "#000",
             }}
           />
 
           {/* Screen content */}
           {src ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <motion.img
-              src={src}
-              alt={alt}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isVisible ? 1 : 0 }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="w-full h-full object-cover"
-            />
+            src.endsWith(".mp4") ? (
+              <motion.video
+                src={src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isVisible ? 1 : 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <motion.img
+                src={src}
+                alt={alt}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isVisible ? 1 : 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className="w-full h-full object-cover"
+              />
+            )
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <span className="font-mono text-xs text-white/20">no preview</span>
@@ -168,15 +182,29 @@ export function DesktopMockup({ src, alt, isVisible = true }: MockupProps) {
           style={{ borderRadius: 6, aspectRatio: "16/10" }}
         >
           {src ? (
-            /* eslint-disable-next-line @next/next/no-img-element */
-            <motion.img
-              src={src}
-              alt={alt}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isVisible ? 1 : 0 }}
-              transition={{ duration: 0.4, delay: 0.15 }}
-              className="w-full h-full object-cover"
-            />
+            src.endsWith(".mp4") ? (
+              <motion.video
+                src={src}
+                autoPlay
+                muted
+                loop
+                playsInline
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isVisible ? 1 : 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <motion.img
+                src={src}
+                alt={alt}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isVisible ? 1 : 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className="w-full h-full object-cover"
+              />
+            )
           ) : (
             <div className="w-full h-full flex items-center justify-center">
               <span className="font-mono text-xs text-white/20">no preview</span>

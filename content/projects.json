@@ -20,7 +20,7 @@
     "diagramAsset": null,
     "story": "The 10,000 Shot Challenge is a proven training method, but most players track it in notes apps or lose count. I built a mobile app that makes session logging take under ten seconds and surfaces cumulative progress in a way that actually motivates. Google and Apple auth, Firestore data modeling for per-session tracking, and real-time sync across devices - all wrapped in a UI designed for athletes who want to log and move on.",
     "demoType": "mobile",
-    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
+    "demoAsset": "/projects/10k-shots.mp4"
   },
   {
     "id": "the-pond",
@@ -69,7 +69,7 @@
     "diagramAsset": null,
     "story": "This project combined software engineering with physical exploration. I built a mobile app for the Lake Superior Group of Seven Trail that used Bluetooth beacon scanning to trigger contextual content based on a hiker's exact location. The UX constraint was strict: information should appear when it's relevant, not when the user goes looking for it. C++ native integrations handled the Bluetooth layer for performance, while Flutter handled the UI and map layers.",
     "demoType": "mobile",
-    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
+    "demoAsset": "/projects/g7-trail.mp4"
   },
   {
     "id": "nextshift",
@@ -91,7 +91,7 @@
     "diagramAsset": null,
     "story": "NextShift is a feedback and feature voting platform. The core problem: anyone can collect feedback, but most teams don't structure it in a way that's useful for prioritization. I built the data model around structured categorization and real-time voting, with a submission flow designed to take under 20 seconds from idea to visible. Firebase handles real-time consistency; the UI handles making complex ranking feel simple.",
     "demoType": "mobile",
-    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
+    "demoAsset": "/projects/next-shift.mp4"
   },
   {
     "id": "skill-drills",
