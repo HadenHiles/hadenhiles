@@ -9,7 +9,13 @@
     "startYear": 2013,
     "endYear": 2015,
     "current": false,
-    "primarySkills": ["UX / UI Design", "PHP", "WordPress", "CSS / SASS", "Client-Facing Architecture"],
+    "primarySkills": [
+      "UX / UI Design",
+      "PHP",
+      "WordPress",
+      "CSS / SASS",
+      "Client-Facing Architecture"
+    ],
     "summary": "Started building real products as a co-op placement at MediaSuite, where I had full creative ownership over 50+ custom client websites. No senior developer above me. Just a design brief, a deadline, and a browser.",
     "highlights": [
       "Designed and built 50+ uniquely designed client websites with full UX ownership",
@@ -29,7 +35,13 @@
     "startYear": 2015,
     "endYear": null,
     "current": true,
-    "primarySkills": ["Flutter / Dart", "Firebase / Firestore", "WordPress", "PHP", "UX / UI Design"],
+    "primarySkills": [
+      "Flutter / Dart",
+      "Firebase / Firestore",
+      "WordPress",
+      "PHP",
+      "UX / UI Design"
+    ],
     "summary": "Founded BugsLife Solutions to deliver web and mobile projects for local businesses on my own terms. Grew from basic client websites into technically ambitious mobile applications - culminating in the Group of Seven Trail App and several other shipped products.",
     "highlights": [
       "Founded and operated as sole developer delivering web and mobile projects for local businesses",
@@ -50,7 +62,13 @@
     "startYear": 2017,
     "endYear": 2017,
     "current": false,
-    "primarySkills": ["React", "Angular", "TypeScript", "Legacy Modernization", "UX / UI Design"],
+    "primarySkills": [
+      "React",
+      "Angular",
+      "TypeScript",
+      "Legacy Modernization",
+      "UX / UI Design"
+    ],
     "summary": "Led modernization of legacy client systems using React and Angular. Took full ownership of complex frontend projects for enterprise clients, designing and building custom UX solutions where existing tooling fell short.",
     "highlights": [
       "Built custom UX solutions using Angular and React as lead developer on high-detail client projects",
@@ -69,7 +87,13 @@
     "startYear": 2017,
     "endYear": 2017,
     "current": false,
-    "primarySkills": [".NET / C#", "REST API Design", "Database Sync Tooling", "KANBAN / Agile", "CI/CD Pipeline Management"],
+    "primarySkills": [
+      ".NET / C#",
+      "REST API Design",
+      "Database Sync Tooling",
+      "KANBAN / Agile",
+      "CI/CD Pipeline Management"
+    ],
     "summary": "Joined OrderEase to build REST API integrations for large B2B agricultural supply clients and internal tooling that simplified complex processes for non-technical staff. Managed KANBAN workflows and CI pipeline operations across the engineering team.",
     "highlights": [
       "Designed and tested REST API endpoints used by large B2B agricultural supply clients",
@@ -88,7 +112,12 @@
     "startYear": 2018,
     "endYear": 2019,
     "current": false,
-    "primarySkills": ["Data Integration & Validation", "WordPress", "Stakeholder Communication", "Web Systems Architecture"],
+    "primarySkills": [
+      "Data Integration & Validation",
+      "WordPress",
+      "Stakeholder Communication",
+      "Web Systems Architecture"
+    ],
     "summary": "Embedded in Georgian College's Marketing and IT departments to resolve complex data integrity issues between CRM systems and public-facing web platforms. Translated non-technical requirements from marketing stakeholders into functional, reliable integrations.",
     "highlights": [
       "Resolved complex term-data discrepancies between IT and marketing systems",
@@ -107,7 +136,13 @@
     "startYear": 2019,
     "endYear": null,
     "current": true,
-    "primarySkills": ["Production Infrastructure & DevOps", "GitHub Actions CI/CD", "Flutter / Dart", "Firebase / Firestore", "Docker"],
+    "primarySkills": [
+      "Production Infrastructure & DevOps",
+      "GitHub Actions CI/CD",
+      "Flutter / Dart",
+      "Firebase / Firestore",
+      "Docker"
+    ],
     "summary": "Sole full stack and DevOps engineer for How To Hockey - a web and mobile platform serving hockey players worldwide. I own everything: Flutter mobile apps, Firebase architecture, production infrastructure, CI/CD pipelines, and real-time community tooling.",
     "highlights": [
       "Sole software and DevOps lead - full ownership across frontend, backend, mobile, and infrastructure",
