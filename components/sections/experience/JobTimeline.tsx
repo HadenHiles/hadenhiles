@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import type { Job } from "@/types/content";
 
@@ -35,6 +35,7 @@ function JobCard({
   cardOffset: number;
 }) {
   const [flipped, setFlipped] = useState(false);
+  const pointerDownRef = useRef<{ x: number; y: number } | null>(null);
 
   // Connector line runs from card edge to spine
   const connectorH = cardOffset - CARD_H / 2;
@@ -83,7 +84,18 @@ function JobCard({
           transition={{ duration: 0.55, ease: [0.4, 0, 0.2, 1] }}
           onMouseEnter={() => setFlipped(true)}
           onMouseLeave={() => setFlipped(false)}
-          onClick={() => setFlipped((f) => !f)}
+          onPointerDown={(e) => {
+            pointerDownRef.current = { x: e.clientX, y: e.clientY };
+          }}
+          onClick={(e) => {
+            const start = pointerDownRef.current;
+            pointerDownRef.current = null;
+            if (!start) return;
+            // Only flip on a genuine tap (< 8px movement) — not a scroll gesture
+            if (Math.hypot(e.clientX - start.x, e.clientY - start.y) < 8) {
+              setFlipped((f) => !f);
+            }
+          }}
           style={{
             width: "100%",
             height: "100%",
@@ -342,9 +354,11 @@ function AnimatedCard({
   const above = index % 2 === 0;
 
   // Card 0 (current job) is always fully visible — no entrance animation.
-  // Other cards fade/slide in as the track scrolls them into the viewport.
-  const enterStart = index === 0 ? -0.1 : Math.max(0, (index / count) * 0.88 - 0.05);
-  const enterEnd   = index === 0 ?    0 : Math.min(1, enterStart + 0.18);
+  // Anchor enterEnd to the moment card i reaches screen center (progress ≈ (i/(count-1))*0.88)
+  // so the card is at full opacity exactly when it arrives at center, not after.
+  const centerProgress = count > 1 ? (index / (count - 1)) * 0.88 : 0;
+  const enterEnd   = index === 0 ? 0    : Math.min(centerProgress, 0.95);
+  const enterStart = index === 0 ? -0.1 : Math.max(0, enterEnd - 0.12);
 
   const opacity = useTransform(progress, [enterStart, enterEnd], [0, 1]);
   const slideY = useTransform(
@@ -426,11 +440,35 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
   const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
-  // Mirror the header fade: shift the whole timeline area down by HEADER_H/2 while
-  // the header is visible, then slide back to true vertical center as it fades out.
-  // Using translateY (not paddingTop) so absolutely-positioned children (spine, NOW)
-  // stay aligned with the flex track — they all shift together.
   const timelineShiftY = useTransform(scrollYProgress, [0, 0.08], [HEADER_H / 2, 0]);
+
+  // Dynamic year label: updates when each year node physically reaches the orb (left: 28).
+  // Node i center in track = 576 + i*WRAPPER_W
+  // (= CARD0_CENTER + CARD_W/2 + 3*GAP + NODE_W/2 = 284+160+96+36 = 576)
+  // Viewport x of node = nodePosInTrack + translateX
+  // translateX(p) = (vw/2 - CARD0_CENTER) + (p/0.88)*(CARD0_CENTER - LAST_CARD_CENTER)
+  const ORB_LEFT = 28;
+  const [orbLabel, setOrbLabel] = useState(String(sorted[0].startYear));
+  const activeIdxRef = useRef(0);
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    const vw = window.innerWidth;
+    const p = Math.min(latest, 0.88);
+    const tX = (vw / 2 - CARD0_CENTER) + (p / 0.88) * (CARD0_CENTER - LAST_CARD_CENTER);
+
+    // Walk nodes in order — keep updating orbIdx as long as a node has reached/passed the orb
+    let orbIdx = 0;
+    for (let i = 0; i < count; i++) {
+      const nodeVPx = (576 + i * WRAPPER_W) + tX;
+      if (nodeVPx <= ORB_LEFT + NODE_W / 2) {
+        orbIdx = i;
+      }
+    }
+
+    if (orbIdx !== activeIdxRef.current) {
+      activeIdxRef.current = orbIdx;
+      setOrbLabel(String(sorted[orbIdx].startYear));
+    }
+  });
 
   // Budget: each card gets 700px of vertical scroll to enter, settle, and be readable.
   // 1400px tail buffer gives dwell time with the last card centered before unpinning.
@@ -485,7 +523,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
               aria-hidden="true"
             />
 
-            {/* "NOW" — pinned at left, always visible regardless of scroll position */}
+            {/* Year orb — pinned at left, label updates as cards scroll into center */}
             <div
               className="absolute z-10 pointer-events-none select-none flex flex-col items-center gap-2"
               style={{ left: 28, top: "50%", transform: "translateY(-50%)" }}
@@ -500,7 +538,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
                   boxShadow: "0 0 14px rgba(138,92,255,0.6), 0 0 4px rgba(138,92,255,0.8)",
                 }}
               />
-              <span className="font-mono text-[10px] tracking-widest text-accent">NOW</span>
+              <span className="font-mono text-[10px] tracking-widest text-accent">{orbLabel}</span>
             </div>
 
             {/* Scrolling track */}
