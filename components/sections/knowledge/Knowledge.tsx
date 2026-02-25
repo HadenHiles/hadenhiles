@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import type { KnowledgeCategory } from "@/types/content";
 import knowledge from "@/content/knowledge.json";
-import { KnowledgeMindMap } from "./KnowledgeMindMap";
+import { KnowledgeMap } from "./KnowledgeMap";
 import { duration, ease } from "@/lib/motion";
 
 export function Knowledge() {
@@ -17,10 +17,10 @@ export function Knowledge() {
       >
         <p className="font-mono text-sm text-accent mb-4">knowledge</p>
         <h2 className="text-4xl sm:text-5xl font-bold text-text leading-tight mb-3">
-          Knowledge Map
+          Tech Stack
         </h2>
-        <p className="text-muted mb-5">
-          Select a category to focus — hover any node to explore connections.
+        <p className="text-muted mb-8">
+          Hover any logo to see years of experience.
         </p>
       </motion.div>
       <motion.div
@@ -29,8 +29,9 @@ export function Knowledge() {
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: duration.medium, ease: ease.standard, delay: 0.1 }}
       >
-        <KnowledgeMindMap categories={knowledge as KnowledgeCategory[]} />
+        <KnowledgeMap categories={knowledge as KnowledgeCategory[]} />
       </motion.div>
     </section>
   );
 }
+

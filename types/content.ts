@@ -49,6 +49,7 @@ export interface ExperienceEntry {
 export interface KnowledgeSkill {
   name: string;
   logo?: string | null;
+  yearsExperience?: number | null;
   usedFor: string;
   proofProjectIds: string[];
 }
