@@ -58,10 +58,9 @@ export function CommandLine({
         return;
       }
 
-      // Enter — focus input so its own onKeyDown fires
-      if (e.key === "Enter") {
-        input.focus();
-      }
+      // Enter is intentionally NOT redirected here — when the input is unfocused,
+      // Enter should fire the keyboard hook's onEnter to activate the highlighted
+      // menu item directly. Only printable chars + backspace steal focus.
     };
 
     window.addEventListener("keydown", handleGlobalKeyDown);
