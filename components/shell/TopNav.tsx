@@ -51,6 +51,7 @@ export function TopNav() {
   };
 
   return (
+    <>
     <header
       className={`
         relative flex items-center justify-between
@@ -157,105 +158,108 @@ export function TopNav() {
         </motion.button>
       </div>
 
-      {/* Mobile full-screen menu overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: duration.short, ease: ease.standard }}
-            className="sm:hidden fixed inset-0 z-50 bg-bg flex flex-col"
+    </header>
+
+    {/* Mobile full-screen menu overlay — rendered outside <header> to avoid backdrop-blur stacking context */}
+    <AnimatePresence>
+      {mobileOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: duration.short, ease: ease.standard }}
+          className="sm:hidden fixed inset-0 z-50 flex flex-col"
+          style={{ backgroundColor: '#0B0B0E' }}
+        >
+          {/* Close button — pinned top-right, same position as hamburger */}
+          <motion.button
+            onClick={() => setMobileOpen(false)}
+            className="absolute top-4 right-5 p-1.5 text-muted hover:text-accent transition-colors"
+            aria-label="Close menu"
+            animate="open"
           >
-            {/* Close button — pinned top-right, same position as hamburger */}
-            <motion.button
-              onClick={() => setMobileOpen(false)}
-              className="absolute top-4 right-5 p-1.5 text-muted hover:text-accent transition-colors"
-              aria-label="Close menu"
-              animate="open"
-            >
-              <div className="w-5 h-3.5 flex flex-col justify-between">
-                <motion.span
-                  className="block h-px bg-current origin-center"
-                  variants={topVariant}
-                  transition={lineTransition}
-                />
-                <motion.span
-                  className="block h-px bg-current origin-center"
-                  variants={midVariant}
-                  transition={lineTransition}
-                />
-                <motion.span
-                  className="block h-px bg-current origin-center"
-                  variants={bottomVariant}
-                  transition={lineTransition}
-                />
-              </div>
-            </motion.button>
+            <div className="w-5 h-3.5 flex flex-col justify-between">
+              <motion.span
+                className="block h-px bg-current origin-center"
+                variants={topVariant}
+                transition={lineTransition}
+              />
+              <motion.span
+                className="block h-px bg-current origin-center"
+                variants={midVariant}
+                transition={lineTransition}
+              />
+              <motion.span
+                className="block h-px bg-current origin-center"
+                variants={bottomVariant}
+                transition={lineTransition}
+              />
+            </div>
+          </motion.button>
 
-            {/* Centered nav items — fills full screen height */}
-            <nav className="flex-1 flex flex-col items-center justify-center gap-2" aria-label="Site sections">
-              {NAV_TABS.map((tab, i) => {
-                const isActive = mode === tab.mode;
-                return (
-                  <motion.button
-                    key={tab.mode}
-                    initial={{ opacity: 0, y: 16 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: i * 0.06,
-                      duration: duration.short,
-                      ease: ease.standard,
-                    }}
-                    onClick={() => handleTab(tab)}
-                    aria-current={isActive ? "page" : undefined}
-                    className={`
-                      w-full max-w-xs flex items-center justify-center gap-3
-                      px-6 py-4 rounded-card text-xl font-medium
-                      transition-colors select-none
-                      ${isActive
-                        ? "text-accent bg-accent/10 border border-accent/20"
-                        : "text-text hover:text-accent hover:bg-surface2/60"
-                      }
-                    `}
-                  >
-                    {tab.label}
-                    {isActive && (
-                      <span className="w-2 h-2 rounded-full bg-accent inline-block" />
-                    )}
-                  </motion.button>
-                );
-              })}
-
-              {/* Divider */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: NAV_TABS.length * 0.06 + 0.05, duration: duration.micro }}
-                className="w-full max-w-xs"
-              >
-                <div className="my-3 border-t border-border/30" />
-                <button
-                  onClick={() => { setMode("tui"); setMobileOpen(false); }}
-                  className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-card text-base text-muted hover:text-accent hover:bg-surface2/60 transition-colors font-mono"
+          {/* Centered nav items — fills full screen height */}
+          <nav className="h-full flex flex-col items-center justify-center gap-2" aria-label="Site sections">
+            {NAV_TABS.map((tab, i) => {
+              const isActive = mode === tab.mode;
+              return (
+                <motion.button
+                  key={tab.mode}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: i * 0.06,
+                    duration: duration.short,
+                    ease: ease.standard,
+                  }}
+                  onClick={() => handleTab(tab)}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`
+                    w-full max-w-xs flex items-center justify-center gap-3
+                    px-6 py-4 rounded-card text-xl font-medium
+                    transition-colors select-none
+                    ${isActive
+                      ? "text-accent bg-accent/10 border border-accent/20"
+                      : "text-text hover:text-accent hover:bg-surface2/60"
+                    }
+                  `}
                 >
-                  &gt;_ Terminal
-                </button>
-              </motion.div>
-            </nav>
+                  {tab.label}
+                  {isActive && (
+                    <span className="w-2 h-2 rounded-full bg-accent inline-block" />
+                  )}
+                </motion.button>
+              );
+            })}
 
-            {/* Bottom label */}
+            {/* Divider */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.35, duration: duration.micro }}
-              className="pb-8 text-center font-mono text-xs text-border/50 select-none"
+              transition={{ delay: NAV_TABS.length * 0.06 + 0.05, duration: duration.micro }}
+              className="w-full max-w-xs"
             >
-              hadenhiles.com
+              <div className="my-3 border-t border-border/30" />
+              <button
+                onClick={() => { setMode("tui"); setMobileOpen(false); }}
+                className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-card text-base text-muted hover:text-accent hover:bg-surface2/60 transition-colors font-mono"
+              >
+                &gt;_ Terminal
+              </button>
             </motion.div>
+          </nav>
+
+          {/* Bottom label — absolute so it doesn't affect vertical centering */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.35, duration: duration.micro }}
+            className="absolute bottom-0 left-0 right-0 pb-8 text-center font-mono text-xs text-border/50 select-none"
+          >
+            hadenhiles.com
           </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+        </motion.div>
+      )}
+    </AnimatePresence>
+    </>
   );
 }
