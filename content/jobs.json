@@ -2,7 +2,7 @@
   {
     "slug": "mediasuite-co-op",
     "company": "MediaSuite",
-    "companyLogo": null,
+    "companyLogo": "/images/mediasuite-logo.png",
     "coverImage": "/images/bugslife-solutions-freelance-2015.jpg",
     "role": "Web Developer & Designer (Co-op)",
     "dateRange": "2013 - 2015",
@@ -105,7 +105,7 @@
   {
     "slug": "georgian-college",
     "company": "Georgian College",
-    "companyLogo": "/images/georgian-logo.webp",
+    "companyLogo": "/images/georgian-logo.jpg",
     "coverImage": "/images/georgian-web-specialist.jpg",
     "role": "Web Specialist (Marketing & IT)",
     "dateRange": "Sep 2018 - Sep 2019",

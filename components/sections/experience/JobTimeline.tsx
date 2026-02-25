@@ -5,6 +5,24 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import type { Job } from "@/types/content";
 import { duration, ease } from "@/lib/motion";
 
+// ─── Per-card animated wrapper ─────────────────────────────────────────────
+
+function AnimatedCard({ job, index }: { job: Job; index: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "start 0.6"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
+
+  return (
+    <motion.div ref={ref} style={{ opacity, y }}>
+      <JobCard job={job} />
+    </motion.div>
+  );
+}
+
 // ─── Card ─────────────────────────────────────────────────────────────────────
 
 function JobCard({ job }: { job: Job }) {
@@ -41,13 +59,21 @@ function JobCard({ job }: { job: Job }) {
         {/* Logo row */}
         <div className="flex items-start justify-between gap-3 min-h-[40px]">
           {job.companyLogo ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img
-              src={job.companyLogo}
-              alt={job.company}
-              className="h-8 w-auto max-w-[140px] object-contain"
-              style={{ filter: "brightness(0) invert(1) opacity(0.85)" }}
-            />
+            <div
+              className="rounded-lg flex items-center justify-center shrink-0"
+              style={{
+                background: "rgba(255,255,255,0.95)",
+                padding: "6px 10px",
+                borderRadius: 8,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={job.companyLogo}
+                alt={job.company}
+                className="h-7 w-auto max-w-[130px] object-contain"
+              />
+            </div>
           ) : (
             <span className="font-semibold text-text/90 text-base leading-tight">
               {job.company}
@@ -183,10 +209,13 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
     <div
       ref={stickyRef}
       // Scroll budget: generous per entry so motion feels relaxed
-      style={{ height: `${count * 480}px` }}
+      style={{ height: `${count * 480}px`, overflow: "clip" }}
       className="relative"
     >
-      <div className="sticky top-0 h-screen flex flex-col justify-center" style={{ overflow: "hidden" }}>
+      <div
+        className="sticky top-0 h-screen flex flex-col justify-center"
+        style={{ overflow: "hidden" }}
+      >
 
         {/* Spine line — full width */}
         <div
@@ -203,20 +232,17 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
         {/* Scrolling track */}
         <motion.div
-          style={{ x: translateX }}
+          style={{ x: translateX, paddingLeft: 60, paddingRight: 60 }}
           className="flex items-center will-change-transform"
-          // Extra left padding so the first node has breathing room from the edge
-          // Extra right padding handled by xEnd calc
-          style2={{ paddingLeft: 60, paddingRight: 60 }}
         >
           {/* "Now" cap — leftmost since newest-first */}
           <TimelineNode label="NOW" accent cap />
 
-          {sorted.map((job) => (
+          {sorted.map((job, i) => (
             <div key={job.slug} className="flex items-center" style={{ gap: GAP }}>
               {/* Spine spacer */}
               <div style={{ width: GAP, height: 1, background: "rgba(255,255,255,0.07)", flexShrink: 0 }} />
-              <JobCard job={job} />
+              <AnimatedCard job={job} index={i} />
               <div style={{ width: GAP, height: 1, background: "rgba(255,255,255,0.07)", flexShrink: 0 }} />
               <TimelineNode
                 label={String(job.startYear)}
