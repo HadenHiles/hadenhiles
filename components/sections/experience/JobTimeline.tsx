@@ -6,11 +6,13 @@ import type { MotionValue } from "framer-motion";
 import type { Job } from "@/types/content";
 import knowledgeData from "@/content/knowledge.json";
 
-// ─── Skill logo lookup (name → logo path from knowledge.json) ─────────────────
+// ─── Skill logo + emoji lookup (from knowledge.json) ─────────────────────────
 const skillLogoMap: Record<string, string> = {};
-for (const category of knowledgeData as { skills: { name: string; logo?: string | null }[] }[]) {
+const skillEmojiMap: Record<string, string> = {};
+for (const category of knowledgeData as { skills: { name: string; logo?: string | null; emoji?: string | null }[] }[]) {
   for (const skill of category.skills) {
     if (skill.logo) skillLogoMap[skill.name] = skill.logo;
+    if (skill.emoji) skillEmojiMap[skill.name] = skill.emoji;
   }
 }
 
@@ -85,37 +87,61 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
           ×
         </button>
 
-        {/* ── Cover photo banner ── */}
-        {job.coverImage && (
-          <div className="relative shrink-0" style={{ height: 200 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={job.coverImage}
-              alt={job.company}
-              className="w-full h-full object-cover"
-            />
-            <div
-              className="absolute inset-0"
-              style={{ background: "linear-gradient(to top, rgba(24,24,31,1) 0%, rgba(24,24,31,0.45) 50%, transparent 100%)" }}
-            />
-            {/* Logo pinned over gradient */}
-            {job.companyLogo && (
-              <div
-                className="absolute bottom-4 left-6 flex items-center justify-center"
-                style={{ background: "rgba(255,255,255,0.96)", padding: "6px 12px", borderRadius: 8 }}
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={job.companyLogo} alt={job.company} style={{ height: 26, maxWidth: 110, objectFit: "contain" }} />
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* ── Scrollable content ── */}
+        {/* ── Scrollable container ── */}
         <div
-          className="flex flex-col gap-5 p-6 sm:p-8"
-          style={{ overflowY: "auto", overscrollBehavior: "contain", scrollbarWidth: "thin", scrollbarColor: "rgba(138,92,255,0.3) transparent" }}
+          style={{
+            flex: 1,
+            minHeight: 0,
+            overflowY: "auto",
+            overscrollBehavior: "contain",
+            scrollbarWidth: "thin",
+            scrollbarColor: "rgba(138,92,255,0.3) transparent",
+          }}
         >
+          {/* ── Cover photo — sticky so content scrolls up over it ── */}
+          {job.coverImage && (
+            <div
+              style={{
+                position: "sticky",
+                top: 0,
+                height: job.coverImageHeight ?? 200,
+                zIndex: 0,
+                pointerEvents: "none",
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={job.coverImage}
+                alt={job.company}
+                className="w-full h-full object-cover"
+                style={{ objectPosition: job.coverImagePosition ?? "center" }}
+              />
+              <div
+                className="absolute inset-0"
+                style={{ background: "linear-gradient(to top, rgba(24,24,31,1) 0%, rgba(24,24,31,0.45) 50%, transparent 100%)" }}
+              />
+              {/* Logo pinned over gradient */}
+              {job.companyLogo && (
+                <div
+                  className="absolute bottom-4 left-6 flex items-center justify-center"
+                  style={{ background: "rgba(255,255,255,0.96)", padding: "6px 12px", borderRadius: 8, pointerEvents: "auto" }}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={job.companyLogo} alt={job.company} style={{ height: 75, maxWidth: 180, objectFit: "contain" }} />
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* ── Content — stacks above the sticky image as you scroll ── */}
+          <div
+            className="flex flex-col gap-5 p-6 sm:p-8"
+            style={{
+              position: "relative",
+              zIndex: 1,
+              background: CARD_BG,
+            }}
+          >
           {/* Logo row (when no cover photo) */}
           {!job.coverImage && job.companyLogo && (
             <div className="flex items-start gap-4">
@@ -202,6 +228,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
                 <div className="flex flex-wrap gap-2">
                   {job.primarySkills.map((skill) => {
                     const logo = skillLogoMap[skill];
+                    const emoji = skillEmojiMap[skill];
                     return (
                       <div
                         key={skill}
@@ -213,10 +240,14 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
                           minWidth: 110,
                         }}
                       >
-                        {logo && (
+                        {(logo || emoji) && (
                           <div className="shrink-0 flex items-center justify-center" style={{ width: 22, height: 22 }}>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img src={logo} alt={skill} style={{ width: 22, height: 22, objectFit: "contain" }} />
+                            {logo ? (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img src={logo} alt={skill} style={{ width: 22, height: 22, objectFit: "contain" }} onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }} />
+                            ) : (
+                              <span style={{ fontSize: 15, lineHeight: 1 }} aria-hidden="true">{emoji}</span>
+                            )}
                           </div>
                         )}
                         <span className="font-bold text-[11px] tracking-widest uppercase text-white/70 whitespace-nowrap leading-none">
@@ -229,7 +260,8 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
               </div>
             </>
           )}
-        </div>
+          </div> {/* end content wrapper */}
+        </div> {/* end scroll container */}
       </motion.div>
     </motion.div>
   );

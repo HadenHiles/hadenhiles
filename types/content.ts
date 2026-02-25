@@ -3,6 +3,10 @@ export interface Job {
   company: string;
   companyLogo?: string | null;
   coverImage?: string | null;
+  /** CSS object-position value for the cover photo, e.g. "center", "top", "50% 20%" */
+  coverImagePosition?: string | null;
+  /** Cover photo banner height in pixels. Defaults to 200. */
+  coverImageHeight?: number | null;
   role: string;
   dateRange: string;
   startYear: number;
@@ -54,6 +58,7 @@ export interface ExperienceEntry {
 export interface KnowledgeSkill {
   name: string;
   logo?: string | null;
+  emoji?: string | null;
   yearsExperience?: number | null;
   usedFor: string;
   proofProjectIds: string[];

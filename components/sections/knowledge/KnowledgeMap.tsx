@@ -16,13 +16,14 @@ function seededRand(index: number, salt: number): number {
 
 interface SkillTileProps {
   name: string;
-  logo: string;
+  logo: string | null;
+  emoji?: string | null;
   yearsExperience: number;
   tileIndex: number;
   isInView: boolean;
 }
 
-function SkillTile({ name, logo, yearsExperience, tileIndex, isInView }: SkillTileProps) {
+function SkillTile({ name, logo, emoji, yearsExperience, tileIndex, isInView }: SkillTileProps) {
   const [hovered, setHovered] = useState(false);
   const [imgError, setImgError] = useState(false);
 
@@ -39,7 +40,8 @@ function SkillTile({ name, logo, yearsExperience, tileIndex, isInView }: SkillTi
     spring.set(0);
   };
 
-  if (imgError) return null;
+  // Only hide the tile if the image failed AND there is no emoji fallback
+  if (imgError && !emoji) return null;
 
   // Deterministic settled transform (final resting state — the "organized" part)
   const settledRotation = (seededRand(tileIndex, 1) * 20) - 10;   // -10 to +10 deg
@@ -107,23 +109,27 @@ function SkillTile({ name, logo, yearsExperience, tileIndex, isInView }: SkillTi
         transformOrigin: "center",
       }}
     >
-      {/* Logo */}
+      {/* Logo or emoji */}
       <motion.div
         animate={{ scale: hovered ? 0.88 : 1 }}
         transition={{ duration: duration.micro }}
         className="flex items-center justify-center shrink-0"
         style={{ width: 22, height: 22 }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={logo}
-          alt={name}
-          width={22}
-          height={22}
-          className="object-contain"
-          style={{ width: 22, height: 22 }}
-          onError={() => setImgError(true)}
-        />
+        {logo && !imgError ? (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={logo}
+            alt={name}
+            width={22}
+            height={22}
+            className="object-contain"
+            style={{ width: 22, height: 22 }}
+            onError={() => setImgError(true)}
+          />
+        ) : emoji ? (
+          <span style={{ fontSize: 15, lineHeight: 1 }} aria-hidden="true">{emoji}</span>
+        ) : null}
       </motion.div>
 
       {/* Name */}
@@ -157,8 +163,8 @@ function SkillTile({ name, logo, yearsExperience, tileIndex, isInView }: SkillTi
 
 export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }) {
   const logoSkills = categories.flatMap((cat) =>
-    cat.skills.filter((s) => s.logo && s.yearsExperience != null)
-  ) as Array<{ name: string; logo: string; yearsExperience: number }>;
+    cat.skills.filter((s) => (s.logo || s.emoji) && s.yearsExperience != null)
+  ) as Array<{ name: string; logo: string | null; emoji?: string | null; yearsExperience: number }>;
 
   const containerRef = useRef<HTMLDivElement>(null);
   // Fires as a batch when the container is 220px into the viewport — not gradual per-tile
@@ -175,6 +181,7 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
           key={skill.name}
           name={skill.name}
           logo={skill.logo}
+          emoji={skill.emoji}
           yearsExperience={skill.yearsExperience}
           tileIndex={i}
           isInView={isInView}

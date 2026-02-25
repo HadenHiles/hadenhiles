@@ -1,7 +1,7 @@
 [
   {
     "category": "Frontend",
-    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · CSS/SASS · Grunt.js",
+    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · HTML/CSS · CSS/SASS · Grunt.js",
     "skills": [
       {
         "name": "Flutter / Dart",
@@ -49,6 +49,13 @@
         "proofProjectIds": []
       },
       {
+        "name": "HTML / CSS",
+        "logo": "/images/logos/html5.svg",
+        "yearsExperience": 12,
+        "usedFor": "The foundation of every web interface - semantic markup, accessibility, and layout that holds up across devices.",
+        "proofProjectIds": []
+      },
+      {
         "name": "WordPress",
         "logo": "/images/logos/wordpress.svg",
         "yearsExperience": 12,
@@ -79,7 +86,7 @@
   },
   {
     "category": "Backend",
-    "tui": "Firebase/Firestore · Node.js/Express · PHP · .NET Core · LearnDash/MemberPress",
+    "tui": "Firebase/Firestore · Node.js/Express · PHP · .NET Core · Stripe · REST API Design",
     "skills": [
       {
         "name": "Firebase / Firestore",
@@ -117,8 +124,30 @@
         "proofProjectIds": []
       },
       {
+        "name": ".NET / C#",
+        "logo": "/images/logos/dotnet.svg",
+        "yearsExperience": 6,
+        "usedFor": "Windows desktop tools and enterprise backend services.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Stripe",
+        "logo": "/images/logos/stripe.svg",
+        "yearsExperience": 4,
+        "usedFor": "Payment processing and checkout integration for client e-commerce and subscription platforms.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "PencilBlue CMS",
+        "logo": "/images/logos/pencilblue-icon.png",
+        "yearsExperience": null,
+        "usedFor": "Open-source Node.js CMS used at BugsLife Solutions for a custom off-site content management solution for the Group of Seven Trail project.",
+        "proofProjectIds": []
+      },
+      {
         "name": "REST API Design",
         "logo": null,
+        "emoji": "🔌",
         "yearsExperience": null,
         "usedFor": "Designing clean, predictable endpoints consumed by both internal tools and large B2B clients.",
         "proofProjectIds": []
@@ -178,7 +207,7 @@
   },
   {
     "category": "DevOps & Infrastructure",
-    "tui": "Git · GitHub Actions · Docker · Linux · Backup & Recovery · CI/CD Pipelines",
+    "tui": "Git · GitHub Actions · Docker · Linux · CI/CD Pipelines · Backup & Recovery",
     "skills": [
       {
         "name": "Git",
@@ -192,6 +221,20 @@
         "logo": "/images/logos/githubactions.svg",
         "yearsExperience": 5,
         "usedFor": "Building and maintaining CI/CD pipelines - release workflows that are stable, repeatable, and require minimal manual intervention.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "GitHub Actions CI/CD",
+        "logo": "/images/logos/githubactions.svg",
+        "yearsExperience": 5,
+        "usedFor": "CI/CD pipelines using GitHub Actions for automated build, test, and release workflows.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "CI/CD Pipeline Management",
+        "logo": "/images/logos/githubactions.svg",
+        "yearsExperience": 5,
+        "usedFor": "Owning the pipelines that take code from commit to production reliably.",
         "proofProjectIds": []
       },
       {
@@ -211,13 +254,23 @@
       {
         "name": "Production Infrastructure",
         "logo": null,
+        "emoji": "🖥️",
         "yearsExperience": null,
         "usedFor": "Owning the systems that stay up after launch. Reliability is part of user experience, not separate from it.",
         "proofProjectIds": []
       },
       {
+        "name": "Production Infrastructure & DevOps",
+        "logo": null,
+        "emoji": "🖥️",
+        "yearsExperience": null,
+        "usedFor": "Full-stack infrastructure ownership - deployment, uptime, monitoring, and recovery.",
+        "proofProjectIds": []
+      },
+      {
         "name": "Backup & Recovery Systems",
         "logo": null,
+        "emoji": "💾",
         "yearsExperience": null,
         "usedFor": "Automated website backups, system snapshots, and structured recovery pipelines to guarantee rollback capability.",
         "proofProjectIds": []
@@ -263,11 +316,12 @@
   },
   {
     "category": "Product & UX",
-    "tui": "UX Architecture · Content Architecture · Product Thinking",
+    "tui": "UX Architecture · Content Architecture · Product Thinking · UX/UI Design",
     "skills": [
       {
         "name": "UX Architecture",
         "logo": null,
+        "emoji": "🎨",
         "yearsExperience": null,
         "usedFor": "Every project starts with 'as a user, what would I expect right here?' - this isn't a phase, it's the foundation every technical decision is built on.",
         "proofProjectIds": [
@@ -278,8 +332,17 @@
         ]
       },
       {
+        "name": "UX / UI Design",
+        "logo": null,
+        "emoji": "🎨",
+        "yearsExperience": null,
+        "usedFor": "Designing interfaces that feel intuitive - layout, typography, visual hierarchy applied from the user's perspective.",
+        "proofProjectIds": []
+      },
+      {
         "name": "Content Architecture",
         "logo": null,
+        "emoji": "📐",
         "yearsExperience": null,
         "usedFor": "Designing information hierarchies that feel intuitive - so users always know what to do next without reading instructions.",
         "proofProjectIds": [
@@ -289,6 +352,7 @@
       {
         "name": "Product Thinking",
         "logo": null,
+        "emoji": "💡",
         "yearsExperience": null,
         "usedFor": "Framing engineering decisions in terms of user outcomes and business impact, not just technical correctness.",
         "proofProjectIds": [
@@ -296,7 +360,285 @@
           "ten-thousand-shot-challenge",
           "skill-drills"
         ]
+      },
+      {
+        "name": "Client-Facing Architecture",
+        "logo": null,
+        "emoji": "🤝",
+        "yearsExperience": null,
+        "usedFor": "Designing systems and deliverables with the client's mental model in mind - documentation, workflows, and presentations that non-technical stakeholders can own.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Stakeholder Communication",
+        "logo": null,
+        "emoji": "💬",
+        "yearsExperience": null,
+        "usedFor": "Translating technical complexity into plain language for non-technical stakeholders - ensuring decisions are understood and owned.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Web Systems Architecture",
+        "logo": null,
+        "emoji": "🏗️",
+        "yearsExperience": null,
+        "usedFor": "Designing the integration points, data flows, and system boundaries before writing any code.",
+        "proofProjectIds": []
       }
+    ]
+  },
+  {
+    "category": "Process & Tooling",
+    "tui": "KANBAN/Agile · Legacy Modernization · Database Sync · Data Integration",
+    "skills": [
+      {
+        "name": "KANBAN / Agile",
+        "logo": null,
+        "emoji": "📋",
+        "yearsExperience": null,
+        "usedFor": "Managing delivery momentum - sprint planning, backlog grooming, and async workflows that keep teams unblocked.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Legacy Modernization",
+        "logo": null,
+        "emoji": "⚙️",
+        "yearsExperience": null,
+        "usedFor": "Refactoring and upgrading outdated systems to modern standards without breaking what's already working.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Database Sync Tooling",
+        "logo": null,
+        "emoji": "🔄",
+        "yearsExperience": null,
+        "usedFor": "Custom tooling for syncing local and cloud databases - built to be operable by non-technical staff.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Data Integration & Validation",
+        "logo": null,
+        "emoji": "🔗",
+        "yearsExperience": null,
+        "usedFor": "Ensuring data accuracy across system boundaries - resolving discrepancies between APIs, CRMs, and public-facing platforms.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Requirements Analysis",
+        "logo": null,
+        "emoji": "🎯",
+        "yearsExperience": null,
+        "usedFor": "Translating client needs and business goals into structured technical specifications and actionable scope.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Project Management",
+        "logo": null,
+        "emoji": "🗂️",
+        "yearsExperience": null,
+        "usedFor": "Coordinating scope, timelines, and stakeholders to deliver software projects reliably from kickoff to launch.",
+        "proofProjectIds": []
+      }
+    ]
+  },
+  {
+    "category": "Skills Library",
+    "tui": "Extended skill lookup — 200+ technologies, frameworks, and tools",
+    "skills": [
+      { "name": "Python", "logo": "https://cdn.simpleicons.org/python/3776AB", "yearsExperience": null, "usedFor": "General-purpose language widely used for scripting, data science, automation, and web backends.", "proofProjectIds": [] },
+      { "name": "Kotlin", "logo": "https://cdn.simpleicons.org/kotlin/7F52FF", "yearsExperience": null, "usedFor": "Modern JVM language used for Android development and server-side applications.", "proofProjectIds": [] },
+      { "name": "Swift", "logo": "https://cdn.simpleicons.org/swift/F05138", "yearsExperience": null, "usedFor": "Apple's language for iOS, macOS, and native Apple platform development.", "proofProjectIds": [] },
+      { "name": "Go", "logo": "https://cdn.simpleicons.org/go/00ADD8", "yearsExperience": null, "usedFor": "Compiled language built for performance and concurrency — backend services and CLIs.", "proofProjectIds": [] },
+      { "name": "Rust", "logo": "https://cdn.simpleicons.org/rust/CE422B", "yearsExperience": null, "usedFor": "Systems programming language focused on memory safety and high performance.", "proofProjectIds": [] },
+      { "name": "Java", "logo": "https://cdn.simpleicons.org/java/007396", "yearsExperience": null, "usedFor": "Enterprise-grade OOP language widely used for backend services, Android, and large-scale systems.", "proofProjectIds": [] },
+      { "name": "Ruby", "logo": "https://cdn.simpleicons.org/ruby/CC342D", "yearsExperience": null, "usedFor": "Expressive scripting language best known for Ruby on Rails web framework.", "proofProjectIds": [] },
+      { "name": "Scala", "logo": "https://cdn.simpleicons.org/scala/DC322F", "yearsExperience": null, "usedFor": "JVM language combining OOP and functional programming, popular for data engineering.", "proofProjectIds": [] },
+      { "name": "Elixir", "logo": "https://cdn.simpleicons.org/elixir/4B275F", "yearsExperience": null, "usedFor": "Functional language built on Erlang VM, used for scalable and fault-tolerant systems.", "proofProjectIds": [] },
+      { "name": "Lua", "logo": "https://cdn.simpleicons.org/lua/2C2D72", "yearsExperience": null, "usedFor": "Lightweight embeddable scripting language used in games, embedded systems, and config.", "proofProjectIds": [] },
+      { "name": "Haskell", "logo": "https://cdn.simpleicons.org/haskell/5D4F85", "yearsExperience": null, "usedFor": "Purely functional programming language used in academia and high-assurance software.", "proofProjectIds": [] },
+      { "name": "Perl", "logo": "https://cdn.simpleicons.org/perl/39457E", "yearsExperience": null, "usedFor": "Scripting language historically used for text processing, sysadmin tasks, and web CGI.", "proofProjectIds": [] },
+      { "name": "Clojure", "logo": "https://cdn.simpleicons.org/clojure/5881D8", "yearsExperience": null, "usedFor": "Lisp dialect on the JVM, used for functional programming and data processing.", "proofProjectIds": [] },
+      { "name": "R", "logo": "https://cdn.simpleicons.org/r/276DC3", "yearsExperience": null, "usedFor": "Statistical computing language widely used for data analysis, visualization, and ML.", "proofProjectIds": [] },
+      { "name": "Julia", "logo": null, "emoji": "🔢", "yearsExperience": null, "usedFor": "High-performance language for numerical computing and scientific research.", "proofProjectIds": [] },
+      { "name": "MATLAB", "logo": null, "emoji": "📊", "yearsExperience": null, "usedFor": "Numerical computing environment used in engineering, signal processing, and research.", "proofProjectIds": [] },
+      { "name": "Objective-C", "logo": null, "emoji": "📱", "yearsExperience": null, "usedFor": "Legacy Apple platform language, predecessor to Swift for iOS and macOS apps.", "proofProjectIds": [] },
+      { "name": "Next.js", "logo": "https://cdn.simpleicons.org/nextdotjs/FFFFFF", "yearsExperience": null, "usedFor": "React framework with SSR, SSG, and file-based routing for production-ready web apps.", "proofProjectIds": [] },
+      { "name": "Vue.js", "logo": "https://cdn.simpleicons.org/vuedotjs/4FC08D", "yearsExperience": null, "usedFor": "Progressive JavaScript framework for building reactive UIs and single-page apps.", "proofProjectIds": [] },
+      { "name": "Nuxt.js", "logo": "https://cdn.simpleicons.org/nuxtdotjs/00DC82", "yearsExperience": null, "usedFor": "Vue-based meta-framework with SSR, SSG, and full-stack capabilities.", "proofProjectIds": [] },
+      { "name": "Svelte", "logo": "https://cdn.simpleicons.org/svelte/FF3E00", "yearsExperience": null, "usedFor": "Compiler-based UI framework that ships no runtime — minimal bundle, high performance.", "proofProjectIds": [] },
+      { "name": "SvelteKit", "logo": "https://cdn.simpleicons.org/svelte/FF3E00", "yearsExperience": null, "usedFor": "Full-stack Svelte framework with routing, SSR, and adapter-based deployment.", "proofProjectIds": [] },
+      { "name": "Astro", "logo": "https://cdn.simpleicons.org/astro/FF5D01", "yearsExperience": null, "usedFor": "Content-focused framework that ships zero JS by default — ideal for static and hybrid sites.", "proofProjectIds": [] },
+      { "name": "Gatsby", "logo": "https://cdn.simpleicons.org/gatsby/663399", "yearsExperience": null, "usedFor": "React-based static site generator with GraphQL data layer.", "proofProjectIds": [] },
+      { "name": "Ember.js", "logo": "https://cdn.simpleicons.org/emberdotjs/E04E39", "yearsExperience": null, "usedFor": "Opinionated full-stack JS framework with convention-over-configuration.", "proofProjectIds": [] },
+      { "name": "Remix", "logo": "https://cdn.simpleicons.org/remix/FFFFFF", "yearsExperience": null, "usedFor": "Full-stack web framework built on web standards with nested routing and server-first data loading.", "proofProjectIds": [] },
+      { "name": "Lit", "logo": "https://cdn.simpleicons.org/lit/324FFF", "yearsExperience": null, "usedFor": "Web Components library for building reusable custom elements with minimal overhead.", "proofProjectIds": [] },
+      { "name": "Alpine.js", "logo": null, "emoji": "🏔️", "yearsExperience": null, "usedFor": "Lightweight JS framework for adding interactivity directly in HTML markup.", "proofProjectIds": [] },
+      { "name": "Solid.js", "logo": null, "emoji": "⚡", "yearsExperience": null, "usedFor": "High-performance reactive UI library with fine-grained reactivity and no virtual DOM.", "proofProjectIds": [] },
+      { "name": "Tailwind CSS", "logo": "https://cdn.simpleicons.org/tailwindcss/06B6D4", "yearsExperience": null, "usedFor": "Utility-first CSS framework for rapidly building custom designs without leaving HTML.", "proofProjectIds": [] },
+      { "name": "Material UI (MUI)", "logo": "https://cdn.simpleicons.org/mui/007FFF", "yearsExperience": null, "usedFor": "React component library implementing Google's Material Design system.", "proofProjectIds": [] },
+      { "name": "Bootstrap", "logo": "https://cdn.simpleicons.org/bootstrap/7952B3", "yearsExperience": null, "usedFor": "CSS/JS framework for responsive, mobile-first web development.", "proofProjectIds": [] },
+      { "name": "Bulma", "logo": "https://cdn.simpleicons.org/bulma/00D1B2", "yearsExperience": null, "usedFor": "Modern CSS framework based on Flexbox — no JavaScript included.", "proofProjectIds": [] },
+      { "name": "PostCSS", "logo": "https://cdn.simpleicons.org/postcss/DD3A0A", "yearsExperience": null, "usedFor": "CSS transformation tool that powers Autoprefixer, Tailwind, and custom plugin pipelines.", "proofProjectIds": [] },
+      { "name": "Styled Components", "logo": "https://cdn.simpleicons.org/styledcomponents/DB7093", "yearsExperience": null, "usedFor": "CSS-in-JS library for writing component-scoped styles with full JavaScript capability.", "proofProjectIds": [] },
+      { "name": "Ant Design", "logo": "https://cdn.simpleicons.org/antdesign/0170FE", "yearsExperience": null, "usedFor": "Enterprise-grade React UI library with a comprehensive component system.", "proofProjectIds": [] },
+      { "name": "Chakra UI", "logo": null, "emoji": "⚡", "yearsExperience": null, "usedFor": "React component library focused on accessibility and developer experience.", "proofProjectIds": [] },
+      { "name": "shadcn/ui", "logo": null, "emoji": "🎨", "yearsExperience": null, "usedFor": "A collection of reusable React components built on Radix UI and Tailwind CSS.", "proofProjectIds": [] },
+      { "name": "Django", "logo": "https://cdn.simpleicons.org/django/44B78B", "yearsExperience": null, "usedFor": "Python web framework with batteries included — ORM, auth, admin, and full MVC stack.", "proofProjectIds": [] },
+      { "name": "Flask", "logo": "https://cdn.simpleicons.org/flask/FFFFFF", "yearsExperience": null, "usedFor": "Lightweight Python web framework ideal for APIs, microservices, and rapid prototyping.", "proofProjectIds": [] },
+      { "name": "FastAPI", "logo": "https://cdn.simpleicons.org/fastapi/009688", "yearsExperience": null, "usedFor": "High-performance Python API framework with automatic OpenAPI docs and type validation.", "proofProjectIds": [] },
+      { "name": "Spring Boot", "logo": "https://cdn.simpleicons.org/springboot/6DB33F", "yearsExperience": null, "usedFor": "Java framework for building production-ready Spring applications with minimal configuration.", "proofProjectIds": [] },
+      { "name": "Ruby on Rails", "logo": "https://cdn.simpleicons.org/rubyonrails/CC0000", "yearsExperience": null, "usedFor": "Full-stack MVC web framework for Ruby — convention-over-config for rapid development.", "proofProjectIds": [] },
+      { "name": "Laravel", "logo": "https://cdn.simpleicons.org/laravel/FF2D20", "yearsExperience": null, "usedFor": "PHP web framework with elegant syntax, ORM, queues, and full MVC tooling.", "proofProjectIds": [] },
+      { "name": "Symfony", "logo": "https://cdn.simpleicons.org/symfony/FFFFFF", "yearsExperience": null, "usedFor": "Robust PHP framework and component library used in enterprise web applications.", "proofProjectIds": [] },
+      { "name": "Express.js", "logo": "https://cdn.simpleicons.org/express/FFFFFF", "yearsExperience": null, "usedFor": "Minimalist Node.js web framework for building APIs and web servers.", "proofProjectIds": [] },
+      { "name": "NestJS", "logo": "https://cdn.simpleicons.org/nestjs/E0234E", "yearsExperience": null, "usedFor": "TypeScript-first Node.js framework with Angular-inspired architecture for scalable APIs.", "proofProjectIds": [] },
+      { "name": "Fastify", "logo": "https://cdn.simpleicons.org/fastify/FFFFFF", "yearsExperience": null, "usedFor": "Fast and low-overhead Node.js web framework focused on performance.", "proofProjectIds": [] },
+      { "name": "Phoenix (Elixir)", "logo": null, "emoji": "🔥", "yearsExperience": null, "usedFor": "High-productivity Elixir web framework with real-time capabilities via LiveView.", "proofProjectIds": [] },
+      { "name": "ASP.NET", "logo": "https://cdn.simpleicons.org/dotnet/512BD4", "yearsExperience": null, "usedFor": "Microsoft's web framework for building web apps and APIs on .NET.", "proofProjectIds": [] },
+      { "name": "Jest", "logo": "https://cdn.simpleicons.org/jest/C21325", "yearsExperience": null, "usedFor": "JavaScript testing framework with built-in mocking, coverage, and snapshot testing.", "proofProjectIds": [] },
+      { "name": "Vitest", "logo": "https://cdn.simpleicons.org/vitest/6E9F18", "yearsExperience": null, "usedFor": "Vite-native unit testing framework — fast HMR-based test runner for modern projects.", "proofProjectIds": [] },
+      { "name": "Cypress", "logo": "https://cdn.simpleicons.org/cypress/69D3A7", "yearsExperience": null, "usedFor": "End-to-end testing framework for web applications running directly in the browser.", "proofProjectIds": [] },
+      { "name": "Playwright", "logo": "https://cdn.simpleicons.org/playwright/2EAD33", "yearsExperience": null, "usedFor": "Cross-browser E2E testing framework from Microsoft with strong auto-wait capabilities.", "proofProjectIds": [] },
+      { "name": "Selenium", "logo": "https://cdn.simpleicons.org/selenium/43B02A", "yearsExperience": null, "usedFor": "Browser automation tool used for E2E testing across multiple browsers.", "proofProjectIds": [] },
+      { "name": "Mocha", "logo": "https://cdn.simpleicons.org/mocha/8D6748", "yearsExperience": null, "usedFor": "Flexible JavaScript test framework that runs in Node.js and browsers.", "proofProjectIds": [] },
+      { "name": "Storybook", "logo": "https://cdn.simpleicons.org/storybook/FF4785", "yearsExperience": null, "usedFor": "UI component development environment for isolating and documenting component states.", "proofProjectIds": [] },
+      { "name": "Testing Library", "logo": "https://cdn.simpleicons.org/testinglibrary/E33332", "yearsExperience": null, "usedFor": "Testing utilities focused on user behavior rather than implementation details.", "proofProjectIds": [] },
+      { "name": "Pytest", "logo": "https://cdn.simpleicons.org/pytest/0A9EDC", "yearsExperience": null, "usedFor": "Python testing framework with simple syntax, fixtures, and powerful plugins.", "proofProjectIds": [] },
+      { "name": "Webpack", "logo": "https://cdn.simpleicons.org/webpack/8DD6F9", "yearsExperience": null, "usedFor": "Module bundler for JavaScript applications — transforms and packages assets for production.", "proofProjectIds": [] },
+      { "name": "Vite", "logo": "https://cdn.simpleicons.org/vite/646CFF", "yearsExperience": null, "usedFor": "Next-generation frontend build tool with instant HMR and optimized production builds.", "proofProjectIds": [] },
+      { "name": "Rollup", "logo": "https://cdn.simpleicons.org/rollupdotjs/EC4A3F", "yearsExperience": null, "usedFor": "JavaScript module bundler optimized for library builds and tree-shaking.", "proofProjectIds": [] },
+      { "name": "Babel", "logo": "https://cdn.simpleicons.org/babel/F9DC3E", "yearsExperience": null, "usedFor": "JavaScript compiler that transpiles modern JS/JSX for older browser compatibility.", "proofProjectIds": [] },
+      { "name": "ESLint", "logo": "https://cdn.simpleicons.org/eslint/4B32C3", "yearsExperience": null, "usedFor": "Static analysis tool for identifying and fixing JavaScript/TypeScript code quality issues.", "proofProjectIds": [] },
+      { "name": "Prettier", "logo": "https://cdn.simpleicons.org/prettier/F7B93E", "yearsExperience": null, "usedFor": "Opinionated code formatter that enforces consistent style across a codebase.", "proofProjectIds": [] },
+      { "name": "npm", "logo": "https://cdn.simpleicons.org/npm/CB3837", "yearsExperience": null, "usedFor": "Default package manager for Node.js — the world's largest software registry.", "proofProjectIds": [] },
+      { "name": "Yarn", "logo": "https://cdn.simpleicons.org/yarn/2C8EBB", "yearsExperience": null, "usedFor": "Fast, reliable Node.js package manager with workspaces and plug-and-play support.", "proofProjectIds": [] },
+      { "name": "pnpm", "logo": "https://cdn.simpleicons.org/pnpm/F69220", "yearsExperience": null, "usedFor": "Efficient package manager that saves disk space with content-addressable storage.", "proofProjectIds": [] },
+      { "name": "Bun", "logo": "https://cdn.simpleicons.org/bun/FFFFFF", "yearsExperience": null, "usedFor": "All-in-one JS runtime and package manager — significantly faster than Node.js.", "proofProjectIds": [] },
+      { "name": "Turborepo", "logo": "https://cdn.simpleicons.org/turborepo/EF4444", "yearsExperience": null, "usedFor": "Monorepo build system with intelligent caching to speed up large-scale JS projects.", "proofProjectIds": [] },
+      { "name": "Nx", "logo": "https://cdn.simpleicons.org/nrwl/91C6FF", "yearsExperience": null, "usedFor": "Smart monorepo tooling with dependency graph, affected-task runs, and code generation.", "proofProjectIds": [] },
+      { "name": "PostgreSQL", "logo": "https://cdn.simpleicons.org/postgresql/4169E1", "yearsExperience": null, "usedFor": "Advanced open-source relational database with strong ACID compliance and rich feature set.", "proofProjectIds": [] },
+      { "name": "Redis", "logo": "https://cdn.simpleicons.org/redis/FF4438", "yearsExperience": null, "usedFor": "In-memory data store used for caching, pub/sub, session storage, and real-time queues.", "proofProjectIds": [] },
+      { "name": "Supabase", "logo": "https://cdn.simpleicons.org/supabase/3FCF8E", "yearsExperience": null, "usedFor": "Open-source Firebase alternative with PostgreSQL, auth, storage, and real-time subscriptions.", "proofProjectIds": [] },
+      { "name": "Elasticsearch", "logo": "https://cdn.simpleicons.org/elasticsearch/005571", "yearsExperience": null, "usedFor": "Distributed search and analytics engine for full-text search and observability pipelines.", "proofProjectIds": [] },
+      { "name": "Neo4j", "logo": "https://cdn.simpleicons.org/neo4j/008CC1", "yearsExperience": null, "usedFor": "Graph database for modeling and querying highly connected data relationships.", "proofProjectIds": [] },
+      { "name": "Apache Cassandra", "logo": "https://cdn.simpleicons.org/apachecassandra/1287B1", "yearsExperience": null, "usedFor": "Wide-column NoSQL database built for high availability and scalability at massive scale.", "proofProjectIds": [] },
+      { "name": "InfluxDB", "logo": "https://cdn.simpleicons.org/influxdb/22ADF6", "yearsExperience": null, "usedFor": "Time-series database optimized for metrics, events, and real-time monitoring data.", "proofProjectIds": [] },
+      { "name": "Snowflake", "logo": "https://cdn.simpleicons.org/snowflake/29B5E8", "yearsExperience": null, "usedFor": "Cloud-native data warehouse for large-scale analytics and data sharing.", "proofProjectIds": [] },
+      { "name": "DynamoDB", "logo": null, "emoji": "📊", "yearsExperience": null, "usedFor": "AWS managed NoSQL key-value and document database for serverless and high-scale applications.", "proofProjectIds": [] },
+      { "name": "PlanetScale", "logo": null, "emoji": "🪐", "yearsExperience": null, "usedFor": "Serverless MySQL database platform built on Vitess — fast branching and schema migrations.", "proofProjectIds": [] },
+      { "name": "Google Cloud (GCP)", "logo": "https://cdn.simpleicons.org/googlecloud/4285F4", "yearsExperience": null, "usedFor": "Google's cloud platform — compute, storage, managed databases, ML APIs, and networking.", "proofProjectIds": [] },
+      { "name": "Vercel", "logo": "https://cdn.simpleicons.org/vercel/FFFFFF", "yearsExperience": null, "usedFor": "Frontend cloud platform for deploying Next.js and web apps with zero-config CI/CD.", "proofProjectIds": [] },
+      { "name": "Netlify", "logo": "https://cdn.simpleicons.org/netlify/00C7B7", "yearsExperience": null, "usedFor": "Platform for deploying and scaling modern web projects with built-in CI/CD and edge functions.", "proofProjectIds": [] },
+      { "name": "Heroku", "logo": "https://cdn.simpleicons.org/heroku/430098", "yearsExperience": null, "usedFor": "Platform-as-a-service for deploying web applications with minimal infrastructure management.", "proofProjectIds": [] },
+      { "name": "Cloudflare", "logo": "https://cdn.simpleicons.org/cloudflare/F48120", "yearsExperience": null, "usedFor": "CDN, DDoS protection, edge computing, and DNS management for internet properties.", "proofProjectIds": [] },
+      { "name": "Fly.io", "logo": null, "emoji": "✈️", "yearsExperience": null, "usedFor": "Platform for running full-stack apps close to users on a global edge network.", "proofProjectIds": [] },
+      { "name": "Railway", "logo": null, "emoji": "🚄", "yearsExperience": null, "usedFor": "Deployments-as-a-service with zero-config infrastructure provisioning and GitHub integration.", "proofProjectIds": [] },
+      { "name": "Render", "logo": null, "emoji": "🟣", "yearsExperience": null, "usedFor": "Unified cloud platform for static sites, web services, databases, and background workers.", "proofProjectIds": [] },
+      { "name": "Kubernetes", "logo": "https://cdn.simpleicons.org/kubernetes/326CE5", "yearsExperience": null, "usedFor": "Container orchestration platform for automating deployment, scaling, and management.", "proofProjectIds": [] },
+      { "name": "Terraform", "logo": "https://cdn.simpleicons.org/terraform/844FBA", "yearsExperience": null, "usedFor": "Infrastructure-as-code tool for provisioning and managing cloud resources declaratively.", "proofProjectIds": [] },
+      { "name": "Ansible", "logo": "https://cdn.simpleicons.org/ansible/EE0000", "yearsExperience": null, "usedFor": "Agentless automation tool for configuration management, app deployment, and orchestration.", "proofProjectIds": [] },
+      { "name": "Puppet", "logo": "https://cdn.simpleicons.org/puppet/FFAE1A", "yearsExperience": null, "usedFor": "Infrastructure automation tool for managing configurations across large server fleets.", "proofProjectIds": [] },
+      { "name": "Chef", "logo": "https://cdn.simpleicons.org/chef/F09820", "yearsExperience": null, "usedFor": "Infrastructure automation platform using Ruby-based DSL for configuration management.", "proofProjectIds": [] },
+      { "name": "Jenkins", "logo": "https://cdn.simpleicons.org/jenkins/D24939", "yearsExperience": null, "usedFor": "Open-source automation server for building, testing, and deploying software.", "proofProjectIds": [] },
+      { "name": "CircleCI", "logo": "https://cdn.simpleicons.org/circleci/FFFFFF", "yearsExperience": null, "usedFor": "CI/CD platform with fast pipelines and deep integration with GitHub and Bitbucket.", "proofProjectIds": [] },
+      { "name": "Travis CI", "logo": "https://cdn.simpleicons.org/travisci/3EAAAF", "yearsExperience": null, "usedFor": "Hosted CI service for open-source and private GitHub repositories.", "proofProjectIds": [] },
+      { "name": "NGINX", "logo": "https://cdn.simpleicons.org/nginx/009639", "yearsExperience": null, "usedFor": "High-performance web server, reverse proxy, and load balancer.", "proofProjectIds": [] },
+      { "name": "Apache HTTPD", "logo": "https://cdn.simpleicons.org/apache/D22128", "yearsExperience": null, "usedFor": "Widely deployed open-source web server software.", "proofProjectIds": [] },
+      { "name": "Vagrant", "logo": "https://cdn.simpleicons.org/vagrant/1868F2", "yearsExperience": null, "usedFor": "Tool for building and managing portable virtual development environments.", "proofProjectIds": [] },
+      { "name": "Helm", "logo": "https://cdn.simpleicons.org/helm/277CBF", "yearsExperience": null, "usedFor": "Kubernetes package manager for defining, installing, and upgrading applications.", "proofProjectIds": [] },
+      { "name": "ArgoCD", "logo": "https://cdn.simpleicons.org/argo/EF7B4D", "yearsExperience": null, "usedFor": "GitOps continuous delivery tool for Kubernetes clusters.", "proofProjectIds": [] },
+      { "name": "Pulumi", "logo": "https://cdn.simpleicons.org/pulumi/8A3391", "yearsExperience": null, "usedFor": "Infrastructure-as-code using real programming languages (TypeScript, Python, Go, etc.).", "proofProjectIds": [] },
+      { "name": "Grafana", "logo": "https://cdn.simpleicons.org/grafana/F46800", "yearsExperience": null, "usedFor": "Open-source observability platform for metrics, logs, and traces visualization.", "proofProjectIds": [] },
+      { "name": "Prometheus", "logo": "https://cdn.simpleicons.org/prometheus/E6522C", "yearsExperience": null, "usedFor": "Open-source monitoring system and time-series database for collecting metrics.", "proofProjectIds": [] },
+      { "name": "Datadog", "logo": "https://cdn.simpleicons.org/datadog/632CA6", "yearsExperience": null, "usedFor": "Cloud monitoring platform for infrastructure, APM, logs, and security.", "proofProjectIds": [] },
+      { "name": "Sentry", "logo": "https://cdn.simpleicons.org/sentry/DFB06A", "yearsExperience": null, "usedFor": "Error monitoring and performance tracking platform for real-time issue detection.", "proofProjectIds": [] },
+      { "name": "React Native", "logo": "https://cdn.simpleicons.org/react/61DAFB", "yearsExperience": null, "usedFor": "Cross-platform mobile framework using React to target iOS and Android.", "proofProjectIds": [] },
+      { "name": "Expo", "logo": "https://cdn.simpleicons.org/expo/FFFFFF", "yearsExperience": null, "usedFor": "Managed workflow for React Native apps with OTA updates and a rich SDK.", "proofProjectIds": [] },
+      { "name": "Ionic", "logo": "https://cdn.simpleicons.org/ionic/3880FF", "yearsExperience": null, "usedFor": "Cross-platform mobile app framework using web technologies with native-like performance.", "proofProjectIds": [] },
+      { "name": "Capacitor", "logo": "https://cdn.simpleicons.org/capacitor/119EFF", "yearsExperience": null, "usedFor": "Native runtime for deploying web apps to iOS, Android, and desktop.", "proofProjectIds": [] },
+      { "name": "Android Development", "logo": "https://cdn.simpleicons.org/android/34A853", "yearsExperience": null, "usedFor": "Native Android app development using Kotlin or Java with the Android SDK.", "proofProjectIds": [] },
+      { "name": "iOS Development", "logo": null, "emoji": "🍎", "yearsExperience": null, "usedFor": "Native iOS app development using Swift and Xcode.", "proofProjectIds": [] },
+      { "name": "TensorFlow", "logo": "https://cdn.simpleicons.org/tensorflow/FF6F00", "yearsExperience": null, "usedFor": "Google's open-source ML framework for training and deploying neural networks.", "proofProjectIds": [] },
+      { "name": "PyTorch", "logo": "https://cdn.simpleicons.org/pytorch/EE4C2C", "yearsExperience": null, "usedFor": "Facebook's ML framework favored in research for its dynamic computation graph.", "proofProjectIds": [] },
+      { "name": "scikit-learn", "logo": "https://cdn.simpleicons.org/scikitlearn/F7931E", "yearsExperience": null, "usedFor": "Python ML library with clean APIs for classification, regression, clustering, and more.", "proofProjectIds": [] },
+      { "name": "Pandas", "logo": "https://cdn.simpleicons.org/pandas/6B40CB", "yearsExperience": null, "usedFor": "Python data manipulation and analysis library with DataFrames and Series.", "proofProjectIds": [] },
+      { "name": "NumPy", "logo": "https://cdn.simpleicons.org/numpy/4DABCF", "yearsExperience": null, "usedFor": "Fundamental Python library for numerical computing with n-dimensional arrays.", "proofProjectIds": [] },
+      { "name": "Jupyter", "logo": "https://cdn.simpleicons.org/jupyter/F37626", "yearsExperience": null, "usedFor": "Interactive notebook environment for data science, ML experiments, and literate programming.", "proofProjectIds": [] },
+      { "name": "Apache Kafka", "logo": "https://cdn.simpleicons.org/apachekafka/FFFFFF", "yearsExperience": null, "usedFor": "Distributed event streaming platform for high-throughput, fault-tolerant data pipelines.", "proofProjectIds": [] },
+      { "name": "Apache Spark", "logo": "https://cdn.simpleicons.org/apachespark/E25A1C", "yearsExperience": null, "usedFor": "Unified analytics engine for large-scale data processing — batch and streaming.", "proofProjectIds": [] },
+      { "name": "Apache Airflow", "logo": "https://cdn.simpleicons.org/apacheairflow/017CEE", "yearsExperience": null, "usedFor": "Platform for programmatically authoring, scheduling, and monitoring data workflows.", "proofProjectIds": [] },
+      { "name": "dbt", "logo": "https://cdn.simpleicons.org/dbt/FF694A", "yearsExperience": null, "usedFor": "Analytics engineering tool for transforming data in the warehouse using SQL.", "proofProjectIds": [] },
+      { "name": "Hugging Face", "logo": "https://cdn.simpleicons.org/huggingface/FF9A00", "yearsExperience": null, "usedFor": "Hub for open-source ML models, datasets, and spaces for AI-powered applications.", "proofProjectIds": [] },
+      { "name": "Contentful", "logo": "https://cdn.simpleicons.org/contentful/2478CC", "yearsExperience": null, "usedFor": "Headless CMS with a content API for powering web, mobile, and voice interfaces.", "proofProjectIds": [] },
+      { "name": "Sanity.io", "logo": "https://cdn.simpleicons.org/sanity/F03E2F", "yearsExperience": null, "usedFor": "Structured content platform with a real-time collaborative editing studio.", "proofProjectIds": [] },
+      { "name": "Ghost", "logo": "https://cdn.simpleicons.org/ghost/FFFFFF", "yearsExperience": null, "usedFor": "Open-source publishing platform for newsletters, memberships, and blogs.", "proofProjectIds": [] },
+      { "name": "Strapi", "logo": "https://cdn.simpleicons.org/strapi/4945FF", "yearsExperience": null, "usedFor": "Open-source headless CMS with a customizable admin panel and flexible content APIs.", "proofProjectIds": [] },
+      { "name": "Shopify", "logo": "https://cdn.simpleicons.org/shopify/7AB55C", "yearsExperience": null, "usedFor": "E-commerce platform for building and running online stores with custom themes and apps.", "proofProjectIds": [] },
+      { "name": "Webflow", "logo": "https://cdn.simpleicons.org/webflow/4353FF", "yearsExperience": null, "usedFor": "Visual web development platform that generates production-ready HTML, CSS, and JS.", "proofProjectIds": [] },
+      { "name": "Auth0", "logo": "https://cdn.simpleicons.org/auth0/EB5424", "yearsExperience": null, "usedFor": "Identity platform for adding authentication and authorization to any application.", "proofProjectIds": [] },
+      { "name": "Keycloak", "logo": "https://cdn.simpleicons.org/keycloak/00B8D9", "yearsExperience": null, "usedFor": "Open-source identity and access management solution with SSO and LDAP integration.", "proofProjectIds": [] },
+      { "name": "tRPC", "logo": "https://cdn.simpleicons.org/trpc/398CCA", "yearsExperience": null, "usedFor": "End-to-end typesafe API layer for TypeScript — no schema, no code generation.", "proofProjectIds": [] },
+      { "name": "Apollo GraphQL", "logo": "https://cdn.simpleicons.org/apollographql/E535AB", "yearsExperience": null, "usedFor": "GraphQL platform for building a unified data graph with client and server tooling.", "proofProjectIds": [] },
+      { "name": "Prisma", "logo": "https://cdn.simpleicons.org/prisma/818CF8", "yearsExperience": null, "usedFor": "Next-generation ORM for Node.js and TypeScript with type-safe database access.", "proofProjectIds": [] },
+      { "name": "OpenAPI / Swagger", "logo": "https://cdn.simpleicons.org/swagger/85EA2D", "yearsExperience": null, "usedFor": "Specification standard and tooling for describing, documenting, and testing REST APIs.", "proofProjectIds": [] },
+      { "name": "gRPC", "logo": null, "emoji": "📡", "yearsExperience": null, "usedFor": "High-performance RPC framework using Protocol Buffers for service-to-service communication.", "proofProjectIds": [] },
+      { "name": "Drizzle ORM", "logo": null, "emoji": "💧", "yearsExperience": null, "usedFor": "Lightweight TypeScript ORM with SQL-like syntax and full type safety.", "proofProjectIds": [] },
+      { "name": "TypeORM", "logo": null, "emoji": "🔷", "yearsExperience": null, "usedFor": "ORM for TypeScript and JavaScript with Active Record and Data Mapper patterns.", "proofProjectIds": [] },
+      { "name": "GitHub", "logo": "https://cdn.simpleicons.org/github/FFFFFF", "yearsExperience": null, "usedFor": "Version control hosting with pull requests, Issues, Actions CI/CD, and code review.", "proofProjectIds": [] },
+      { "name": "GitLab", "logo": "https://cdn.simpleicons.org/gitlab/FC6D26", "yearsExperience": null, "usedFor": "DevOps platform for source control, CI/CD, security scanning, and project management.", "proofProjectIds": [] },
+      { "name": "Bitbucket", "logo": "https://cdn.simpleicons.org/bitbucket/0052CC", "yearsExperience": null, "usedFor": "Atlassian's Git repository hosting with Pipelines CI/CD and Jira integration.", "proofProjectIds": [] },
+      { "name": "Jira", "logo": "https://cdn.simpleicons.org/jira/0052CC", "yearsExperience": null, "usedFor": "Project tracking and issue management platform for software development teams.", "proofProjectIds": [] },
+      { "name": "Confluence", "logo": "https://cdn.simpleicons.org/confluence/0052CC", "yearsExperience": null, "usedFor": "Team wiki and documentation platform from Atlassian.", "proofProjectIds": [] },
+      { "name": "Notion", "logo": "https://cdn.simpleicons.org/notion/FFFFFF", "yearsExperience": null, "usedFor": "All-in-one workspace for notes, docs, databases, and project management.", "proofProjectIds": [] },
+      { "name": "Slack", "logo": "https://cdn.simpleicons.org/slack/4A154B", "yearsExperience": null, "usedFor": "Team messaging and collaboration platform with deep integrations and workflow automation.", "proofProjectIds": [] },
+      { "name": "Figma", "logo": "https://cdn.simpleicons.org/figma/F24E1E", "yearsExperience": null, "usedFor": "Collaborative design tool for UI/UX wireframing, prototyping, and design systems.", "proofProjectIds": [] },
+      { "name": "Trello", "logo": "https://cdn.simpleicons.org/trello/0052CC", "yearsExperience": null, "usedFor": "Kanban board tool for visual project and task management.", "proofProjectIds": [] },
+      { "name": "Linear", "logo": null, "emoji": "🔵", "yearsExperience": null, "usedFor": "Modern issue tracking and project management tool for software teams.", "proofProjectIds": [] },
+      { "name": "Electron", "logo": "https://cdn.simpleicons.org/electron/47848F", "yearsExperience": null, "usedFor": "Framework for building cross-platform desktop apps using web technologies.", "proofProjectIds": [] },
+      { "name": "Tauri", "logo": "https://cdn.simpleicons.org/tauri/FFC131", "yearsExperience": null, "usedFor": "Lightweight alternative to Electron for building desktop apps with Rust and web frontends.", "proofProjectIds": [] },
+      { "name": "Socket.io", "logo": "https://cdn.simpleicons.org/socketdotio/FFFFFF", "yearsExperience": null, "usedFor": "Library enabling real-time bidirectional communication between clients and servers.", "proofProjectIds": [] },
+      { "name": "Three.js", "logo": "https://cdn.simpleicons.org/threedotjs/FFFFFF", "yearsExperience": null, "usedFor": "JavaScript library for creating 3D graphics in the browser using WebGL.", "proofProjectIds": [] },
+      { "name": "D3.js", "logo": "https://cdn.simpleicons.org/d3dotjs/F9A03C", "yearsExperience": null, "usedFor": "JavaScript library for producing dynamic, data-driven visualizations in the browser.", "proofProjectIds": [] },
+      { "name": "Chart.js", "logo": "https://cdn.simpleicons.org/chartdotjs/FF6384", "yearsExperience": null, "usedFor": "Simple, flexible charting library for adding interactive charts to web applications.", "proofProjectIds": [] },
+      { "name": "GSAP", "logo": "https://cdn.simpleicons.org/greensock/88CE02", "yearsExperience": null, "usedFor": "Professional-grade animation library for high-performance web animations.", "proofProjectIds": [] },
+      { "name": "Framer Motion", "logo": "https://cdn.simpleicons.org/framer/0055FF", "yearsExperience": null, "usedFor": "React animation library with a declarative API for physics-based and keyframe animations.", "proofProjectIds": [] },
+      { "name": "WebAssembly", "logo": "https://cdn.simpleicons.org/webassembly/654FF0", "yearsExperience": null, "usedFor": "Binary instruction format for near-native performance in the browser.", "proofProjectIds": [] },
+      { "name": "RabbitMQ", "logo": "https://cdn.simpleicons.org/rabbitmq/FF6600", "yearsExperience": null, "usedFor": "Open-source message broker for reliable asynchronous communication between services.", "proofProjectIds": [] },
+      { "name": "Twilio", "logo": "https://cdn.simpleicons.org/twilio/F22F46", "yearsExperience": null, "usedFor": "Cloud communications platform for SMS, voice, video, and email APIs.", "proofProjectIds": [] },
+      { "name": "Algolia", "logo": "https://cdn.simpleicons.org/algolia/003DFF", "yearsExperience": null, "usedFor": "Hosted search and discovery API with powerful relevance and real-time indexing.", "proofProjectIds": [] },
+      { "name": "Wix", "logo": "https://cdn.simpleicons.org/wix/0C6EFC", "yearsExperience": null, "usedFor": "Visual website builder used for client business sites requiring quick delivery.", "proofProjectIds": [] },
+      { "name": "Squarespace", "logo": "https://cdn.simpleicons.org/squarespace/FFFFFF", "yearsExperience": null, "usedFor": "Hosted website builder with polished templates for portfolios, stores, and blogs.", "proofProjectIds": [] },
+      { "name": "Microservices", "logo": null, "emoji": "⚙️", "yearsExperience": null, "usedFor": "Architectural style where an application is built as a suite of small, independently deployable services.", "proofProjectIds": [] },
+      { "name": "Event-Driven Architecture", "logo": null, "emoji": "⚡", "yearsExperience": null, "usedFor": "System design pattern where components communicate through events rather than direct calls.", "proofProjectIds": [] },
+      { "name": "Domain-Driven Design", "logo": null, "emoji": "🗺️", "yearsExperience": null, "usedFor": "Software design approach that models complex systems around the core business domain.", "proofProjectIds": [] },
+      { "name": "SOLID Principles", "logo": null, "emoji": "📐", "yearsExperience": null, "usedFor": "Five object-oriented design principles for writing maintainable and extensible code.", "proofProjectIds": [] },
+      { "name": "TDD", "logo": null, "emoji": "🧪", "yearsExperience": null, "usedFor": "Test-driven development — writing tests before code to drive design and ensure correctness.", "proofProjectIds": [] },
+      { "name": "BDD", "logo": null, "emoji": "🎯", "yearsExperience": null, "usedFor": "Behavior-driven development — writing specs in plain language to align code with business intent.", "proofProjectIds": [] },
+      { "name": "Clean Architecture", "logo": null, "emoji": "🏛️", "yearsExperience": null, "usedFor": "Software design philosophy that separates concerns into layers with clear dependency rules.", "proofProjectIds": [] },
+      { "name": "Design Patterns", "logo": null, "emoji": "🎭", "yearsExperience": null, "usedFor": "Reusable solutions to common software design problems — creational, structural, behavioral.", "proofProjectIds": [] },
+      { "name": "Serverless", "logo": null, "emoji": "☁️", "yearsExperience": null, "usedFor": "Execution model where cloud providers manage infrastructure and auto-scale on-demand.", "proofProjectIds": [] },
+      { "name": "Event Sourcing", "logo": null, "emoji": "📋", "yearsExperience": null, "usedFor": "Data modeling pattern that stores state as a sequence of immutable events.", "proofProjectIds": [] },
+      { "name": "CQRS", "logo": null, "emoji": "↔️", "yearsExperience": null, "usedFor": "Command Query Responsibility Segregation — splits read and write models for scalability.", "proofProjectIds": [] },
+      { "name": "Message Queues", "logo": null, "emoji": "📨", "yearsExperience": null, "usedFor": "Asynchronous communication pattern for decoupling producers and consumers.", "proofProjectIds": [] },
+      { "name": "Load Balancing", "logo": null, "emoji": "⚖️", "yearsExperience": null, "usedFor": "Distributing incoming traffic across multiple servers to ensure reliability and performance.", "proofProjectIds": [] },
+      { "name": "Performance Optimization", "logo": null, "emoji": "🚀", "yearsExperience": null, "usedFor": "Identifying and resolving bottlenecks in systems to improve speed, throughput, and efficiency.", "proofProjectIds": [] },
+      { "name": "SEO", "logo": null, "emoji": "🔍", "yearsExperience": null, "usedFor": "Search engine optimization — technical and content strategies to improve organic discoverability.", "proofProjectIds": [] },
+      { "name": "Technical Documentation", "logo": null, "emoji": "📚", "yearsExperience": null, "usedFor": "Writing clear, accurate documentation for APIs, systems, and processes.", "proofProjectIds": [] },
+      { "name": "Accessibility (a11y)", "logo": null, "emoji": "♿", "yearsExperience": null, "usedFor": "Building web experiences that work for users with disabilities — WCAG compliance and semantic HTML.", "proofProjectIds": [] },
+      { "name": "Internationalization (i18n)", "logo": null, "emoji": "🌍", "yearsExperience": null, "usedFor": "Designing software to support multiple languages, locales, and cultural formats.", "proofProjectIds": [] },
+      { "name": "Responsive Web Design", "logo": null, "emoji": "📱", "yearsExperience": null, "usedFor": "Building interfaces that adapt fluidly to any screen size or device.", "proofProjectIds": [] },
+      { "name": "OAuth 2.0", "logo": null, "emoji": "🔑", "yearsExperience": null, "usedFor": "Authorization framework enabling secure delegated access without sharing credentials.", "proofProjectIds": [] },
+      { "name": "JWT Authentication", "logo": null, "emoji": "🎫", "yearsExperience": null, "usedFor": "Token-based stateless authentication using signed JSON Web Tokens.", "proofProjectIds": [] },
+      { "name": "SSL / TLS", "logo": null, "emoji": "🔒", "yearsExperience": null, "usedFor": "Cryptographic protocols for securing communications over a network.", "proofProjectIds": [] },
+      { "name": "DevSecOps", "logo": null, "emoji": "🛡️", "yearsExperience": null, "usedFor": "Integrating security practices into the DevOps lifecycle from the start.", "proofProjectIds": [] },
+      { "name": "OOP", "logo": null, "emoji": "🧬", "yearsExperience": null, "usedFor": "Object-oriented programming — encapsulation, inheritance, polymorphism, and abstraction.", "proofProjectIds": [] },
+      { "name": "Functional Programming", "logo": null, "emoji": "𝜆", "yearsExperience": null, "usedFor": "Programming paradigm using pure functions, immutability, and composition.", "proofProjectIds": [] },
+      { "name": "Scrum", "logo": null, "emoji": "🏃", "yearsExperience": null, "usedFor": "Agile framework using sprints, standups, retrospectives, and incremental delivery.", "proofProjectIds": [] },
+      { "name": "Code Review", "logo": null, "emoji": "👁️", "yearsExperience": null, "usedFor": "Systematic examination of code changes to catch bugs, improve quality, and share knowledge.", "proofProjectIds": [] },
+      { "name": "API Integration", "logo": null, "emoji": "🔌", "yearsExperience": null, "usedFor": "Connecting third-party services into a product via documented APIs and webhooks.", "proofProjectIds": [] },
+      { "name": "Analytics", "logo": null, "emoji": "📊", "yearsExperience": null, "usedFor": "Implementing and interpreting user behaviour tracking to inform product decisions.", "proofProjectIds": [] },
+      { "name": "AI/ML Integration", "logo": null, "emoji": "🤖", "yearsExperience": null, "usedFor": "Embedding AI/ML capabilities into applications via APIs, local models, or custom pipelines.", "proofProjectIds": [] },
+      { "name": "OpenShift (RedHat)", "logo": "https://cdn.simpleicons.org/redhatopenshift/EE0000", "yearsExperience": null, "usedFor": "Kubernetes-based container platform from Red Hat for building, deploying, and scaling containerized apps.", "proofProjectIds": [] }
     ]
   }
 ]
