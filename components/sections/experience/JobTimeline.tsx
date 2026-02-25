@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import type { Job } from "@/types/content";
@@ -11,9 +11,9 @@ const CARD_H = 300;
 const NODE_W = 72;
 const GAP = 32;
 
-// How many pixels above/below the spine center to place cards
-// Card center sits ±CARD_OFFSET from spine; card edge is ±(CARD_OFFSET - CARD_H/2) from spine
-const CARD_OFFSET = 188; // 188 - 150 = 38px gap between spine and card edge
+// Default card offset (desktop). Clamped responsively to viewport height in JobTimeline.
+// Card center sits ±cardOffset from spine; minimum gap between spine and card edge = cardOffset - CARD_H/2
+const DEFAULT_CARD_OFFSET = 188;
 
 // ─── Job Card (flip card) ─────────────────────────────────────────────────────
 
@@ -22,16 +22,18 @@ function JobCard({
   scrollOpacity,
   scrollY,
   above,
+  cardOffset,
 }: {
   job: Job;
   scrollOpacity: MotionValue<number>;
   scrollY: MotionValue<number>;
   above: boolean;
+  cardOffset: number;
 }) {
   const [flipped, setFlipped] = useState(false);
 
   // Connector line runs from card edge to spine
-  const connectorH = CARD_OFFSET - CARD_H / 2; // 38px gap
+  const connectorH = cardOffset - CARD_H / 2;
 
   return (
     <motion.div
@@ -224,7 +226,17 @@ function CardBack({ job }: { job: Job }) {
         boxShadow: "0 8px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.06)",
       }}
     >
-      <div className="flex flex-col gap-3 p-6 h-full" style={{ overflowY: "auto", scrollbarWidth: "thin", scrollbarColor: "rgba(138,92,255,0.3) transparent" }}>
+      {/* overscrollBehavior:contain prevents scroll events from propagating to the
+          parent window and inadvertently advancing the section's y-scroll progress. */}
+      <div
+        className="flex flex-col gap-3 p-6 h-full"
+        style={{
+          overflowY: "auto",
+          overscrollBehavior: "contain",
+          scrollbarWidth: "thin",
+          scrollbarColor: "rgba(138,92,255,0.3) transparent",
+        }}
+      >
         {/* Company name header */}
         <div className="flex items-center justify-between gap-2 shrink-0">
           <span className="font-mono text-[11px] text-accent/80 tracking-widest uppercase">
@@ -315,11 +327,13 @@ function AnimatedCard({
   index,
   count,
   progress,
+  cardOffset,
 }: {
   job: Job;
   index: number;
   count: number;
   progress: MotionValue<number>;
+  cardOffset: number;
 }) {
   const above = index % 2 === 0;
 
@@ -336,7 +350,7 @@ function AnimatedCard({
   );
 
   // Alternating vertical offset: even cards above spine, odd below
-  const verticalOffset = above ? -CARD_OFFSET : CARD_OFFSET;
+  const verticalOffset = above ? -cardOffset : cardOffset;
 
   // Combine the entrance slide with the alternating static offset
   const combinedY = useTransform(
@@ -350,6 +364,7 @@ function AnimatedCard({
       scrollOpacity={opacity}
       scrollY={combinedY}
       above={above}
+      cardOffset={cardOffset}
     />
   );
 }
@@ -365,13 +380,22 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const stickyRef = useRef<HTMLDivElement>(null);
 
+  // Responsive card offset: clamp so top/bottom cards always fit within the viewport.
+  // Min gap of 12px between card edge and viewport edge (accounting for spine at center).
+  const [cardOffset, setCardOffset] = useState(DEFAULT_CARD_OFFSET);
+  useEffect(() => {
+    function update() {
+      const maxOffset = Math.floor(window.innerHeight / 2 - CARD_H / 2 - 12);
+      setCardOffset(Math.min(DEFAULT_CARD_OFFSET, Math.max(150, maxOffset)));
+    }
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
   // Use scrollYProgress directly (no spring) for a 1:1 scroll feel.
-  // The header is inside the sticky panel, so progress=0 is the first moment
-  // the section pins — no discontinuity between header scroll and timeline scroll.
   const { scrollYProgress } = useScroll({
     target: stickyRef,
-    // "end start" = bottom of container reaches top of viewport.
-    // Uses the full element height as the scroll range.
     offset: ["start start", "end start"],
   });
 
@@ -384,7 +408,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
   // Card 0 center from the track's motion origin:
   //   paddingLeft(60) + spacer(GAP) + gap(GAP) + halfCard(CARD_W/2)
   const CARD0_CENTER   = 60 + GAP + GAP + CARD_W / 2;                          // 284
-  const LAST_CARD_CENTER = 60 + (count - 1) * WRAPPER_W + GAP + GAP + CARD_W / 2; // 3044 for 6 jobs
+  const LAST_CARD_CENTER = 60 + (count - 1) * WRAPPER_W + GAP + GAP + CARD_W / 2;
 
   // Start: card 0 centered in viewport. End: last card centered.
   const xStart = `calc(50vw - ${CARD0_CENTER}px)`;
@@ -405,13 +429,18 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
       <div className="sticky top-0 h-screen">
         {/* Clipping wrapper lives INSIDE the sticky element so it doesn't
             affect the sticky's scroll-container chain */}
-        <div className="absolute inset-0 overflow-hidden flex flex-col">
+        <div className="absolute inset-0 overflow-hidden">
 
-          {/* ── Section header (inside the sticky panel) ─────────────────── */}
-          {/* Visible at progress=0 when the section first pins. Fades as scroll begins. */}
+          {/* ── Section header ────────────────────────────────────────────────── */}
+          {/* Absolutely positioned so it floats above the timeline without
+              displacing the spine from vertical center. Background gradient
+              ensures it remains legible when overlapping card 0 on small screens. */}
           <motion.div
-            style={{ opacity: headerOpacity }}
-            className="px-10 pt-10 pb-2 shrink-0 pointer-events-none select-none"
+            style={{
+              opacity: headerOpacity,
+              background: "linear-gradient(to bottom, rgba(13,13,18,0.97) 72%, transparent 100%)",
+            }}
+            className="absolute top-0 left-0 right-0 z-20 px-10 pt-10 pb-8 pointer-events-none select-none"
           >
             <p className="font-mono text-sm text-accent mb-2">experience</p>
             <h2 className="text-4xl sm:text-5xl font-bold text-text leading-tight mb-2">
@@ -422,8 +451,8 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
             </p>
           </motion.div>
 
-          {/* ── Timeline area ────────────────────────────────────────────── */}
-          <div className="relative flex-1 flex items-center">
+          {/* ── Timeline area — full height, spine always centered ────────────── */}
+          <div className="absolute inset-0 flex items-center">
 
             {/* Spine line — full width */}
             <div
@@ -484,6 +513,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
                     index={i}
                     count={count}
                     progress={scrollYProgress}
+                    cardOffset={cardOffset}
                   />
 
                   {/* Post-card spine spacer */}
