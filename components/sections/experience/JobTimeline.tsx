@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import type { MotionValue } from "framer-motion";
 import type { Job } from "@/types/content";
 
@@ -37,7 +37,6 @@ function JobCard({
     <motion.div
       style={{ opacity: scrollOpacity, y: scrollY }}
       className="relative flex-none"
-      // y is handled externally for alternating, override here
     >
       {/* Connector line */}
       <div
@@ -315,12 +314,12 @@ function AnimatedCard({
   job,
   index,
   count,
-  smoothProgress,
+  progress,
 }: {
   job: Job;
   index: number;
   count: number;
-  smoothProgress: MotionValue<number>;
+  progress: MotionValue<number>;
 }) {
   const above = index % 2 === 0;
 
@@ -329,9 +328,9 @@ function AnimatedCard({
   const enterStart = index === 0 ? -0.08 : Math.max(0, (index / count) * 0.88 - 0.05);
   const enterEnd = Math.min(1, enterStart + 0.2);
 
-  const opacity = useTransform(smoothProgress, [enterStart, enterEnd], [0, 1]);
+  const opacity = useTransform(progress, [enterStart, enterEnd], [0, 1]);
   const slideY = useTransform(
-    smoothProgress,
+    progress,
     [enterStart, enterEnd],
     [above ? -20 : 20, 0]
   );
@@ -366,36 +365,33 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
 
   const stickyRef = useRef<HTMLDivElement>(null);
 
+  // Use scrollYProgress directly (no spring) for a 1:1 scroll feel.
+  // The header is inside the sticky panel, so progress=0 is the first moment
+  // the section pins — no discontinuity between header scroll and timeline scroll.
   const { scrollYProgress } = useScroll({
     target: stickyRef,
     // "end start" = bottom of container reaches top of viewport.
-    // This uses the full element height as the scroll range instead of
-    // (elementHeight - viewportHeight), giving ~30% more room to animate.
+    // Uses the full element height as the scroll range.
     offset: ["start start", "end start"],
-  });
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 55,
-    damping: 22,
-    restDelta: 0.001,
   });
 
   const count = sorted.length;
 
   // Track width calculation
-  // layout: [node] [gap] [spacer] [card] [spacer] [gap] [node] ... per entry
   const totalTrack =
     NODE_W +
     count * (GAP + CARD_W + GAP + NODE_W) +
     NODE_W;
 
   const xEnd = `calc(-${totalTrack}px + 100vw - 80px)`;
-  const translateX = useTransform(smoothProgress, [0, 1], ["0px", xEnd]);
+  const translateX = useTransform(scrollYProgress, [0, 1], ["0px", xEnd]);
 
-  const hintOpacity = useTransform(smoothProgress, [0, 0.06], [1, 0]);
+  const hintOpacity = useTransform(scrollYProgress, [0, 0.06], [1, 0]);
+  const headerOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
 
   // Budget: each card gets 700px of vertical scroll to enter, settle, and be readable.
-  const scrollBudgetH = count * 700;
+  // Extra 300px added so the last card is fully visible before the section unpins.
+  const scrollBudgetH = count * 700 + 300;
 
   return (
     // No overflow on this div — overflow: clip/hidden on a sticky's parent
@@ -404,88 +400,108 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
       <div className="sticky top-0 h-screen">
         {/* Clipping wrapper lives INSIDE the sticky element so it doesn't
             affect the sticky's scroll-container chain */}
-        <div className="absolute inset-0 overflow-hidden flex flex-col justify-center">
+        <div className="absolute inset-0 overflow-hidden flex flex-col">
 
-        {/* Spine line — full width */}
-        <div
-          className="absolute pointer-events-none"
-          style={{
-            top: "50%",
-            left: 0,
-            right: 0,
-            height: 1,
-            background:
-              "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 5%, rgba(255,255,255,0.07) 95%, transparent 100%)",
-          }}
-          aria-hidden="true"
-        />
-
-        {/* Scrolling track — items-center keeps nodes on the spine */}
-        <motion.div
-          style={{ x: translateX, paddingLeft: 60, paddingRight: 60 }}
-          className="flex items-center will-change-transform"
-        >
-          {/* "Now" node — leftmost since newest-first */}
-          <TimelineNode label="NOW" accent cap />
-
-          {sorted.map((job, i) => (
-            <div
-              key={job.slug}
-              className="flex items-center"
-              style={{ gap: GAP }}
-            >
-              {/* Pre-card spine spacer */}
-              <div
-                style={{
-                  width: GAP,
-                  height: 1,
-                  background: "rgba(255,255,255,0.07)",
-                  flexShrink: 0,
-                }}
-              />
-
-              <AnimatedCard
-                job={job}
-                index={i}
-                count={count}
-                smoothProgress={smoothProgress}
-              />
-
-              {/* Post-card spine spacer */}
-              <div
-                style={{
-                  width: GAP,
-                  height: 1,
-                  background: "rgba(255,255,255,0.07)",
-                  flexShrink: 0,
-                }}
-              />
-
-              <TimelineNode
-                label={String(job.startYear)}
-                sublabel={job.endYear ? String(job.endYear) : undefined}
-              />
-            </div>
-          ))}
-
-          {/* Trailing spacer */}
-          <div style={{ width: 80, flexShrink: 0 }} />
-        </motion.div>
-
-        {/* Scroll hint */}
-        <motion.div
-          style={{ opacity: hintOpacity }}
-          className="absolute bottom-10 right-10 flex items-center gap-2 pointer-events-none select-none"
-        >
-          <span
-            className="font-mono text-xs"
-            style={{ color: "rgba(255,255,255,0.25)" }}
+          {/* ── Section header (inside the sticky panel) ─────────────────── */}
+          {/* Visible at progress=0 when the section first pins. Fades as scroll begins. */}
+          <motion.div
+            style={{ opacity: headerOpacity }}
+            className="px-10 pt-10 pb-2 shrink-0 pointer-events-none select-none"
           >
-            scroll to travel back in time
-          </span>
-          <span style={{ color: "rgba(255,255,255,0.2)" }}>→</span>
-        </motion.div>
-      </div>
+            <p className="font-mono text-sm text-accent mb-2">experience</p>
+            <h2 className="text-4xl sm:text-5xl font-bold text-text leading-tight mb-2">
+              The Timeline
+            </h2>
+            <p className="text-muted text-sm">
+              10+ years. Six companies. One thread running through all of it.
+            </p>
+          </motion.div>
+
+          {/* ── Timeline area ────────────────────────────────────────────── */}
+          <div className="relative flex-1 flex items-center">
+
+            {/* Spine line — full width */}
+            <div
+              className="absolute pointer-events-none"
+              style={{
+                top: "50%",
+                left: 0,
+                right: 0,
+                height: 1,
+                background:
+                  "linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 5%, rgba(255,255,255,0.07) 95%, transparent 100%)",
+              }}
+              aria-hidden="true"
+            />
+
+            {/* Scrolling track — items-center keeps nodes on the spine */}
+            <motion.div
+              style={{ x: translateX, paddingLeft: 60, paddingRight: 60 }}
+              className="flex items-center will-change-transform"
+            >
+              {/* "Now" node — leftmost since newest-first */}
+              <TimelineNode label="NOW" accent cap />
+
+              {sorted.map((job, i) => (
+                <div
+                  key={job.slug}
+                  className="flex items-center"
+                  style={{ gap: GAP }}
+                >
+                  {/* Pre-card spine spacer */}
+                  <div
+                    style={{
+                      width: GAP,
+                      height: 1,
+                      background: "rgba(255,255,255,0.07)",
+                      flexShrink: 0,
+                    }}
+                  />
+
+                  <AnimatedCard
+                    job={job}
+                    index={i}
+                    count={count}
+                    progress={scrollYProgress}
+                  />
+
+                  {/* Post-card spine spacer */}
+                  <div
+                    style={{
+                      width: GAP,
+                      height: 1,
+                      background: "rgba(255,255,255,0.07)",
+                      flexShrink: 0,
+                    }}
+                  />
+
+                  <TimelineNode
+                    label={String(job.startYear)}
+                    sublabel={job.endYear ? String(job.endYear) : undefined}
+                  />
+                </div>
+              ))}
+
+              {/* Trailing spacer */}
+              <div style={{ width: 80, flexShrink: 0 }} />
+            </motion.div>
+
+            {/* Scroll hint */}
+            <motion.div
+              style={{ opacity: hintOpacity }}
+              className="absolute bottom-10 right-10 flex items-center gap-2 pointer-events-none select-none"
+            >
+              <span
+                className="font-mono text-xs"
+                style={{ color: "rgba(255,255,255,0.25)" }}
+              >
+                scroll to travel back in time
+              </span>
+              <span style={{ color: "rgba(255,255,255,0.2)" }}>→</span>
+            </motion.div>
+
+          </div>
+        </div>
       </div>
     </div>
   );
