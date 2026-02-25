@@ -81,6 +81,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             fontSize: 18,
             lineHeight: 1,
             cursor: "pointer",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4)",
           }}
           aria-label="Close"
         >
