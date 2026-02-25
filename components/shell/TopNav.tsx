@@ -167,57 +167,33 @@ export function TopNav() {
             transition={{ duration: duration.short, ease: ease.standard }}
             className="sm:hidden fixed inset-0 z-50 bg-bg flex flex-col"
           >
-            {/* Top bar with logo + close */}
-            <div className="flex items-center justify-between px-5 py-4 border-b border-border/40">
-              <button
-                onClick={() => { window.scrollTo({ top: 0, behavior: "smooth" }); setMobileOpen(false); }}
-                className="flex items-center gap-3 shrink-0"
-                aria-label="Back to top"
-              >
-                <div className="h-7 w-auto flex items-center">
-                  {logoError ? (
-                    <span className="font-mono text-sm font-bold text-accent select-none">HH</span>
-                  ) : (
-                    <Image
-                      src="/images/logo/logo_color.png"
-                      alt="Haden Hiles"
-                      width={90}
-                      height={28}
-                      className="object-contain h-7 w-auto"
-                      onError={() => setLogoError(true)}
-                    />
-                  )}
-                </div>
-              </button>
+            {/* Close button — pinned top-right, same position as hamburger */}
+            <motion.button
+              onClick={() => setMobileOpen(false)}
+              className="absolute top-4 right-5 p-1.5 text-muted hover:text-accent transition-colors"
+              aria-label="Close menu"
+              animate="open"
+            >
+              <div className="w-5 h-3.5 flex flex-col justify-between">
+                <motion.span
+                  className="block h-px bg-current origin-center"
+                  variants={topVariant}
+                  transition={lineTransition}
+                />
+                <motion.span
+                  className="block h-px bg-current origin-center"
+                  variants={midVariant}
+                  transition={lineTransition}
+                />
+                <motion.span
+                  className="block h-px bg-current origin-center"
+                  variants={bottomVariant}
+                  transition={lineTransition}
+                />
+              </div>
+            </motion.button>
 
-              {/* Close button */}
-              <motion.button
-                onClick={() => setMobileOpen(false)}
-                className="p-1.5 text-muted hover:text-accent transition-colors"
-                aria-label="Close menu"
-                animate="open"
-              >
-                <div className="w-5 h-3.5 flex flex-col justify-between">
-                  <motion.span
-                    className="block h-px bg-current origin-center"
-                    variants={topVariant}
-                    transition={lineTransition}
-                  />
-                  <motion.span
-                    className="block h-px bg-current origin-center"
-                    variants={midVariant}
-                    transition={lineTransition}
-                  />
-                  <motion.span
-                    className="block h-px bg-current origin-center"
-                    variants={bottomVariant}
-                    transition={lineTransition}
-                  />
-                </div>
-              </motion.button>
-            </div>
-
-            {/* Centered nav items */}
+            {/* Centered nav items — fills full screen height */}
             <nav className="flex-1 flex flex-col items-center justify-center gap-2" aria-label="Site sections">
               {NAV_TABS.map((tab, i) => {
                 const isActive = mode === tab.mode;
