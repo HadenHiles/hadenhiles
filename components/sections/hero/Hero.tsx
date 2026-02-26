@@ -126,7 +126,7 @@ const linkVariants = {
     y: 0, 
     transition: { 
       duration: 0.35, 
-      ease: [0.22, 1, 0.36, 1] // Custom ease-out curve for smooth motion
+      ease: [0.22, 1, 0.36, 1] as const // Custom ease-out curve for smooth motion
     } 
   },
   exit: {
@@ -134,7 +134,7 @@ const linkVariants = {
     y: 12,
     transition: {
       duration: 0.25,
-      ease: [0.4, 0, 1, 1] // Smooth ease-in for exit
+      ease: [0.4, 0, 1, 1] as const // Smooth ease-in for exit
     }
   }
 };
