@@ -74,7 +74,7 @@ export function BootLog({
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: duration.micro, ease: ease.standard }}
                 onClick={() => onAction(entry.actionMode!)}
-                className="block w-full text-left leading-relaxed mt-1 mb-1 text-accent font-mono hover:underline cursor-default select-none"
+                className="block w-full text-left leading-relaxed mt-1 mb-1 text-accent font-mono hover:underline cursor-pointer select-none"
               >
                 {entry.text}
               </motion.button>
@@ -131,7 +131,7 @@ export function BootLog({
                 onMouseEnter={() => onMenuSelect(i)}
                 className={`
                   w-full flex items-center text-left leading-7
-                  transition-colors cursor-default select-none
+                  transition-colors cursor-pointer select-none
                   ${isActive ? "text-text" : "text-muted hover:text-text/80"}
                 `}
               >

@@ -27,7 +27,7 @@ const bottomVariant = { closed: { rotate: 0,   y: 0  }, open: { rotate: -45,  y:
 
 export function TopNav() {
   const mode = useMode();
-  const { setMode, setContactOpen } = useStore();
+  const { setMode, setContactOpen, selectProject } = useStore();
   const [logoError, setLogoError] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -45,6 +45,9 @@ export function TopNav() {
   }, [mode]);
 
   const handleTab = (tab: typeof NAV_TABS[number]) => {
+    if (tab.mode === "work") {
+      selectProject(null);
+    }
     setMode(tab.mode);
     scrollTo(tab.sectionId);
     setMobileOpen(false);

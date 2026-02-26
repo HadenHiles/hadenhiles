@@ -17,6 +17,7 @@ html {
   color: #EDEDF2;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip; /* clip doesn't create a scroll container, preserving position:sticky */
+  cursor: url('/cursors/default.svg') 2 2, auto;
 }
 
 body {
@@ -45,20 +46,6 @@ body {
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Terminal cursor blink — square wave, no fade */
-  .cursor-blink {
-    animation: cursor-blink 1s step-end infinite;
-  }
-
-  @keyframes cursor-blink {
-    0%, 100% { opacity: 1; }
-    50%      { opacity: 0; }
-  }
-
   /* Scrollbar styling */
   .scrollbar-thin {
     scrollbar-width: thin;

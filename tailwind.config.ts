@@ -25,9 +25,30 @@ const config: Config = {
         sans: ["var(--font-geist-sans)", "ui-sans-serif", "system-ui", "sans-serif"],
         mono: ["var(--font-geist-mono)", "ui-monospace", "SFMono-Regular", "monospace"],
       },
+      keyframes: {
+        'cursor-blink': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
+        'pulse-sheen': {
+          '0%, 100%': {
+            filter: 'brightness(1)',
+            boxShadow: '0 10px 15px -3px rgb(168 85 247 / 0.3), 0 4px 6px -4px rgb(168 85 247 / 0.3)',
+          },
+          '50%': {
+            filter: 'brightness(1.15)',
+            boxShadow: '0 10px 15px -3px rgb(192 132 252 / 0.4), 0 4px 6px -4px rgb(192 132 252 / 0.4)',
+          },
+        },
+      },
+      animation: {
+        'cursor-blink': 'cursor-blink 1s step-end infinite',
+        'pulse-sheen': 'pulse-sheen 2.5s ease-in-out infinite',
+      },
     },
   },
   plugins: [],
 };
 
 export default config;
+7

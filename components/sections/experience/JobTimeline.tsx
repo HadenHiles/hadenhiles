@@ -80,7 +80,6 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             color: "rgba(255,255,255,0.6)",
             fontSize: 18,
             lineHeight: 1,
-            cursor: "pointer",
             boxShadow: "0 2px 8px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4)",
           }}
           aria-label="Close"
@@ -322,7 +321,7 @@ function JobCard({
               setFlipped((f) => !f);
             }
           }}
-          style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d", cursor: "pointer" }}
+          style={{ width: "100%", height: "100%", position: "relative", transformStyle: "preserve-3d" }}
         >
           <CardFront job={job} />
           <CardBack job={job} />

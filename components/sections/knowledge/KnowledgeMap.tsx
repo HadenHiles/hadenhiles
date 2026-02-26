@@ -103,7 +103,7 @@ function SkillTile({ name, logo, emoji, yearsExperience, tileIndex, isInView }: 
         scale: hovered ? 1.06 : 1,
       }}
       transition={{ duration: duration.micro, ease: ease.standard }}
-      className="relative flex items-center gap-2.5 px-3 py-2.5 rounded-xl border cursor-default outline-none focus-visible:ring-1 focus-visible:ring-accent/60 select-none"
+      className="relative flex items-center gap-2.5 px-3 py-2.5 rounded-xl border outline-none focus-visible:ring-1 focus-visible:ring-accent/60 select-none"
       style={{
         minWidth: 110,
         transformOrigin: "center",

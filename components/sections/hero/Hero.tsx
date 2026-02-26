@@ -118,13 +118,10 @@ const linkVariants = {
 
 // ─── Shared cursor badge wrapper ──────────────────────────────────────────────
 
-const cursorBadgeClass =
-  "flex items-center justify-center w-9 h-9 bg-bg/85 backdrop-blur-sm border rounded-full shadow-[0_2px_10px_rgba(0,0,0,0.45)]";
-
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function Hero() {
-  const { setMode, setContactOpen } = useStore();
+  const { setMode, setContactOpen, selectProject } = useStore();
   const { stats, loading, error } = useGitHubStats();
 
   // Photo tilt spring
@@ -136,38 +133,18 @@ export function Hero() {
   const rotateY = useTransform(springX, [-0.5, 0.5], [-14, 14]);
   const rotateX = useTransform(springY, [-0.5, 0.5], [10, -10]);
 
-  // Cursor-follow
-  const cursorRawX = useMotionValue(0);
-  const cursorRawY = useMotionValue(0);
-  const cursorX = useSpring(cursorRawX, { stiffness: 400, damping: 35 });
-  const cursorY = useSpring(cursorRawY, { stiffness: 400, damping: 35 });
-
-  const [isHovered, setIsHovered] = useState(false);
   const [isRevealed, setIsRevealed] = useState(false);
-  const [isHoveringLink, setIsHoveringLink] = useState(false);
-
-  function handleMouseEnter(e: React.MouseEvent<HTMLDivElement>) {
-    const rect = photoRef.current?.getBoundingClientRect();
-    if (!rect) return;
-    cursorRawX.jump(e.clientX - rect.left);
-    cursorRawY.jump(e.clientY - rect.top);
-    setIsHovered(true);
-  }
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = photoRef.current?.getBoundingClientRect();
     if (!rect) return;
     rawX.set((e.clientX - rect.left) / rect.width - 0.5);
     rawY.set((e.clientY - rect.top) / rect.height - 0.5);
-    cursorRawX.set(e.clientX - rect.left);
-    cursorRawY.set(e.clientY - rect.top);
   }
 
   function handleMouseLeave() {
     rawX.set(0);
     rawY.set(0);
-    setIsHovered(false);
-    setIsHoveringLink(false);
   }
 
   const statItems = [
@@ -271,6 +248,7 @@ export function Hero() {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => {
+                selectProject(null);
                 setMode("work");
                 setTimeout(() => {
                   document.getElementById("section-work")?.scrollIntoView({ behavior: "smooth" });
@@ -306,8 +284,7 @@ export function Hero() {
           {/* Mouse-tracking wrapper */}
           <div
             ref={photoRef}
-            className="relative cursor-none select-none"
-            onMouseEnter={handleMouseEnter}
+            className="relative select-none cursor-pointer"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             onClick={() => setIsRevealed((v) => !v)}
@@ -353,10 +330,8 @@ export function Hero() {
                             target="_blank"
                             rel="noopener noreferrer"
                             {...(link.download ? { download: true } : {})}
-                            onMouseEnter={() => setIsHoveringLink(true)}
-                            onMouseLeave={() => setIsHoveringLink(false)}
                             onClick={(e) => e.stopPropagation()}
-                            className="flex-1 flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-surface/80 border border-border/60 hover:border-accent/50 hover:bg-surface text-muted hover:text-text transition-colors cursor-none"
+                            className="flex-1 flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-surface/80 border border-border/60 hover:border-accent/50 hover:bg-surface text-muted hover:text-text transition-colors cursor-pointer"
                           >
                             {link.icon}
                             <span className="text-[11px] font-medium leading-none">{link.label}</span>
@@ -368,60 +343,6 @@ export function Hero() {
                 </AnimatePresence>
               </div>
             </motion.div>
-
-            {/* Custom cursor — always visible while hovering */}
-            <AnimatePresence>
-              {isHovered && (
-                <motion.div
-                  style={{ x: cursorX, y: cursorY }}
-                  initial={{ opacity: 0, scale: 0.7 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.7 }}
-                  transition={{ duration: duration.micro, ease: ease.out }}
-                  className="pointer-events-none absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2 z-20"
-                >
-                  <AnimatePresence mode="wait">
-                    {isHoveringLink ? (
-                      <motion.span
-                        key="link"
-                        initial={{ opacity: 0, scale: 0.6 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.6 }}
-                        transition={{ duration: duration.micro, ease: ease.out }}
-                        className={`${cursorBadgeClass} border-accent/60 text-accent text-sm font-semibold`}
-                      >
-                        ↗
-                      </motion.span>
-                    ) : isRevealed ? (
-                      <motion.span
-                        key="close"
-                        initial={{ opacity: 0, scale: 0.6 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.6 }}
-                        transition={{ duration: duration.micro, ease: ease.out }}
-                        className={`${cursorBadgeClass} border-border/50 text-muted`}
-                      >
-                        <svg width="11" height="11" viewBox="0 0 11 11" fill="none">
-                          <line x1="1" y1="1" x2="10" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <line x1="10" y1="1" x2="1" y2="10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      </motion.span>
-                    ) : (
-                      <motion.span
-                        key="target"
-                        initial={{ opacity: 0, scale: 0.6 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.6 }}
-                        transition={{ duration: duration.micro, ease: ease.out }}
-                        className={`${cursorBadgeClass} border-border/50 text-xl leading-none`}
-                      >
-                        🎯
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
-              )}
-            </AnimatePresence>
           </div>
 
           {/* Mobile social links — always visible below photo on small screens */}

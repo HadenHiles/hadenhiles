@@ -149,16 +149,28 @@ export function TuiShell() {
   return (
     <div ref={shellRef} className="p-4 flex flex-col h-screen">
       {/* Header */}
-      <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center justify-between">
+      <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center justify-between relative">
         <span className="hidden sm:inline">hadensystem — ↑↓ navigate · [n] select · enter activate · type commands</span>
         <span className="sm:hidden">hadensystem</span>
+        
+        {/* View Site Button - positioned mid-way on desktop, top-right on mobile */}
         <button
           onClick={() => activateMenuItem(4)}
           className="
-            ml-4 shrink-0 px-2.5 py-1 rounded
-            border border-border/50 text-muted/70
-            hover:border-accent/60 hover:text-accent
-            transition-colors duration-150 cursor-default
+            sm:absolute sm:left-1/2 sm:-translate-x-1/2
+            ml-4 sm:ml-0 shrink-0 
+            px-8 py-3 sm:px-10 sm:py-4
+            text-base sm:text-lg font-semibold
+            rounded-xl
+            border-2 border-purple-500/60
+            text-white
+            bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400
+            hover:from-purple-500 hover:via-purple-400 hover:to-purple-300
+            shadow-lg shadow-purple-500/30
+            hover:shadow-xl hover:shadow-purple-400/40
+            transition-all duration-300
+            cursor-pointer
+            animate-pulse-sheen
           "
           aria-label="Switch to GUI site"
         >
