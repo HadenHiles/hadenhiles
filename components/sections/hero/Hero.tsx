@@ -106,14 +106,37 @@ const overlayVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.07 },
+    transition: { staggerChildren: 0.06, delayChildren: 0.05 },
   },
-  exit: { opacity: 0, transition: { duration: duration.short, ease: ease.standard } },
+  exit: { 
+    opacity: 0, 
+    transition: { 
+      duration: duration.short, 
+      ease: ease.standard,
+      staggerChildren: 0.03,
+      staggerDirection: -1
+    } 
+  },
 };
 
 const linkVariants = {
-  hidden: { opacity: 0, y: 14 },
-  visible: { opacity: 1, y: 0, transition: { duration: duration.short, ease: ease.out } },
+  hidden: { opacity: 0, y: 20 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    transition: { 
+      duration: 0.35, 
+      ease: [0.22, 1, 0.36, 1] // Custom ease-out curve for smooth motion
+    } 
+  },
+  exit: {
+    opacity: 0,
+    y: 12,
+    transition: {
+      duration: 0.25,
+      ease: [0.4, 0, 1, 1] // Smooth ease-in for exit
+    }
+  }
 };
 
 // ─── Shared cursor badge wrapper ──────────────────────────────────────────────
@@ -286,8 +309,11 @@ export function Hero() {
             ref={photoRef}
             className="relative select-none cursor-pointer"
             onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            onClick={() => setIsRevealed((v) => !v)}
+            onMouseLeave={() => {
+              handleMouseLeave();
+              setIsRevealed(false);
+            }}
+            onMouseEnter={() => setIsRevealed(true)}
           >
             {/* 3D-tilt layer */}
             <motion.div
