@@ -148,34 +148,34 @@ export function TuiShell() {
 
   return (
     <div ref={shellRef} className="p-4 flex flex-col h-screen">
+      {/* View Site Button - fixed top-right on mobile, centered on desktop */}
+      <button
+        onClick={() => activateMenuItem(4)}
+        className="
+          fixed top-0 right-4 z-10
+          lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto
+          px-6 py-2 sm:px-8 sm:py-3
+          text-sm sm:text-base font-semibold
+          rounded-b-xl
+          border-2 border-purple-500/60
+          text-white
+          bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400
+          hover:from-purple-500 hover:via-purple-400 hover:to-purple-300
+          shadow-lg shadow-purple-500/30
+          hover:shadow-xl hover:shadow-purple-400/40
+          transition-all duration-300
+          cursor-pointer
+          animate-pulse-sheen
+        "
+        aria-label="Switch to GUI site"
+      >
+        view site →
+      </button>
+
       {/* Header */}
-      <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center justify-between relative">
+      <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center relative">
         <span className="hidden sm:inline">hadensystem — ↑↓ navigate · [n] select · enter activate · type commands</span>
         <span className="sm:hidden">hadensystem</span>
-        
-        {/* View Site Button - positioned mid-way on desktop, top-right on mobile */}
-        <button
-          onClick={() => activateMenuItem(4)}
-          className="
-            sm:absolute sm:left-1/2 sm:-translate-x-1/2
-            ml-4 sm:ml-0 shrink-0 
-            px-8 py-3 sm:px-10 sm:py-4
-            text-base sm:text-lg font-semibold
-            rounded-xl
-            border-2 border-purple-500/60
-            text-white
-            bg-gradient-to-br from-purple-600 via-purple-500 to-purple-400
-            hover:from-purple-500 hover:via-purple-400 hover:to-purple-300
-            shadow-lg shadow-purple-500/30
-            hover:shadow-xl hover:shadow-purple-400/40
-            transition-all duration-300
-            cursor-pointer
-            animate-pulse-sheen
-          "
-          aria-label="Switch to GUI site"
-        >
-          view site →
-        </button>
       </div>
 
       {/* Log + menu — unified scrollable area */}

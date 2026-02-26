@@ -58,7 +58,7 @@ export function BootLog({
   return (
     <div
       ref={scrollRef}
-      className="h-full overflow-y-auto overflow-x-hidden font-mono text-sm pr-1 scrollbar-thin"
+      className="h-full overflow-y-auto overflow-x-hidden font-mono text-sm pr-1 scrollbar-thin pt-12 sm:pt-0"
       aria-live="polite"
       aria-label="Terminal output"
     >
