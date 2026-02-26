@@ -85,7 +85,7 @@ export function ProjectDetailPanel({ project, onClose }: { project: Project; onC
             rel="noopener noreferrer"
             className="px-3 py-1.5 text-sm font-medium text-bg bg-accent hover:bg-accent/90 rounded-lg transition-colors"
           >
-            Live Demo →
+            {project.demoUrlLabel || "Live Demo"} →
           </a>
         )}
       </div>

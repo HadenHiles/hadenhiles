@@ -53,8 +53,8 @@
     "tui": "Trail companion app (Flutter/C++) - Bluetooth beacons surface context at exactly the right moment.",
     "tagline": "Interactive trail exploration built for real hikers.",
     "purpose": "A companion app for the Lake Superior Group of Seven Trail that connected location, history, and movement - making the trail itself interactive without being distracting.",
-    "constraints": "Had to work reliably in remote conditions with inconsistent connectivity. Bluetooth beacon triggering needed to be performant without draining battery. UI designed for outdoor, active use.",
-    "decisions": "Flutter for cross-platform with C++ native integrations for Bluetooth performance. Proximity-based content triggers over explicit navigation - the trail guides the experience, not menus.",
+    "constraints": "Had to work in remote conditions with slow connectivity. Bluetooth beacon triggering needed to be performant without draining battery. UI designed for outdoor, active use.",
+    "decisions": "Flutter for cross-platform with C++ native integrations for Bluetooth performance. Firebase/Firestore for slow but reliable data sync. Proximity-based content triggers over explicit navigation - the trail guides the experience, not menus.",
     "impact": "Relevant trail information surfaces automatically at the right moment. Hikers stay in the experience instead of digging through menus.",
     "tech": [
       "Flutter",
@@ -70,6 +70,31 @@
     "story": "This project combined software engineering with physical exploration. I built a mobile app for the Lake Superior Group of Seven Trail that used Bluetooth beacon scanning to trigger contextual content based on a hiker's exact location. The UX constraint was strict: information should appear when it's relevant, not when the user goes looking for it. C++ native integrations handled the Bluetooth layer for performance, while Flutter handled the UI and map layers.",
     "demoType": "mobile",
     "demoAsset": "/projects/g7-trail.mp4"
+  },
+  {
+    "id": "group-of-seven-trail-website",
+    "title": "Group of Seven Trail Website",
+    "tui": "WordPress-based trail website - easy content management meets Lake Superior's vast beauty.",
+    "tagline": "A digital reflection of Lake Superior's majesty.",
+    "purpose": "The Group of Seven Trail needed a modern website that could be easily managed by non-technical staff while reflecting the vast beauty of Lake Superior and the legacy of the Group of Seven artists.",
+    "constraints": "Had to replace an outdated template-based site. Content management needed to be accessible to staff without technical backgrounds. Design had to complement the natural landscape without overwhelming visitors looking for practical trail information.",
+    "decisions": "WordPress for ease of content management and maintainability. Custom theme design centered on high-quality imagery of Lake Superior and the trail. Clear information architecture balancing visual storytelling with practical visitor information - trail details, supportive businesses, volunteer opportunities, and donation pathways.",
+    "impact": "Staff can update trail information, news, and events without technical intervention. Visitors experience the beauty of Lake Superior digitally before they arrive. The site serves as both inspiration and practical resource.",
+    "tech": [
+      "WordPress",
+      "PHP",
+      "JavaScript",
+      "CSS",
+      "Custom Theme Development"
+    ],
+    "githubUrl": null,
+    "demoUrl": "https://groupofseventrail.com",
+    "demoUrlLabel": "Live Site",
+    "videoUrl": null,
+    "diagramAsset": null,
+    "story": "The Group of Seven Trail Association needed to move beyond their outdated template-based website. The new site needed to be two things at once: a practical resource for hikers and visitors, and a visual celebration of Lake Superior's rugged beauty that inspired the Group of Seven artists. I built a custom WordPress theme that prioritized large, high-quality imagery of the trail and lake, while maintaining clear navigation for essential information like trail maps, supportive businesses, and volunteer opportunities. The content management system was designed so staff could update trail conditions, post news, and manage events without any technical knowledge - critical for a non-profit with limited resources.",
+    "demoType": "desktop",
+    "demoAsset": "/projects/g7-trail-website.mp4"
   },
   {
     "id": "nextshift",

@@ -31,6 +31,7 @@ export interface Project {
   tech: string[];
   githubUrl?: string | null;
   demoUrl?: string | null;
+  demoUrlLabel?: string | null;
   videoUrl?: string | null;
   diagramAsset?: string | null;
   story: string;
