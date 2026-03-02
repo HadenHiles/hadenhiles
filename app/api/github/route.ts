@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-export const revalidate = 3600; // cache for 1 hour
+export const revalidate = 300; // cache for 5 minutes
 
 const GITHUB_USERNAME = "hadenhiles";
 
@@ -12,7 +12,7 @@ async function fetchGitHub(url: string) {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
   if (!res.ok) throw new Error(`GitHub API error ${res.status}: ${url}`);
   return res.json();
@@ -27,7 +27,7 @@ async function fetchCommitCount(query: string): Promise<number> {
       Accept: "application/vnd.github+json",
       "X-GitHub-Api-Version": "2022-11-28",
     },
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
   if (!res.ok) return 0;
   const data = await res.json();
