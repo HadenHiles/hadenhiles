@@ -1,13 +1,15 @@
 "use client";
 
 import { useEffect, useRef, useCallback, useState } from "react";
+import { useRouter } from "next/navigation";
 import { useStore, useTuiState } from "@/lib/store";
 import { useTuiKeyboard } from "@/lib/keyboard";
 import { BootLog } from "./BootLog";
 import { CommandLine } from "./CommandLine";
-import { MENU_ITEMS } from "@/lib/routes";
+import { MENU_ITEMS, ROUTES } from "@/lib/routes";
 
 export function TuiShell() {
+  const router = useRouter();
   const { bootComplete, menuIndex, commandBuffer, history, currentPath } = useTuiState();
   const {
     runBootScript,
@@ -150,7 +152,7 @@ export function TuiShell() {
     <div ref={shellRef} className="p-4 flex flex-col h-screen">
       {/* View Site Button - fixed top-right on mobile, centered on desktop */}
       <button
-        onClick={() => activateMenuItem(4)}
+        onClick={() => router.push(ROUTES.site)}
         className="
           fixed top-0 right-4 z-10
           lg:absolute lg:top-0 lg:left-1/2 lg:-translate-x-1/2 lg:right-auto
