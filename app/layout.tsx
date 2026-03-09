@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import Script from "next/script";
+import { AnalyticsTracker } from "@/components/shell/AnalyticsTracker";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -52,6 +53,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-bg text-text font-sans`}
       >
+        <AnalyticsTracker />
         {children}
       </body>
     </html>
