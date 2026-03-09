@@ -33,7 +33,7 @@ function InitialScrollEffect() {
     return () => clearTimeout(timer);
   // Only run once on mount — intentionally omitting mode from deps
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [];
+  }, []);
 
   return null;
 }
