@@ -8,7 +8,7 @@ import type { AppMode } from "@/lib/routes";
 import { duration, ease } from "@/lib/motion";
 
 const NAV_TABS: { label: string; mode: AppMode; sectionId: string }[] = [
-  { label: "Home",       mode: "home",       sectionId: "section-hero"       },
+  { label: "Specs",      mode: "home",       sectionId: "section-hero"       },
   { label: "Knowledge",  mode: "knowledge",  sectionId: "section-knowledge"  },
   { label: "Work",       mode: "work",       sectionId: "section-work"       },
   { label: "Experience", mode: "experience", sectionId: "section-experience" },

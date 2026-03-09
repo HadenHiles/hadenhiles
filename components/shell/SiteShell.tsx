@@ -38,35 +38,37 @@ function InitialScrollEffect() {
   return null;
 }
 
-/** Watches which section is most in view and updates the active mode in the nav. */
+/** Watches scroll position and keeps the active nav mode in sync with the visible section. */
 function SectionObserver() {
   const { setMode } = useStore();
-  const suppressRef = useRef(false);
+  const lastModeRef = useRef<AppMode | null>(null);
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
+    // Trigger line: ~80px sticky header + 60px breathing room.
+    // The last section whose top is at or above this line is the active one.
+    const TRIGGER = 80 + 60;
 
-    SECTION_MODES.forEach(({ id, mode: sectionMode }) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    function update() {
+      const sections = SECTION_MODES
+        .map(({ id, mode: sectionMode }) => ({ el: document.getElementById(id), mode: sectionMode }))
+        .filter((s): s is { el: HTMLElement; mode: AppMode } => s.el !== null);
 
-      const obs = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting && !suppressRef.current) {
-              suppressRef.current = true;
-              setMode(sectionMode);
-              setTimeout(() => { suppressRef.current = false; }, 600);
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
-      obs.observe(el);
-      observers.push(obs);
-    });
+      let active: AppMode = sections[0].mode;
+      for (const s of sections) {
+        if (s.el.getBoundingClientRect().top <= TRIGGER) {
+          active = s.mode;
+        }
+      }
 
-    return () => observers.forEach((o) => o.disconnect());
+      if (active !== lastModeRef.current) {
+        lastModeRef.current = active;
+        setMode(active);
+      }
+    }
+
+    window.addEventListener("scroll", update, { passive: true });
+    update(); // sync on mount
+    return () => window.removeEventListener("scroll", update);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

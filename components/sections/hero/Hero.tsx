@@ -156,7 +156,26 @@ export function Hero() {
   const rotateY = useTransform(springX, [-0.5, 0.5], [-14, 14]);
   const rotateX = useTransform(springY, [-0.5, 0.5], [10, -10]);
 
-  const [isRevealed, setIsRevealed] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [autoReveal, setAutoReveal] = useState(false);
+  const hasAutoRevealedRef = useRef(false);
+
+  // Combined: overlay shows when hovering OR during timed auto-reveal
+  const isRevealed = isHovering || autoReveal;
+
+  // After 3s on desktop (where the static mobile icons are hidden), briefly
+  // reveal the social buttons to surface the interaction for first-time visitors.
+  useEffect(() => {
+    if (hasAutoRevealedRef.current) return;
+    const startTimer = setTimeout(() => {
+      if (typeof window === "undefined" || window.innerWidth < 1024) return;
+      hasAutoRevealedRef.current = true;
+      setAutoReveal(true);
+      const hideTimer = setTimeout(() => setAutoReveal(false), 2500);
+      return () => clearTimeout(hideTimer);
+    }, 3000);
+    return () => clearTimeout(startTimer);
+  }, []);
 
   function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
     const rect = photoRef.current?.getBoundingClientRect();
@@ -311,9 +330,9 @@ export function Hero() {
             onMouseMove={handleMouseMove}
             onMouseLeave={() => {
               handleMouseLeave();
-              setIsRevealed(false);
+              setIsHovering(false);
             }}
-            onMouseEnter={() => setIsRevealed(true)}
+            onMouseEnter={() => setIsHovering(true)}
           >
             {/* 3D-tilt layer */}
             <motion.div

@@ -21,7 +21,7 @@ export const VALID_SITE_MODES: SiteMode[] = [
 ];
 
 export const MENU_ITEMS = [
-  { label: "Home",       mode: "home"       as AppMode, number: 1 },
+  { label: "Specs",      mode: "home"       as AppMode, number: 1 },
   { label: "Knowledge",  mode: "knowledge"  as AppMode, number: 2 },
   { label: "Projects",   mode: "work"       as AppMode, number: 3 },
   { label: "Experience", mode: "experience" as AppMode, number: 4 },
