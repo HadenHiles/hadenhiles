@@ -15,14 +15,22 @@ function SitePageInner() {
     const modeParam = params.get("mode") as SiteMode | null;
     const projectParam = params.get("project");
 
-    if (modeParam && VALID_SITE_MODES.includes(modeParam)) {
-      setMode(modeParam);
-    } else {
-      setMode("home");
-    }
+    const resolvedMode = modeParam && VALID_SITE_MODES.includes(modeParam) ? modeParam : "home";
+    setMode(resolvedMode);
 
     if (projectParam) {
       selectProject(projectParam);
+    }
+
+    // Scroll to the target section for direct URL access (e.g. /site?mode=work&project=x).
+    // InitialScrollEffect fires with the store's pre-hydration mode and won't re-run,
+    // so we handle the scroll here after the store is updated.
+    if (resolvedMode !== "home") {
+      const sectionId = `section-${resolvedMode}`;
+      const timer = setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 450);
+      return () => clearTimeout(timer);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

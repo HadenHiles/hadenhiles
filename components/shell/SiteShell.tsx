@@ -24,7 +24,7 @@ function InitialScrollEffect() {
   const mode = useMode();
 
   useEffect(() => {
-    if (mode === "home" || mode === "work") return; // Top / default views — no scroll needed
+    if (mode === "home") return; // Already at top — no scroll needed
     const sectionId = `section-${mode}`;
     // Delay so Framer Motion's entry transition completes first
     const timer = setTimeout(() => {
@@ -33,7 +33,7 @@ function InitialScrollEffect() {
     return () => clearTimeout(timer);
   // Only run once on mount — intentionally omitting mode from deps
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [];
 
   return null;
 }
