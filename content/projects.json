@@ -162,8 +162,8 @@
     "videoUrl": null,
     "diagramAsset": null,
     "story": "timmies-helper was built by another developer to assist with Tim Hortons Hockey Challenge picks. I forked it to add Value Over Replacement - a metric borrowed from fantasy sports drafting that scores each player relative to the baseline replacement-level pick in their tier. The fork adds a single column, but it changes the decision from 'who's good' to 'who's the best value right now.' Built to integrate cleanly into the existing codebase without refactoring what was already working.",
-    "demoType": "desktop",
-    "demoAsset": "https://placehold.co/1280x800/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
+    "demoType": "mobile",
+    "demoAsset": "/projects/timmies-helper.MOV"
   },
   {
     "id": "video-scraper",
