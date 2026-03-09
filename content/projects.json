@@ -45,7 +45,11 @@
     "diagramAsset": null,
     "story": "The Pond is How To Hockey's structured membership platform. The challenge wasn't just the tech - it was designing a content hierarchy that felt intuitive to players at every level. I architected the course and gating logic in LearnDash and MemberPress, with custom integrations for onboarding and admin workflows optimized to require zero technical intervention for ongoing content management.",
     "demoType": "desktop",
-    "demoAsset": "https://placehold.co/1280x800/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
+    "demoAsset": "/projects/thepond-landing-page.mov",
+    "demoAssets": [
+      "/projects/thepond-landing-page.mov",
+      "/projects/thepond-dashboard.mov"
+    ]
   },
   {
     "id": "group-of-seven-trail-app",
@@ -138,7 +142,7 @@
     "diagramAsset": null,
     "story": "Skill Drills came from a simple frustration: most tracking apps either do too much or lock you into their definition of progress. I built a customizable app where users define their own routines and metrics. The data model supports arbitrary skill categories while keeping the UI clean. C++ handles the performance-sensitive computation layer so rendering stays fast even with hundreds of logged sessions.",
     "demoType": "mobile",
-    "demoAsset": "https://placehold.co/390x844/0B0B0E/8A5CFF?text=Demo+Coming+Soon"
+    "demoAsset": "/projects/skill-drills-WIP-demo.mp4"
   },
   {
     "id": "timmies-helper",

@@ -39,6 +39,8 @@ export interface Project {
   demoType: "mobile" | "desktop";
   /** Path or URL to a gif/image/video for the demo preview */
   demoAsset: string | null;
+  /** Optional list of assets to cycle through (desktop). When provided, plays each in sequence and loops. */
+  demoAssets?: string[] | null;
 }
 
 export interface ExperienceEntry {

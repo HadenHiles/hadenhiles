@@ -1,13 +1,20 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 
 // ─── Phone Mockup ─────────────────────────────────────────────────────────────
+
+function isVideoSrc(src: string) {
+  return /\.(mp4|mov|webm|ogg)$/i.test(src);
+}
 
 interface MockupProps {
   src: string | null;
   alt: string;
   isVisible?: boolean;
+  /** Optional list of video/image assets to cycle through sequentially (desktop only). */
+  srcs?: string[] | null;
 }
 
 export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
@@ -88,7 +95,7 @@ export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
 
           {/* Screen content */}
           {src ? (
-            src.endsWith(".mp4") ? (
+            isVideoSrc(src) ? (
               <motion.video
                 src={src}
                 autoPlay
@@ -147,7 +154,12 @@ export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
 
 // ─── Desktop Mockup ───────────────────────────────────────────────────────────
 
-export function DesktopMockup({ src, alt, isVisible = true }: MockupProps) {
+export function DesktopMockup({ src, alt, isVisible = true, srcs }: MockupProps) {
+  const multiSrcs = srcs && srcs.length > 1 ? srcs : null;
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const activeSrc = multiSrcs ? multiSrcs[currentIndex] : src;
+
   return (
     <div className="relative w-full select-none" style={{ maxWidth: 480 }}>
       {/* Monitor body */}
@@ -181,23 +193,29 @@ export function DesktopMockup({ src, alt, isVisible = true }: MockupProps) {
           className="overflow-hidden bg-black"
           style={{ borderRadius: 6, aspectRatio: "16/10" }}
         >
-          {src ? (
-            src.endsWith(".mp4") ? (
+          {activeSrc ? (
+            isVideoSrc(activeSrc) ? (
               <motion.video
-                src={src}
+                key={multiSrcs ? currentIndex : undefined}
+                src={activeSrc}
                 autoPlay
                 muted
-                loop
+                loop={!multiSrcs}
                 playsInline
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isVisible ? 1 : 0 }}
                 transition={{ duration: 0.4, delay: 0.15 }}
                 className="w-full h-full object-cover"
+                onEnded={
+                  multiSrcs
+                    ? () => setCurrentIndex((i) => (i + 1) % multiSrcs.length)
+                    : undefined
+                }
               />
             ) : (
               /* eslint-disable-next-line @next/next/no-img-element */
               <motion.img
-                src={src}
+                src={activeSrc}
                 alt={alt}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isVisible ? 1 : 0 }}

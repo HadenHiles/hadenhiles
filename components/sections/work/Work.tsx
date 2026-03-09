@@ -44,7 +44,11 @@ function DemoView({ project, onBack }: { project: Project; onBack: () => void })
           <PhoneMockup src={project.demoAsset} alt={`${project.title} demo`} />
         ) : (
           <div className="w-full max-w-sm mx-auto">
-            <DesktopMockup src={project.demoAsset} alt={`${project.title} demo`} />
+            <DesktopMockup
+              src={project.demoAsset}
+              alt={`${project.title} demo`}
+              srcs={project.demoAssets ?? undefined}
+            />
           </div>
         )}
       </div>
