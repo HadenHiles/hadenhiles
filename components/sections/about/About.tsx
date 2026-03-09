@@ -138,7 +138,7 @@ export function About() {
           </div>
           {/* Caption badge */}
           <div className="absolute -bottom-4 -right-4 bg-surface border border-border rounded-xl px-4 py-2.5 shadow-lg">
-            <p className="font-mono text-xs text-accent">Toronto, ON</p>
+            <p className="font-mono text-xs text-accent">Oro, ON</p>
             <p className="text-xs text-text font-medium mt-0.5">Always building</p>
           </div>
         </div>
