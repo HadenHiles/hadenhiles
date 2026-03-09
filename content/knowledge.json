@@ -224,24 +224,10 @@
         "proofProjectIds": []
       },
       {
-        "name": "GitHub Actions",
-        "logo": "/images/logos/githubactions.svg",
-        "yearsExperience": 5,
-        "usedFor": "Building and maintaining CI/CD pipelines - release workflows that are stable, repeatable, and require minimal manual intervention.",
-        "proofProjectIds": []
-      },
-      {
         "name": "GitHub Actions CI/CD",
         "logo": "/images/logos/githubactions.svg",
         "yearsExperience": 5,
         "usedFor": "CI/CD pipelines using GitHub Actions for automated build, test, and release workflows.",
-        "proofProjectIds": []
-      },
-      {
-        "name": "CI/CD Pipeline Management",
-        "logo": "/images/logos/githubactions.svg",
-        "yearsExperience": 5,
-        "usedFor": "Owning the pipelines that take code from commit to production reliably.",
         "proofProjectIds": []
       },
       {
