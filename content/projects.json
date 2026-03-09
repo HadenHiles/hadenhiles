@@ -173,6 +173,31 @@
     "demoAsset": "/projects/timmies-helper.MOV"
   },
   {
+    "id": "vidjoy",
+    "title": "Vidjoy",
+    "tui": "Design-heavy landing page (Webflow → custom host) - single page scroll crafted for a video editing agency of one (me).",
+    "tagline": "A cinematic landing page for a video editing design agency of one (me).",
+    "purpose": "Vidjoy needed a landing page that matched the quality of my video editing work - bold, design-forward, and immediately communicative of what I do without making visitors dig for it.",
+    "constraints": "The design had to be premium enough to sell large content creators on first impression, while remaining performant on a single-page scroll layout. Webflow provided rapid visual iteration, but the real customization (and cost effectiveness) required moving beyond its constraints.",
+    "decisions": "Started in Webflow to establish the visual language and layout quickly. Once the design direction was locked, exported the project to an external host to break free of Webflow's runtime limitations and begin hand-tuning animations, scroll behaviors, and fine-grained CSS that the builder couldn't produce cleanly on its own.",
+    "impact": "A landing page that earns trust immediately - visitors understand the offering, feel the quality of the brand, and have a clear path to reach out.",
+    "tech": [
+      "Webflow",
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "githubUrl": null,
+    "demoUrl": "https://vidjoy.video/",
+    "demoUrlLabel": "Live Site",
+    "videoUrl": null,
+    "diagramAsset": null,
+    "story": "Vidjoy is a video editing design agency that needed its landing page to do what their clients' videos do - make an impression in the first few seconds. I used Webflow to prototype the layout and establish the visual direction quickly, iterating on structure and hierarchy without writing boilerplate. Once the design was right, I exported the project to an external host and started the real work: refining scroll-driven animations, polishing transitions, and customizing details that a no-code builder smooths over. The result is a single-page scroll experience that feels handcrafted because, after the export, it was.",
+    "demoType": "web",
+    "demoTypeLabel": "landing page",
+    "demoAsset": "/projects/vidjoy-landing.mov"
+  },
+  {
     "id": "video-scraper",
     "title": "VideoScraper",
     "tui": "URL-in, file-out video download utility (React/Node.js) - strict frontend/backend separation, zero friction.",
