@@ -9,14 +9,20 @@ import PortfolioRoot from "@/app/page";
 
 function SitePageInner() {
   const params = useSearchParams();
-  const setMode = useStore((s) => s.setMode);
+  const { setMode, selectProject } = useStore();
 
   useEffect(() => {
     const modeParam = params.get("mode") as SiteMode | null;
+    const projectParam = params.get("project");
+
     if (modeParam && VALID_SITE_MODES.includes(modeParam)) {
       setMode(modeParam);
     } else {
-      setMode("work");
+      setMode("home");
+    }
+
+    if (projectParam) {
+      selectProject(projectParam);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

@@ -12,9 +12,10 @@ import { useStore, useMode } from "@/lib/store";
 import type { AppMode } from "@/lib/routes";
 
 const SECTION_MODES: { id: string; mode: AppMode }[] = [
+  { id: "section-hero",       mode: "home"       },
+  { id: "section-knowledge",  mode: "knowledge"  },
   { id: "section-work",       mode: "work"       },
   { id: "section-experience", mode: "experience" },
-  { id: "section-knowledge",  mode: "knowledge"  },
   { id: "section-about",      mode: "about"      },
 ];
 
@@ -23,7 +24,7 @@ function InitialScrollEffect() {
   const mode = useMode();
 
   useEffect(() => {
-    if (mode === "work") return; // Default view — no scroll needed
+    if (mode === "home" || mode === "work") return; // Top / default views — no scroll needed
     const sectionId = `section-${mode}`;
     // Delay so Framer Motion's entry transition completes first
     const timer = setTimeout(() => {
@@ -81,7 +82,9 @@ export function SiteShell() {
         <SectionObserver />
 
         {/* Hero — full viewport landing */}
-        <Hero />
+        <div id="section-hero">
+          <Hero />
+        </div>
 
         {/* Knowledge */}
         <div id="section-knowledge" className="scroll-mt-16 border-t border-border/40">

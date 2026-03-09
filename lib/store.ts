@@ -77,7 +77,14 @@ export const useStore = create<AppState>()(
         const prev = get().mode;
         set({ mode });
         if (typeof window !== "undefined") {
-          const url = mode === "tui" ? "/" : `/site?mode=${mode}`;
+          let url: string;
+          if (mode === "tui") {
+            url = "/";
+          } else if (mode === "home") {
+            url = "/site";
+          } else {
+            url = `/site?mode=${mode}`;
+          }
           // pushState for TUI ↔ GUI transitions (meaningful nav),
           // replaceState for section changes (scroll-driven, avoid spamming history)
           const isModeSwitch = (prev === "tui") !== (mode === "tui");
@@ -89,7 +96,19 @@ export const useStore = create<AppState>()(
         }
       },
 
-      selectProject: (id) => set({ selectedProjectId: id }),
+      selectProject: (id) => {
+        set({ selectedProjectId: id });
+        if (typeof window !== "undefined") {
+          const url = new URL(window.location.href);
+          if (id) {
+            url.searchParams.set("mode", "work");
+            url.searchParams.set("project", id);
+          } else {
+            url.searchParams.delete("project");
+          }
+          window.history.replaceState({}, "", url.toString());
+        }
+      },
 
       setReducedMotion: (v) => set({ reducedMotion: v }),
 

@@ -8,9 +8,10 @@ import type { AppMode } from "@/lib/routes";
 import { duration, ease } from "@/lib/motion";
 
 const NAV_TABS: { label: string; mode: AppMode; sectionId: string }[] = [
+  { label: "Home",       mode: "home",       sectionId: "section-hero"       },
+  { label: "Knowledge",  mode: "knowledge",  sectionId: "section-knowledge"  },
   { label: "Work",       mode: "work",       sectionId: "section-work"       },
   { label: "Experience", mode: "experience", sectionId: "section-experience" },
-  { label: "Knowledge",  mode: "knowledge",  sectionId: "section-knowledge"  },
   { label: "About",      mode: "about",      sectionId: "section-about"      },
 ];
 
@@ -49,7 +50,11 @@ export function TopNav() {
       selectProject(null);
     }
     setMode(tab.mode);
-    scrollTo(tab.sectionId);
+    if (tab.mode === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      scrollTo(tab.sectionId);
+    }
     setMobileOpen(false);
   };
 
@@ -69,7 +74,7 @@ export function TopNav() {
     >
       {/* Logo */}
       <button
-        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        onClick={() => { setMode("home"); window.scrollTo({ top: 0, behavior: "smooth" }); }}
         className="flex items-center gap-3 shrink-0"
         aria-label="Back to top"
       >
