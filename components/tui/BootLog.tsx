@@ -65,6 +65,26 @@ export function BootLog({
       {/* Boot log entries */}
       <AnimatePresence initial={false}>
         {history.map((entry, i) => {
+          // Image entries — small terminal-style photo thumbnail
+          if (entry.type === "img") {
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 2 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: duration.micro, ease: ease.standard }}
+                className="my-2"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={entry.src}
+                  alt={entry.alt ?? ""}
+                  className="w-20 h-20 rounded-2xl object-cover object-top border border-border/40 grayscale hover:grayscale-0 transition-all duration-500 cursor-default select-none"
+                />
+              </motion.div>
+            );
+          }
+
           // Action entries — styled as a clickable link/button
           if (entry.type === "action") {
             return (

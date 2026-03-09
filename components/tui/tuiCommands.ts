@@ -80,7 +80,8 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── number shortcuts ───────────────────────────────────────────────────────
     case trimmed === "1": case trimmed === "2": case trimmed === "3":
-    case trimmed === "4": case trimmed === "5": case trimmed === "6": {
+    case trimmed === "4": case trimmed === "5": case trimmed === "6":
+    case trimmed === "7": {
       const idx = parseInt(trimmed, 10) - 1;
       activateMenuItem(idx);
       break;
@@ -360,42 +361,48 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     // ── serve ─────────────────────────────────────────────────────────────────
     case lower === "serve":
       appendHistory(out("usage: serve <section>"));
+      appendHistory(out("  serve specs       — show specs / stats"));
+      appendHistory(out("  serve knowledge   — open knowledge section"));
       appendHistory(out("  serve projects    — open projects section"));
       appendHistory(out("  serve experience  — open experience section"));
-      appendHistory(out("  serve knowledge   — open knowledge section"));
       appendHistory(out("  serve about       — open about section"));
       appendHistory(out("  serve gui         — switch to GUI"));
       appendHistory(out("  serve contact     — open contact modal"));
       break;
 
-    case lower === "serve projects" || lower === "serve work":
-      appendHistory(out("serving projects..."));
+    case lower === "serve specs":
+      appendHistory(out("serving specs..."));
       setTimeout(() => activateMenuItem(0), 300);
-      break;
-
-    case lower === "serve experience":
-      appendHistory(out("serving experience..."));
-      setTimeout(() => activateMenuItem(1), 300);
       break;
 
     case lower === "serve knowledge":
       appendHistory(out("serving knowledge..."));
+      setTimeout(() => activateMenuItem(1), 300);
+      break;
+
+    case lower === "serve projects" || lower === "serve work":
+      appendHistory(out("serving projects..."));
       setTimeout(() => activateMenuItem(2), 300);
+      break;
+
+    case lower === "serve experience":
+      appendHistory(out("serving experience..."));
+      setTimeout(() => activateMenuItem(3), 300);
       break;
 
     case lower === "serve about":
       appendHistory(out("serving about..."));
-      setTimeout(() => activateMenuItem(3), 300);
+      setTimeout(() => activateMenuItem(4), 300);
       break;
 
     case lower === "serve gui":
       appendHistory(out("switching to GUI..."));
-      setTimeout(() => activateMenuItem(4), 300);
+      setTimeout(() => activateMenuItem(5), 300);
       break;
 
     case lower === "serve contact":
       appendHistory(out("opening contact..."));
-      setTimeout(() => activateMenuItem(5), 300);
+      setTimeout(() => activateMenuItem(6), 300);
       break;
 
     // ── date ──────────────────────────────────────────────────────────────────

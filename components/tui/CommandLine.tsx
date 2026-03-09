@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 interface CommandLineProps {
   value: string;
@@ -22,6 +22,12 @@ export function CommandLine({
   currentPath,
 }: CommandLineProps) {
   const inputRef = useRef<HTMLInputElement>(null);
+  const [showPlaceholder, setShowPlaceholder] = useState(true);
+
+  // Dismiss placeholder the first time the user types or focuses the input
+  function dismissPlaceholder() {
+    setShowPlaceholder(false);
+  }
 
   // Auto-focus the input when boot completes
   useEffect(() => {
@@ -45,6 +51,7 @@ export function CommandLine({
       // Printable characters — focus input and let the char land naturally
       if (e.key.length === 1) {
         input.focus();
+        dismissPlaceholder();
         // The keydown fires before input value updates, so the char will
         // be appended by the browser normally once focus is set.
         return;
@@ -54,6 +61,7 @@ export function CommandLine({
       if (e.key === "Backspace") {
         e.preventDefault();
         input.focus();
+        dismissPlaceholder();
         onChange(value.slice(0, -1));
         return;
       }
@@ -89,15 +97,16 @@ export function CommandLine({
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
-        onFocus={() => onFocusChange?.(true)}
+        onFocus={() => { onFocusChange?.(true); dismissPlaceholder(); }}
         onBlur={() => onFocusChange?.(false)}
         disabled={!bootComplete}
         aria-label="Terminal command input"
-        placeholder={bootComplete ? "" : ""}
+        placeholder={bootComplete && showPlaceholder ? 'type "help" to see all commands' : ""}
         className="
           flex-1 bg-transparent text-text
           outline-none focus-ring-managed caret-accent
           disabled:opacity-0
+          placeholder:text-muted/35 placeholder:italic
         "
         autoComplete="off"
         autoCorrect="off"

@@ -5,10 +5,12 @@ import type { AppMode } from "./routes";
 import { MENU_ITEMS } from "./routes";
 
 export interface HistoryEntry {
-  type: "log" | "cmd" | "out" | "err" | "action";
+  type: "log" | "cmd" | "out" | "err" | "action" | "img";
   level?: "info" | "ok" | "warn" | "banner" | "dim";
   text: string;
   actionMode?: string; // for "action" type: AppMode to navigate to
+  src?: string;        // for "img" type: image URL
+  alt?: string;        // for "img" type: alt text
 }
 
 interface AppState {
@@ -155,7 +157,26 @@ export const useStore = create<AppState>()(
           return;
         }
 
-        // Content sections (0–3) — show condensed TUI content then offer navigation
+        // Specs (index 0) — async: fetch GitHub stats then display
+        if (index === 0) {
+          get().appendHistory({ type: "log", level: "info", text: "fetching stats..." });
+          Promise.all([
+            import("@/components/tui/tuiSections"),
+            fetch("/api/github").then((r) => r.json()).catch(() => null),
+          ]).then(([{ buildSpecs }, data]) => {
+            const stats = data && !data.error ? data : null;
+            const lines = buildSpecs(stats);
+            lines.forEach((line) => get().appendHistory(line));
+            get().appendHistory({
+              type: "action",
+              text: `→ open ${item.label.toLowerCase()} in site`,
+              actionMode: item.mode as string,
+            });
+          });
+          return;
+        }
+
+        // Content sections — show condensed TUI content then offer navigation
         import("@/components/tui/tuiSections").then(({ SECTION_CONTENT }) => {
           const lines = SECTION_CONTENT[index];
           if (lines) lines.forEach((line) => get().appendHistory(line));
