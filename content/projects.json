@@ -120,6 +120,7 @@
     "diagramAsset": null,
     "story": "NextShift is a feedback and feature voting platform. The core problem: anyone can collect feedback, but most teams don't structure it in a way that's useful for prioritization. I built the data model around structured categorization and real-time voting, with a submission flow designed to take under 20 seconds from idea to visible. Firebase handles real-time consistency; the UI handles making complex ranking feel simple.",
     "demoType": "mobile",
+    "demoTypeLabel": "web app",
     "demoAsset": "/projects/next-shift.mp4"
   },
   {

@@ -37,6 +37,8 @@ export interface Project {
   story: string;
   /** "mobile" renders a phone frame, "desktop" renders a monitor frame */
   demoType: "mobile" | "desktop";
+  /** Optional label override for the demo type badge (e.g. "web app" on a mobile-framed project) */
+  demoTypeLabel?: string | null;
   /** Path or URL to a gif/image/video for the demo preview */
   demoAsset: string | null;
   /** Optional list of assets to cycle through (desktop). When provided, plays each in sequence and loops. */

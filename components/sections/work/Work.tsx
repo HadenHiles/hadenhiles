@@ -34,7 +34,7 @@ function DemoView({ project, onBack }: { project: Project; onBack: () => void })
             background: "rgba(138,92,255,0.06)",
           }}
         >
-          {project.demoType === "mobile" ? "mobile app" : "web app"}
+          {project.demoTypeLabel ?? (project.demoType === "mobile" ? "mobile app" : "web app")}
         </span>
       </div>
 
