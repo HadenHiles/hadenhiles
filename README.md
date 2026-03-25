@@ -110,6 +110,22 @@ UX focus: paste a link, click once, get a file.
 
 ---
 
+### 🎸 [Lyric Pilot](https://github.com/HadenHiles/LyricPilot)  
+
+*Flutter, Dart*
+
+Like karaoke, but with chords. Built for hobby musicians who want to actually learn songs — not just read them off a screen forever.
+
+Add your lyrics and chord markers, set the tempo, and it scrolls like a teleprompter tuned for a guitarist. Loop the sections that aren't sticking. The goal is to internalize the song until you don't need the screen.
+
+A dedicated scroll engine and playback state machine handle tempo control, section looping, and progressive independence — practice logic stays clean and separate from UI.
+
+Available on [itch.io](https://hadenhiles.itch.io/lyric-pilot).
+
+UX focus: the app is the scaffold, not the crutch.
+
+---
+
 ## 🔧 Systems and Infrastructure Work
 
 Not everything I build has a UI.

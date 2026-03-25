@@ -1,60 +1,14 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useStore } from "@/lib/store";
 import type { Project } from "@/types/content";
 import projects from "@/content/projects.json";
-import { ProjectCard } from "./ProjectCard";
+import { ProjectGridCard } from "./ProjectGridCard";
 import { ProjectDetailPanel } from "./ProjectDetailPanel";
 import { PhoneMockup, DesktopMockup } from "./DeviceMockup";
 import { duration, ease } from "@/lib/motion";
-
-// ─── Demo view (left column when project is selected) ─────────────────────────
-
-function DemoView({ project, onBack }: { project: Project; onBack: () => void }) {
-  return (
-    <div className="flex flex-col gap-5">
-      {/* Back button */}
-      <button
-        onClick={onBack}
-        className="flex items-center gap-1.5 text-sm text-muted hover:text-text transition-colors w-fit"
-      >
-        <span>←</span>
-        <span>all projects</span>
-      </button>
-
-      {/* Title row */}
-      <div className="flex items-center gap-3 flex-wrap">
-        <h3 className="font-semibold text-text text-base leading-tight">{project.title}</h3>
-        <span
-          className="font-mono text-[10px] tracking-widest uppercase px-2 py-0.5 rounded border shrink-0"
-          style={{
-            color: "rgba(138,92,255,0.75)",
-            borderColor: "rgba(138,92,255,0.22)",
-            background: "rgba(138,92,255,0.06)",
-          }}
-        >
-          {project.demoTypeLabel ?? (project.demoType === "mobile" ? "mobile app" : "web app")}
-        </span>
-      </div>
-
-      {/* Device mockup */}
-      <div className="flex justify-center py-3">
-        {project.demoType === "mobile" ? (
-          <PhoneMockup src={project.demoAsset} alt={`${project.title} demo`} />
-        ) : (
-          <div className="w-full max-w-sm mx-auto">
-            <DesktopMockup
-              src={project.demoAsset}
-              alt={`${project.title} demo`}
-              srcs={project.demoAssets ?? undefined}
-            />
-          </div>
-        )}
-      </div>
-    </div>
-  );
-}
 
 // ─── Work section ─────────────────────────────────────────────────────────────
 
@@ -62,6 +16,29 @@ export function Work() {
   const { selectedProjectId, selectProject } = useStore();
   const typedProjects = projects as Project[];
   const selected = typedProjects.find((p) => p.id === selectedProjectId) ?? null;
+
+  const detailRef = useRef<HTMLDivElement>(null);
+  const cardRefs = useRef<Map<string, HTMLElement>>(new Map());
+  const prevSelectedId = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (selectedProjectId) {
+      // Delay past the card collapse animation (EXPAND_DURATION = 0.65s) so the
+      // layout has settled before we scroll — prevents overshooting on expanded cards.
+      const t = setTimeout(() => {
+        detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 700);
+      prevSelectedId.current = selectedProjectId;
+      return () => clearTimeout(t);
+    } else if (prevSelectedId.current) {
+      // Scroll back to the card that was just deselected
+      const id = prevSelectedId.current;
+      const t = setTimeout(() => {
+        cardRefs.current.get(id)?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 50);
+      return () => clearTimeout(t);
+    }
+  }, [selectedProjectId]);
 
   return (
     <section aria-label="Work" className="px-6 sm:px-10 py-20 max-w-7xl mx-auto">
@@ -80,75 +57,103 @@ export function Work() {
         </p>
       </motion.div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.6fr] gap-4 lg:gap-6 lg:items-start">
-        {/* ── Left column: project list ↔ demo view ── */}
-        <AnimatePresence mode="wait" initial={false}>
-          {!selected ? (
-            <motion.div
-              key="project-list"
-              initial={{ opacity: 0, x: -24 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
-              transition={{ duration: duration.short, ease: ease.standard }}
-              className="space-y-2"
-            >
-              {typedProjects.map((project, i) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-40px" }}
-                  transition={{
-                    duration: duration.short,
-                    ease: ease.standard,
-                    delay: i * 0.05,
-                  }}
-                >
-                  <ProjectCard
-                    project={project}
-                    isSelected={false}
-                    onSelect={() => selectProject(project.id)}
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-          ) : (
-            <motion.div
-              key={`demo-${selected.id}`}
-              initial={{ opacity: 0, scale: 0.93, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.93, y: 10 }}
-              transition={{ duration: duration.short, ease: ease.standard, delay: 0.1 }}
-            >
-              <DemoView project={selected} onBack={() => selectProject(null)} />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        {/* ── Right column: detail panel or empty hint ── */}
-        <AnimatePresence mode="wait">
-          {selected ? (
-            <ProjectDetailPanel
-              key={selected.id}
-              project={selected}
-              onClose={() => selectProject(null)}
+      {/* ── Project masonry grid (CSS columns — cards keep natural aspect ratios) ── */}
+      <motion.div layoutRoot className="columns-2 sm:columns-3 gap-3 sm:gap-4">
+        {typedProjects.map((project, i) => (
+          <motion.div
+            key={project.id}
+            ref={(el) => {
+              if (el) cardRefs.current.set(project.id, el as HTMLElement);
+              else cardRefs.current.delete(project.id);
+            }}
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{
+              duration: duration.short,
+              ease: ease.standard,
+              delay: i * 0.04,
+            }}
+            className="break-inside-avoid mb-3 sm:mb-4"
+          >
+            <ProjectGridCard
+              project={project}
+              isSelected={selectedProjectId === project.id}
+              onSelect={() =>
+                selectProject(selectedProjectId === project.id ? null : project.id)
+              }
             />
-          ) : (
-            <motion.div
-              key="empty-hint"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: duration.short }}
-              className="hidden lg:flex items-center justify-center rounded-card border border-dashed border-border/40 min-h-[220px]"
-            >
-              <p className="font-mono text-xs text-white/20 text-center leading-loose">
-                select a project<br />to see details →
-              </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* ── Expanded detail panel (below grid) ── */}
+      <AnimatePresence mode="wait">
+        {selected && (
+          <motion.div
+            ref={detailRef}
+            key={selected.id}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 16 }}
+            transition={{ duration: duration.short, ease: ease.standard }}
+            className="mt-6 pt-6 border-t border-border/40"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-[auto,1fr] gap-6 lg:gap-10 items-start">
+              {/* Left: device mockup */}
+              <div className="flex flex-col gap-4">
+                <button
+                  onClick={() => selectProject(null)}
+                  className="flex items-center gap-1.5 text-sm text-muted hover:text-text transition-colors w-fit"
+                >
+                  <span>←</span>
+                  <span>close</span>
+                </button>
+
+                <div className="flex items-center gap-3 flex-wrap">
+                  <h3 className="font-semibold text-text text-base leading-tight">
+                    {selected.title}
+                  </h3>
+                  <span
+                    className="font-mono text-[10px] tracking-widest uppercase px-2 py-0.5 rounded border shrink-0"
+                    style={{
+                      color: "rgba(138,92,255,0.75)",
+                      borderColor: "rgba(138,92,255,0.22)",
+                      background: "rgba(138,92,255,0.06)",
+                    }}
+                  >
+                    {selected.demoTypeLabel ??
+                      (selected.demoType === "mobile" ? "mobile app" : "web app")}
+                  </span>
+                </div>
+
+                <div className="flex justify-center py-2">
+                  {selected.demoType === "mobile" ? (
+                    <PhoneMockup
+                      src={selected.demoAsset}
+                      alt={`${selected.title} demo`}
+                    />
+                  ) : (
+                    <div className="w-full max-w-sm mx-auto">
+                      <DesktopMockup
+                        src={selected.demoAsset}
+                        alt={`${selected.title} demo`}
+                        srcs={selected.demoAssets ?? undefined}
+                      />
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: detail panel */}
+              <ProjectDetailPanel
+                project={selected}
+                onClose={() => selectProject(null)}
+              />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }

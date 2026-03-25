@@ -41,6 +41,10 @@ export interface Project {
   demoTypeLabel?: string | null;
   /** Path or URL to a gif/image/video for the demo preview */
   demoAsset: string | null;
+  /** Seconds into the video to use as the thumbnail still frame. Defaults to 0. */
+  thumbnailTime?: number | null;
+  /** CSS object-position for the thumbnail when cropped to 16:9 at rest (e.g. "50% 20%"). Defaults to "50% 50%". */
+  thumbnailPosition?: string | null;
   /** Optional list of assets to cycle through (desktop). When provided, plays each in sequence and loops. */
   demoAssets?: string[] | null;
 }
