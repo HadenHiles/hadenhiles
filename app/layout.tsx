@@ -17,7 +17,7 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Haden Hiles",
-  description: "Engineer. Creator. Builder.",
+  description: "Software engineer building UX-first Flutter, Firebase, web, and full-stack products used by real communities.",
   icons: {
     icon: [
       { url: "/images/favicon/favicon.ico" },
