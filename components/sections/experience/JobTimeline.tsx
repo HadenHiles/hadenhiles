@@ -98,7 +98,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             scrollbarColor: "rgba(138,92,255,0.3) transparent",
           }}
         >
-          {/* ── Cover photo: sticky so content scrolls up over it ── */
+          {/* ── Cover photo: sticky so content scrolls up over it ── */}
           {job.coverImage && (
             <div
               style={{
@@ -133,7 +133,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             </div>
           )}
 
-          {/* ── Content: stacks above the sticky image as you scroll ── */
+          {/* ── Content: stacks above the sticky image as you scroll ── */}
           <div
             className="flex flex-col gap-5 p-6 sm:p-8"
             style={{
@@ -219,7 +219,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             </>
           )}
 
-          {/* Tech & Skills: same visual style as KnowledgeMap SkillTile */
+          {/* Tech & Skills: same visual style as KnowledgeMap SkillTile */}
           {job.primarySkills.length > 0 && (
             <>
               <div className="h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
