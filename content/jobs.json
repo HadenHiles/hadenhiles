@@ -7,8 +7,8 @@
     "coverImagePosition": "50% 10%",
     "coverImageHeight": 575,
     "role": "Web Designer & Developer (Co-op)",
-    "dateRange": "2013 - 2015",
-    "startYear": 2013,
+    "dateRange": "Jun 2014 - Sep 2015",
+    "startYear": 2014,
     "endYear": 2015,
     "current": false,
     "primarySkills": [
@@ -19,12 +19,10 @@
       "Stripe",
       "Client-Facing Architecture"
     ],
-    "summary": "Designed and built over 50 uniquely designed client websites.",
+    "summary": "Designed and developed more than 50 bespoke client websites, owning UX/UI design, responsive layouts, visual hierarchy and implementation.",
     "highlights": [
-      "Designed and developed 50+ custom websites from scratch with full UX ownership",
-      "Made independent creative decisions across layout, typography, visual hierarchy, and branding",
-      "Built a custom shopping cart and checkout solution for client use",
-      "Developed a swimming lesson registration platform with multi-child management, scheduling logic, digital waiver handling, and automated recurring payments"
+      "Designed and developed more than 50 bespoke client websites, owning UX/UI design, responsive layouts, visual hierarchy and implementation across HTML, CSS, PHP and MySQL",
+      "Built custom transactional systems, including a swimming-lesson registration platform with multi-child accounts, scheduling, digital waivers and Stripe payments, alongside a bespoke shopping-cart and checkout solution"
     ],
     "projects": [
       "50+ Custom Client Websites — full UX ownership from brief to launch",
@@ -40,11 +38,11 @@
     "coverImage": "/images/bugslife-solutions-freelance-2015.jpg",
     "coverImagePosition": "center bottom",
     "coverImageHeight": 375,
-    "role": "Software Engineer / Project Manager",
-    "dateRange": "2015 - Present",
+    "role": "Independent Software Consultant",
+    "dateRange": "Sep 2015 - Jul 2025",
     "startYear": 2015,
-    "endYear": null,
-    "current": true,
+    "endYear": 2025,
+    "current": false,
     "primarySkills": [
       "Flutter / Dart",
       "Firebase / Firestore",
@@ -60,13 +58,13 @@
       "Project Management",
       "UX / UI Design"
     ],
-    "summary": "Delivered web and mobile solutions for various clients.",
+    "summary": "Delivered approximately 10-15 mobile, web, e-commerce and integration projects across five to six clients, owning delivery from discovery and requirements analysis through architecture, development, deployment, training and support.",
     "highlights": [
-      "Designed and developed the Group of Seven Trail mobile app featuring Bluetooth beacon integration and in-app trail plotting",
-      "Built a custom off-site content management solution for hikers to learn about Group of Seven painting sites",
-      "Delivered websites and mobile apps for local businesses",
-      "Selected appropriate technology stacks for non-technical clients",
-      "Designed CMS workflows aligned with real-world usability"
+      "Designed and delivered the Group of Seven Trail Flutter application, combining interactive mapping, Bluetooth beacons and contextual content to provide a location-aware visitor experience supporting trail promotion and future funding propositions",
+      "Resolved persistent Flutter and cross-platform Bluetooth compatibility issues by repairing an unsupported package, later migrating to a sustainable replacement and restructuring the application architecture before beta launch",
+      "Built a custom e-commerce platform for Appliance Shack, integrating Reaction Commerce with their internal POS system to synchronize inventory and support operational workflows",
+      "Designed a benefits application service for Calow Benefits Group using a Node.js CMS, including spreadsheet-mapping functionality to streamline employee-record imports",
+      "Selected appropriate technology stacks and designed CMS workflows aligned with real-world usability for non-technical clients"
     ],
     "projects": [
       "Group of Seven Trail App — Flutter + Bluetooth beacon proximity triggers + in-app trail mapping",
@@ -98,12 +96,11 @@
       "Stakeholder Communication",
       "Legacy Modernization"
     ],
-    "summary": "Focused on modernizing legacy systems and delivering complex client projects.",
+    "summary": "Led technically complex client projects, delivering custom WordPress solutions and modernizing legacy frontend systems with a focus on responsive interfaces and usability.",
     "highlights": [
-      "Built custom UX solutions using Angular and React",
-      "Modernized legacy codebases",
-      "Served as lead developer on high-detail projects",
-      "Built a custom Grunt.js pipeline for the entire development team to use which standardized the approach for creating unique JavaScript and CSS animations throughout all client projects"
+      "Led technically complex client projects, delivering custom WordPress solutions and modernizing legacy frontend systems using React, Angular, JavaScript, HTML and CSS/Sass, with a focus on responsive interfaces and usability",
+      "Refactored outdated codebases into more maintainable solutions and created a Grunt.js build pipeline that standardized JavaScript and CSS animation workflows across the development team",
+      "Identified gaps between contractual scope and technical requirements, helping prevent delivery issues and misaligned client expectations"
     ],
     "projects": [
       "Grunt.js Build Pipeline — firm-wide tooling that standardized JavaScript and CSS animation workflows across all client projects",
@@ -129,11 +126,10 @@
       "KANBAN / Agile",
       "CI/CD Pipeline Management"
     ],
-    "summary": "Focused on API integrations and enterprise client tooling.",
+    "summary": "Built REST API integrations and a Windows .NET application enabling non-technical staff to synchronize local inventory databases with cloud platforms across varied customer network environments.",
     "highlights": [
-      "Created and tested REST API endpoints used by large B2B clients",
-      "Developed a Windows GUI tool enabling non-technical staff to sync local databases with cloud APIs",
-      "Managed KANBAN boards, GitHub workflows, and CI pipelines"
+      "Built REST API integrations and a Windows .NET application that enabled non-technical staff to synchronize local inventory databases with cloud platforms across varied customer network environments",
+      "Managed Kanban delivery, GitHub workflows, releases and CI/CD pipelines, maintaining repeatable integration processes and visibility of delivery risks"
     ],
     "projects": [
       "B2B REST API Suite — designed and tested endpoints for large agricultural supply clients",
@@ -166,12 +162,11 @@
       "Stakeholder Communication",
       "Web Systems Architecture"
     ],
-    "summary": "Worked at the intersection of IT and marketing to ensure accurate public-facing systems.",
+    "summary": "Partnered with IT, marketing, content authors and internal departments to resolve complex website, program, course and term-data issues affecting student-facing pages.",
     "highlights": [
-      "Resolved complex term-data discrepancies between systems",
-      "Translated non-technical marketing requirements into functional website integrations",
-      "Ensured accurate display of course and term data for students and parents",
-      "Coordinated across departments to resolve system inconsistencies"
+      "Partnered with IT, marketing, content authors and internal departments to resolve complex website, program, course and term-data issues affecting student-facing pages",
+      "Built and supported website functionality, WordPress workflows and content processes while delivering AODA accessibility improvements",
+      "Supported integrations and operational tools including Salesforce, Eloqua, Zapier, ResourceSpace and Teamwork"
     ],
     "projects": [
       "Course & Term Data Pipeline — resolved API data discrepancies and ensured accuracy across all sections of the Georgian College public website",
@@ -186,7 +181,7 @@
     "coverImage": "/images/how-to-hockey.jpg",
     "coverImagePosition": "0% 60%",
     "coverImageHeight": 400,
-    "role": "Full Stack Software Engineer",
+    "role": "Lead Software & DevOps Engineer",
     "dateRange": "Oct 2019 - Present",
     "startYear": 2019,
     "endYear": null,
@@ -206,14 +201,17 @@
       "CI/CD Pipeline Management",
       "Web Systems Architecture"
     ],
-    "summary": "Primary full stack and infrastructure lead for web and mobile platforms serving hockey players worldwide.",
+    "summary": "Lead Software & DevOps Engineer for web and mobile platforms serving hockey players worldwide. Own architecture, development, release management and technical direction across the full product stack.",
     "highlights": [
-      "Built and maintained production Flutter apps including complex workflows and in-app purchases for the 10,000 Shots app",
-      "Designed custom team leaderboards, stat aggregation systems, and real-time Firebase data streaming",
-      "Refactored caching logic into efficient live data streams to improve performance",
-      "Implemented system snapshots, automated website backups, and recovery processes to ensure high availability and rollback capability",
-      "Managed CI/CD pipelines using GitHub Actions",
-      "Gathered and translated user feedback into actionable product improvements"
+      "Own the architecture, development, release management and technical direction of 10,000 Shots — a production Flutter and Firebase application with more than 80,000 registered accounts and approximately 2,500 daily active users",
+      "Conceptualized and delivered team-based competition functionality that helped double daily active users by strengthening social engagement and repeat use",
+      "Designed and launched the Challenger Road guided-training feature and supporting freemium model, tripling subscription conversion; the app reached approximately 250 downloads and 15 new Pro subscriptions per day following launch",
+      "Re-architected fragmented caching and refresh logic into real-time Cloud Firestore data streams, delivering a faster user experience and a more maintainable foundation with only a marginal increase in Firestore costs",
+      "Built and continue to operate The Pond, a WordPress, LearnDash and MemberPress platform generating an estimated $25,000 in annual revenue through subscriptions, digital courses, structured training and member dashboards",
+      "Introduced CI/CD, automated backups, server snapshots and recovery workflows, standardizing deployment across development, beta and production while strengthening rollback capability during updates and high-traffic launches",
+      "Migrated suitable microservices from external cloud hosting to local Docker infrastructure, reducing avoidable server costs while maintaining reliable service delivery",
+      "Built NextShift, a Flutter and Firebase platform that converts feature requests, bug reports and user voting into structured product evidence, supporting clearer roadmap decisions",
+      "Lead technical discovery, architecture selection and delivery estimation, using rapid mock-ups and MVPs to help non-technical stakeholders validate complex requirements before full development begins"
     ],
     "projects": [
       "10,000 Shots — Flutter mobile app with in-app purchases and real-time Firebase leaderboards",

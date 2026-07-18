@@ -22,11 +22,11 @@
       "Scheduling Systems",
       "Client-Facing Architecture"
     ],
-    "summary": "Started as a co-op at MediaSuite, independently designing and shipping 50+ custom client websites. Simultaneously launched BugsLife Solutions doing freelance web and mobile work for local businesses. Built real product instincts early by owning the full design-to-delivery loop without a senior layer above.",
+    "summary": "Started as a co-op at MediaSuite, designing and building more than 50 bespoke client websites with full UX/UI ownership. Built real product instincts early by owning the full design-to-delivery loop without a senior layer above.",
     "highlights": [
-      "Designed and built 50+ uniquely designed client websites at MediaSuite with full creative ownership",
-      "Built a custom shopping cart and checkout solution for a client - no off-the-shelf compromise",
-      "Developed a swimming lesson registration platform with multi-child management, scheduling logic, digital waivers, and recurring payments",
+      "Designed and developed more than 50 bespoke client websites, owning UX/UI design, responsive layouts, visual hierarchy and implementation across HTML, CSS, PHP and MySQL",
+      "Built custom transactional systems, including a swimming-lesson registration platform with multi-child accounts, scheduling, digital waivers and Stripe payments",
+      "Built a bespoke shopping-cart and checkout solution from scratch",
       "Founded BugsLife Solutions and began delivering web and mobile projects for local businesses",
       "Owned every UX decision: layout, typography, visual hierarchy, and information architecture"
     ]
@@ -55,13 +55,13 @@
       "CI/CD Pipeline Management",
       "Agile / KANBAN"
     ],
-    "summary": "Two roles back-to-back that pushed deeply into frontend frameworks and backend integration engineering. At Geek Power, led modernization of legacy systems using React and Angular. At OrderEase, built REST API endpoints for large B2B clients and a .NET GUI tool enabling non-technical staff to sync local databases with cloud systems.",
+    "summary": "Two roles back-to-back that pushed deeply into frontend frameworks and backend integration engineering. At Geek Power, led modernization of legacy systems using React and Angular. At LinkGreen, built REST API integrations and a Windows .NET tool enabling non-technical staff to sync local inventory databases with cloud platforms.",
     "highlights": [
-      "Built custom UX solutions using Angular and React as lead developer on high-detail client projects",
-      "Modernized legacy codebases for enterprise clients at Geek Power Web Design",
-      "Designed and tested REST API endpoints used by large B2B agricultural supply clients at OrderEase",
-      "Built a Windows .NET GUI tool allowing non-technical staff to sync local inventory databases with cloud APIs",
-      "Managed KANBAN boards, GitHub workflows, and CI pipelines at OrderEase"
+      "Led technically complex client projects, delivering custom WordPress solutions and modernizing legacy frontend systems using React, Angular, JavaScript, HTML and CSS/Sass",
+      "Refactored outdated codebases into more maintainable solutions and created a Grunt.js build pipeline that standardized JavaScript and CSS animation workflows across the development team",
+      "Identified gaps between contractual scope and technical requirements, helping prevent delivery issues and misaligned client expectations",
+      "Built REST API integrations and a Windows .NET application enabling non-technical staff to synchronize local inventory databases with cloud platforms across varied customer network environments",
+      "Managed Kanban delivery, GitHub workflows, releases and CI/CD pipelines, maintaining repeatable integration processes and visibility of delivery risks"
     ]
   },
   {
@@ -88,13 +88,13 @@
       "Data Integration & Validation",
       "Stakeholder Communication"
     ],
-    "summary": "Worked at Georgian College resolving complex data integration issues between marketing systems and public-facing web platforms. Concurrently, BugsLife delivered its most technically ambitious project: the Group of Seven Trail App - a Flutter mobile app with Bluetooth proximity triggers, C++ native layers, and offline trail plotting. This era solidified mobile-first, systems-level engineering skills.",
+    "summary": "Worked at Georgian College resolving complex data integration issues between marketing systems and public-facing web platforms. Concurrently, BugsLife delivered its most technically ambitious project: the Group of Seven Trail App, combining interactive mapping, Bluetooth beacons and contextual content to provide a location-aware visitor experience.",
     "highlights": [
-      "Designed and built the Group of Seven Trail App - Flutter + Bluetooth beacon proximity triggers + C++ native layers",
-      "Built a custom CMS solution enabling hikers to access Group of Seven painting site content off-site",
-      "Resolved complex term-data discrepancies between IT and marketing systems at Georgian College",
-      "Translated non-technical marketing requirements into functional web integrations",
-      "Ensured accurate real-time display of course and enrollment data for students across Georgian College platforms"
+      "Designed and delivered the Group of Seven Trail Flutter application, combining interactive mapping, Bluetooth beacons and contextual content to provide a location-aware visitor experience supporting trail promotion and future funding propositions",
+      "Resolved persistent Flutter and cross-platform Bluetooth compatibility issues by repairing an unsupported package, later migrating to a sustainable replacement and restructuring the application architecture before beta launch",
+      "Partnered with IT, marketing, content authors and internal departments to resolve complex website, program, course and term-data issues affecting student-facing pages",
+      "Built and supported website functionality, WordPress workflows and content processes while delivering AODA accessibility improvements",
+      "Supported integrations and operational tools including Salesforce, Eloqua, Zapier, ResourceSpace and Teamwork"
     ]
   },
   {
@@ -121,14 +121,16 @@
       "System Backup & Recovery",
       "UX-Driven Full Stack Architecture"
     ],
-    "summary": "Joined How To Hockey as the primary full stack and DevOps lead for web and mobile platforms serving hockey players worldwide. Owned everything: Flutter mobile apps, Firebase architecture, CI/CD pipelines, production stability, and real-time community tools. Every technical decision starts with the same question - as a user, what would I expect right here?",
+    "summary": "Lead Software & DevOps Engineer for How To Hockey, owning architecture, development, release management and technical direction across web and mobile platforms serving hockey players worldwide. Every technical decision starts with the same question: as a user, what would I expect right here?",
     "highlights": [
-      "Sole software and DevOps lead for How To Hockey - full ownership across frontend, backend, mobile, and infrastructure",
-      "Built and shipped the 10,000 Shots Flutter mobile app including in-app purchases and real-time Firebase leaderboards",
-      "Designed real-time stat aggregation and team leaderboard systems with live Firebase data streaming",
-      "Implemented automated website backups, system snapshots, and recovery pipelines for production resilience",
-      "Built and maintained CI/CD pipelines using GitHub Actions - stable, repeatable, zero-manual-intervention releases",
-      "Shipped NextShift - a real-time community feedback and voting platform built at How To Hockey"
+      "Own the architecture, development, release management and technical direction of 10,000 Shots, a production Flutter and Firebase application with more than 80,000 registered accounts and approximately 2,500 daily active users",
+      "Conceptualized and delivered team-based competition functionality that helped double daily active users by strengthening social engagement and repeat use",
+      "Designed and launched the Challenger Road guided-training feature and supporting freemium model, tripling subscription conversion; the app reached approximately 250 downloads and 15 new Pro subscriptions per day following launch",
+      "Re-architected fragmented caching and refresh logic into real-time Cloud Firestore data streams, delivering a faster user experience and a more maintainable foundation with only a marginal increase in Firestore costs",
+      "Built and continue to operate The Pond, a WordPress, LearnDash and MemberPress platform generating an estimated $25,000 in annual revenue through subscriptions, digital courses, structured training and member dashboards",
+      "Introduced CI/CD, automated backups, server snapshots and recovery workflows, standardizing deployment across development, beta and production while strengthening rollback capability during updates and high-traffic launches",
+      "Migrated suitable microservices from external cloud hosting to local Docker infrastructure, reducing avoidable server costs while maintaining reliable service delivery",
+      "Built NextShift, a Flutter and Firebase platform that converts feature requests, bug reports and user voting into structured product evidence, supporting clearer roadmap decisions"
     ]
   }
 ]
