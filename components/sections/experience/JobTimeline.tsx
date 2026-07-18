@@ -671,10 +671,7 @@ function AnimatedCard({
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export function JobTimeline({ jobs }: { jobs: Job[] }) {
-  const sorted = [...jobs].sort((a, b) => {
-    if (a.startYear !== b.startYear) return b.startYear - a.startYear;
-    return (b.current ? 1 : 0) - (a.current ? 1 : 0);
-  });
+  const sorted = [...jobs];
 
   const stickyRef = useRef<HTMLDivElement>(null);
   const [expandedSlug, setExpandedSlug] = useState<string | null>(null);

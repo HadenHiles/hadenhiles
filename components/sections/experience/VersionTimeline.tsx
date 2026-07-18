@@ -6,8 +6,8 @@ import type { ExperienceEntry } from "@/types/content";
 import { fadeSlideUp, duration, ease } from "@/lib/motion";
 
 export function VersionTimeline({ entries }: { entries: ExperienceEntry[] }) {
-  const lastVersion = entries[entries.length - 1]?.version ?? "";
-  const [activeVersion, setActiveVersion] = useState(lastVersion);
+  const firstVersion = entries[0]?.version ?? "";
+  const [activeVersion, setActiveVersion] = useState(firstVersion);
   const active = entries.find((e) => e.version === activeVersion) ?? entries[0];
 
   return (
