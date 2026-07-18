@@ -202,9 +202,8 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
                 <p className="font-mono text-[10px] text-accent/55 tracking-widest uppercase">Projects</p>
                 <ul className="flex flex-col gap-2">
                   {job.projects.map((p, i) => {
-                    const sepIdx = p.indexOf(": ");
-                    const name = sepIdx !== -1 ? p.slice(0, sepIdx) : p;
-                    const desc = sepIdx !== -1 ? p.slice(sepIdx + 2) : "";
+                    const [name, ...rest] = p.split(" — ");
+                    const desc = rest.join(" — ");
                     return (
                       <li key={i} className="flex items-start gap-3">
                         <span className="text-accent/45 shrink-0 mt-[5px] text-[9px]">▸</span>

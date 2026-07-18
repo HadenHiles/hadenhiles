@@ -688,7 +688,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     case lower === "df" || lower === "df -h":
       appendHistory(out("Filesystem       Size  Used  Avail  Use%  Mounted on"));
       appendHistory(out("/dev/portfolio   100G   42G    58G   42%  /"));
-      appendHistory(out("tmpfs/brain       inf   inf    inf    --  /ideas"));
+      appendHistory(out("tmpfs/brain       inf   inf    inf    ?   /ideas"));
       appendHistory(out("(most space taken up by opinions about UX)"));
       break;
 
