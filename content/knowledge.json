@@ -1,7 +1,7 @@
 [
   {
     "category": "Frontend",
-    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · HTML/CSS · CSS/SASS · Grunt.js",
+    "tui": "Flutter/Dart · React · Angular · TypeScript · JavaScript · HTML/CSS · CSS/SASS · Grunt.js · Vite",
     "skills": [
       {
         "name": "Flutter / Dart",
@@ -88,12 +88,19 @@
         "yearsExperience": 3,
         "usedFor": "Build automation for JavaScript and CSS pipelines - used to standardize animation workflows and asset processing across all client projects at a web design firm.",
         "proofProjectIds": []
+      },
+      {
+        "name": "Vite",
+        "logo": "https://cdn.simpleicons.org/vite/646CFF",
+        "yearsExperience": 3,
+        "usedFor": "Frontend build tool and dev server - fast HMR and optimized production bundling for modern web projects.",
+        "proofProjectIds": []
       }
     ]
   },
   {
     "category": "Backend",
-    "tui": "Firebase/Firestore · Node.js/Express · PHP · .NET Core · Stripe · REST API Design",
+    "tui": "Firebase/Firestore · Node.js/Express · PHP · .NET Core · Stripe · REST API Design · Python · C++",
     "skills": [
       {
         "name": "Firebase / Firestore",
@@ -158,12 +165,26 @@
         "yearsExperience": null,
         "usedFor": "Designing clean, predictable endpoints consumed by both internal tools and large B2B clients.",
         "proofProjectIds": []
+      },
+      {
+        "name": "Python",
+        "logo": "https://cdn.simpleicons.org/python/3776AB",
+        "yearsExperience": 5,
+        "usedFor": "Scripting, automation, and backend tooling - used across projects for data processing and integration workflows.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "C++",
+        "logo": "/images/logos/cplusplus.svg",
+        "yearsExperience": 4,
+        "usedFor": "Native platform integrations in mobile development - used to bridge Flutter with device-level hardware capabilities.",
+        "proofProjectIds": []
       }
     ]
   },
   {
     "category": "Databases",
-    "tui": "Firestore · MySQL · MS SQL Server · MongoDB · GraphQL · SQLite",
+    "tui": "Firestore · MySQL · MS SQL Server · MongoDB · GraphQL · SQLite · PostgreSQL",
     "skills": [
       {
         "name": "MySQL",
@@ -209,12 +230,19 @@
         "yearsExperience": 10,
         "usedFor": "Embedded local storage in mobile apps - offline-first data persistence in Flutter applications.",
         "proofProjectIds": []
+      },
+      {
+        "name": "PostgreSQL",
+        "logo": "https://cdn.simpleicons.org/postgresql/4169E1",
+        "yearsExperience": 4,
+        "usedFor": "Relational database for production web services - advanced queries, indexing, and reliable data consistency.",
+        "proofProjectIds": []
       }
     ]
   },
   {
     "category": "DevOps & Infrastructure",
-    "tui": "Git · GitHub Actions · Docker · Linux · CI/CD Pipelines · Backup & Recovery",
+    "tui": "Git · GitHub Actions · Docker · Linux · CI/CD Pipelines · Backup & Recovery · Kubernetes",
     "skills": [
       {
         "name": "Git",
@@ -266,6 +294,13 @@
         "emoji": "💾",
         "yearsExperience": null,
         "usedFor": "Automated website backups, system snapshots, and structured recovery pipelines to guarantee rollback capability.",
+        "proofProjectIds": []
+      },
+      {
+        "name": "Kubernetes",
+        "logo": "https://cdn.simpleicons.org/kubernetes/326CE5",
+        "yearsExperience": 3,
+        "usedFor": "Container orchestration for deploying, scaling, and managing containerized services across production environments.",
         "proofProjectIds": []
       }
     ]

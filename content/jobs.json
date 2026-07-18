@@ -95,7 +95,7 @@
     "coverImage": "/images/me-mediasuite.jpg",
     "coverImagePosition": "50% 10%",
     "coverImageHeight": 575,
-    "role": "Web Designer & Developer (Co-op)",
+    "role": "Web Designer & Developer",
     "dateRange": "Jun 2014 - Sep 2015",
     "startYear": 2014,
     "endYear": 2015,
@@ -161,7 +161,7 @@
     "company": "LinkGreen",
     "companyLogo": "/images/orderease-linkgreen-logo.svg",
     "coverImage": null,
-    "role": "Software Engineer & Integration Development Manager",
+    "role": "Programmer & Integration Development Manager",
     "dateRange": "Aug 2017 - Dec 2017",
     "startYear": 2017,
     "endYear": 2017,
@@ -182,7 +182,7 @@
       "B2B REST API Suite — designed and tested endpoints for large agricultural supply clients",
       "Inventory Sync Tool — Windows .NET GUI for non-technical staff to sync local databases with cloud APIs"
     ],
-    "tui": "LinkGreen · Aug-Dec 2017 · Software Engineer & Integration Development Manager · REST APIs, .NET GUI tooling, B2B integrations, CI/CD"
+    "tui": "LinkGreen · Aug-Dec 2017 · Programmer & Integration Development Manager · REST APIs, .NET GUI tooling, B2B integrations, CI/CD"
   },
   {
     "slug": "georgian-college",
