@@ -9,7 +9,7 @@ import { ContactModal } from "@/components/shell/ContactModal";
 import { MotionPreferenceSync } from "@/components/shell/MotionPreferenceSync";
 import { duration, ease } from "@/lib/motion";
 
-// Single root component — TUI and GUI share the same React tree so that
+// Single root component : TUI and GUI share the same React tree so that
 // Framer Motion's layoutId="handoff-shell" can animate across the transition.
 // URL is updated as a side effect via window.history.pushState in the store.
 export default function PortfolioRoot() {

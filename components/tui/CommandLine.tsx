@@ -34,7 +34,7 @@ export function CommandLine({
     if (bootComplete) inputRef.current?.focus();
   }, [bootComplete]);
 
-  // Global keypress capture — typing anywhere focuses the terminal input
+  // Global keypress capture : typing anywhere focuses the terminal input
   useEffect(() => {
     if (!bootComplete) return;
 
@@ -48,7 +48,7 @@ export function CommandLine({
       // Ignore modifier-only combos and special browser shortcuts
       if (e.metaKey || e.ctrlKey || e.altKey) return;
 
-      // Printable characters — focus input and let the char land naturally
+      // Printable characters : focus input and let the char land naturally
       if (e.key.length === 1) {
         input.focus();
         dismissPlaceholder();
@@ -57,7 +57,7 @@ export function CommandLine({
         return;
       }
 
-      // Backspace — focus and trim last char manually
+      // Backspace : focus and trim last char manually
       if (e.key === "Backspace") {
         e.preventDefault();
         input.focus();
@@ -66,7 +66,7 @@ export function CommandLine({
         return;
       }
 
-      // Enter is intentionally NOT redirected here — when the input is unfocused,
+      // Enter is intentionally NOT redirected here : when the input is unfocused,
       // Enter should fire the keyboard hook's onEnter to activate the highlighted
       // menu item directly. Only printable chars + backspace steal focus.
     };

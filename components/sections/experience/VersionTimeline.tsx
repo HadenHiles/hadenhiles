@@ -182,7 +182,7 @@ function VersionDetail({ entry }: { entry: ExperienceEntry }) {
 
       <div className="text-xs text-border mb-4">{entry.dateRange}</div>
 
-      {/* Primary skills — most prominent element */}
+      {/* Primary skills : most prominent element */}
       {entry.primarySkills && entry.primarySkills.length > 0 && (
         <div className="mb-4">
           <div className="text-xs font-mono text-accent/70 uppercase tracking-wider mb-2">

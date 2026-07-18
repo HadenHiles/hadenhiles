@@ -41,7 +41,7 @@ export function ProjectDetailPanel({ project, onClose }: { project: Project; onC
         ))}
       </dl>
 
-      {/* Tech stack — staggered fade */}
+      {/* Tech stack : staggered fade */}
       <div className="mt-5 flex flex-wrap gap-1.5">
         {project.tech.map((t, i) => (
           <motion.span

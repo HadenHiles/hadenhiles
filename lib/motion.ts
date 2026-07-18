@@ -1,4 +1,4 @@
-// All animation constants. Import from here — never hardcode values in components.
+// All animation constants. Import from here : never hardcode values in components.
 
 export const duration = {
   micro:  0.22,  // hover states, focus rings
@@ -6,7 +6,7 @@ export const duration = {
   medium: 0.52,  // layout changes, morph handoff
 } as const;
 
-// Mechanical easing — no spring, no bounce
+// Mechanical easing : no spring, no bounce
 export const ease = {
   standard: [0.2, 0.0, 0.0, 1.0] as [number, number, number, number],
   inOut:    [0.2, 0.0, 0.2, 1.0] as [number, number, number, number],
@@ -14,7 +14,7 @@ export const ease = {
   out:      [0.0, 0.0, 0.2, 1.0] as [number, number, number, number],
 } as const;
 
-// Translate distances — small
+// Translate distances : small
 export const distance = {
   slideY: 10,
   slideX: 12,

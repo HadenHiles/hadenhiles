@@ -99,7 +99,7 @@ export function About() {
             onMouseEnter={() => setIsHovering(true)}
             onMouseLeave={() => setIsHovering(false)}
           >
-            {/* Default — visible at rest */}
+            {/* Default : visible at rest */}
             <motion.div
               animate={{ opacity: cycleIdx === -1 ? 1 : 0 }}
               transition={{ duration: 0.3, ease: ease.standard }}
@@ -115,7 +115,7 @@ export function About() {
               />
             </motion.div>
 
-            {/* Cycling photos — pre-loaded, opacity + scale animated */}
+            {/* Cycling photos : pre-loaded, opacity + scale animated */}
             {CYCLE_PHOTOS.map((src, i) => (
               <motion.div
                 key={src}

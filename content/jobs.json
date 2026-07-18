@@ -25,9 +25,9 @@
       "Built custom transactional systems, including a swimming-lesson registration platform with multi-child accounts, scheduling, digital waivers and Stripe payments, alongside a bespoke shopping-cart and checkout solution"
     ],
     "projects": [
-      "50+ Custom Client Websites — full UX ownership from brief to launch",
-      "Swimming Lesson Registration Platform — multi-child scheduling, digital waivers, recurring payments",
-      "Custom E-Commerce Checkout — bespoke cart and payment flow built from scratch"
+      "50+ Custom Client Websites: full UX ownership from brief to launch",
+      "Swimming Lesson Registration Platform: multi-child scheduling, digital waivers, recurring payments",
+      "Custom E-Commerce Checkout: bespoke cart and payment flow built from scratch"
     ],
     "tui": "MediaSuite (Co-op) · 2013-2015 · Web Designer & Developer · 50+ client websites, custom checkout, scheduling systems"
   },
@@ -67,9 +67,9 @@
       "Selected appropriate technology stacks and designed CMS workflows aligned with real-world usability for non-technical clients"
     ],
     "projects": [
-      "Group of Seven Trail App — Flutter + Bluetooth beacon proximity triggers + in-app trail mapping",
-      "The Pond — WordPress membership platform with LearnDash and MemberPress integration",
-      "Skill Drills — real-time Flutter training platform for hockey players with live session tracking"
+      "Group of Seven Trail App: Flutter + Bluetooth beacon proximity triggers + in-app trail mapping",
+      "The Pond: WordPress membership platform with LearnDash and MemberPress integration",
+      "Skill Drills: real-time Flutter training platform for hockey players with live session tracking"
     ],
     "tui": "BugsLife Solutions · 2015-Present · Software Engineer / Project Manager · Flutter, WordPress, Angular, custom web & app products"
   },
@@ -103,9 +103,9 @@
       "Identified gaps between contractual scope and technical requirements, helping prevent delivery issues and misaligned client expectations"
     ],
     "projects": [
-      "Grunt.js Build Pipeline — firm-wide tooling that standardized JavaScript and CSS animation workflows across all client projects",
-      "Custom Angular Enterprise UI — lead developer on high-detail client project",
-      "Legacy Modernization — refactored and upgraded outdated frontend systems to React"
+      "Grunt.js Build Pipeline: firm-wide tooling that standardized JavaScript and CSS animation workflows across all client projects",
+      "Custom Angular Enterprise UI: lead developer on high-detail client project",
+      "Legacy Modernization: refactored and upgraded outdated frontend systems to React"
     ],
     "tui": "Geek Power Web Design · Jan-Aug 2017 · Senior Web Developer · React, Angular, Grunt.js build pipeline, legacy modernization, enterprise clients"
   },
@@ -132,8 +132,8 @@
       "Managed Kanban delivery, GitHub workflows, releases and CI/CD pipelines, maintaining repeatable integration processes and visibility of delivery risks"
     ],
     "projects": [
-      "B2B REST API Suite — designed and tested endpoints for large agricultural supply clients",
-      "Inventory Sync Tool — Windows .NET GUI for non-technical staff to sync local databases with cloud APIs"
+      "B2B REST API Suite: designed and tested endpoints for large agricultural supply clients",
+      "Inventory Sync Tool: Windows .NET GUI for non-technical staff to sync local databases with cloud APIs"
     ],
     "tui": "LinkGreen · Aug-Dec 2017 · Software Engineer & Integration Development Manager · REST APIs, .NET GUI tooling, B2B integrations, CI/CD"
   },
@@ -169,8 +169,8 @@
       "Supported integrations and operational tools including Salesforce, Eloqua, Zapier, ResourceSpace and Teamwork"
     ],
     "projects": [
-      "Course & Term Data Pipeline — resolved API data discrepancies and ensured accuracy across all sections of the Georgian College public website",
-      "Marketing Web Integrations — translated stakeholder requirements into reliable functional integrations"
+      "Course & Term Data Pipeline: resolved API data discrepancies and ensured accuracy across all sections of the Georgian College public website",
+      "Marketing Web Integrations: translated stakeholder requirements into reliable functional integrations"
     ],
     "tui": "Georgian College · Sep 2018-Sep 2019 · Web Specialist, Marketing · Data integration, CRM to web, stakeholder translation"
   },
@@ -203,7 +203,7 @@
     ],
     "summary": "Lead Software & DevOps Engineer for web and mobile platforms serving hockey players worldwide. Own architecture, development, release management and technical direction across the full product stack.",
     "highlights": [
-      "Own the architecture, development, release management and technical direction of 10,000 Shots — a production Flutter and Firebase application with more than 80,000 registered accounts and approximately 2,500 daily active users",
+      "Own the architecture, development, release management and technical direction of 10,000 Shots, a production Flutter and Firebase application with more than 80,000 registered accounts and approximately 2,500 daily active users",
       "Conceptualized and delivered team-based competition functionality that helped double daily active users by strengthening social engagement and repeat use",
       "Designed and launched the Challenger Road guided-training feature and supporting freemium model, tripling subscription conversion; the app reached approximately 250 downloads and 15 new Pro subscriptions per day following launch",
       "Re-architected fragmented caching and refresh logic into real-time Cloud Firestore data streams, delivering a faster user experience and a more maintainable foundation with only a marginal increase in Firestore costs",
@@ -214,10 +214,10 @@
       "Lead technical discovery, architecture selection and delivery estimation, using rapid mock-ups and MVPs to help non-technical stakeholders validate complex requirements before full development begins"
     ],
     "projects": [
-      "10,000 Shots — Flutter mobile app with in-app purchases and real-time Firebase leaderboards",
-      "NextShift — Real-time feature request, bug reporting and voting platform",
-      "The Pond — WordPress membership platform with LearnDash, MemberPress, and Firebase Auth",
-      "Quarantine Camp — Social media/community site for hockey players to train during covid. Utilized OSSN (Open Source Social Network) and built custom WordPress oauth for existing users"
+      "10,000 Shots: Flutter mobile app with in-app purchases and real-time Firebase leaderboards",
+      "NextShift: Real-time feature request, bug reporting and voting platform",
+      "The Pond: WordPress membership platform with LearnDash, MemberPress, and Firebase Auth",
+      "Quarantine Camp: Social media/community site for hockey players to train during covid. Utilized OSSN (Open Source Social Network) and built custom WordPress oauth for existing users"
     ],
     "tui": "How To Hockey · Oct 2019-Present · Software & DevOps Engineer · Full stack ownership, Flutter, Firebase, CI/CD, production infra"
   }

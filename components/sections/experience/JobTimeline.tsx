@@ -98,7 +98,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             scrollbarColor: "rgba(138,92,255,0.3) transparent",
           }}
         >
-          {/* ── Cover photo — sticky so content scrolls up over it ── */}
+          {/* ── Cover photo: sticky so content scrolls up over it ── */
           {job.coverImage && (
             <div
               style={{
@@ -133,7 +133,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             </div>
           )}
 
-          {/* ── Content — stacks above the sticky image as you scroll ── */}
+          {/* ── Content: stacks above the sticky image as you scroll ── */
           <div
             className="flex flex-col gap-5 p-6 sm:p-8"
             style={{
@@ -202,14 +202,15 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
                 <p className="font-mono text-[10px] text-accent/55 tracking-widest uppercase">Projects</p>
                 <ul className="flex flex-col gap-2">
                   {job.projects.map((p, i) => {
-                    const [name, ...rest] = p.split(" — ");
-                    const desc = rest.join(" — ");
+                    const sepIdx = p.indexOf(": ");
+                    const name = sepIdx !== -1 ? p.slice(0, sepIdx) : p;
+                    const desc = sepIdx !== -1 ? p.slice(sepIdx + 2) : "";
                     return (
                       <li key={i} className="flex items-start gap-3">
                         <span className="text-accent/45 shrink-0 mt-[5px] text-[9px]">▸</span>
                         <span className="text-[13px] text-white/70 leading-relaxed">
                           <span className="text-white/85 font-semibold">{name}</span>
-                          {desc && <span className="text-white/50"> — {desc}</span>}
+                          {desc && <span className="text-white/50">: {desc}</span>}
                         </span>
                       </li>
                     );
@@ -219,7 +220,7 @@ function ExpandedJobCard({ job, onClose }: { job: Job; onClose: () => void }) {
             </>
           )}
 
-          {/* Tech & Skills — same visual style as KnowledgeMap SkillTile */}
+          {/* Tech & Skills: same visual style as KnowledgeMap SkillTile */
           {job.primarySkills.length > 0 && (
             <>
               <div className="h-px" style={{ background: "rgba(255,255,255,0.07)" }} />
@@ -643,7 +644,7 @@ function AnimatedCard({
   const detailY = useTransform(detailSlide, (s) => baseDetailY + s);
 
   return (
-    // Zero-height anchor on the spine — both card and detail are absolutely positioned from here.
+    // Zero-height anchor on the spine; both card and detail are absolutely positioned from here.
     // Animating opacity/scale on this wrapper fades/shrinks both toward the spine ("mesh" effect on expand).
     <motion.div
       style={{ position: "relative", width: CARD_W, height: 0, flexShrink: 0 }}
@@ -835,7 +836,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
         </div>
       </div>
 
-      {/* Expanded job card — rendered outside sticky/transformed section so position:fixed works correctly */}
+      {/* Expanded job card: rendered outside sticky/transformed section so position:fixed works correctly */}
       <AnimatePresence>
         {expandedJob && (
           <ExpandedJobCard

@@ -65,7 +65,7 @@ export function buildSpecs(stats: GitHubStats | null): HistoryEntry[] {
     rows.push(out(`  ${label("commits / yr",   14)}${formatStat(stats.commitsThisYear)}   past 12 months`));
     rows.push(out(`  ${label("commits / mo",   14)}${stats.commitsThisMonth}   this month`));
   } else {
-    rows.push(out("  (stats unavailable — check github.com/HadenHiles)"));
+    rows.push(out("  (stats unavailable; check github.com/HadenHiles)"));
   }
 
   rows.push(dim("  ───────────────────────────────────────────────────────────────"));
@@ -83,14 +83,14 @@ function buildProjects(): HistoryEntry[] {
     dim("────────────────────────────────────────────────────────────────"),
   ];
   for (const p of projects) {
-    rows.push(out(`${pad(p.title, titleWidth)}— ${p.tui ?? p.tagline}`));
+    rows.push(out(`${pad(p.title, titleWidth)}: ${p.tui ?? p.tagline}`));
     rows.push(out(""));
   }
   return rows;
 }
 
 // ── Section 1: Experience ─────────────────────────────────────────────────────
-// Shows individual company folders — use `cd experience/<slug>` to explore each one.
+// Shows individual company folders; use `cd experience/<slug>` to explore each one.
 function buildExperience(): HistoryEntry[] {
   const companyWidth = Math.max(...jobs.map((j) => j.company.length)) + 2;
   const rows: HistoryEntry[] = [

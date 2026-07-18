@@ -219,7 +219,7 @@ Respect reduced motion:
 
 ---
 
-## 6) The “Morph Handoff” (TUI → GUI) — the signature feature
+## 6) The “Morph Handoff” (TUI → GUI) : the signature feature
 
 ### 6.1 Shared container component
 

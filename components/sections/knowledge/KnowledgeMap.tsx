@@ -43,12 +43,12 @@ function SkillTile({ name, logo, emoji, yearsExperience, tileIndex, isInView }: 
   // Only hide the tile if the image failed AND there is no emoji fallback
   if (imgError && !emoji) return null;
 
-  // Deterministic settled transform (final resting state — the "organized" part)
+  // Deterministic settled transform (final resting state : the "organized" part)
   const settledRotation = (seededRand(tileIndex, 1) * 20) - 10;   // -10 to +10 deg
   const marginTop = seededRand(tileIndex, 2) * 28;                 // 0 to 28px
   const marginLeft = seededRand(tileIndex, 3) * 12;                // 0 to 12px
 
-  // Deterministic launch transform (off-screen starting state — the "chaotic" part)
+  // Deterministic launch transform (off-screen starting state : the "chaotic" part)
   const launchRotation = (seededRand(tileIndex, 6) * 60) - 30;    // -30 to +30 deg
   const launchY = -(60 + seededRand(tileIndex, 7) * 60);          // -60 to -120px
 
@@ -93,7 +93,7 @@ function SkillTile({ name, logo, emoji, yearsExperience, tileIndex, isInView }: 
       onFocus={handleEnter}
       onBlur={handleLeave}
       tabIndex={0}
-      aria-label={`${name} — ${yearsExperience} years`}
+      aria-label={`${name}: ${yearsExperience} years`}
       animate={{
         borderColor: hovered ? "rgba(138,92,255,0.5)" : "rgba(237,237,242,0.1)",
         backgroundColor: hovered ? "rgba(138,92,255,0.08)" : "rgba(21,21,32,1)",
@@ -167,7 +167,7 @@ export function KnowledgeMap({ categories }: { categories: KnowledgeCategory[] }
   ) as Array<{ name: string; logo: string | null; emoji?: string | null; yearsExperience: number }>;
 
   const containerRef = useRef<HTMLDivElement>(null);
-  // Fires as a batch when the container is 220px into the viewport — not gradual per-tile
+  // Fires as a batch when the container is 220px into the viewport : not gradual per-tile
   const isInView = useInView(containerRef, { once: false, margin: "0px 0px -220px 0px" });
 
   return (

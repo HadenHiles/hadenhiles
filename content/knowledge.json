@@ -436,7 +436,7 @@
   },
   {
     "category": "Skills Library",
-    "tui": "Extended skill lookup — 200+ technologies, frameworks, and tools",
+    "tui": "Extended skill lookup: 200+ technologies, frameworks, and tools",
     "skills": [
       {
         "name": "Python",
@@ -463,7 +463,7 @@
         "name": "Go",
         "logo": "https://cdn.simpleicons.org/go/00ADD8",
         "yearsExperience": null,
-        "usedFor": "Compiled language built for performance and concurrency — backend services and CLIs.",
+        "usedFor": "Compiled language built for performance and concurrency; suited for backend services and CLIs.",
         "proofProjectIds": []
       },
       {
@@ -585,7 +585,7 @@
         "name": "Svelte",
         "logo": "https://cdn.simpleicons.org/svelte/FF3E00",
         "yearsExperience": null,
-        "usedFor": "Compiler-based UI framework that ships no runtime — minimal bundle, high performance.",
+        "usedFor": "Compiler-based UI framework that ships no runtime; minimal bundle, high performance.",
         "proofProjectIds": []
       },
       {
@@ -599,7 +599,7 @@
         "name": "Astro",
         "logo": "https://cdn.simpleicons.org/astro/FF5D01",
         "yearsExperience": null,
-        "usedFor": "Content-focused framework that ships zero JS by default — ideal for static and hybrid sites.",
+        "usedFor": "Content-focused framework that ships zero JS by default, ideal for static and hybrid sites.",
         "proofProjectIds": []
       },
       {
@@ -671,7 +671,7 @@
         "name": "Bulma",
         "logo": "https://cdn.simpleicons.org/bulma/00D1B2",
         "yearsExperience": null,
-        "usedFor": "Modern CSS framework based on Flexbox — no JavaScript included.",
+        "usedFor": "Modern CSS framework based on Flexbox; no JavaScript included.",
         "proofProjectIds": []
       },
       {
@@ -715,7 +715,7 @@
         "name": "Django",
         "logo": "https://cdn.simpleicons.org/django/44B78B",
         "yearsExperience": null,
-        "usedFor": "Python web framework with batteries included — ORM, auth, admin, and full MVC stack.",
+        "usedFor": "Python web framework with batteries included: ORM, auth, admin, and full MVC stack.",
         "proofProjectIds": []
       },
       {
@@ -743,7 +743,7 @@
         "name": "Ruby on Rails",
         "logo": "https://cdn.simpleicons.org/rubyonrails/CC0000",
         "yearsExperience": null,
-        "usedFor": "Full-stack MVC web framework for Ruby — convention-over-config for rapid development.",
+        "usedFor": "Full-stack MVC web framework for Ruby; convention-over-config for rapid development.",
         "proofProjectIds": []
       },
       {
@@ -807,7 +807,7 @@
         "name": "Vitest",
         "logo": "https://cdn.simpleicons.org/vitest/6E9F18",
         "yearsExperience": null,
-        "usedFor": "Vite-native unit testing framework — fast HMR-based test runner for modern projects.",
+        "usedFor": "Vite-native unit testing framework; a fast HMR-based test runner for modern projects.",
         "proofProjectIds": []
       },
       {
@@ -863,7 +863,7 @@
         "name": "Webpack",
         "logo": "https://cdn.simpleicons.org/webpack/8DD6F9",
         "yearsExperience": null,
-        "usedFor": "Module bundler for JavaScript applications — transforms and packages assets for production.",
+        "usedFor": "Module bundler for JavaScript applications that transforms and packages assets for production.",
         "proofProjectIds": []
       },
       {
@@ -905,7 +905,7 @@
         "name": "npm",
         "logo": "https://cdn.simpleicons.org/npm/CB3837",
         "yearsExperience": null,
-        "usedFor": "Default package manager for Node.js — the world's largest software registry.",
+        "usedFor": "Default package manager for Node.js; the world's largest software registry.",
         "proofProjectIds": []
       },
       {
@@ -926,7 +926,7 @@
         "name": "Bun",
         "logo": "https://cdn.simpleicons.org/bun/FFFFFF",
         "yearsExperience": null,
-        "usedFor": "All-in-one JS runtime and package manager — significantly faster than Node.js.",
+        "usedFor": "All-in-one JS runtime and package manager, significantly faster than Node.js.",
         "proofProjectIds": []
       },
       {
@@ -1012,14 +1012,14 @@
         "logo": null,
         "emoji": "🪐",
         "yearsExperience": null,
-        "usedFor": "Serverless MySQL database platform built on Vitess — fast branching and schema migrations.",
+        "usedFor": "Serverless MySQL database platform built on Vitess; fast branching and schema migrations.",
         "proofProjectIds": []
       },
       {
         "name": "Google Cloud (GCP)",
         "logo": "https://cdn.simpleicons.org/googlecloud/4285F4",
         "yearsExperience": null,
-        "usedFor": "Google's cloud platform — compute, storage, managed databases, ML APIs, and networking.",
+        "usedFor": "Google's cloud platform offering compute, storage, managed databases, ML APIs, and networking.",
         "proofProjectIds": []
       },
       {
@@ -1296,7 +1296,7 @@
         "name": "Apache Spark",
         "logo": "https://cdn.simpleicons.org/apachespark/E25A1C",
         "yearsExperience": null,
-        "usedFor": "Unified analytics engine for large-scale data processing — batch and streaming.",
+        "usedFor": "Unified analytics engine for large-scale data processing; supports batch and streaming.",
         "proofProjectIds": []
       },
       {
@@ -1380,7 +1380,7 @@
         "name": "tRPC",
         "logo": "https://cdn.simpleicons.org/trpc/398CCA",
         "yearsExperience": null,
-        "usedFor": "End-to-end typesafe API layer for TypeScript — no schema, no code generation.",
+        "usedFor": "End-to-end typesafe API layer for TypeScript; no schema, no code generation.",
         "proofProjectIds": []
       },
       {
@@ -1634,7 +1634,7 @@
         "logo": null,
         "emoji": "🧪",
         "yearsExperience": null,
-        "usedFor": "Test-driven development — writing tests before code to drive design and ensure correctness.",
+        "usedFor": "Test-driven development: writing tests before code to drive design and ensure correctness.",
         "proofProjectIds": []
       },
       {
@@ -1642,7 +1642,7 @@
         "logo": null,
         "emoji": "🎯",
         "yearsExperience": null,
-        "usedFor": "Behavior-driven development — writing specs in plain language to align code with business intent.",
+        "usedFor": "Behavior-driven development: writing specs in plain language to align code with business intent.",
         "proofProjectIds": []
       },
       {
@@ -1658,7 +1658,7 @@
         "logo": null,
         "emoji": "🎭",
         "yearsExperience": null,
-        "usedFor": "Reusable solutions to common software design problems — creational, structural, behavioral.",
+        "usedFor": "Reusable solutions to common software design problems: creational, structural, behavioral.",
         "proofProjectIds": []
       },
       {
@@ -1682,7 +1682,7 @@
         "logo": null,
         "emoji": "↔️",
         "yearsExperience": null,
-        "usedFor": "Command Query Responsibility Segregation — splits read and write models for scalability.",
+        "usedFor": "Command Query Responsibility Segregation: splits read and write models for scalability.",
         "proofProjectIds": []
       },
       {
@@ -1714,7 +1714,7 @@
         "logo": null,
         "emoji": "🔍",
         "yearsExperience": null,
-        "usedFor": "Search engine optimization — technical and content strategies to improve organic discoverability.",
+        "usedFor": "Search engine optimization: technical and content strategies to improve organic discoverability.",
         "proofProjectIds": []
       },
       {
@@ -1730,7 +1730,7 @@
         "logo": null,
         "emoji": "♿",
         "yearsExperience": null,
-        "usedFor": "Building web experiences that work for users with disabilities — WCAG compliance and semantic HTML.",
+        "usedFor": "Building web experiences that work for users with disabilities; WCAG compliance and semantic HTML.",
         "proofProjectIds": []
       },
       {
@@ -1786,7 +1786,7 @@
         "logo": null,
         "emoji": "🧬",
         "yearsExperience": null,
-        "usedFor": "Object-oriented programming — encapsulation, inheritance, polymorphism, and abstraction.",
+        "usedFor": "Object-oriented programming: encapsulation, inheritance, polymorphism, and abstraction.",
         "proofProjectIds": []
       },
       {

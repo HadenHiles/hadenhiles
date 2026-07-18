@@ -19,7 +19,7 @@ function scrollTo(id: string) {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-// Hamburger line variants — morph three lines into an X
+// Hamburger line variants : morph three lines into an X
 const lineTransition = { duration: duration.short, ease: ease.standard };
 
 const topVariant    = { closed: { rotate: 0,   y: 0  }, open: { rotate: 45,   y: 6  } };
@@ -138,7 +138,7 @@ export function TopNav() {
           Contact
         </button>
 
-        {/* Mobile hamburger — three lines morph into X */}
+        {/* Mobile hamburger : three lines morph into X */}
         <motion.button
           onClick={() => setMobileOpen((o) => !o)}
           className="sm:hidden p-1.5 text-muted hover:text-accent transition-colors"
@@ -168,7 +168,7 @@ export function TopNav() {
 
     </header>
 
-    {/* Mobile full-screen menu overlay — rendered outside <header> to avoid backdrop-blur stacking context */}
+    {/* Mobile full-screen menu overlay : rendered outside <header> to avoid backdrop-blur stacking context */}
     <AnimatePresence>
       {mobileOpen && (
         <motion.div
@@ -179,7 +179,7 @@ export function TopNav() {
           className="sm:hidden fixed inset-0 z-50 flex flex-col"
           style={{ backgroundColor: '#0B0B0E' }}
         >
-          {/* Close button — pinned top-right, same position as hamburger */}
+          {/* Close button : pinned top-right, same position as hamburger */}
           <motion.button
             onClick={() => setMobileOpen(false)}
             className="absolute top-4 right-5 p-1.5 text-muted hover:text-accent transition-colors"
@@ -205,7 +205,7 @@ export function TopNav() {
             </div>
           </motion.button>
 
-          {/* Centered nav items — fills full screen height */}
+          {/* Centered nav items : fills full screen height */}
           <nav className="h-full flex flex-col items-center justify-center gap-2" aria-label="Site sections">
             {NAV_TABS.map((tab, i) => {
               const isActive = mode === tab.mode;
@@ -256,7 +256,7 @@ export function TopNav() {
             </motion.div>
           </nav>
 
-          {/* Bottom label — absolute so it doesn't affect vertical centering */}
+          {/* Bottom label : absolute so it doesn't affect vertical centering */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

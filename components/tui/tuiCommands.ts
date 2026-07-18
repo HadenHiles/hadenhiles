@@ -12,7 +12,7 @@ function slugify(str: string): string {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 
-// Slugs derived from JSON — stay in sync with data
+// Slugs derived from JSON; stay in sync with data
 const jobSlugs = jobs.map((j) => j.slug);
 const knowledgeSlugs = knowledge.map((k) => slugify(k.category));
 const projectSlugs = projects.map((p) => p.id);
@@ -62,20 +62,20 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     // ── help ──────────────────────────────────────────────────────────────────
     case lower === "help" || lower === "man" || lower === "man help":
       appendHistory(out("available commands:"));
-      appendHistory(out("  help              — show this list"));
-      appendHistory(out("  ls [flags]        — list contents"));
-      appendHistory(out("  cd <dir>          — change directory (cd .. to go back)"));
-      appendHistory(out("  pwd               — print working directory"));
-      appendHistory(out("  whoami            — about the operator"));
-      appendHistory(out("  cat <file>        — read a file"));
-      appendHistory(out("  echo <text>       — print text"));
-      appendHistory(out("  serve <section>   — navigate to a section"));
-      appendHistory(out("  date              — current date/time"));
-      appendHistory(out("  uname [-a]        — system info"));
-      appendHistory(out("  ps                — running processes"));
-      appendHistory(out("  clear             — clear history"));
-      appendHistory(out("  exit              — switch to GUI"));
-      appendHistory(out("  git log           — commit history"));
+      appendHistory(out("  help              : show this list"));
+      appendHistory(out("  ls [flags]        : list contents"));
+      appendHistory(out("  cd <dir>          : change directory (cd .. to go back)"));
+      appendHistory(out("  pwd               : print working directory"));
+      appendHistory(out("  whoami            : about the operator"));
+      appendHistory(out("  cat <file>        : read a file"));
+      appendHistory(out("  echo <text>       : print text"));
+      appendHistory(out("  serve <section>   : navigate to a section"));
+      appendHistory(out("  date              : current date/time"));
+      appendHistory(out("  uname [-a]        : system info"));
+      appendHistory(out("  ps                : running processes"));
+      appendHistory(out("  clear             : clear history"));
+      appendHistory(out("  exit              : switch to GUI"));
+      appendHistory(out("  git log           : commit history"));
       break;
 
     // ── number shortcuts ───────────────────────────────────────────────────────
@@ -238,12 +238,12 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── whoami ────────────────────────────────────────────────────────────────
     case lower === "whoami":
-      appendHistory(out("haden hiles — software & devops engineer."));
+      appendHistory(out("haden hiles, software & devops engineer."));
       appendHistory(out("full stack engineer who designs from the user down"));
       appendHistory(out("and builds the system to match."));
       break;
 
-    // ── cat — hidden file permission errors ───────────────────────────────────
+    // ── cat: hidden file permission errors ───────────────────────────────────
     case base === "cat" && (argsLower === ".hobbies" || argsLower === ".homelab" || argsLower === ".gear" || argsLower === ".behind-scenes"):
       appendHistory(err(`cat: ${args}: Permission denied`));
       appendHistory(out("hint: sudo cat <file> to read restricted files"));
@@ -268,7 +268,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     case lower === "cat highlights.txt" && inSection === "experience" && !!inJobSlug: {
       const job = jobs.find((j) => j.slug === inJobSlug);
       if (job) {
-        appendHistory(out(`# ${job.company} — highlights`));
+        appendHistory(out(`# ${job.company} highlights`));
         appendHistory(out(""));
         for (const h of job.highlights) {
           appendHistory(out(`  · ${h}`));
@@ -283,7 +283,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     case lower === "cat stack.txt" && inSection === "experience" && !!inJobSlug: {
       const job = jobs.find((j) => j.slug === inJobSlug);
       if (job) {
-        appendHistory(out(`# ${job.company} — primary skills`));
+        appendHistory(out(`# ${job.company} primary skills`));
         appendHistory(out(""));
         appendHistory(out(job.primarySkills.join(" · ")));
       } else {
@@ -292,19 +292,19 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
     }
 
-    // ── cat — about text files ─────────────────────────────────────────────────
+    // ── cat: about text files ─────────────────────────────────────────────────
     case lower === "cat family.txt":
       appendHistory(out("# family"));
       appendHistory(out("My wife Shannon and I have been married since July 2025. We bought"));
       appendHistory(out("our first house in Oct 2025 and have a spoiled golden retriever"));
-      appendHistory(out("named Harvey — our pride and joy. Best time of year is cottage"));
+      appendHistory(out("named Harvey, our pride and joy. Best time of year is cottage"));
       appendHistory(out("country, where Harvey launches off the dock and we air-dry on the boat."));
       break;
 
     case lower === "cat craft.txt":
       appendHistory(out("# craft"));
       appendHistory(out("I build software the way I want software to feel as a user:"));
-      appendHistory(out("simple, fast, and frictionless — but still nice to look at."));
+      appendHistory(out("simple, fast, and frictionless, but still nice to look at."));
       appendHistory(out(""));
       appendHistory(out("\"Simplicity beats cleverness."));
       appendHistory(out(" If it needs a manual, it probably needs a redesign.\""));
@@ -312,7 +312,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     case lower === "cat play.txt":
       appendHistory(out("# play"));
-      appendHistory(out("Sports:    Hockey · Golf · Squash — if it's competitive, I love it."));
+      appendHistory(out("Sports:    Hockey · Golf · Squash. If it's competitive, I love it."));
       appendHistory(out("Music:     Guitar"));
       appendHistory(out("Watching:  LOTR · GOT · Mr. Robot (IYKYK)"));
       appendHistory(out("Weekends:  house projects, home media server, cottage with family."));
@@ -361,13 +361,13 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     // ── serve ─────────────────────────────────────────────────────────────────
     case lower === "serve":
       appendHistory(out("usage: serve <section>"));
-      appendHistory(out("  serve specs       — show specs / stats"));
-      appendHistory(out("  serve knowledge   — open knowledge section"));
-      appendHistory(out("  serve projects    — open projects section"));
-      appendHistory(out("  serve experience  — open experience section"));
-      appendHistory(out("  serve about       — open about section"));
-      appendHistory(out("  serve gui         — switch to GUI"));
-      appendHistory(out("  serve contact     — open contact modal"));
+      appendHistory(out("  serve specs       : show specs / stats"));
+      appendHistory(out("  serve knowledge   : open knowledge section"));
+      appendHistory(out("  serve projects    : open projects section"));
+      appendHistory(out("  serve experience  : open experience section"));
+      appendHistory(out("  serve about       : open about section"));
+      appendHistory(out("  serve gui         : switch to GUI"));
+      appendHistory(out("  serve contact     : open contact modal"));
       break;
 
     case lower === "serve specs":
@@ -459,7 +459,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     case base === "curl" || base === "wget":
       appendHistory(out(`${base}: fetching... (this is a fictional shell)`));
-      appendHistory(out("response: 200 OK — but there's nothing to fetch here."));
+      appendHistory(out("response: 200 OK, but there's nothing to fetch here."));
       appendHistory(out("try the GUI instead: type 'exit'"));
       break;
 
@@ -545,12 +545,12 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     case lower === "git log" || lower === "git log --oneline":
-      appendHistory(out("commit a4f2e91 — ship portfolio v4.0"));
-      appendHistory(out("commit 3c8b012 — add TUI boot sequence"));
-      appendHistory(out("commit 7f1d443 — wire up animated handoff"));
-      appendHistory(out("commit d3ad1f8 — update sudo pw: DogsRule123"));
-      appendHistory(out("commit 2a9c887 — redesign with minimalist inspiration"));
-      appendHistory(out("commit f8e3c11 — initial commit"));
+      appendHistory(out("commit a4f2e91 ship portfolio v4.0"));
+      appendHistory(out("commit 3c8b012 add TUI boot sequence"));
+      appendHistory(out("commit 7f1d443 wire up animated handoff"));
+      appendHistory(out("commit d3ad1f8 update sudo pw: DogsRule123"));
+      appendHistory(out("commit 2a9c887 redesign with minimalist inspiration"));
+      appendHistory(out("commit f8e3c11 initial commit"));
       break;
 
     case lower === "git status":
@@ -559,7 +559,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     case lower === "git diff":
-      appendHistory(out("(no diff — this is a read-only production build)"));
+      appendHistory(out("(no diff; this is a read-only production build)"));
       break;
 
     case base === "git":
@@ -581,7 +581,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── sudo cat hidden files ─────────────────────────────────────────────────
     case lower === "sudo cat .hobbies":
-      appendHistory(out("# .hobbies — play pillar"));
+      appendHistory(out("# .hobbies: play pillar"));
       appendHistory(out("sports:    Hockey · Golf · Squash"));
       appendHistory(out("music:     Guitar"));
       appendHistory(out("reading:   when the mood strikes"));
@@ -590,7 +590,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     case lower === "sudo cat .homelab":
-      appendHistory(out("# .homelab — personal infrastructure"));
+      appendHistory(out("# .homelab: personal infrastructure"));
       appendHistory(out("media server:  Plex running on Docker"));
       appendHistory(out("stack:         self-hosted on dedicated hardware"));
       appendHistory(out("hobbies:       home automation, network tweaks, ongoing projects"));
@@ -598,7 +598,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     case lower === "sudo cat .gear":
-      appendHistory(out("# .gear — tech stack"));
+      appendHistory(out("# .gear: tech stack"));
       appendHistory(out("mobile:    Flutter / Dart / C++"));
       appendHistory(out("frontend:  React · TypeScript · Next.js · Tailwind"));
       appendHistory(out("backend:   Node.js · Express · Firebase · PHP"));
@@ -607,7 +607,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       break;
 
     case lower === "sudo cat .behind-scenes":
-      appendHistory(out("# .behind-scenes — craft pillar"));
+      appendHistory(out("# .behind-scenes: craft pillar"));
       appendHistory(out("\"Every flow, button, color, API, and deployment decision"));
       appendHistory(out(" starts from the same place: as a user, what would I"));
       appendHistory(out(" expect right here?\""));
@@ -688,7 +688,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
     case lower === "df" || lower === "df -h":
       appendHistory(out("Filesystem       Size  Used  Avail  Use%  Mounted on"));
       appendHistory(out("/dev/portfolio   100G   42G    58G   42%  /"));
-      appendHistory(out("tmpfs/brain       inf   inf    inf    —   /ideas"));
+      appendHistory(out("tmpfs/brain       inf   inf    inf    --  /ideas"));
       appendHistory(out("(most space taken up by opinions about UX)"));
       break;
 
@@ -711,17 +711,17 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
       appendHistory(out("| ________|___H__/__|_____/[][]~\\_______|       |   "));
       appendHistory(out("|/ |   |-----------I_____I [][] []  D   |=======|__/"));
       appendHistory(out(" \\_/____/=======    )-/\\-\\-\\-|         |_/___/"));
-      appendHistory(out("  steam locomotive — you meant ls, didn't you?"));
+      appendHistory(out("  steam locomotive; you meant ls, didn't you?"));
       break;
 
     case lower === "fortune":
       appendHistory(out("\"The best interface is no interface.\""));
-      appendHistory(out("  — Golden Krishna (but also just good engineering)"));
+      appendHistory(out("  Golden Krishna (but also just good engineering)"));
       break;
 
     case lower === "matrix":
       appendHistory(out("follow the white rabbit."));
-      appendHistory(out("(there's no spoon, but there are hidden files — try ls -a in ~/about)"));
+      appendHistory(out("(there's no spoon, but there are hidden files; try ls -a in ~/about)"));
       break;
 
     case lower === "alias":
@@ -749,7 +749,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     case lower === "sudo !!":
       appendHistory(err("sudo: !!: command not found"));
-      appendHistory(out("(bash history expansion doesn't work here — type the full command)"));
+      appendHistory(out("(bash history expansion doesn't work here; type the full command)"));
       break;
 
     case base === "less" || base === "more":
@@ -757,7 +757,7 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
         appendHistory(err(`${base}: missing file operand`));
       } else {
         appendHistory(err(`${base}: ${args}: No such file or directory`));
-        appendHistory(out("try cat instead — this shell doesn't need a pager"));
+        appendHistory(out("try cat instead; this shell doesn't need a pager"));
       }
       break;
 

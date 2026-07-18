@@ -21,7 +21,7 @@ export function TuiShell() {
     navigateToMode,
   } = useStore();
 
-  // Track whether the terminal input has focus — controls which "cursor" blinks
+  // Track whether the terminal input has focus : controls which "cursor" blinks
   const [inputFocused, setInputFocused] = useState(false);
 
   // Blur input and return focus to menu navigation
@@ -34,7 +34,7 @@ export function TuiShell() {
     (document.querySelector("[data-terminal-input]") as HTMLInputElement)?.focus();
   }, []);
 
-  // Ref to the log+menu scroll container — shared for unified wheel handling
+  // Ref to the log+menu scroll container : shared for unified wheel handling
   const logScrollRef = useRef<HTMLDivElement>(null);
   // Keep latest values in refs so wheel callback never goes stale
   const menuIndexRef = useRef(menuIndex);
@@ -55,7 +55,7 @@ export function TuiShell() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // Keyboard navigation — arrow keys blur input so cursor moves to menu
+  // Keyboard navigation : arrow keys blur input so cursor moves to menu
   useTuiKeyboard({
     enabled: true,
     onUp: () => {
@@ -112,7 +112,7 @@ export function TuiShell() {
       }
     }
 
-    // At boundary — navigate menu with threshold and cooldown
+    // At boundary : navigate menu with threshold and cooldown
     if (!bootCompleteRef.current) return;
     
     const now = Date.now();
@@ -176,11 +176,11 @@ export function TuiShell() {
 
       {/* Header */}
       <div className="font-mono text-xs text-border/60 select-none mb-3 shrink-0 flex items-center relative">
-        <span className="hidden sm:inline">hadensystem — ↑↓ navigate · [n] select · enter activate · type commands</span>
+        <span className="hidden sm:inline">hadensystem: ↑↓ navigate · [n] select · enter activate · type commands</span>
         <span className="sm:hidden">hadensystem</span>
       </div>
 
-      {/* Log + menu — unified scrollable area */}
+      {/* Log + menu : unified scrollable area */}
       <div className="flex-1 overflow-hidden min-h-0">
         <BootLog
           history={history}
@@ -194,7 +194,7 @@ export function TuiShell() {
         />
       </div>
 
-      {/* Command line — always at bottom */}
+      {/* Command line : always at bottom */}
       <div className="shrink-0 mt-2">
         <CommandLine
           value={commandBuffer}

@@ -24,7 +24,7 @@ body {
   overflow-x: clip;
 }
 
-/* System-wide purple focus ring — the only place accent is used for focus */
+/* System-wide purple focus ring : the only place accent is used for focus */
 *:focus-visible {
   outline: 2px solid #8A5CFF;
   outline-offset: 2px;

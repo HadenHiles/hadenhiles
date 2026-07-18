@@ -22,7 +22,7 @@ export function useTuiKeyboard(opts: TuiKeyboardOptions) {
       const isTyping =
         target.tagName === "INPUT" || target.tagName === "TEXTAREA";
 
-      // Ctrl+C always works — even when typing
+      // Ctrl+C always works : even when typing
       if (e.ctrlKey && e.key === "c") {
         e.preventDefault();
         onCtrlC();
@@ -31,7 +31,7 @@ export function useTuiKeyboard(opts: TuiKeyboardOptions) {
 
       switch (e.key) {
         case "ArrowUp":
-          // Arrow keys always navigate menu — even when typing in the command line
+          // Arrow keys always navigate menu : even when typing in the command line
           e.preventDefault();
           onUp();
           break;

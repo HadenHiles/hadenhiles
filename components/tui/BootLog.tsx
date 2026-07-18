@@ -65,7 +65,7 @@ export function BootLog({
       {/* Boot log entries */}
       <AnimatePresence initial={false}>
         {history.map((entry, i) => {
-          // Image entries — small terminal-style photo thumbnail
+          // Image entries : small terminal-style photo thumbnail
           if (entry.type === "img") {
             return (
               <motion.div
@@ -85,7 +85,7 @@ export function BootLog({
             );
           }
 
-          // Action entries — styled as a clickable link/button
+          // Action entries : styled as a clickable link/button
           if (entry.type === "action") {
             return (
               <motion.button
@@ -124,7 +124,7 @@ export function BootLog({
         })}
       </AnimatePresence>
 
-      {/* Inline menu — appears after boot, baked into the terminal output */}
+      {/* Inline menu : appears after boot, baked into the terminal output */}
       {bootComplete && (
         <div className="mt-3 mb-1" role="menu" aria-label="Navigation">
           {/* Visual separator */}
@@ -155,7 +155,7 @@ export function BootLog({
                   ${isActive ? "text-text" : "text-muted hover:text-text/80"}
                 `}
               >
-                {/* Block cursor — blinks when menu is active, static+dim when input is focused */}
+                {/* Block cursor : blinks when menu is active, static+dim when input is focused */}
                 <span
                   className={`w-4 shrink-0 text-accent select-none ${
                     isActive

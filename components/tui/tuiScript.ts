@@ -6,7 +6,7 @@ export interface BootLine {
   text: string;
 }
 
-// ASCII banner — Standard figlet font, "HADEN HILES"
+// ASCII banner: Standard figlet font, "HADEN HILES"
 const BANNER_LINES: BootLine[] = [
   { delayMs: 0,   level: "banner", text: "" },
   { delayMs: 0,   level: "banner", text: " _   _    _    ____  _____  _   _   _   _ ___ _     _____  ____  " },
@@ -22,7 +22,7 @@ const BANNER_LINES: BootLine[] = [
 // 15 lines, ~3.5s total. Techy, tasteful, not hacker cosplay.
 export const BOOT_SCRIPT: BootLine[] = [
   ...BANNER_LINES,
-  { delayMs: 0,   level: "info", text: "hadensystem v4.0 — initializing runtime..." },
+  { delayMs: 0,   level: "info", text: "hadensystem v4.0: initializing runtime..." },
   { delayMs: 200, level: "info", text: "loading content manifests..." },
   { delayMs: 240, level: "ok",   text: "content/projects.json         [7 projects indexed]" },
   { delayMs: 160, level: "ok",   text: "content/experience.json       [4 versions loaded]" },

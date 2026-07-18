@@ -54,7 +54,7 @@ export function ContactModal() {
             aria-hidden="true"
           />
 
-          {/* Centering shell — flex so the modal is always exactly centred */}
+          {/* Centering shell : flex so the modal is always exactly centred */}
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none">
             <motion.div
               role="dialog"

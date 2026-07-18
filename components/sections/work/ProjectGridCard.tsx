@@ -91,7 +91,7 @@ export function ProjectGridCard({ project, isSelected, onSelect }: Props) {
         }
       `}
     >
-      {/* Thumbnail — 16:9 at rest, expands to natural aspect once revealed */}
+      {/* Thumbnail : 16:9 at rest, expands to natural aspect once revealed */}
       <motion.div
         ref={thumbnailRef}
         layout
@@ -138,7 +138,7 @@ export function ProjectGridCard({ project, isSelected, onSelect }: Props) {
           </div>
         )}
 
-        {/* Dimmer + ring + label — single overlay during hover countdown */}
+        {/* Dimmer + ring + label : single overlay during hover countdown */}
         <AnimatePresence>
           {hovering && !revealed && (() => {
             // y that places text just below ring center; clamp so tiny cards don't go negative
@@ -151,7 +151,7 @@ export function ProjectGridCard({ project, isSelected, onSelect }: Props) {
                 transition={{ duration: 0.15 }}
                 className="absolute inset-0 pointer-events-none overflow-hidden"
               >
-                {/* Dimmer — fades in linearly alongside the ring */}
+                {/* Dimmer : fades in linearly alongside the ring */}
                 <motion.div
                   className="absolute inset-0 bg-black"
                   initial={{ opacity: 0 }}
@@ -159,7 +159,7 @@ export function ProjectGridCard({ project, isSelected, onSelect }: Props) {
                   transition={{ duration: HOLD_DELAY / 1000, ease: "linear" }}
                 />
 
-                {/* Ring — centered */}
+                {/* Ring : centered */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <svg
                     width={RING_R * 2 + 8}
@@ -192,7 +192,7 @@ export function ProjectGridCard({ project, isSelected, onSelect }: Props) {
                   </svg>
                 </div>
 
-                {/* Text — snaps to below-ring position, slides linearly to bottom */}
+                {/* Text : snaps to below-ring position, slides linearly to bottom */}
                 <motion.span
                   className="absolute inset-x-0 text-center font-mono tracking-widest uppercase whitespace-nowrap"
                   style={{
@@ -211,7 +211,7 @@ export function ProjectGridCard({ project, isSelected, onSelect }: Props) {
           })()}
         </AnimatePresence>
 
-        {/* Gradient + label at bottom — shown once revealed */}
+        {/* Gradient + label at bottom : shown once revealed */}
         <AnimatePresence>
           {revealed && (
             <motion.div

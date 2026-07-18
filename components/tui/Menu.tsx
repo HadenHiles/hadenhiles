@@ -38,7 +38,7 @@ export function Menu({ activeIndex, bootComplete, onSelect, onActivate }: MenuPr
               ${isActive ? "text-text bg-surface2/60" : "text-muted hover:text-text"}
             `}
           >
-            {/* Purple > — only visible when active */}
+            {/* Purple > : only visible when active */}
             <span
               className={`text-accent font-bold select-none transition-opacity w-3 shrink-0 ${
                 isActive ? "opacity-100" : "opacity-0"
@@ -47,7 +47,7 @@ export function Menu({ activeIndex, bootComplete, onSelect, onActivate }: MenuPr
               &gt;
             </span>
 
-            {/* Number hint — more prominent coloring */}
+            {/* Number hint : more prominent coloring */}
             <span
               className={`select-none w-4 text-xs shrink-0 transition-colors ${
                 isActive ? "text-accent/70" : "text-muted/50"

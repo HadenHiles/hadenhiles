@@ -61,7 +61,7 @@ export function AnalyticsTracker() {
     }
   }, [isContactOpen]);
 
-  // Track exit — fires when tab is hidden or browser is closed
+  // Track exit : fires when tab is hidden or browser is closed
   useEffect(() => {
     const handleVisibilityChange = () => {
       if (document.visibilityState === "hidden") {

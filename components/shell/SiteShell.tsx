@@ -24,14 +24,14 @@ function InitialScrollEffect() {
   const mode = useMode();
 
   useEffect(() => {
-    if (mode === "home") return; // Already at top — no scroll needed
+    if (mode === "home") return; // Already at top : no scroll needed
     const sectionId = `section-${mode}`;
     // Delay so Framer Motion's entry transition completes first
     const timer = setTimeout(() => {
       document.getElementById(sectionId)?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 450);
     return () => clearTimeout(timer);
-  // Only run once on mount — intentionally omitting mode from deps
+  // Only run once on mount : intentionally omitting mode from deps
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -83,7 +83,7 @@ export function SiteShell() {
         <InitialScrollEffect />
         <SectionObserver />
 
-        {/* Hero — full viewport landing */}
+        {/* Hero : full viewport landing */}
         <div id="section-hero">
           <Hero />
         </div>
@@ -100,7 +100,7 @@ export function SiteShell() {
           <Work />
         </div>
 
-        {/* Experience — header inside container, timeline full-bleed */}
+        {/* Experience : header inside container, timeline full-bleed */}
         <div id="section-experience" className="scroll-mt-16 border-t border-border/40">
           <Experience />
         </div>

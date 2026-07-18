@@ -139,14 +139,14 @@ export const useStore = create<AppState>()(
         const item = MENU_ITEMS[index];
         if (!item) return;
 
-        // Contact — open modal
+        // Contact : open modal
         if ("isContact" in item && item.isContact) {
           get().appendHistory({ type: "out", text: "opening contact..." });
           set({ isContactOpen: true });
           return;
         }
 
-        // "Use GUI" handoff — navigate directly without showing section content
+        // "Use GUI" handoff : navigate directly without showing section content
         if ("isHandoff" in item && item.isHandoff) {
           get().appendHistory({
             type: "log",
@@ -157,7 +157,7 @@ export const useStore = create<AppState>()(
           return;
         }
 
-        // Specs (index 0) — async: fetch GitHub stats then display
+        // Specs (index 0) : async: fetch GitHub stats then display
         if (index === 0) {
           get().appendHistory({ type: "log", level: "info", text: "fetching stats..." });
           Promise.all([
@@ -176,7 +176,7 @@ export const useStore = create<AppState>()(
           return;
         }
 
-        // Content sections — show condensed TUI content then offer navigation
+        // Content sections : show condensed TUI content then offer navigation
         import("@/components/tui/tuiSections").then(({ SECTION_CONTENT }) => {
           const lines = SECTION_CONTENT[index];
           if (lines) lines.forEach((line) => get().appendHistory(line));
@@ -202,7 +202,7 @@ export const useStore = create<AppState>()(
         if (get().bootStarted) return;
         set({ bootStarted: true });
 
-        // Lazy import to avoid circular deps — tuiScript has no store imports
+        // Lazy import to avoid circular deps : tuiScript has no store imports
         import("@/components/tui/tuiScript").then(({ BOOT_SCRIPT }) => {
           let cumulative = 0;
           BOOT_SCRIPT.forEach((line, i) => {
@@ -260,7 +260,7 @@ export const useStore = create<AppState>()(
 
         appendHistory({ type: "cmd", text: `$ ${rawCmd}` });
 
-        // ── Sudo prompt — intercept before tuiCommands so password is always required
+        // ── Sudo prompt : intercept before tuiCommands so password is always required
         const cmdLower = cmd.toLowerCase();
         if (cmdLower.startsWith("sudo ") && cmd.trim().split(/\s+/).length > 1) {
           appendHistory({ type: "out", text: "[sudo] password for visitor: " });

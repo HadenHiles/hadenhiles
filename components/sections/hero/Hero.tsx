@@ -191,19 +191,19 @@ export function Hero() {
 
   const statItems = [
     {
-      value: loading ? null : stats ? `${stats.repos}` : "—",
+      value: loading ? null : stats ? `${stats.repos}` : "N/A",
       label: "repos (public + private)",
     },
     {
-      value: loading ? null : stats ? formatCount(stats.commitsAllTime) : "—",
+      value: loading ? null : stats ? formatCount(stats.commitsAllTime) : "N/A",
       label: "commits all time",
     },
     {
-      value: loading ? null : stats ? formatCount(stats.commitsThisYear) : "—",
+      value: loading ? null : stats ? formatCount(stats.commitsThisYear) : "N/A",
       label: "commits past year",
     },
     {
-      value: loading ? null : stats ? `${stats.commitsThisMonth}` : "—",
+      value: loading ? null : stats ? `${stats.commitsThisMonth}` : "N/A",
       label: "commits this month",
     },
   ];
@@ -254,7 +254,7 @@ export function Hero() {
           transition={{ duration: duration.medium, ease: ease.standard, delay: 0.15 }}
           className="order-3 lg:col-start-1 lg:row-start-2 lg:self-start"
         >
-          {/* Stats — or GitHub activity fallback */}
+          {/* Stats: or GitHub activity fallback */}
           {error ? (
             <div className="py-8 mb-12 border-y border-border/40">
               <a
@@ -390,7 +390,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Mobile social links — always visible below photo on small screens */}
+          {/* Mobile social links: always visible below photo on small screens */}
           <div className="flex gap-5 justify-center mt-10 lg:hidden">
             {socialLinks.map((link) => (
               <a

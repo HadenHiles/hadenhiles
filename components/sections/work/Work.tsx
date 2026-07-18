@@ -24,7 +24,7 @@ export function Work() {
   useEffect(() => {
     if (selectedProjectId) {
       // Delay past the card collapse animation (EXPAND_DURATION = 0.65s) so the
-      // layout has settled before we scroll — prevents overshooting on expanded cards.
+      // layout has settled before we scroll : prevents overshooting on expanded cards.
       const t = setTimeout(() => {
         detailRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
       }, 700);
@@ -57,7 +57,7 @@ export function Work() {
         </p>
       </motion.div>
 
-      {/* ── Project masonry grid (CSS columns — cards keep natural aspect ratios) ── */}
+      {/* ── Project masonry grid (CSS columns : cards keep natural aspect ratios) ── */}
       <motion.div layoutRoot className="columns-2 sm:columns-3 gap-3 sm:gap-4">
         {typedProjects.map((project, i) => (
           <motion.div

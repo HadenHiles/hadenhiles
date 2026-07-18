@@ -245,7 +245,7 @@ export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
               "0 0 0 1px rgba(255,255,255,0.06), 0 32px 80px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.08)",
           }}
         >
-          {/* Side buttons — volume up */}
+          {/* Side buttons : volume up */}
           <div
             className="absolute"
             style={{
@@ -258,7 +258,7 @@ export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
               boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
             }}
           />
-          {/* Side buttons — volume down */}
+          {/* Side buttons : volume down */}
           <div
             className="absolute"
             style={{
@@ -271,7 +271,7 @@ export function PhoneMockup({ src, alt, isVisible = true }: MockupProps) {
               boxShadow: "inset 0 1px 0 rgba(255,255,255,0.08)",
             }}
           />
-          {/* Side buttons — power */}
+          {/* Side buttons : power */}
           <div
             className="absolute"
             style={{
@@ -446,7 +446,7 @@ export function DesktopMockup({ src, alt, isVisible = true, srcs }: MockupProps)
             }}
           />
 
-          {/* Screen — aspect ratio adapts to the native video dimensions */}
+          {/* Screen : aspect ratio adapts to the native video dimensions */}
           <div
             className="relative overflow-hidden bg-black"
             style={{
