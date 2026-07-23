@@ -1,10 +1,10 @@
 [
   {
     "version": "v4.0",
-    "title": "Full Stack & DevOps",
-    "tui": "v4.0 · 2019-Present · How To Hockey (Lead) + BugsLife - full stack ownership, production infra, CI/CD, Flutter mobile.",
+    "title": "Product, Mobile & Full-Stack Engineering",
+    "tui": "v4.0 · 2019-Present · How To Hockey (Lead) + BugsLife - product discovery, Flutter, Firebase, CI/CD and long-term operation.",
     "dateRange": "Oct 2019 - Present",
-    "role": "Lead Software & DevOps Engineer",
+    "role": "Lead Software Engineer",
     "companies": [
       "How To Hockey",
       "BugsLife Solutions"
@@ -15,30 +15,30 @@
     ],
     "coverImage": "/images/how-to-hockey.jpg",
     "primarySkills": [
-      "Production Infrastructure & DevOps",
+      "Software Architecture & System Design",
       "GitHub Actions CI/CD",
       "Flutter / Dart (Mobile)",
       "Firebase / Firestore (Real-Time)",
       "Docker",
       "System Backup & Recovery",
-      "UX-Driven Full Stack Architecture"
+      "Product Discovery & UX-Driven Architecture"
     ],
-    "summary": "Lead Software & DevOps Engineer for How To Hockey, owning architecture, development, release management and technical direction across web and mobile platforms serving hockey players worldwide. Every technical decision starts with the same question: as a user, what would I expect right here?",
+    "summary": "Lead Software Engineer for How To Hockey, owning architecture, development, release management and technical direction across web and mobile platforms serving hockey players worldwide—from product discovery through long-term operation.",
     "highlights": [
       "Own the architecture, development, release management and technical direction of 10,000 Shots, a production Flutter and Firebase application with more than 80,000 registered accounts and approximately 2,500 daily active users",
       "Conceptualized and delivered team-based competition functionality that helped double daily active users by strengthening social engagement and repeat use",
-      "Designed and launched the Challenger Road guided-training feature and supporting freemium model, tripling subscription conversion; the app reached approximately 250 downloads and 15 new Pro subscriptions per day following launch",
+      "Translate loosely defined business goals into product requirements, technical architecture and delivery plans, using rapid prototypes and MVPs to validate complex ideas with non-technical stakeholders before full development",
+      "Designed and launched the Challenger Road guided-training experience and supporting freemium model, tripling subscription conversion; following launch, the app reached approximately 250 daily downloads and 25 new Pro subscriptions per day",
       "Re-architected fragmented caching and refresh logic into real-time Cloud Firestore data streams, delivering a faster user experience and a more maintainable foundation with only a marginal increase in Firestore costs",
-      "Built and continue to operate The Pond, a WordPress, LearnDash and MemberPress platform generating an estimated $25,000 in annual revenue through subscriptions, digital courses, structured training and member dashboards",
+      "Built and operate The Pond, a WordPress, LearnDash and MemberPress platform generating an estimated $30,000 in annual revenue through subscriptions, digital courses, structured training and member dashboards",
       "Introduced CI/CD, automated backups, server snapshots and recovery workflows, standardizing deployment across development, beta and production while strengthening rollback capability during updates and high-traffic launches",
-      "Migrated suitable microservices from external cloud hosting to local Docker infrastructure, reducing avoidable server costs while maintaining reliable service delivery",
-      "Built NextShift, a Flutter and Firebase platform that converts feature requests, bug reports and user voting into structured product evidence, supporting clearer roadmap decisions"
+      "Built NextShift, an internal Flutter and Firebase platform that centralizes feature requests, bug reports and user voting into a shared evidence base for roadmap prioritization"
     ]
   },
   {
     "version": "v3.0",
-    "title": "Mobile & Systems",
-    "tui": "v3.0 · 2018-2019 · Georgian College + BugsLife mobile - Flutter, Firebase, Bluetooth beacons, native integrations.",
+    "title": "Mobile, Web & Systems",
+    "tui": "v3.0 · 2018-2019 · Georgian College + BugsLife - Flutter, Bluetooth beacons, web systems and accessibility.",
     "dateRange": "Sep 2018 - Sep 2019",
     "role": "Web Specialist & Mobile Engineer",
     "companies": [
@@ -59,24 +59,22 @@
       "Data Integration & Validation",
       "Stakeholder Communication"
     ],
-    "summary": "Worked at Georgian College resolving complex data integration issues between marketing systems and public-facing web platforms. Concurrently, BugsLife delivered its most technically ambitious project: the Group of Seven Trail App, combining interactive mapping, Bluetooth beacons and contextual content to provide a location-aware visitor experience.",
+    "summary": "At Georgian College, resolved website, program, course and term-data issues affecting student-facing pages while supporting marketing integrations. Concurrently, delivered the Group of Seven Trail App: a location-aware Flutter experience combining interactive mapping, Bluetooth beacons and contextual content.",
     "highlights": [
-      "Designed and delivered the Group of Seven Trail Flutter application, combining interactive mapping, Bluetooth beacons and contextual content to provide a location-aware visitor experience supporting trail promotion and future funding propositions",
-      "Resolved persistent Flutter and cross-platform Bluetooth compatibility issues by repairing an unsupported package, later migrating to a sustainable replacement and restructuring the application architecture before beta launch",
-      "Partnered with IT, marketing, content authors and internal departments to resolve complex website, program, course and term-data issues affecting student-facing pages",
-      "Built and supported website functionality, WordPress workflows and content processes while delivering AODA accessibility improvements",
-      "Supported integrations and operational tools including Salesforce, Eloqua, Zapier, ResourceSpace and Teamwork"
+      "Designed and delivered the Group of Seven Trail Flutter application, combining interactive mapping, Bluetooth beacons and contextual content into a location-aware visitor experience; resolved cross-platform Bluetooth failures before beta launch",
+      "Partnered with IT, marketing, content authors and internal departments to resolve website, program, course and term-data issues affecting student-facing pages while supporting Salesforce, Eloqua and Zapier integrations",
+      "Built and supported WordPress functionality and content workflows while delivering AODA accessibility improvements"
     ]
   },
   {
     "version": "v2.0",
     "title": "Frontend & Integration",
-    "tui": "v2.0 · 2017 · Geek Power + OrderEase - React, Angular, REST APIs, .NET, CI/CD pipelines.",
+    "tui": "v2.0 · 2017 · Geek Power + LinkGreen - React, Angular, REST APIs, .NET and CI/CD pipelines.",
     "dateRange": "Jan 2017 - Dec 2017",
     "role": "Programmer & Integration Development Manager",
     "companies": [
       "Geek Power Web Design",
-      "OrderEase"
+      "LinkGreen"
     ],
     "companyLogos": [
       "/images/geek-power-logo.webp",
@@ -92,7 +90,7 @@
       "CI/CD Pipeline Management",
       "Agile / KANBAN"
     ],
-    "summary": "Two roles back-to-back that pushed deeply into frontend frameworks and backend integration engineering. At Geek Power, led modernization of legacy systems using React and Angular. At LinkGreen, built REST API integrations and a Windows .NET tool enabling non-technical staff to sync local inventory databases with cloud platforms.",
+    "summary": "Two roles that deepened frontend modernization and backend integration engineering. At Geek Power, led complex client work and modernized legacy systems with React and Angular. At LinkGreen, built REST API integrations and Windows .NET tooling for local-to-cloud inventory synchronization.",
     "highlights": [
       "Led technically complex client projects, delivering custom WordPress solutions and modernizing legacy frontend systems using React, Angular, JavaScript, HTML and CSS/Sass",
       "Refactored outdated codebases into more maintainable solutions and created a Grunt.js build pipeline that standardized JavaScript and CSS animation workflows across the development team",
@@ -103,19 +101,17 @@
   },
   {
     "version": "v1.0",
-    "title": "Foundations & Design",
-    "tui": "v1.0 · 2013-2016 · MediaSuite Co-op + BugsLife - web design, UX ownership, custom payment & scheduling systems.",
-    "dateRange": "2013 - 2016",
+    "title": "Foundations in Web Design & Development",
+    "tui": "v1.0 · 2014-2015 · Media Suite - UX/UI ownership, 50+ bespoke sites, custom payment and scheduling systems.",
+    "dateRange": "June 2014 - September 2015",
     "role": "Web Designer & Developer",
     "companies": [
-      "MediaSuite (Co-op)",
-      "BugsLife Solutions"
+      "Media Suite Inc."
     ],
     "companyLogos": [
-      null,
-      "/images/bugslife-solutions-logo.png"
+      "/images/mediasuite-logo.png"
     ],
-    "coverImage": "/images/bugslife-solutions-freelance-2015.jpg",
+    "coverImage": "/images/me-mediasuite.jpg",
     "primarySkills": [
       "UX / UI Design",
       "PHP",
@@ -124,13 +120,11 @@
       "Scheduling Systems",
       "Client-Facing Architecture"
     ],
-    "summary": "Started as a co-op at MediaSuite, designing and building more than 50 bespoke client websites with full UX/UI ownership. Built real product instincts early by owning the full design-to-delivery loop without a senior layer above.",
+    "summary": "Designed and developed more than 50 bespoke client websites at Media Suite Inc., owning UX/UI design, responsive layouts, visual hierarchy and implementation across the full design-to-delivery cycle.",
     "highlights": [
       "Designed and developed more than 50 bespoke client websites, owning UX/UI design, responsive layouts, visual hierarchy and implementation across HTML, CSS, PHP and MySQL",
       "Built custom transactional systems, including a swimming-lesson registration platform with multi-child accounts, scheduling, digital waivers and Stripe payments",
-      "Built a bespoke shopping-cart and checkout solution from scratch",
-      "Founded BugsLife Solutions and began delivering web and mobile projects for local businesses",
-      "Owned every UX decision: layout, typography, visual hierarchy, and information architecture"
+      "Built a bespoke shopping-cart and checkout solution from scratch"
     ]
   }
 ]

@@ -238,8 +238,8 @@ export function handleCommand(cmd: string, ctx: CommandContext) {
 
     // ── whoami ────────────────────────────────────────────────────────────────
     case lower === "whoami":
-      appendHistory(out("haden hiles, software & devops engineer."));
-      appendHistory(out("full stack engineer who designs from the user down"));
+      appendHistory(out("haden hiles, senior software engineer."));
+      appendHistory(out("product, mobile and full-stack engineer who designs from the user down"));
       appendHistory(out("and builds the system to match."));
       break;
 

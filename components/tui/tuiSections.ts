@@ -51,7 +51,7 @@ export function buildSpecs(stats: GitHubStats | null): HistoryEntry[] {
     { type: "img", text: "", src: "/images/purple-bg-new.jpg", alt: "Haden Hiles" },
     out(""),
     out("  Haden Hiles"),
-    out("  full stack engineer · ux first"),
+    out("  senior software engineer · product, mobile & full-stack"),
     out(""),
     out('  "I build software people love to use."'),
     out(""),

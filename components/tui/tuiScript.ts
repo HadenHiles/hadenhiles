@@ -15,7 +15,7 @@ const BANNER_LINES: BootLine[] = [
   { delayMs: 0,   level: "banner", text: "|  _  |/ ___ \\| |_| | |___ | |\\  | |  _  || || |___| |___ ___) |" },
   { delayMs: 0,   level: "banner", text: "|_| |_/_/   \\_\\____/|_____||_| \\_| |_| |_|___|_____|_____|____/ " },
   { delayMs: 0,   level: "banner", text: "" },
-  { delayMs: 0,   level: "dim",    text: "  full stack engineer · ux first · hadenhiles.com" },
+  { delayMs: 0,   level: "dim",    text: "  senior software engineer · product, mobile & full-stack · hadenhiles.com" },
   { delayMs: 0,   level: "banner", text: "" },
 ];
 

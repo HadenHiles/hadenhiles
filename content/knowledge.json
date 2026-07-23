@@ -134,7 +134,7 @@
         "name": ".NET Core",
         "logo": "/images/logos/dotnet.svg",
         "yearsExperience": 6,
-        "usedFor": "Windows desktop tools and enterprise backend services - used at OrderEase to build database sync tooling for non-technical staff.",
+        "usedFor": "Windows desktop tools and enterprise backend services—used at LinkGreen to build database sync tooling for non-technical staff.",
         "proofProjectIds": []
       },
       {
@@ -197,7 +197,7 @@
         "name": "MS SQL Server",
         "logo": "/images/logos/microsoftsqlserver.svg",
         "yearsExperience": 6,
-        "usedFor": "Enterprise database work at OrderEase - syncing local SQL databases with cloud APIs via custom GUI tooling.",
+        "usedFor": "Enterprise database work at LinkGreen—syncing local SQL databases with cloud APIs via custom GUI tooling.",
         "proofProjectIds": []
       },
       {
