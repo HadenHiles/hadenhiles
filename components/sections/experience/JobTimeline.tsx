@@ -671,7 +671,17 @@ function AnimatedCard({
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
 export function JobTimeline({ jobs }: { jobs: Job[] }) {
-  const sorted = [...jobs];
+  const sorted = [...jobs].sort((a, b) => {
+    if (a.current !== b.current) return a.current ? -1 : 1;
+
+    const aEnd = Date.parse(a.dateRange.split(" - ")[1]);
+    const bEnd = Date.parse(b.dateRange.split(" - ")[1]);
+    if (aEnd !== bEnd) return bEnd - aEnd;
+
+    const aStart = Date.parse(a.dateRange.split(" - ")[0]);
+    const bStart = Date.parse(b.dateRange.split(" - ")[0]);
+    return bStart - aStart;
+  });
 
   const stickyRef = useRef<HTMLDivElement>(null);
   const [expandedSlug, setExpandedSlug] = useState<string | null>(null);
@@ -749,7 +759,7 @@ export function JobTimeline({ jobs }: { jobs: Job[] }) {
                 The Timeline
               </h2>
               <p className="text-muted text-sm">
-                10+ years. Six companies. One thread running through all of it.
+                Selected roles from 10+ years of building products and systems.
               </p>
             </motion.div>
 

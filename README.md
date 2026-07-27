@@ -1,170 +1,96 @@
-# Design from the User Down. Build the System to Match
+[![Haden Hiles — Senior Software Engineer](./public/images/banner.png)](https://hire.hadenhiles.com)
 
-[![Haden](./public/images/logo/logo_color.png)](https://www.hadenhiles.com)
+# Senior Software Engineer | Product, Mobile & Full-Stack Engineering
 
-I build software the way I want software to feel as a user: simple, fast, intuitive, and reliable.
+I’m a senior software engineer with 10+ years of experience turning loosely defined product and business needs into production mobile applications, web platforms, and integrations.
 
-I’m a Software and DevOps Engineer at How To Hockey. I work across the entire stack, from interface design to backend architecture to deployment pipelines. But my default lens is UX. Every feature starts with the same mental model:
+I own delivery from discovery and architecture through implementation, deployment, measurement, and long-term operation. My work combines hands-on engineering with product judgement and UX expertise: define the right problem, make the complex feel simple, ship reliably, and improve based on real-world results.
 
-> As a user, what would I expect right here?
+[Portfolio](https://hire.hadenhiles.com) · [Resume](./public/resume.pdf) · [LinkedIn](https://linkedin.com/in/hadenhiles) · [Email](mailto:hi@hadenhiles.com)
 
-Clean flows. Thoughtful layout. Clear hierarchy. Stable infrastructure underneath it all.
+## Impact
 
-I care about building things that work consistently in production, not just in demos.
+- Own the architecture, development, release management, and technical direction of **10,000 Shots**, a Flutter and Firebase application with **80,000+ registered accounts** and approximately **2,500 daily active users**
+- Designed team-based competition features that helped **double daily active users**
+- Launched a guided training experience and freemium model that **tripled subscription conversion**, contributing to roughly **250 daily downloads** and **25 new Pro subscriptions per day**
+- Built and operate **The Pond**, a membership and learning platform generating an estimated **$30,000 in annual revenue**
+- Delivered mobile, web, e-commerce, and integration projects from requirements analysis through deployment, training, and support
+- Designed and developed **50+ bespoke client websites** and custom transactional systems
 
----
+## Technical Expertise
 
-## 🏒🎬 When I'm Not Coding
+| Area | Technologies and capabilities |
+| --- | --- |
+| Languages & frameworks | Dart, TypeScript, JavaScript, SQL, Python, PHP, Flutter, React, Next.js, Node.js, Express, WordPress |
+| Data & integrations | Firebase, Cloud Firestore, PostgreSQL, MySQL, REST APIs, GraphQL, payment systems, POS integrations |
+| Cloud & delivery | Docker, Linux, Git, GitHub Actions, CI/CD, AWS, DigitalOcean, DNS, reverse proxies, networking |
+| Engineering & product | Software architecture, system design, product discovery, requirements analysis, UX/UI design, accessibility, testing, technical documentation, stakeholder communication |
 
-I’m usually on the ice, testing gear, trying weird hockey challenges, or building something just because I want to understand how it works.
+## Selected Work
 
-On my [YouTube channel](https://www.youtube.com/@HadenHiles), I document experiments that mix hockey, tech, and curiosity. Sometimes it is performance testing. Sometimes it is app building. Sometimes it is just seeing what happens.
+### 10,000 Shots
 
-The common thread is the same as my engineering work: experiment, measure, improve.
+A production Flutter and Firebase training platform for hockey players. I lead its architecture and delivery across mobile development, real-time data, subscriptions, product discovery, release management, and long-term operation.
 
----
+The product is designed around a simple goal: let players log training quickly, understand their progress, and stay motivated. Behind that experience are real-time Firestore streams, team competition, guided training, in-app purchases, analytics, and automated delivery workflows.
 
-## 🚀 Featured Projects
+### The Pond
 
-Below are projects where I owned both the user experience and the system behind it.
+A WordPress, LearnDash, and MemberPress membership platform for structured hockey training. I built the learning experience, subscription flows, gated content, member dashboards, and supporting operational systems.
 
----
+The platform balances a clear progression for players with maintainable workflows for non-technical administrators.
 
-### 🥅 [TenThousandShotChallenge](https://github.com/HadenHiles/TenThousandShotChallenge)  
+### [Group of Seven Trail App](https://github.com/HadenHiles/G7TrailApp)
 
-*Flutter, Dart, Firebase*  
-620 commits
+A Flutter application combining interactive mapping, Bluetooth beacons, and contextual content into a location-aware visitor experience.
 
-A cross-platform mobile app built to support the 10,000 Shot Challenge community.
+I resolved cross-platform Bluetooth failures in an unsupported dependency, migrated the application to a sustainable replacement, and restructured it ahead of beta launch. I also redesigned the organization’s [public website](https://groupofseventrail.com).
 
-Players can log sessions, track cumulative progress, and visualize improvement over time. Authentication supports Google and Apple sign-in. Data is structured around session-based tracking to keep logging simple and scalable.
+### [Skill Drills](https://github.com/HadenHiles/skill-drills)
 
-UX focus: open the app, log shots in seconds, see progress clearly, leave. No friction.
+A customizable training product that lets users create reusable routines, define flexible performance metrics, complete structured sessions, and track improvement across different training styles.
 
----
+### FamFlix
 
-### 🏒 [The Pond](https://github.com/HadenHiles/ThePond)  
+A self-hosted family media platform spanning containerized services, reverse proxies, secure remote access, monitoring, and automated workflows across NAS and Windows systems.
 
-*PHP, WordPress, JavaScript, CSS*  
-434 commits
+### [Lyric Pilot](https://github.com/HadenHiles/LyricPilot)
 
-A structured subscription platform for hockey training.
+A Flutter-based lyric and chord practice app built around tempo control, section looping, and progressive independence. Its dedicated scroll engine and playback state machine keep practice logic separate from the interface.
 
-Built with WordPress, LearnDash, and MemberPress. Integrated payments, gated courses, dashboards, and content progression. Designed for clarity on the user side and low operational overhead on the admin side.
+[Download Lyric Pilot on itch.io](https://hadenhiles.itch.io/lyric-pilot).
 
-UX focus: players should always know what to do next. Admin workflows should not require technical gymnastics.
+## Experience
 
----
+- **Lead Software Engineer, How To Hockey** — October 2019–Present
+- **Independent Software Consultant, BugsLife Solutions** — September 2015–July 2025
+- **Web Specialist, Marketing, Georgian College** — September 2018–September 2019
+- **Programmer & Integration Development Manager, LinkGreen** — August 2017–December 2017
+- **Senior Web Developer, Geek Power Web Design** — January 2017–August 2017
+- **Web Designer & Developer, Media Suite Inc.** — June 2014–September 2015
 
-### 🗺️ [The Group of Seven Trail App](https://github.com/HadenHiles/G7TrailApp)  
+## How I Work
 
-*Flutter, Dart, C++*  
-362 commits
+- Start with the user and the business outcome
+- Turn ambiguity into requirements, architecture, and an achievable delivery plan
+- Prototype early when it reduces product or technical risk
+- Prefer simple, maintainable systems over unnecessary cleverness
+- Treat reliability, accessibility, and operational clarity as product features
+- Measure what ships and use the evidence to guide what comes next
 
-An interactive hiking companion app for the Lake Superior Group of Seven Trail.
+## About This Repository
 
-Includes interactive maps, bluetooth beacon integration, and contextual trail information triggered by location. Built for real-world use while moving through the trail.
+This repository contains the source for [hire.hadenhiles.com](https://hire.hadenhiles.com), my interactive portfolio built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Zustand.
 
-UX focus: relevant information should appear at the right time without digging through menus.
-
-I also redesigned their [website](https://groupofseventrail.com)
-
----
-
-### 📊 [NextShift](https://github.com/HadenHiles/NextShift)  
-
-*Flutter, Dart, Firebase*  
-53 commits
-
-A community-driven feedback and voting platform for the How To Hockey ecosystem.
-
-Users can submit ideas, vote on features, and provide structured input that informs roadmap decisions. Real-time updates powered by Firebase.
-
-UX focus: submitting an idea should take under 20 seconds. Feedback should feel visible and meaningful.
-
----
-
-### 🧠 [Skill Drills](https://github.com/HadenHiles/skill-drills)  
-
-*Flutter, Dart, C++*  
-37 commits
-
-A customizable skill tracking application.
-
-Users can define routines, set flexible performance metrics, and log sessions across different training styles. Built to balance freedom and structure.
-
-UX focus: flexible without becoming confusing.
-
----
-
-### 🎬 [VideoScraper](https://github.com/HadenHiles/VideoScraper)  
-
-*React, TypeScript, Node.js, Express*  
-19 commits
-
-A modern web application that processes video URLs through a Node.js proxy backend.
-
-Built with a Vite + React frontend and Express backend to handle CORS and request routing cleanly.
-
-UX focus: paste a link, click once, get a file.
-
----
-
-### 🎸 [Lyric Pilot](https://github.com/HadenHiles/LyricPilot)  
-
-*Flutter, Dart*
-
-Like karaoke, but with chords. Built for hobby musicians who want to actually learn songs : not just read them off a screen forever.
-
-Add your lyrics and chord markers, set the tempo, and it scrolls like a teleprompter tuned for a guitarist. Loop the sections that aren't sticking. The goal is to internalize the song until you don't need the screen.
-
-A dedicated scroll engine and playback state machine handle tempo control, section looping, and progressive independence : practice logic stays clean and separate from UI.
-
-Available on [itch.io](https://hadenhiles.itch.io/lyric-pilot).
-
-UX focus: the app is the scaffold, not the crutch.
-
----
-
-## 🔧 Systems and Infrastructure Work
-
-Not everything I build has a UI.
-
-- CI and CD pipelines for safer deployments  
-- Containerized environments for consistency  
-- Reverse proxy and networking configuration  
-- Secure remote access and documentation such as HTH-Twingate-Setup  
-- Scrapers and APIs for data aggregation  
-
-Reliability is part of user experience. If the system fails, the interface does not matter.
-
----
-
-## 🧠 How I Think
-
-- UX first. Start with “as a user I…”  
-- Simple beats clever.  
-- Reliability is a feature.  
-- Remove friction before adding features.  
-- Resist the urge to optimize something that should not exist.  
-
----
-
-*If you'd like to work together, reach out at [hi@hadenhiles.com](mailto:hi@hadenhiles.com).*
-
----
-
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
-## Getting Started
-
-First, run the development server:
+Run it locally:
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+
+Then open [http://localhost:3000](http://localhost:3000).
+
+---
+
+I’m based in Ontario, Canada. If you’re building a product that needs strong engineering, practical product thinking, and end-to-end ownership, email me at [hi@hadenhiles.com](mailto:hi@hadenhiles.com).
