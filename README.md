@@ -28,13 +28,13 @@ I own delivery from discovery and architecture through implementation, deploymen
 
 ## Selected Work
 
-### 10,000 Shots
+### [10,000 Shots](https://github.com/HadenHiles/TenThousandShotChallenge)
 
 A production Flutter and Firebase training platform for hockey players. I lead its architecture and delivery across mobile development, real-time data, subscriptions, product discovery, release management, and long-term operation.
 
 The product is designed around a simple goal: let players log training quickly, understand their progress, and stay motivated. Behind that experience are real-time Firestore streams, team competition, guided training, in-app purchases, analytics, and automated delivery workflows.
 
-### The Pond
+### [The Pond](https://github.com/HadenHiles/ThePond)
 
 A WordPress, LearnDash, and MemberPress membership platform for structured hockey training. I built the learning experience, subscription flows, gated content, member dashboards, and supporting operational systems.
 
@@ -50,7 +50,7 @@ I resolved cross-platform Bluetooth failures in an unsupported dependency, migra
 
 A customizable training product that lets users create reusable routines, define flexible performance metrics, complete structured sessions, and track improvement across different training styles.
 
-### FamFlix
+### [FamFlix](https://github.com/HadenHiles/famflix-stack)
 
 A self-hosted family media platform spanning containerized services, reverse proxies, secure remote access, monitoring, and automated workflows across NAS and Windows systems.
 
