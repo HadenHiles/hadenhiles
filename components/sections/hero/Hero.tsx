@@ -372,9 +372,9 @@ export function Hero() {
                             key={link.label}
                             variants={linkVariants}
                             href={link.href}
-                            target="_blank"
+                            target={link.download ? undefined : "_blank"}
                             rel="noopener noreferrer"
-                            {...(link.download ? { download: true } : {})}
+                            {...(link.download ? { download: "Haden-Hiles-Resume.pdf" } : {})}
                             onClick={(e) => e.stopPropagation()}
                             className="flex-1 flex flex-col items-center gap-1.5 py-3 px-2 rounded-xl bg-surface/80 border border-border/60 hover:border-accent/50 hover:bg-surface text-muted hover:text-text transition-colors cursor-pointer"
                           >
@@ -396,9 +396,9 @@ export function Hero() {
               <a
                 key={link.label}
                 href={link.href}
-                target="_blank"
+                target={link.download ? undefined : "_blank"}
                 rel="noopener noreferrer"
-                {...(link.download ? { download: true } : {})}
+                {...(link.download ? { download: "Haden-Hiles-Resume.pdf" } : {})}
                 className="flex flex-col items-center gap-2.5"
               >
                 <span

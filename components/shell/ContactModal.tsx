@@ -125,7 +125,7 @@ export function ContactModal() {
               {/* Resume */}
               <a
                 href="/resume.pdf"
-                download
+                download="Haden-Hiles-Resume.pdf"
                 className="flex items-center justify-center w-full py-2.5 border border-border
                            rounded-lg text-sm text-muted hover:text-text hover:border-border/60
                            transition-colors"
