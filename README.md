@@ -1,4 +1,4 @@
-[![Haden Hiles — Senior Software Engineer](./public/images/banner.png)](https://hire.hadenhiles.com)
+[![Haden Hiles — Senior Software Engineer](./public/images/banner.png)](https://portfolio.hadenhiles.com)
 
 # Senior Software Engineer | Product, Mobile & Full-Stack Engineering
 
@@ -6,7 +6,7 @@ I’m a senior software engineer with 10+ years of experience turning loosely de
 
 I own delivery from discovery and architecture through implementation, deployment, measurement, and long-term operation. My work combines hands-on engineering with product judgement and UX expertise: define the right problem, make the complex feel simple, ship reliably, and improve based on real-world results.
 
-[Portfolio](https://hire.hadenhiles.com) · [Resume](./public/resume.pdf) · [LinkedIn](https://linkedin.com/in/hadenhiles) · [Email](mailto:hi@hadenhiles.com)
+[Portfolio](https://portfolio.hadenhiles.com) · [Resume](./public/resume.pdf) · [LinkedIn](https://linkedin.com/in/hadenhiles) · [Email](mailto:hi@hadenhiles.com)
 
 ## Impact
 
@@ -80,7 +80,7 @@ A Flutter-based lyric and chord practice app built around tempo control, section
 
 ## About This Repository
 
-This repository contains the source for [hire.hadenhiles.com](https://hire.hadenhiles.com), my interactive portfolio built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Zustand.
+This repository contains the source for [portfolio.hadenhiles.com](https://portfolio.hadenhiles.com), my interactive portfolio built with Next.js, TypeScript, Tailwind CSS, Framer Motion, and Zustand.
 
 Run it locally:
 
