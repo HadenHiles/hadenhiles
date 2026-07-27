@@ -1,6 +1,6 @@
 [![Haden Hiles — Senior Software Engineer](./public/images/banner.png)](https://portfolio.hadenhiles.com)
 
-# Senior Software Engineer | Product, Mobile & Full-Stack Engineering
+# Senior Software Engineer | Product, Mobile & Full-Stack
 
 I’m a senior software engineer with 10+ years of experience turning loosely defined product and business needs into production mobile applications, web platforms, and integrations.
 
