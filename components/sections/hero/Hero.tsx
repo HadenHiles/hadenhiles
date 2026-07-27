@@ -348,7 +348,7 @@ export function Hero() {
               {/* Photo container */}
               <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-[420px] lg:h-[420px] rounded-[28px] overflow-hidden border border-border/40">
                 <Image
-                  src="/images/purple-bg-new.jpg"
+                  src="/images/headshot.png"
                   alt="Haden Hiles"
                   fill
                   className="object-cover object-top"
