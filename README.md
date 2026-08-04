@@ -50,6 +50,12 @@ I resolved cross-platform Bluetooth failures in an unsupported dependency, migra
 
 A customizable training product that lets users create reusable routines, define flexible performance metrics, complete structured sessions, and track improvement across different training styles.
 
+### [WatchBracket](https://bracket.famflix.live)
+
+A self-hosted, open-source real-time bracket voting app that turns movie night decision paralysis into a quick, fair group decision. The host creates a room, everyone joins by code, each person nominates their top two picks, and titles go head-to-head until one survives as tonight's feature presentation. A shared display mode puts the live bracket on the TV while everyone votes from their phone.
+
+Built with Django, Python, WebSockets, and an optional Plex integration that surfaces watchlist and taste-based suggestions without requiring an account.
+
 ### [FamFlix](https://github.com/HadenHiles/famflix-stack)
 
 A self-hosted family media platform spanning containerized services, reverse proxies, secure remote access, monitoring, and automated workflows across NAS and Windows systems.
