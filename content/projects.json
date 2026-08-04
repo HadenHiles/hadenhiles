@@ -1,5 +1,35 @@
 [
   {
+    "id": "watchbracket",
+    "title": "WatchBracket",
+    "tui": "Real-time movie bracket voting (Django/WebSockets/Plex) - pick tonight's feature presentation as a group, head-to-head.",
+    "tagline": "Tonight's pick, decided together.",
+    "purpose": "Choosing what to watch as a group is a form of social paralysis. WatchBracket turns the endless scroll into a structured, fast, shared decision - a tournament bracket where movies compete head-to-head until one survives.",
+    "constraints": "Real-time vote sync across multiple devices in the same room. Plex integration had to be optional - the app needed to work without it for non-Plex households. A shared display mode for putting the bracket on a TV added a second rendering context to keep in sync.",
+    "decisions": "Room-based architecture with a six-character code for quick joins. Plex OAuth integration adds watchlist and taste-based suggestions when available but is never required. Separate shared display route for TV screens. Django backend with WebSockets for real-time state.",
+    "impact": "A group can go from 'what should we watch' to a decided feature presentation in minutes. The bracket format makes the selection feel fair and fun instead of one person capitulating.",
+    "tech": [
+      "Django",
+      "Python",
+      "WebSockets",
+      "Plex API",
+      "JavaScript",
+      "CSS"
+    ],
+    "githubUrl": null,
+    "demoUrl": "https://bracket.famflix.live",
+    "demoUrlLabel": "Live App",
+    "videoUrl": null,
+    "diagramAsset": null,
+    "story": "Movie night should be a shared experience from the first decision. WatchBracket replaces the paralyzing scroll with a tournament bracket - each person votes on head-to-head matchups until one title wins the room. I built it for my own family, integrated Plex so watchlists and taste data could feed the bracket when available, and added a shared display mode so the bracket itself lives on the TV while everyone votes from their phone. The real engineering challenge was keeping room state consistent across all clients in real time without a heavyweight frontend framework.",
+    "demoType": "mobile",
+    "demoTypeLabel": "web app",
+    "thumbnailTime": 0,
+    "thumbnailPosition": "50% 15%",
+    "demoAsset": "/projects/watchbracket-home.jpg",
+    "demoAssets": null
+  },
+  {
     "id": "ten-thousand-shot-challenge",
     "title": "TenThousandShotChallenge",
     "tui": "Shot-logging mobile app (Flutter/Firebase) - log a session in under 10s, see cumulative progress.",
