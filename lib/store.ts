@@ -57,7 +57,7 @@ export const useStore = create<AppState>()(
   devtools(
     (set, get) => ({
       // ── Initial state ──────────────────────────────────────────────────────
-      mode: "tui",
+      mode: "home",
       selectedProjectId: null,
       reducedMotion: false,
       scrollVelocity: 0,
@@ -81,12 +81,13 @@ export const useStore = create<AppState>()(
         if (typeof window !== "undefined") {
           let url: string;
           if (mode === "tui") {
-            url = "/";
+            url = "/tui";
           } else if (mode === "home") {
-            url = "/site";
+            url = "/";
           } else {
             url = `/site?mode=${mode}`;
           }
+          if (window.location.pathname + window.location.search === url) return;
           // pushState for TUI ↔ GUI transitions (meaningful nav),
           // replaceState for section changes (scroll-driven, avoid spamming history)
           const isModeSwitch = (prev === "tui") !== (mode === "tui");

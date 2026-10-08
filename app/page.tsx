@@ -1,20 +1,27 @@
 "use client";
 
+import { useEffect } from "react";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
-import { useMode } from "@/lib/store";
+import { useMode, useStore } from "@/lib/store";
 import { TuiHandoff } from "@/components/tui/TuiHandoff";
 import { TuiShell } from "@/components/tui/TuiShell";
 import { SiteShell } from "@/components/shell/SiteShell";
 import { ContactModal } from "@/components/shell/ContactModal";
 import { MotionPreferenceSync } from "@/components/shell/MotionPreferenceSync";
 import { duration, ease } from "@/lib/motion";
+import type { AppMode } from "@/lib/routes";
 
 // Single root component : TUI and GUI share the same React tree so that
 // Framer Motion's layoutId="handoff-shell" can animate across the transition.
 // URL is updated as a side effect via window.history.pushState in the store.
-export default function PortfolioRoot() {
-  const mode = useMode();
+export default function PortfolioRoot({ initialMode }: { initialMode?: AppMode }) {
+  const storeMode = useMode();
+  const mode = initialMode ?? storeMode;
   const isTUI = mode === "tui";
+
+  useEffect(() => {
+    if (initialMode) useStore.getState().setMode(initialMode);
+  }, [initialMode]);
 
   return (
     <LayoutGroup>

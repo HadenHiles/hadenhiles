@@ -1,8 +1,8 @@
 export const ROUTES = {
-  tui:            "/",
+  tui:            "/tui",
   tuiExplicit:    "/tui",
   site:           "/site",
-  siteHome:       "/site",
+  siteHome:       "/",
   siteKnowledge:  "/site?mode=knowledge",
   siteWork:       "/site?mode=work",
   siteExperience: "/site?mode=experience",

@@ -309,9 +309,9 @@ export function Hero() {
             <button
               onClick={() => setMode("tui")}
               className="px-5 py-3 text-sm text-muted hover:text-text font-mono transition-colors"
-              aria-label="Open terminal view"
+              aria-label="Switch to CLI mode"
             >
-              &gt; terminal
+              &gt;_ CLI mode
             </button>
           </div>
         </motion.div>

@@ -1,3 +1,7 @@
-// /tui route : explicit TUI entry.
-// Store initializes to mode="tui" so PortfolioRoot handles it directly.
-export { default } from "@/app/page";
+"use client";
+
+import PortfolioRoot from "@/app/page";
+
+export default function TuiPage() {
+  return <PortfolioRoot initialMode="tui" />;
+}

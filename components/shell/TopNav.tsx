@@ -96,7 +96,7 @@ export function TopNav() {
       </button>
 
       {/* Desktop mode tabs */}
-      <nav className="hidden sm:flex gap-0.5" aria-label="Site sections">
+      <nav className="hidden lg:flex gap-0.5" aria-label="Site sections">
         {NAV_TABS.map((tab) => {
           const isActive = mode === tab.mode;
           return (
@@ -126,10 +126,10 @@ export function TopNav() {
       <div className="flex items-center gap-2">
         <button
           onClick={() => setMode("tui")}
-          className="hidden sm:block px-3 py-1.5 text-sm text-muted hover:text-text border border-border hover:border-accent/40 rounded-lg transition-colors font-mono"
-          aria-label="Launch terminal"
+          className="hidden md:block px-3 py-1.5 text-sm text-muted hover:text-text border border-border hover:border-accent/40 rounded-lg transition-colors"
+          aria-label="Switch to CLI mode"
         >
-          &gt;_
+          CLI mode
         </button>
         <button
           onClick={() => setContactOpen(true)}
@@ -141,7 +141,7 @@ export function TopNav() {
         {/* Mobile hamburger : three lines morph into X */}
         <motion.button
           onClick={() => setMobileOpen((o) => !o)}
-          className="sm:hidden p-1.5 text-muted hover:text-accent transition-colors"
+          className="lg:hidden p-1.5 text-muted hover:text-accent transition-colors"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
           animate={mobileOpen ? "open" : "closed"}
@@ -176,7 +176,7 @@ export function TopNav() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: duration.short, ease: ease.standard }}
-          className="sm:hidden fixed inset-0 z-50 flex flex-col"
+          className="lg:hidden fixed inset-0 z-50 flex flex-col"
           style={{ backgroundColor: '#0B0B0E' }}
         >
           {/* Close button : pinned top-right, same position as hamburger */}
@@ -251,7 +251,7 @@ export function TopNav() {
                 onClick={() => { setMode("tui"); setMobileOpen(false); }}
                 className="w-full flex items-center justify-center gap-2 px-6 py-4 rounded-card text-base text-muted hover:text-accent hover:bg-surface2/60 transition-colors font-mono"
               >
-                &gt;_ Terminal
+                &gt;_ CLI mode
               </button>
             </motion.div>
           </nav>
